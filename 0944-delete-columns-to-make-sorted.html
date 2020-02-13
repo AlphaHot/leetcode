@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>944. Delete Columns to Make Sorted</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_944_delete_columns_to_make_sorted">944. Delete Columns to Make Sorted</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_944_delete_columns_to_make_sorted"><a class="anchor" href="#_944_delete_columns_to_make_sorted"></a>944. Delete Columns to Make Sorted</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/delete-columns-to-make-sorted/">LeetCode - Delete Columns to Make Sorted</a></p>
+</div>
+<div class="paragraph">
+<p>We are given an array <code>A</code> of <code>N</code> lowercase letter strings, all of the same length.</p>
+</div>
+<div class="paragraph">
+<p>Now, we may choose any set of deletion indices, and for each string, we delete all the characters in those indices.</p>
+</div>
+<div class="paragraph">
+<p>For example, if we have an array <code>A = [&#8220;`abcdef</code>&#8221;,"uvwxyz"]` and deletion indices <code>{0, 2, 3}</code>, then the final array after deletions is <code>["bef", "vyz"]</code>, and the remaining columns of <code>A</code> are <code>["b"<code>,"</code>v"]</code>, <code>["e","y"]</code>, and <code>["f","z"]</code>.  (Formally, the <code>c</code>-th column is <code>[A[0][c], A[1][c], &#8230;&#8203;, A[A.length-1][c]]</code>.)</p>
+</div>
+<div class="paragraph">
+<p>Suppose we chose a set of deletion indices <code>D</code> such that after deletions, each remaining column in A is in <strong>non-decreasing</strong> sorted order.</p>
+</div>
+<div class="paragraph">
+<p>Return the minimum possible value of <code>D.length</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ["cba","daf","ghi"]
+<strong>Output:</strong> 1
+<strong>Explanation:</strong>
+After choosing D = {1}, each column ["c","d","g"] and ["a","f","i"] are in non-decreasing sorted order.
+If we chose D = {}, then a column ["b","a","h"] would not be in non-decreasing sorted order.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ["a","b"]
+<strong>Output:</strong> 0
+<strong>Explanation:</strong> D = {}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ["zyx","wvu","tsr"]
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> D = {0, 1, 2}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>1 &#8656; A.length &#8656; 100</code></p>
+</li>
+<li>
+<p><code>1 &#8656; A[i].length &#8656; 1000</code></p>
+</li>
+</ol>
+</div>
+<div id="src-0944" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0944-delete-columns-to-make-sorted.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0944_DeleteColumnsToMakeSorted.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

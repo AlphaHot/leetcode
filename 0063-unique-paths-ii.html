@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>63. Unique Paths II</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_63_unique_paths_ii">63. Unique Paths II</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_63_unique_paths_ii"><a class="anchor" href="#_63_unique_paths_ii"></a>63. Unique Paths II</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/unique-paths-ii/">LeetCode - Unique Paths II</a></p>
+</div>
+<div class="paragraph">
+<p>A robot is located at the top-left corner of a <em>m</em> x <em>n</em> grid (marked 'Start' in the diagram below).</p>
+</div>
+<div class="paragraph">
+<p>The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).</p>
+</div>
+<div class="paragraph">
+<p>Now consider if some obstacles are added to the grids. How many unique paths would there be?</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2018/10/22/robot_maze.png" alt="robot maze">
+</div>
+</div>
+<div class="paragraph">
+<p>An obstacle and empty space is marked as <code>1</code> and <code>0</code> respectively in the grid.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> <em>m</em> and <em>n</em> will be at most 100.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:
+*[
+  [0,0,0],
+  [0,1,0],
+  [0,0,0]
+]
+*Output:</strong> 2
+<strong>Explanation:</strong>
+There is one obstacle in the middle of the 3x3 grid above.
+There are two ways to reach the bottom-right corner:
+1. Right -&gt; Right -&gt; Down -&gt; Down
+2. Down -&gt; Down -&gt; Right -&gt; Right</pre>
+</div>
+</div>
+<div id="src-0063" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+/**
+ * = 63. Unique Paths II
+ *
+ * https://leetcode.com/problems/unique-paths-ii/[Unique Paths II - LeetCode]
+ *
+ * A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
+ *
+ * The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
+ *
+ * Now consider if some obstacles are added to the grids. How many unique paths would there be?
+ *
+ * An obstacle and empty space is marked as 1 and 0 respectively in the grid.
+ *
+ * *Note:* m and n will be at most 100.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input:
+ * [
+ *   [0,0,0],
+ *   [0,1,0],
+ *   [0,0,0]
+ * ]
+ * Output: 2
+ * Explanation:
+ * There is one obstacle in the middle of the 3x3 grid above.
+ * There are two ways to reach the bottom-right corner:
+ * 1. Right -&gt; Right -&gt; Down -&gt; Down
+ * 2. Down -&gt; Down -&gt; Right -&gt; Right
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2019-10-26 23:50
+ */
+public class _0063_UniquePathsII {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Unique Paths II.
+     * &lt;p&gt;
+     * Memory Usage: 40.5 MB, less than 33.84% of Java online submissions for Unique Paths II.
+     */
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        if (Objects.isNull(obstacleGrid)
+                || obstacleGrid.length == 0
+                || obstacleGrid[0].length == 0
+                || obstacleGrid[0][0] == 1) {
+            return 0;
+        }
+        obstacleGrid[0][0] = 1;
+
+        int m = obstacleGrid.length;
+        for (int i = 1; i &lt; m; i++) {
+            if (obstacleGrid[i][0] == 0 &amp;&amp; obstacleGrid[i - 1][0] == 1) {
+                obstacleGrid[i][0] = 1;
+            } else {
+                obstacleGrid[i][0] = 0;
+            }
+        }
+        int n = obstacleGrid[0].length;
+        for (int j = 1; j &lt; n; j++) {
+            if (obstacleGrid[0][j] == 0 &amp;&amp; obstacleGrid[0][j - 1] == 1) {
+                obstacleGrid[0][j] = 1;
+            } else {
+                obstacleGrid[0][j] = 0;
+            }
+        }
+        for (int i = 1; i &lt; m; i++) {
+            for (int j = 1; j &lt; n; j++) {
+                if (obstacleGrid[i][j] == 1) {
+                    obstacleGrid[i][j] = 0;
+                } else {
+                    obstacleGrid[i][j] = obstacleGrid[i - 1][j] + obstacleGrid[i][j - 1];
+                }
+            }
+        }
+        return obstacleGrid[m - 1][n - 1];
+    }
+
+    /**
+     * Runtime: 1 ms, faster than 23.04% of Java online submissions for Unique Paths II.
+     * &lt;p&gt;
+     * Memory Usage: 40.5 MB, less than 35.38% of Java online submissions for Unique Paths II.
+     */
+    public int uniquePathsWithObstaclesMy(int[][] obstacleGrid) {
+        if (Objects.isNull(obstacleGrid)
+                || obstacleGrid.length == 0
+                || obstacleGrid[0].length == 0) {
+            return 0;
+        }
+        int m = obstacleGrid.length;
+        int n = obstacleGrid[0].length;
+        boolean hasObstacle = false;
+        for (int i = 0; i &lt; n; i++) {
+            int value = obstacleGrid[0][i];
+            if (value == 1) {
+                hasObstacle = true;
+                obstacleGrid[0][i] = -1;
+            } else {
+                if (hasObstacle) {
+                    obstacleGrid[0][i] = 0;
+                } else {
+                    obstacleGrid[0][i] = 1;
+                }
+            }
+        }
+        hasObstacle = false;
+        if (obstacleGrid[0][0] == -1) {
+            hasObstacle = true;
+        }
+        for (int i = 1; i &lt; m; i++) {
+            int value = obstacleGrid[i][0];
+            if (hasObstacle) {
+                obstacleGrid[i][0] = 0;
+            }
+            if (value == 1) {
+                hasObstacle = true;
+                obstacleGrid[i][0] = -1;
+            } else {
+                if (hasObstacle) {
+                    obstacleGrid[i][0] = 0;
+                } else {
+                    obstacleGrid[i][0] = 1;
+                }
+            }
+        }
+
+        for (int i = 1; i &lt; m; i++) {
+            for (int j = 1; j &lt; n; j++) {
+                int value = obstacleGrid[i][j];
+                if (value == 1) {
+                    obstacleGrid[i][j] = -1;
+                } else {
+                    int top = obstacleGrid[i - 1][j];
+                    if (top == -1) {
+                        top = 0;
+                    }
+
+                    int left = obstacleGrid[i][j - 1];
+                    if (left == -1) {
+                        left = 0;
+                    }
+                    obstacleGrid[i][j] = top + left;
+                }
+            }
+        }
+        return Math.max(obstacleGrid[m - 1][n - 1], 0);
+    }
+
+    public static void main(String[] args) {
+        _0063_UniquePathsII solution = new _0063_UniquePathsII();
+        int[][] obstacleGrid = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
+        int r1 = solution.uniquePathsWithObstacles(obstacleGrid);
+        System.out.println((r1 == 2) + " : " + r1);
+
+        int[][] obstacleGrid2 = {{1}};
+        int r2 = solution.uniquePathsWithObstacles(obstacleGrid2);
+        System.out.println((r2 == 0) + " : " + r2);
+
+        int[][] obstacleGrid3 = {{1, 1}};
+        int r3 = solution.uniquePathsWithObstacles(obstacleGrid3);
+        System.out.println((r3 == 0) + " : " + r3);
+
+        int[][] obstacleGrid4 = {{1, 0}};
+        int r4 = solution.uniquePathsWithObstacles(obstacleGrid4);
+        System.out.println((r4 == 0) + " : " + r4);
+
+        int[][] obstacleGrid5 = {{1}, {0}};
+        int r5 = solution.uniquePathsWithObstacles(obstacleGrid5);
+        System.out.println((r5 == 0) + " : " + r5);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

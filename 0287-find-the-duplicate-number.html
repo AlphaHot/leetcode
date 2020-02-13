@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>287. Find the Duplicate Number</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_287_find_the_duplicate_number">287. Find the Duplicate Number</a>
+<ul class="sectlevel2">
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_287_find_the_duplicate_number"><a class="anchor" href="#_287_find_the_duplicate_number"></a>287. Find the Duplicate Number</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/find-the-duplicate-number/">LeetCode - Find the Duplicate Number</a></p>
+</div>
+<div class="paragraph">
+<p>Given an array nums containing <em>n + 1</em> integers where each integer is between <em>1</em> and <em>n</em> (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre class="highlight"><code>Input: [1,3,4,2,2]
+Output: 2</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre class="highlight"><code>Input: [3,1,3,4,2]
+Output: 3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You <strong>must not</strong> modify the array (assume the array is read only).</p>
+</li>
+<li>
+<p>You must use only constant, \(O\left(1\right)\) extra space.</p>
+</li>
+<li>
+<p>Your runtime complexity should be less than \(O\left(n^{2}\right)\).</p>
+</li>
+<li>
+<p>There is only one duplicate number in the array, but it could be repeated more than once.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>可以使用 <a href="0142-linked-list-cycle-ii.html">142. Linked List Cycle II</a> 中的 Floyd&#8217;s Tortoise and Hare (Cycle Detection) 算法来解决。</p>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode.com/problems/find-the-duplicate-number/solution/">Find the Duplicate Number solution - LeetCode</a> 中 Approach #3 Floyd&#8217;s Tortoise and Hare (Cycle Detection) [Accepted] 的好精巧！类似于在链表中发现环。还需要再仔细思考一下这个问题！</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given an array <em>nums</em> containing <em>n</em> + 1 integers where each integer is between 1 and <em>n</em> (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> <code>[1,3,4,2,2]</code>
+<strong>Output:</strong> 2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [3,1,3,4,2]
+<strong>Output:</strong> 3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You <strong>must not</strong> modify the array (assume the array is read only).</p>
+</li>
+<li>
+<p>You must use only constant, <em>O</em>(1) extra space.</p>
+</li>
+<li>
+<p>Your runtime complexity should be less than <em>O</em>(<em>n</em><sup>2</sup>).</p>
+</li>
+<li>
+<p>There is only one duplicate number in the array, but it could be repeated more than once.</p>
+</li>
+</ol>
+</div>
+<div id="src-0287" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+/**
+ * = 287. Find the Duplicate Number
+ *
+ * https://leetcode.com/problems/find-the-duplicate-number/[Find the Duplicate Number - LeetCode]
+ *
+ * Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: [1,3,4,2,2]
+ * Output: 2
+ * ----
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: [3,1,3,4,2]
+ * Output: 3
+ * ----
+ *
+ * *Note:*
+ *
+ * . You *must not* modify the array (assume the array is read only).
+ * . You must use only constant, O(1) extra space.
+ * . Your runtime complexity should be less than O(n^2^).
+ * . There is only one duplicate number in the array, but it could be repeated more than once.
+ *
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-05 22:52
+ */
+public class _0287_FindTheDuplicateNumber {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Find the Duplicate Number.
+     * Memory Usage: 42.8 MB, less than 5.09% of Java online submissions for Find the Duplicate Number.
+     *
+     * Copy from: https://leetcode.com/problems/find-the-duplicate-number/solution/[Find the Duplicate Number - LeetCode]
+     */
+    public int findDuplicate(int[] nums) {
+        int tortoise = nums[0];
+        int hare = nums[0];
+        do {
+            tortoise = nums[tortoise];
+            hare = nums[nums[hare]];
+        } while (tortoise != hare);
+
+        int pointer1 = nums[0];
+        int pointer2 = hare;
+
+        while (pointer1 != pointer2) {
+            pointer1 = nums[pointer1];
+            pointer2 = nums[pointer2];
+        }
+        return pointer1;
+    }
+
+    /**
+     * Runtime: 95 ms, faster than 5.83% of Java online submissions for Find the Duplicate Number.
+     *
+     * Memory Usage: 37.8 MB, less than 37.29% of Java online submissions for Find the Duplicate Number.
+     */
+    public int findDuplicateBruteForce(int[] nums) {
+        for (int i = 0; i &lt; nums.length - 1; i++) {
+            for (int j = i + 1; j &lt; nums.length; j++) {
+                if (nums[i] == nums[j]) {
+                    return nums[i];
+                }
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        _0287_FindTheDuplicateNumber solution = new _0287_FindTheDuplicateNumber();
+        int[] a1 = {1, 3, 4, 2, 2};
+        int r1 = solution.findDuplicate(a1);
+        System.out.println((r1 == 2) + " : " + r1);
+
+        int[] a2 = {3, 1, 3, 4, 2};
+        int r2 = solution.findDuplicate(a2);
+        System.out.println((r2 == 3) + " : " + r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains('stemblock')) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+</body>
+</html>

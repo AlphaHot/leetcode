@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>119. Pascal&#8217;s Triangle II</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_119_pascals_triangle_ii">119. Pascal&#8217;s Triangle II</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_119_pascals_triangle_ii"><a class="anchor" href="#_119_pascals_triangle_ii"></a>119. Pascal&#8217;s Triangle II</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/pascals-triangle-ii/">LeetCode - Pascal&#8217;s Triangle II</a></p>
+</div>
+<div class="paragraph">
+<p>Given a non-negative index <em>k</em> where <em>k</em> ≤ 33, return the <em>k</em><sup>th</sup> index row of the Pascal&#8217;s triangle.</p>
+</div>
+<div class="paragraph">
+<p>Note that the row index starts from 0.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif" alt="PascalTriangleAnimated2">
+</div>
+</div>
+<div class="paragraph">
+<p><span class="small">In Pascal&#8217;s triangle, each number is the sum of the two numbers directly above it.</span></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 3
+<strong>Output:</strong> [1,3,3,1]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Follow up:</strong></p>
+</div>
+<div class="paragraph">
+<p>Could you optimize your algorithm to use only <em>O</em>(<em>k</em>) extra space?</p>
+</div>
+<div id="src-0119" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * = 119. Pascal's Triangle II
+ *
+ * https://leetcode.com/problems/pascals-triangle-ii/[Pascal's Triangle II - LeetCode]
+ *
+ * Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal's triangle.
+ *
+ * Note that the row index starts from 0.
+ *
+ * In Pascal's triangle, each number is the sum of the two numbers directly above it.
+ *
+ * .Example:
+ * [source]
+ * ----
+ * Input: 3
+ * Output: [1,3,3,1]
+ * ----
+ *
+ * *Follow up:*
+ *
+ * Could you optimize your algorithm to use only O(k) extra space?
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2019-10-26 01:34
+ */
+public class _0119_PascalSTriangleII {
+    /**
+     * Runtime: 1 ms, faster than 89.02% of Java online submissions for Pascal's Triangle II.
+     *
+     * Memory Usage: 33.7 MB, less than 6.17% of Java online submissions for Pascal's Triangle II.
+     */
+    public List&lt;Integer&gt; getRow(int rowIndex) {
+        List&lt;Integer&gt; result = new ArrayList&lt;&gt;(rowIndex * 3 / 2 + 1);
+        result.add(1);
+        for (int i = 1; i &lt;= rowIndex; i++) {
+            int left = 1;
+            for (int j = 1; j &lt; i + 1; j++) {
+                int right = j == result.size() ? 0 : result.get(j);
+                int element = left + right;
+                if (j == result.size()) {
+                    result.add(element);
+                } else {
+                    result.set(j, element);
+                }
+                left = right;
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0119_PascalSTriangleII solution = new _0119_PascalSTriangleII();
+        List&lt;Integer&gt; r1 = solution.getRow(3);
+        System.out.println(Arrays.asList(1, 3, 3, 1).equals(r1) + " : " + Arrays.toString(r1.toArray()));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

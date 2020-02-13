@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>809. Expressive Words</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_809_expressive_words">809. Expressive Words</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_809_expressive_words"><a class="anchor" href="#_809_expressive_words"></a>809. Expressive Words</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/expressive-words/">LeetCode - Expressive Words</a></p>
+</div>
+<div class="paragraph">
+<p>Sometimes people repeat letters to represent extra feeling, such as "hello" &#8594; "heeellooo", "hi" &#8594; "hiiii".  In these strings like "heeellooo", we have <em>groups</em> of adjacent letters that are all the same:  "h", "eee", "ll", "ooo".</p>
+</div>
+<div class="paragraph">
+<p>For some given string <code>S</code>, a query word is <em>stretchy</em> if it can be made to be equal to <code>S</code> by any number of applications of the following <em>extension</em> operation: choose a group consisting of characters <code>c</code>, and add some number of characters <code>c</code> to the group so that the size of the group is 3 or more.</p>
+</div>
+<div class="paragraph">
+<p>For example, starting with "hello", we could do an extension on the group "o" to get "hellooo", but we cannot get "helloo" since the group "oo" has size less than 3.  Also, we could do another extension like "ll" &#8594; "lllll" to get "helllllooo".  If <code>S = "helllllooo"</code>, then the query word "hello" would be stretchy because of these two extension operations: <code>query = "hello" &#8594; "hellooo" &#8594; "helllllooo" = S</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given a list of query words, return the number of words that are stretchy.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Example:</strong>
+<strong>Input:</strong>
+S = "heeellooo"
+words = ["hello", "hi", "helo"]
+<strong>Output:</strong> 1
+<strong>Explanation:</strong>
+We can extend "e" and "o" in the word "hello" to get "heeellooo".
+We can't extend "helo" to get "heeellooo" because the group "ll" is not size 3 or more.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>*Notes: *</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>0 &#8656; len(S) &#8656; 100</code>.</p>
+</li>
+<li>
+<p><code>0 &#8656; len(words) &#8656; 100</code>.</p>
+</li>
+<li>
+<p><code>0 &#8656; len(words[i]) &#8656; 100</code>.</p>
+</li>
+<li>
+<p><code>S</code> and all words in <code>words</code> consist only of lowercase letters</p>
+</li>
+</ul>
+</div>
+<div id="src-0809" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0809-expressive-words.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0809_ExpressiveWords.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

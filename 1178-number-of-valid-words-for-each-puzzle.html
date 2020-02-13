@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1178. Number of Valid Words for Each Puzzle</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1178_number_of_valid_words_for_each_puzzle">1178. Number of Valid Words for Each Puzzle</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1178_number_of_valid_words_for_each_puzzle"><a class="anchor" href="#_1178_number_of_valid_words_for_each_puzzle"></a>1178. Number of Valid Words for Each Puzzle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/">LeetCode - Number of Valid Words for Each Puzzle</a></p>
+</div>
+<div class="paragraph">
+<p>With respect to a given <code>puzzle</code> string, a <code>word</code> is <em>valid</em> if both the following conditions are satisfied:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>word</code> contains the first letter of <code>puzzle</code>.</p>
+</li>
+<li>
+<p>For each letter in <code>word</code>, that letter is in <code>puzzle</code>.</p>
+<div class="literalblock">
+<div class="content">
+<pre>For example, if the puzzle is "abcdefg", then valid words are "faced", "cabbage", and "baggage"; while invalid words are "beefed" (doesn't include "a") and "based" (includes "s" which isn't in the puzzle).</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Return an array <code>answer</code>, where <code>answer[i]</code> is the number of words in the given word list <code>words</code> that are valid with respect to the puzzle <code>puzzles[i]</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example :</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+words = ["aaaa","asas","able","ability","actt","actor","access"],
+puzzles = ["aboveyz","abrodyz","abslute","absoryz","actresz","gaswxyz"]
+<strong>Output:</strong> [1,1,3,2,4,0]
+<strong>Explanation:</strong>
+1 valid word for "aboveyz" : "aaaa"
+1 valid word for "abrodyz" : "aaaa"
+3 valid words for "abslute" : "aaaa", "asas", "able"
+2 valid words for "absoryz" : "aaaa", "asas"
+4 valid words for "actresz" : "aaaa", "asas", "actt", "access"
+There're no valid words for "gaswxyz" cause none of the words in the list contains letter 'g'.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; words.length &#8656; 10^5</code></p>
+</li>
+<li>
+<p><code>4 &#8656; words[i].length &#8656; 50</code></p>
+</li>
+<li>
+<p><code>1 &#8656; puzzles.length &#8656; 10^4</code></p>
+</li>
+<li>
+<p><code>puzzles[i].length == 7</code></p>
+</li>
+<li>
+<p><code>words[i][j]</code>, <code>puzzles[i][j]</code> are English lowercase letters.</p>
+</li>
+<li>
+<p>Each `puzzles[i] `doesn&#8217;t contain repeated characters.</p>
+</li>
+</ul>
+</div>
+<div id="src-1178" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1178-number-of-valid-words-for-each-puzzle.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1178_NumberOfValidWordsForEachPuzzle.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:09 +0800
+</div>
+</div>
+</body>
+</html>

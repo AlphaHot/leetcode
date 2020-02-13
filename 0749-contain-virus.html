@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>749. Contain Virus</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_749_contain_virus">749. Contain Virus</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_749_contain_virus"><a class="anchor" href="#_749_contain_virus"></a>749. Contain Virus</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/contain-virus/">LeetCode - Contain Virus</a></p>
+</div>
+<div class="paragraph">
+<p>A virus is spreading rapidly, and your task is to quarantine the infected area by installing walls.</p>
+</div>
+<div class="paragraph">
+<p>The world is modeled as a 2-D array of cells, where <code>0</code> represents uninfected cells, and <code>1</code> represents cells contaminated with the virus.  A wall (and only one wall) can be installed <strong>between any two 4-directionally adjacent cells</strong>, on the shared boundary.</p>
+</div>
+<div class="paragraph">
+<p>Every night, the virus spreads to all neighboring cells in all four directions unless blocked by a wall.
+Resources are limited. Each day, you can install walls around only one region&#8201;&#8212;&#8201;the affected area (continuous block of infected cells) that threatens the most uninfected cells the following night. There will never be a tie.</p>
+</div>
+<div class="paragraph">
+<p>Can you save the day? If so, what is the number of walls required? If not, and the world becomes fully infected, return the number of walls used.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> grid =
+[[0,1,0,0,0,0,0,1],
+ [0,1,0,0,0,0,0,1],
+ [0,0,0,0,0,0,0,1],
+ [0,0,0,0,0,0,0,0]]
+<strong>Output:</strong> 10
+<strong>Explanation:</strong>
+There are 2 contaminated regions.
+On the first day, add 5 walls to quarantine the viral region on the left. The board after the virus spreads is:
+
+[[0,1,0,0,0,0,1,1],
+ [0,1,0,0,0,0,1,1],
+ [0,0,0,0,0,0,1,1],
+ [0,0,0,0,0,0,0,1]]
+
+On the second day, add 5 walls to quarantine the viral region on the right. The virus is fully contained.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> grid =
+[[1,1,1],
+ [1,0,1],
+ [1,1,1]]
+<strong>Output:</strong> 4
+<strong>Explanation:</strong> Even though there is only one cell saved, there are 4 walls built.
+Notice that walls are only built on the shared boundary of two different cells.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> grid =
+[[1,1,1,0,0,0,0,0,0],
+ [1,0,1,0,1,1,1,1,1],
+ [1,1,1,0,0,0,0,0,0]]
+<strong>Output:</strong> 13
+<strong>Explanation:</strong> The region on the left only builds two new walls.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The number of rows and columns of <code>grid</code> will each be in the range <code>[1, 50]</code>.</p>
+</li>
+<li>
+<p>Each <code>grid[i][j]</code> will be either <code>0</code> or <code>1</code>.</p>
+</li>
+<li>
+<p>Throughout the described process, there is always a contiguous viral region that will infect <strong>strictly more</strong> uncontaminated squares in the next round.</p>
+</li>
+</ol>
+</div>
+<div id="src-0749" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0749-contain-virus.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0749_ContainVirus.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1340. Jump Game V</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1340_jump_game_v">1340. Jump Game V</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1340_jump_game_v"><a class="anchor" href="#_1340_jump_game_v"></a>1340. Jump Game V</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/jump-game-v/">LeetCode - Jump Game V</a></p>
+</div>
+<div class="paragraph">
+<p>Given an array of integers <code>arr</code> and an integer <code>d</code>. In one step you can jump from index <code>i</code> to index:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>i + x</code> where: <code>i + x &lt; arr.length</code> and ` 0 &lt; x &#8656; d`.</p>
+</li>
+<li>
+<p><code>i - x</code> where: <code>i - x &gt;= 0</code> and ` 0 &lt; x &#8656; d`.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition, you can only jump from index <code>i</code> to index <code>j</code> if <code>arr[i] &gt; arr[j]</code> and <code>arr[i] &gt; arr[k]</code> for all indices <code>k</code> between <code>i</code> and <code>j</code> (More formally <code>min(i, j) &lt; k &lt; max(i, j)</code>).</p>
+</div>
+<div class="paragraph">
+<p>You can choose any index of the array and start jumping. Return <em>the maximum number of indices</em> you can visit.</p>
+</div>
+<div class="paragraph">
+<p>Notice that you can not jump outside of the array at any time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2020/01/23/meta-chart.jpeg" alt="meta chart">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> arr = [6,4,14,6,8,13,9,7,10,6,12], d = 2
+<strong>Output:</strong> 4
+<strong>Explanation:</strong> You can start at index 10. You can jump 10 --&gt; 8 --&gt; 6 --&gt; 7 as shown.
+Note that if you start at index 6 you can only jump to index 7. You cannot jump to index 5 because 13 &gt; 9. You cannot jump to index 4 because index 5 is between index 4 and 6 and 13 &gt; 9.
+Similarly You cannot jump from index 3 to index 2 or index 1.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> arr = [3,3,3,3,3], d = 3
+<strong>Output:</strong> 1
+<strong>Explanation:</strong> You can start at any index. You always cannot jump to any index.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> arr = [7,6,5,4,3,2,1], d = 1
+<strong>Output:</strong> 7
+<strong>Explanation:</strong> Start at index 0. You can visit all the indicies.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 4:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> arr = [7,1,7,1,7,1], d = 2
+<strong>Output:</strong> 2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 5:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> arr = [66], d = 1
+<strong>Output:</strong> 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; arr.length &#8656; 1000</code></p>
+</li>
+<li>
+<p><code>1 &#8656; arr[i] &#8656; 10^5</code></p>
+</li>
+<li>
+<p><code>1 &#8656; d &#8656; arr.length</code></p>
+</li>
+</ul>
+</div>
+<div id="src-1340" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1340-jump-game-v.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1340_JumpGameV.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:09 +0800
+</div>
+</div>
+</body>
+</html>

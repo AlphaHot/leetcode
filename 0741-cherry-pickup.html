@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>741. Cherry Pickup</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_741_cherry_pickup">741. Cherry Pickup</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_741_cherry_pickup"><a class="anchor" href="#_741_cherry_pickup"></a>741. Cherry Pickup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/cherry-pickup/">LeetCode - Cherry Pickup</a></p>
+</div>
+<div class="paragraph">
+<p>In a N x N <code>grid</code> representing a field of cherries, each cell is one of three possible integers.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>0 means the cell is empty, so you can pass through;</p>
+</li>
+<li>
+<p>1 means the cell contains a cherry, that you can pick up and pass through;</p>
+</li>
+<li>
+<p>-1 means the cell contains a thorn that blocks your way.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Your task is to collect maximum number of cherries possible by following the rules below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Starting at the position (0, 0) and reaching (N-1, N-1) by moving right or down through valid path cells (cells with value 0 or 1);</p>
+</li>
+<li>
+<p>After reaching (N-1, N-1), returning to (0, 0) by moving left or up through valid path cells;</p>
+</li>
+<li>
+<p>When passing through a path cell containing a cherry, you pick it up and the cell becomes an empty cell (0);</p>
+</li>
+<li>
+<p>If there is no valid path between (0, 0) and (N-1, N-1), then no cherries can be collected.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> grid =
+[[0, 1, -1],
+ [1, 0, -1],
+ [1, 1,  1]]
+<strong>Output:</strong> 5
+<strong>Explanation:</strong>
+The player started at (0, 0) and went down, down, right right to reach (2, 2).
+4 cherries were picked up during this single trip, and the matrix becomes [[0,1,-1],[0,0,-1],[0,0,0]].
+Then, the player went left, up, up, left to return home, picking up one more cherry.
+The total number of cherries picked up is 5, and this is the maximum possible.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>grid</code> is an <code>N</code> by <code>N</code> 2D array, with <code>1 &#8656; N &#8656; 50</code>.</p>
+</li>
+<li>
+<p>Each <code>grid[i][j]</code> is an integer in the set <code>{-1, 0, 1}</code>.</p>
+</li>
+<li>
+<p>It is guaranteed that grid[0][0] and grid[N-1][N-1] are not -1.
+*</p>
+</li>
+</ul>
+</div>
+<div id="src-0741" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0741-cherry-pickup.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0741_CherryPickup.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

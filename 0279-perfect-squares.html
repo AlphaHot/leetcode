@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>279. Perfect Squares</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_279_perfect_squares">279. Perfect Squares</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_279_perfect_squares"><a class="anchor" href="#_279_perfect_squares"></a>279. Perfect Squares</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/perfect-squares/">LeetCode - Perfect Squares</a></p>
+</div>
+<div class="paragraph">
+<p>当前节点最小的值为当前值减去一个平方对应数字的值再加一，再众多选项中的最小值。</p>
+</div>
+<div class="paragraph">
+<p>Given a positive integer <em>n</em>, find the least number of perfect square numbers (for example, <code>1, 4, 9, 16, &#8230;&#8203;</code>) which sum to <em>n</em>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> <em>n</em> = <code>12</code>
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> <code>12 = 4 + 4 + 4.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> <em>n</em> = <code>13</code>
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> <code>13 = 4 + 9.</code></pre>
+</div>
+</div>
+<div id="src-0279" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+/**
+ * = 279. Perfect Squares
+ *
+ * https://leetcode.com/problems/perfect-squares/[Perfect Squares - LeetCode]
+ *
+ * Given a positive integer n, find the least number of perfect square numbers (for example, `1`, `4`, `9`, `16`, `...`) which sum to n.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: n = 12
+ * Output: 3
+ * Explanation: 12 = 4 + 4 + 4.
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: n = 13
+ * Output: 2
+ * Explanation: 13 = 4 + 9.
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-24 11:34
+ */
+public class _0279_PerfectSquares {
+    /**
+     * Runtime: 45 ms, faster than 31.57% of Java online submissions for Perfect Squares.
+     *
+     * Memory Usage: 41.2 MB, less than 13.89% of Java online submissions for Perfect Squares.
+     *
+     * Copy from:
+     */
+    public int numSquares(int n) {
+        if (n &lt;= 0) {
+            return 0;
+        }
+        int[] dp = new int[n + 1];
+        for (int i = 1; i &lt;= n; i++) {
+            dp[i] = i; // 最坏的情况就是每次+1，也就是分解为 i 个 1*1
+            for (int j = 1; i - j * j &gt;= 0; j++) {
+                dp[i] = Math.min(dp[i], dp[i - j * j] + 1);
+            }
+        }
+        return dp[n];
+    }
+
+    public static void main(String[] args) {
+        _0279_PerfectSquares solution = new _0279_PerfectSquares();
+        int r1 = solution.numSquares(12);
+        System.out.println((r1 == 3) + " : " + r1);
+
+        int r2 = solution.numSquares(13);
+        System.out.println((r2 == 2) + " : " + r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

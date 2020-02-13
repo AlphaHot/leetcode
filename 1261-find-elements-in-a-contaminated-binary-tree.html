@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1261. Find Elements in a Contaminated Binary Tree</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1261_find_elements_in_a_contaminated_binary_tree">1261. Find Elements in a Contaminated Binary Tree</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1261_find_elements_in_a_contaminated_binary_tree"><a class="anchor" href="#_1261_find_elements_in_a_contaminated_binary_tree"></a>1261. Find Elements in a Contaminated Binary Tree</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/find-elements-in-a-contaminated-binary-tree/">LeetCode - Find Elements in a Contaminated Binary Tree</a></p>
+</div>
+<div class="paragraph">
+<p>Given a binary tree with the following rules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>root.val == 0</code></p>
+</li>
+<li>
+<p>If <code>treeNode.val == x</code> and <code>treeNode.left != null</code>, then <code>treeNode.left.val == 2 * x + 1</code></p>
+</li>
+<li>
+<p>If <code>treeNode.val == x</code> and <code>treeNode.right != null</code>, then <code>treeNode.right.val == 2 * x + 2</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now the binary tree is contaminated, which means all <code>treeNode.val</code> have been changed to <code>-1</code>.</p>
+</div>
+<div class="paragraph">
+<p>You need to first recover the binary tree and then implement the <code>FindElements</code> class:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>FindElements(TreeNode* root)</code> Initializes the object with a contamined binary tree, you need to recover it first.</p>
+</li>
+<li>
+<p><code>bool find(int target)</code> Return if the <code>target</code> value exists in the recovered binary tree.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2019/11/06/untitled-diagram-4-1.jpg" alt="untitled diagram 4 1">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input</strong>
+["FindElements","find","find"]
+[[[-1,null,-1]],[1],[2]]
+<strong>Output</strong>
+[null,false,true]
+<strong>Explanation</strong>
+FindElements findElements = new FindElements([-1,null,-1]);
+findElements.find(1); // return False
+findElements.find(2); // return True</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2019/11/06/untitled-diagram-4.jpg" alt="untitled diagram 4">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input</strong>
+["FindElements","find","find","find"]
+[[[-1,-1,-1,-1,-1]],[1],[3],[5]]
+<strong>Output</strong>
+[null,true,true,false]
+<strong>Explanation</strong>
+FindElements findElements = new FindElements([-1,-1,-1,-1,-1]);
+findElements.find(1); // return True
+findElements.find(3); // return True
+findElements.find(5); // return False</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2019/11/07/untitled-diagram-4-1-1.jpg" alt="untitled diagram 4 1 1">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input</strong>
+["FindElements","find","find","find","find"]
+[[[-1,null,-1,-1,null,-1]],[2],[3],[4],[5]]
+<strong>Output</strong>
+[null,true,false,false,true]
+<strong>Explanation</strong>
+FindElements findElements = new FindElements([-1,null,-1,-1,null,-1]);
+findElements.find(2); // return True
+findElements.find(3); // return False
+findElements.find(4); // return False
+findElements.find(5); // return True</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TreeNode.val == -1</code></p>
+</li>
+<li>
+<p>The height of the binary tree is less than or equal to <code>20</code></p>
+</li>
+<li>
+<p>The total number of nodes is between <code>[1, 10^4]</code></p>
+</li>
+<li>
+<p>Total calls of <code>find()</code> is between <code>[1, 10^4]</code></p>
+</li>
+<li>
+<p><code>0 &#8656; target &#8656; 10^6</code></p>
+</li>
+</ul>
+</div>
+<div id="src-1261" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1261-find-elements-in-a-contaminated-binary-tree.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1261_FindElementsInAContaminatedBinaryTree.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:09 +0800
+</div>
+</div>
+</body>
+</html>

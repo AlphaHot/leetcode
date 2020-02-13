@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>112. Path Sum</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_112_path_sum">112. Path Sum</a>
+<ul class="sectlevel2">
+<li><a href="#_解题分析">解题分析</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_112_path_sum"><a class="anchor" href="#_112_path_sum"></a>112. Path Sum</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/path-sum/">LeetCode - Path Sum</a></p>
+</div>
+<div class="paragraph">
+<p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> A leaf is a node with no children.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph">
+<p>Given the below binary tree and <code>sum = 22</code>,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>      <strong>5</strong>
+     <strong>/</strong> \
+    <strong>4</strong>   8
+   <strong>/</strong>   / \
+  <strong>11</strong>  13  4
+ /  <strong>\</strong>      \
+7    <strong>2</strong>      1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>return true, as there exist a root-to-leaf path <code>5&#8594;4&#8594;11&#8594;2</code> which sum is 22.</p>
+</div>
+<div class="sect2">
+<h3 id="_解题分析"><a class="anchor" href="#_解题分析"></a>解题分析</h3>
+<div class="paragraph">
+<p>减去当前节点值的只，然后递归调用，到叶子节点和目标值相等即可。</p>
+</div>
+<div class="paragraph">
+<p>注意把代码写简化点！</p>
+</div>
+<div class="paragraph">
+<p>这道题和 <a href="0129-sum-root-to-leaf-numbers.html">129. Sum Root to Leaf Numbers</a> 类似。</p>
+</div>
+<div id="src-0112" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.TreeNode;
+
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.TreeNodeUtils.*;
+import static java.util.Arrays.*;
+
+/**
+ * = 112. Path Sum
+ *
+ * https://leetcode.com/problems/path-sum/[Path Sum - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-02-07 21:53
+ */
+public class _0112_PathSum {
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Path Sum.
+     * Memory Usage: 39.1 MB, less than 5.88% of Java online submissions for Path Sum.
+     */
+    public boolean hasPathSum(TreeNode root, int sum) {
+        if (Objects.isNull(root)) {
+            return false;
+        }
+        sum -= root.val;
+        if (  Objects.isNull(root.left) &amp;&amp; Objects.isNull(root.right)) {
+            return sum == 0;
+        }
+        return hasPathSum(root.left, sum) || hasPathSum(root.right, sum);
+    }
+
+    public static void main(String[] args) {
+        _0112_PathSum solution = new _0112_PathSum();
+        boolean r1 = solution.hasPathSum(buildTree(asList(5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, null, null, 1)), 22);
+        System.out.println(r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

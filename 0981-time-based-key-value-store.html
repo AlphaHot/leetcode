@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>981. Time Based Key-Value Store</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_981_time_based_key_value_store">981. Time Based Key-Value Store</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_981_time_based_key_value_store"><a class="anchor" href="#_981_time_based_key_value_store"></a>981. Time Based Key-Value Store</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/time-based-key-value-store/">LeetCode - Time Based Key-Value Store</a></p>
+</div>
+<div class="paragraph">
+<p>Create a timebased key-value store class <code>TimeMap</code>, that supports two operations.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>set(string key, string value, int timestamp)</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Stores the <code>key</code> and <code>value</code>, along with the given <code>timestamp</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>get(string key, int timestamp)</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Returns a value such that <code>set(key, value, timestamp_prev)</code> was called previously, with <code>timestamp_prev &#8656; timestamp</code>.</p>
+</li>
+<li>
+<p>If there are multiple such values, it returns the one with the largest <code>timestamp_prev</code>.</p>
+</li>
+<li>
+<p>If there are no values, it returns the empty string (<code>""</code>).</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> inputs = ["TimeMap","set","get","get","set","get","get"], inputs = [[],["foo","bar",1],["foo",1],["foo",3],["foo","bar2",4],["foo",4],["foo",5]]
+<strong>Output:</strong> [null,null,"bar","bar",null,"bar2","bar2"]
+<strong>Explanation:</strong>
+TimeMap kv;
+kv.set("foo", "bar", 1); // store the key "foo" and value "bar" along with timestamp = 1
+kv.get("foo", 1);  // output "bar"
+kv.get("foo", 3); // output "bar" since there is no value corresponding to foo at timestamp 3 and timestamp 2, then the only value is at timestamp 1 ie "bar"
+kv.set("foo", "bar2", 4);
+kv.get("foo", 4); // output "bar2"
+kv.get("foo", 5); //output "bar2"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> inputs = ["TimeMap","set","set","get","get","get","get","get"], inputs = [[],["love","high",10],["love","low",20],["love",5],["love",10],["love",15],["love",20],["love",25]]
+<strong>Output:</strong> [null,null,null,"","high","high","low","low"]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All key/value strings are lowercase.</p>
+</li>
+<li>
+<p>All key/value strings have length in the range <code>[1, 100]</code></p>
+</li>
+<li>
+<p>The <code>timestamps</code> for all <code>TimeMap.set</code> operations are strictly increasing.</p>
+</li>
+<li>
+<p><code>1 &#8656; timestamp &#8656; 10^7</code></p>
+</li>
+<li>
+<p><code>TimeMap.set</code> and <code>TimeMap.get</code> functions will be called a total of <code>120000</code> times (combined) per test case.</p>
+</li>
+</ul>
+</div>
+<div id="src-0981" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0981-time-based-key-value-store.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0981_TimeBasedKeyValueStore.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>17. Letter Combinations of a Phone Number</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_17_letter_combinations_of_a_phone_number">17. Letter Combinations of a Phone Number</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_17_letter_combinations_of_a_phone_number"><a class="anchor" href="#_17_letter_combinations_of_a_phone_number"></a>17. Letter Combinations of a Phone Number</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/">LeetCode - Letter Combinations of a Phone Number</a></p>
+</div>
+<div class="paragraph">
+<p>Given a string containing digits from <code>2-9</code> inclusive, return all possible letter combinations that the number could represent.</p>
+</div>
+<div class="paragraph">
+<p>A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Telephone-keypad2.svg/200px-Telephone-keypad2.svg.png" alt="200px Telephone keypad2.svg">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "23"
+<strong>Output:</strong> ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="paragraph">
+<p>Although the above answer is in lexicographical order, your answer could be in any order you want.</p>
+</div>
+<div id="src-0017" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.*;
+
+/**
+ * = 17. Letter Combinations of a Phone Number
+ *
+ * https://leetcode.com/problems/letter-combinations-of-a-phone-number/[Letter Combinations of a Phone Number - LeetCode]
+ *
+ * Given a string containing digits from 2-9 inclusive, return all possible letter
+ * combinations that the number could represent.
+ *
+ * A mapping of digit to letters (just like on the telephone buttons) is given below.
+ * Note that 1 does not map to any letters.
+ *
+ * * 1 - {},
+ * * 2 - {'a','b','c'},
+ * * 3 - {'d','e','f'},
+ * * 4 - {'g','h','i'},
+ * * 5 - {'j','k','l'},
+ * * 6 - {'m','n','o'},
+ * * 7 - {'p','q','r','s'},
+ * * 8 - {'t','u','v'},
+ * * 9 - {'w','x','y','z'},
+ * * 0 - {}
+ *
+ * .Example:
+ * [source]
+ * ----
+ * Input: "23"
+ * Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+ * ----
+ *
+ * *Note:*
+ *
+ * Although the above answer is in lexicographical order, your answer could be in any order you want.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2019-07-19 00:19
+ */
+public class _0017_LetterCombinationsOfAPhoneNumber {
+    /**
+     * Runtime: 32 ms, faster than 6.94% of Java online submissions for Letter Combinations of a Phone Number.
+     *
+     * Memory Usage: 36.2 MB, less than 99.10% of Java online submissions for Letter Combinations of a Phone Number.
+     */
+    public List&lt;String&gt; letterCombinations(String digits) {
+        if (Objects.isNull(digits) || digits.length() == 0) {
+            return Collections.EMPTY_LIST;
+        }
+
+        char[] chars = digits.toCharArray();
+        List&lt;Integer&gt; integers = new ArrayList&lt;&gt;();
+        int length = chars.length;
+        for (int i = 0; i &lt; length; i++) {
+            int num = chars[i] - '0';
+            if (num &gt; 1) {
+                integers.add(num);
+            }
+        }
+        char[][] int2chars = new char[][]{
+                {},
+                {},
+                {'a', 'b', 'c'},
+                {'d', 'e', 'f'},
+                {'g', 'h', 'i'},
+                {'j', 'k', 'l'},
+                {'m', 'n', 'o'},
+                {'p', 'q', 'r', 's'},
+                {'t', 'u', 'v'},
+                {'w', 'x', 'y', 'z'},
+        };
+        int size = integers.size();
+        char[][] selectedChars = new char[size][];
+        for (int i = 0; i &lt; size; i++) {
+            selectedChars[i] = int2chars[integers.get(i)];
+        }
+
+        return combine(selectedChars, 0);
+    }
+
+    public List&lt;String&gt; combine(char[][] chars, int depth) {
+        List&lt;String&gt; result = new ArrayList&lt;&gt;();
+        char[] rowChars = chars[depth];
+        if (depth == chars.length - 1) {
+            for (int i = 0; i &lt; rowChars.length; i++) {
+                result.add(rowChars[i] + "");
+            }
+        } else {
+            List&lt;String&gt; strings = combine(chars, depth + 1);
+            for (int i = 0; i &lt; rowChars.length; i++) {
+                char aChar = rowChars[i];
+                strings.forEach(s -&gt; result.add(aChar + s));
+            }
+        }
+        return result;
+    }
+
+
+    public static void main(String[] args) {
+        _0017_LetterCombinationsOfAPhoneNumber solution = new _0017_LetterCombinationsOfAPhoneNumber();
+        List&lt;String&gt; r1 = solution.letterCombinations("23");
+        Collections.sort(r1);
+        System.out.println(Arrays.toString(r1.toArray(new String[0])));
+        List&lt;String&gt; s1 = Arrays.asList("ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf");
+        Collections.sort(s1);
+        System.out.println(s1.equals(r1) + " : " + Arrays.toString(r1.toArray(new String[0])));
+    }
+
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

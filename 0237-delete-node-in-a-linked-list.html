@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>237. Delete Node in a Linked List</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_237_delete_node_in_a_linked_list">237. Delete Node in a Linked List</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_237_delete_node_in_a_linked_list"><a class="anchor" href="#_237_delete_node_in_a_linked_list"></a>237. Delete Node in a Linked List</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/delete-node-in-a-linked-list/">LeetCode - Delete Node in a Linked List</a></p>
+</div>
+<div class="paragraph">
+<p>这个题其实很简单！把节点的值覆盖当前节点的值即可。</p>
+</div>
+<div class="paragraph">
+<p>没想到打脸如此之快！还有更简单的办法，两行代码搞定：①把下一个节点的值拷贝到当前节点；②把当前节点的下一节点指向下下一个节点即可。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0237-0.png" alt="0237 0">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0237-1.png" alt="0237 1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0237-2.png" alt="0237 2">
+</div>
+</div>
+<div class="paragraph">
+<p>Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.</p>
+</div>
+<div class="paragraph">
+<p>Given linked list&#8201;&#8212;&#8201;head = [4,5,1,9], which looks like following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2018/12/28/237_example.png" alt="237 example">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> head = [4,5,1,9], node = 5
+<strong>Output:</strong> [4,1,9]
+<strong>Explanation:</strong> You are given the second node with value 5, the linked list should become 4 -&gt; 1 -&gt; 9 after calling your function.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> head = [4,5,1,9], node = 1
+<strong>Output:</strong> [4,5,9]
+<strong>Explanation:</strong> You are given the third node with value 1, the linked list should become 4 -&gt; 5 -&gt; 9 after calling your function.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The linked list will have at least two elements.</p>
+</li>
+<li>
+<p>All of the nodes' values will be unique.</p>
+</li>
+<li>
+<p>The given node will not be the tail and it will always be a valid node of the linked list.</p>
+</li>
+<li>
+<p>Do not return anything from your function.</p>
+</li>
+</ul>
+</div>
+<div id="src-0237" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.ListNode;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.ListNodeUtils.build;
+import static com.diguage.algorithm.util.ListNodeUtils.printListNode;
+
+/**
+ * = 237. Delete Node in a Linked List
+ *
+ * Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.
+ *
+ * Given linked list -- head = [4,5,1,9], which looks like following:
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: head = [4,5,1,9], node = 5
+ * Output: [4,1,9]
+ * Explanation: You are given the second node with value 5, the linked list should become 4 -&gt; 1 -&gt; 9 after calling your function.
+ * ----
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: head = [4,5,1,9], node = 1
+ * Output: [4,5,9]
+ * Explanation: You are given the third node with value 1, the linked list should become 4 -&gt; 5 -&gt; 9 after calling your function.
+ * ----
+ *
+ * *Note:*
+ *
+ * * The linked list will have at least two elements.
+ * * All of the nodes' values will be unique.
+ * * The given node will not be the tail and it will always be a valid node of the linked list.
+ * * Do not return anything from your function.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-13 20:28
+ */
+public class _0237_DeleteNodeInALinkedList {
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Delete Node in a Linked List.
+     *
+     * Memory Usage: 36.2 MB, less than 100.00% of Java online submissions for Delete Node in a Linked List.
+     *
+     * Copy from: https://leetcode.com/problems/delete-node-in-a-linked-list/solution/[Delete Node in a Linked List solution - LeetCode]
+     */
+    public void deleteNode(ListNode node) {
+        node.val = node.next.val;
+        node.next = node.next.next;
+    }
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Delete Node in a Linked List.
+     *
+     * Memory Usage: 36.5 MB, less than 100.00% of Java online submissions for Delete Node in a Linked List.
+     */
+    public void deleteNodeCopyList(ListNode node) {
+        ListNode current = node;
+        while (Objects.nonNull(current) &amp;&amp; Objects.nonNull(current.next)) {
+            ListNode next = current.next;
+            current.val = next.val;
+            if (Objects.nonNull(next.next)) {
+                current = next;
+            } else {
+                current.next = null;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        _0237_DeleteNodeInALinkedList solution = new _0237_DeleteNodeInALinkedList();
+        ListNode l1 = build(Arrays.asList(1, 2, 3));
+        solution.deleteNode(l1);
+        printListNode(l1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

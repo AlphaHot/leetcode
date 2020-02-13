@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>591. Tag Validator</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_591_tag_validator">591. Tag Validator</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_591_tag_validator"><a class="anchor" href="#_591_tag_validator"></a>591. Tag Validator</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/tag-validator/">LeetCode - Tag Validator</a></p>
+</div>
+<div class="paragraph">
+<p>Given a string representing a code snippet, you need to implement a tag validator to parse the code and return whether it is valid. A code snippet is valid if all the following rules hold:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The code must be wrapped in a <strong>valid closed tag</strong>. Otherwise, the code is invalid.</p>
+</li>
+<li>
+<p>A <strong>closed tag</strong> (not necessarily valid) has exactly the following format : <code>&lt;TAG_NAME&gt;TAG_CONTENT&lt;/TAG_NAME&gt;</code>. Among them, <code>&lt;TAG_NAME&gt;</code> is the start tag, and <code>&lt;/TAG_NAME&gt;</code> is the end tag. The TAG_NAME in start and end tags should be the same. A closed tag is <strong>valid</strong> if and only if the TAG_NAME and TAG_CONTENT are valid.</p>
+</li>
+<li>
+<p>A <strong>valid</strong> <code>TAG_NAME</code> only contain <strong>upper-case letters</strong>, and has length in range [1,9]. Otherwise, the <code>TAG_NAME</code> is <strong>invalid</strong>.</p>
+</li>
+<li>
+<p>A <strong>valid</strong> <code>TAG_CONTENT</code> may contain other <strong>valid closed tags</strong>, <strong>cdata</strong> and any characters (see note1) <strong>EXCEPT</strong> unmatched <code>&lt;</code>, unmatched start and end tag, and unmatched or closed tags with invalid TAG_NAME. Otherwise, the <code>TAG_CONTENT</code> is <strong>invalid</strong>.</p>
+</li>
+<li>
+<p>A start tag is unmatched if no end tag exists with the same TAG_NAME, and vice versa. However, you also need to consider the issue of unbalanced when tags are nested.</p>
+</li>
+<li>
+<p>A <code>&lt;</code> is unmatched if you cannot find a subsequent <code>&gt;</code>. And when you find a <code>&lt;</code> or <code>&lt;/</code>, all the subsequent characters until the next <code>&gt;</code> should be parsed as TAG_NAME  (not necessarily valid).</p>
+</li>
+<li>
+<p>The cdata has the following format : <code>&lt;![CDATA[CDATA_CONTENT]]&gt;</code>. The range of <code>CDATA_CONTENT</code> is defined as the characters between <code>&lt;![CDATA[</code> and the <strong>first subsequent</strong> <code>]]&gt;</code>.</p>
+</li>
+<li>
+<p><code>CDATA_CONTENT</code> may contain <strong>any characters</strong>. The function of cdata is to forbid the validator to parse <code>CDATA_CONTENT</code>, so even it has some characters that can be parsed as tag (no matter valid or invalid), you should treat it as <strong>regular characters</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Valid Code Examples:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "&lt;DIV&gt;This is the first line &lt;![CDATA[&lt;div&gt;]]&gt;&lt;/DIV&gt;"
+
+
+<strong>Output:</strong> True
+
+
+<strong>Explanation:</strong>
+The code is wrapped in a closed tag : &lt;DIV&gt; and &lt;/DIV&gt;.
+The TAG_NAME is valid, the TAG_CONTENT consists of some characters and cdata.
+Although CDATA_CONTENT has unmatched start tag with invalid TAG_NAME, it should be considered as plain text, not parsed as tag.
+So TAG_CONTENT is valid, and then the code is valid. Thus return true.
+
+
+
+<strong>Input:</strong> "&lt;DIV&gt;&gt;&gt;  ![cdata[]] &lt;![CDATA[&lt;div&gt;]&gt;]]&gt;]]&gt;&gt;]&lt;/DIV&gt;"
+
+
+<strong>Output:</strong> True
+
+
+<strong>Explanation:</strong>
+
+
+We first separate the code into : start_tag|tag_content|end_tag.
+
+
+start_tag -&gt; <strong>"&lt;DIV&gt;"</strong>
+
+
+end_tag -&gt; <strong>"&lt;/DIV&gt;"</strong>
+
+
+tag_content could also be separated into : text1|cdata|text2.
+
+
+text1 -&gt; <strong>"&gt;&gt;  ![cdata[]] "</strong>
+
+
+cdata -&gt; <strong>"&lt;![CDATA[&lt;div&gt;]&gt;]]&gt;"</strong>, where the CDATA_CONTENT is <strong>"&lt;div&gt;]&gt;"</strong>
+
+
+text2 -&gt; <strong>"]]&gt;&gt;]"</strong>
+
+
+
+The reason why start_tag is NOT <strong>"&lt;DIV&gt;&gt;&gt;"</strong> is because of the rule 6.
+The reason why cdata is NOT <strong>"&lt;![CDATA[&lt;div&gt;]&gt;]]&gt;]]&gt;"</strong> is because of the rule 7.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Invalid Code Examples:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "&lt;A&gt;  &lt;B&gt; &lt;/A&gt;   &lt;/B&gt;"
+<strong>Output:</strong> False
+<strong>Explanation:</strong> Unbalanced. If "&lt;A&gt;" is closed, then "&lt;B&gt;" must be unmatched, and vice versa.
+
+<strong>Input:</strong> "&lt;DIV&gt;  div tag is not closed  &lt;DIV&gt;"
+<strong>Output:</strong> False
+
+<strong>Input:</strong> "&lt;DIV&gt;  unmatched &amp;lt  &lt;/DIV&gt;"
+<strong>Output:</strong> False
+
+<strong>Input:</strong> "&lt;DIV&gt; closed tags with invalid tag name  &lt;b&gt;123&lt;/b&gt; &lt;/DIV&gt;"
+<strong>Output:</strong> False
+
+<strong>Input:</strong> "&lt;DIV&gt; unmatched tags with invalid tag name  &lt;/1234567890&gt; and &lt;CDATA[[]]&gt;  &lt;/DIV&gt;"
+<strong>Output:</strong> False
+
+<strong>Input:</strong> "&lt;DIV&gt;  unmatched start tag &lt;B&gt;  and unmatched end tag &lt;/C&gt;  &lt;/DIV&gt;"
+<strong>Output:</strong> False</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>For simplicity, you could assume the input code (including the <strong>any characters</strong> mentioned above) only contain <code>letters</code>, <code>digits</code>, <code>'&lt;'</code>,<code>'&gt;'</code>,<code>'/&#8216;,&#8217;!&#8216;,&#8217;[&#8216;,&#8217;]'</code> and <code>' '</code>.</p>
+</li>
+</ol>
+</div>
+<div id="src-0591" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0591-tag-validator.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0591_TagValidator.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

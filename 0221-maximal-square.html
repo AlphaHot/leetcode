@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>221. Maximal Square</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_221_maximal_square">221. Maximal Square</a>
+<ul class="sectlevel2">
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_221_maximal_square"><a class="anchor" href="#_221_maximal_square"></a>221. Maximal Square</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/maximal-square/">LeetCode - Maximal Square</a></p>
+</div>
+<div class="paragraph">
+<p>Given a 2D binary matrix filled with 0&#8217;s and 1&#8217;s, find the largest square containing only 1&#8217;s and return its area.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>Input:
+
+1 0 1 0 0
+1 0 1 1 1
+1 1 1 1 1
+1 0 0 1 0
+
+Output: 4</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>根据左上、左边、上边加自身，确定一个最小正方形；然后再进一步，在小正方形基础上，从四周选择已有正方形中最小，然后扩大，再这个过程中记录下最大的正方形边长，即可得到结果。思路如下图：</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0221-1.png" alt="0221 1">
+</div>
+</div>
+<div class="paragraph">
+<p>简化一下，不需要矩阵来存储所有正方形的计算结果，只需要一行来记录上一行计算结果和当前行计算结果即可。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0221-2.png" alt="0221 2">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode.com/problems/maximal-square/solution/">Maximal Square solution - LeetCode</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given a 2D binary matrix filled with 0&#8217;s and 1&#8217;s, find the largest square containing only 1&#8217;s and return its area.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:
+*
+1 0 1 0 0
+1 0 &lt;font color="red"&gt;1 &lt;font color="red"&gt;1 1
+1 1 &lt;font color="red"&gt;1 &lt;font color="red"&gt;1 1
+1 0 0 1 0
+
+*Output:</strong> 4</pre>
+</div>
+</div>
+<div id="src-0221" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+/**
+ * = 221. Maximal Square
+ *
+ * https://leetcode.com/problems/maximal-square/[Maximal Square - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-28 12:21
+ */
+public class _0221_MaximalSquare {
+
+    /**
+     * Runtime: 4 ms, faster than 95.17% of Java online submissions for Maximal Square.
+     * Memory Usage: 43.3 MB, less than 91.18% of Java online submissions for Maximal Square.
+     *
+     * Copy from: https://leetcode.com/problems/maximal-square/solution/[Maximal Square solution - LeetCode]
+     */
+    public int maximalSquare(char[][] matrix) {
+        if (Objects.isNull(matrix) || matrix.length == 0) {
+            return 0;
+        }
+        int yLength = matrix.length;
+        int xLength = matrix[0].length;
+        int[] dp = new int[xLength + 1];
+        int maxSideLength = 0;
+        int previous = 0;
+        for (int y = 1; y &lt;= yLength; y++) {
+            for (int x = 1; x &lt;= xLength; x++) {
+                int temp = dp[x];
+                if (matrix[y - 1][x - 1] == '1') {
+                    dp[x] = Math.min(Math.min(previous, dp[x]), dp[x - 1]) + 1;
+                    maxSideLength = Math.max(maxSideLength, dp[x]);
+                } else {
+                    dp[x] = 0;
+                }
+                previous = temp;
+            }
+        }
+
+        return maxSideLength * maxSideLength;
+    }
+
+    /**
+     * Runtime: 13 ms, faster than 8.65% of Java online submissions for Maximal Square.
+     * Memory Usage: 43.9 MB, less than 64.71% of Java online submissions for Maximal Square.
+     *
+     * Copy from: https://leetcode.com/problems/maximal-square/solution/[Maximal Square solution - LeetCode]
+     */
+    public int maximalSquareMatrix(char[][] matrix) {
+        if (Objects.isNull(matrix) || matrix.length == 0) {
+            return 0;
+        }
+        int yLength = matrix.length;
+        int xLength = matrix[0].length;
+        int[][] dp = new int[yLength + 1][xLength + 1];
+        int maxSideLength = 0;
+        for (int y = 1; y &lt;= yLength; y++) {
+            for (int x = 1; x &lt;= xLength; x++) {
+                if (matrix[y - 1][x - 1] == '1') {
+                    dp[y][x] = Math.min(Math.min(dp[y - 1][x - 1], dp[y - 1][x]), dp[y][x - 1]) + 1;
+                    maxSideLength = Math.max(maxSideLength, dp[y][x]);
+                }
+            }
+        }
+
+        return maxSideLength * maxSideLength;
+    }
+
+    public static void main(String[] args) {
+        _0221_MaximalSquare solution = new _0221_MaximalSquare();
+        char[][] m1 = {
+                {'1', '0', '1', '0', '0'},
+                {'1', '0', '1', '1', '1'},
+                {'1', '1', '1', '1', '1'},
+                {'1', '0', '0', '1', '0'}
+        };
+        int r1 = solution.maximalSquare(m1);
+        System.out.println((r1 == 4) + " : " + r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>497. Random Point in Non-overlapping Rectangles</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_497_random_point_in_non_overlapping_rectangles">497. Random Point in Non-overlapping Rectangles</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_497_random_point_in_non_overlapping_rectangles"><a class="anchor" href="#_497_random_point_in_non_overlapping_rectangles"></a>497. Random Point in Non-overlapping Rectangles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/random-point-in-non-overlapping-rectangles/">LeetCode - Random Point in Non-overlapping Rectangles</a></p>
+</div>
+<div class="paragraph">
+<p>Given a list of <strong>non-overlapping</strong> axis-aligned rectangles <code>rects</code>, write a function <code>pick</code> which randomly and uniformily picks an <strong>integer point</strong> in the space covered by the rectangles.</p>
+</div>
+<div class="paragraph">
+<p>Note:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>An <strong>integer point</strong> is a point that has integer coordinates.</p>
+</li>
+<li>
+<p>A point on the perimeter of a rectangle is <strong>included</strong> in the space covered by the rectangles.</p>
+</li>
+<li>
+<p><code>i`th rectangle = `rects[i]</code> = <code>[x1,y1,x2,y2]</code>, where <code>[x1, y1]</code> are the integer coordinates of the bottom-left corner, and <code>[x2, y2]</code> are the integer coordinates of the top-right corner.</p>
+</li>
+<li>
+<p>length and width of each rectangle does not exceed <code>2000</code>.</p>
+</li>
+<li>
+<p><code>1 &#8656; rects.length &#8656; 100</code></p>
+</li>
+<li>
+<p><code>pick</code> return a point as an array of integer coordinates <code>[p_x, p_y]</code></p>
+</li>
+<li>
+<p><code>pick</code> is called at most <code>10000</code> times.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+ ["Solution","pick","pick","pick"]
+ [[[[1,1,5,5]]],[],[],[]]
+<strong>Output:</strong> [null,[4,1],[4,1],[3,3]]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+ ["Solution","pick","pick","pick","pick","pick"]
+ [[[[-2,-2,-1,-1],[1,0,3,0]]],[],[],[],[],[]]
+<strong>Output:</strong>
+ [null,[-1,-2],[2,0],[-2,-1],[3,0],[-2,-2]]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Explanation of Input Syntax:</strong></p>
+</div>
+<div class="paragraph">
+<p>The input is two lists: the subroutines called and their arguments. <code>Solution&#8217;s constructor has one argument, the array of rectangles `rects</code>. <code>pick</code> has no arguments. Arguments are always wrapped with a list, even if there aren&#8217;t any.</p>
+</div>
+<div id="src-0497" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0497-random-point-in-non-overlapping-rectangles.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0497_RandomPointInNonOverlappingRectangles.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>412. Fizz Buzz</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_412_fizz_buzz">412. Fizz Buzz</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_412_fizz_buzz"><a class="anchor" href="#_412_fizz_buzz"></a>412. Fizz Buzz</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/fizz-buzz/">LeetCode - Fizz Buzz</a></p>
+</div>
+<div class="paragraph">
+<p>Write a program that outputs the string representation of numbers from 1 to <em>n</em>.</p>
+</div>
+<div class="paragraph">
+<p>But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>n = 15,
+
+Return:
+[
+    "1",
+    "2",
+    "Fizz",
+    "4",
+    "Buzz",
+    "Fizz",
+    "7",
+    "8",
+    "Fizz",
+    "Buzz",
+    "11",
+    "Fizz",
+    "13",
+    "14",
+    "FizzBuzz"
+]</pre>
+</div>
+</div>
+<div id="src-0412" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * = 412. Fizz Buzz
+ *
+ * https://leetcode.com/problems/fizz-buzz/[Fizz Buzz - LeetCode]
+ *
+ * Write a program that outputs the string representation of numbers from 1 to n.
+ *
+ * But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.
+ *
+ * .Examples:
+ * [source]
+ * ----
+ * n = 15,
+ *
+ * Return:
+ * [
+ *     "1",
+ *     "2",
+ *     "Fizz",
+ *     "4",
+ *     "Buzz",
+ *     "Fizz",
+ *     "7",
+ *     "8",
+ *     "Fizz",
+ *     "Buzz",
+ *     "11",
+ *     "Fizz",
+ *     "13",
+ *     "14",
+ *     "FizzBuzz"
+ * ]
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-26 23:17
+ */
+public class _0412_FizzBuzz {
+
+    /**
+     * Runtime: 2 ms, faster than 29.17% of Java online submissions for Fizz Buzz.
+     *
+     * Memory Usage: 45.5 MB, less than 5.40% of Java online submissions for Fizz Buzz.
+     */
+    public List&lt;String&gt; fizzBuzz(int n) {
+        List&lt;String&gt; result = new ArrayList&lt;&gt;(n);
+        for (int i = 1; i &lt;= n; i++) {
+            if (i % 15 == 0) {
+                result.add("FizzBuzz");
+            } else if (i % 5 == 0) {
+                result.add("Buzz");
+            } else if (i % 3 == 0) {
+                result.add("Fizz");
+            } else {
+                result.add(String.valueOf(i));
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0412_FizzBuzz solution = new _0412_FizzBuzz();
+        System.out.println(solution.fizzBuzz(15));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

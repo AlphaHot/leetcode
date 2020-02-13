@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1311. Get Watched Videos by Your Friends</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1311_get_watched_videos_by_your_friends">1311. Get Watched Videos by Your Friends</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1311_get_watched_videos_by_your_friends"><a class="anchor" href="#_1311_get_watched_videos_by_your_friends"></a>1311. Get Watched Videos by Your Friends</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/get-watched-videos-by-your-friends/">LeetCode - Get Watched Videos by Your Friends</a></p>
+</div>
+<div class="paragraph">
+<p>There are <code>n</code> people, each person has a unique <em>id</em> between <code>0</code> and <code>n-1</code>. Given the arrays <code>watchedVideos</code> and <code>friends</code>, where <code>watchedVideos[i]</code> and <code>friends[i]</code> contain the list of watched videos and the list of friends respectively for the person with <code>id = i</code>.</p>
+</div>
+<div class="paragraph">
+<p>Level <strong>1</strong> of videos are all watched videos by your friends, level <strong>2</strong> of videos are all watched videos by the friends of your friends and so on. In general, the level <code>k</code> of videos are all watched videos by people with the shortest path <strong>exactly</strong> equal to <code>k</code> with you. Given your <code>id</code> and the <code>level</code> of videos, return the list of videos ordered by their frequencies (increasing). For videos with the same frequency order them alphabetically from least to greatest.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2020/01/02/leetcode_friends_1.png" alt="leetcode friends 1">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> watchedVideos = [["A","B"],["C"],["B","C"],["D"]], friends = [[1,2],[0,3],[0,3],[1,2]], id = 0, level = 1
+<strong>Output:</strong> ["B","C"]
+<strong>Explanation:</strong>
+You have id = 0 (green color in the figure) and your friends are (yellow color in the figure):
+Person with id = 1 -&gt; watchedVideos = ["C"]
+Person with id = 2 -&gt; watchedVideos = ["B","C"]
+The frequencies of watchedVideos by your friends are:
+B -&gt; 1
+C -&gt; 2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2020/01/02/leetcode_friends_2.png" alt="leetcode friends 2">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> watchedVideos = [["A","B"],["C"],["B","C"],["D"]], friends = [[1,2],[0,3],[0,3],[1,2]], id = 0, level = 2
+<strong>Output:</strong> ["D"]
+<strong>Explanation:</strong>
+You have id = 0 (green color in the figure) and the only friend of your friends is the person with id = 3 (yellow color in the figure).</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>n == watchedVideos.length == friends.length</code></p>
+</li>
+<li>
+<p><code>2 &#8656; n &#8656; 100</code></p>
+</li>
+<li>
+<p><code>1 &#8656; watchedVideos[i].length &#8656; 100</code></p>
+</li>
+<li>
+<p><code>1 &#8656; watchedVideos[i][j].length &#8656; 8</code></p>
+</li>
+<li>
+<p><code>0 &#8656; friends[i].length &lt; n</code></p>
+</li>
+<li>
+<p><code>0 &#8656; friends[i][j] &lt; n</code></p>
+</li>
+<li>
+<p><code>0 &#8656; id &lt; n</code></p>
+</li>
+<li>
+<p><code>1 &#8656; level &lt; n</code></p>
+</li>
+<li>
+<p>if <code>friends[i]</code> contains <code>j</code>, then <code>friends[j]</code> contains <code>i</code></p>
+</li>
+</ul>
+</div>
+<div id="src-1311" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1311-get-watched-videos-by-your-friends.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1311_GetWatchedVideosByYourFriends.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:09 +0800
+</div>
+</div>
+</body>
+</html>

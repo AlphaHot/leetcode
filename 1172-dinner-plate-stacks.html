@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1172. Dinner Plate Stacks</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1172_dinner_plate_stacks">1172. Dinner Plate Stacks</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1172_dinner_plate_stacks"><a class="anchor" href="#_1172_dinner_plate_stacks"></a>1172. Dinner Plate Stacks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/dinner-plate-stacks/">LeetCode - Dinner Plate Stacks</a></p>
+</div>
+<div class="paragraph">
+<p>You have an infinite number of stacks arranged in a row and numbered (left to right) from 0, each of the stacks has the same maximum <code>capacity</code>.</p>
+</div>
+<div class="paragraph">
+<p>Implement the <code>DinnerPlates</code> class:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DinnerPlates(int capacity)</code> Initializes the object with the maximum <code>capacity</code> of the stacks.</p>
+</li>
+<li>
+<p><code>void push(int val)</code> pushes the given positive integer <code>val</code> into the leftmost stack with size less than <code>capacity</code>.</p>
+</li>
+<li>
+<p><code>int pop()</code> returns the value at the top of the rightmost non-empty stack and removes it from that stack, and returns <code>-1</code> if all stacks are empty.</p>
+</li>
+<li>
+<p><code>int popAtStack(int index)</code> returns the value at the top of the stack with the given <code>index</code> and removes it from that stack, and returns -1 if the stack with that given <code>index</code> is empty.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+["DinnerPlates","push","push","push","push","push","popAtStack","push","push","popAtStack","popAtStack","pop","pop","pop","pop","pop"]
+[[2],[1],[2],[3],[4],[5],[0],[20],[21],[0],[2],[],[],[],[],[]]
+<strong>Output:</strong>
+[null,null,null,null,null,null,2,null,null,20,21,5,4,3,1,-1]
+
+<strong>Explanation:</strong>
+DinnerPlates D = DinnerPlates(2);  // Initialize with capacity = 2
+D.push(1);
+D.push(2);
+D.push(3);
+D.push(4);
+D.push(5);         // The stacks are now:  2  4
+                                           1  3  5
+                                           ﹈ ﹈ ﹈
+D.popAtStack(0);   // Returns 2.  The stacks are now:     4
+                                                       1  3  5
+                                                       ﹈ ﹈ ﹈
+D.push(20);        // The stacks are now: 20  4
+                                           1  3  5
+                                           ﹈ ﹈ ﹈
+D.push(21);        // The stacks are now: 20  4 21
+                                           1  3  5
+                                           ﹈ ﹈ ﹈
+D.popAtStack(0);   // Returns 20.  The stacks are now:     4 21
+                                                        1  3  5
+                                                        ﹈ ﹈ ﹈
+D.popAtStack(2);   // Returns 21.  The stacks are now:     4
+                                                        1  3  5
+                                                        ﹈ ﹈ ﹈
+D.pop()            // Returns 5.  The stacks are now:      4
+                                                        1  3
+                                                        ﹈ ﹈
+D.pop()            // Returns 4.  The stacks are now:   1  3
+                                                        ﹈ ﹈
+D.pop()            // Returns 3.  The stacks are now:   1
+                                                        ﹈
+D.pop()            // Returns 1.  There are no stacks.
+D.pop()            // Returns -1.  There are still no stacks.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; capacity &#8656; 20000</code></p>
+</li>
+<li>
+<p><code>1 &#8656; val &#8656; 20000</code></p>
+</li>
+<li>
+<p><code>0 &#8656; index &#8656; 100000</code></p>
+</li>
+<li>
+<p>At most <code>200000</code> calls will be made to <code>push</code>, <code>pop</code>, and <code>popAtStack</code>.</p>
+</li>
+</ul>
+</div>
+<div id="src-1172" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1172-dinner-plate-stacks.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1172_DinnerPlateStacks.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:09 +0800
+</div>
+</div>
+</body>
+</html>

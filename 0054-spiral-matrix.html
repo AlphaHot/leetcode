@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>54. Spiral Matrix</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_54_spiral_matrix">54. Spiral Matrix</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_54_spiral_matrix"><a class="anchor" href="#_54_spiral_matrix"></a>54. Spiral Matrix</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/spiral-matrix/">LeetCode - Spiral Matrix</a></p>
+</div>
+<div class="paragraph">
+<p>Given a matrix of <em>m</em> x <em>n</em> elements (<em>m</em> rows, <em>n</em> columns), return all elements of the matrix in spiral order.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+[
+ [ 1, 2, 3 ],
+ [ 4, 5, 6 ],
+ [ 7, 8, 9 ]
+]
+<strong>Output:</strong> [1,2,3,6,9,8,7,4,5]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+[
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9,10,11,12]
+]
+<strong>Output:</strong> [1,2,3,4,8,12,11,10,9,5,6,7]</pre>
+</div>
+</div>
+<div id="src-0054" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.*;
+
+/**
+ * = 54. Spiral Matrix
+ *
+ * https://leetcode.com/problems/spiral-matrix/[Spiral Matrix - LeetCode]
+ *
+ * Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input:
+ * [
+ *   [ 1, 2, 3 ],
+ *   [ 4, 5, 6 ],
+ *   [ 7, 8, 9 ]
+ * ]
+ * Output: [1,2,3,6,9,8,7,4,5]
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input:
+ * [
+ *   [1, 2, 3, 4],
+ *   [5, 6, 7, 8],
+ *   [9,10,11,12]
+ * ]
+ * Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2019-10-26 00:51:20
+ */
+public class _0054_SpiralMatrix {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Spiral Matrix.
+     *
+     * Memory Usage: 34.4 MB, less than 100.00% of Java online submissions for Spiral Matrix.
+     */
+    public List&lt;Integer&gt; spiralOrder(int[][] matrix) {
+        if (Objects.isNull(matrix) || matrix.length == 0) {
+            return Collections.emptyList();
+        }
+        int xLength = matrix.length;
+        int yLength = matrix[0].length;
+        List&lt;Integer&gt; result = new ArrayList&lt;&gt;(xLength * yLength);
+        int r1 = 0, r2 = matrix.length - 1;
+        int c1 = 0, c2 = matrix[0].length - 1;
+        while (r1 &lt;= r2 &amp;&amp; c1 &lt;= c2) {
+            for (int c = c1; c &lt;= c2; c++) {
+                result.add(matrix[r1][c]);
+            }
+            for (int r = r1 + 1; r &lt;= r2; r++) {
+                result.add(matrix[r][c2]);
+            }
+            if (r1 &lt; r2 &amp;&amp; c1 &lt; c2) {
+                for (int c = c2 - 1; c &gt; c1; c--) {
+                    result.add(matrix[r2][c]);
+                }
+                for (int r = r2; r &gt; r1; r--) {
+                    result.add(matrix[r][c1]);
+                }
+            }
+            r1++;
+            r2--;
+            c1++;
+            c2--;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0054_SpiralMatrix solution = new _0054_SpiralMatrix();
+
+        int[][] array1 = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        List&lt;Integer&gt; r1 = solution.spiralOrder(array1);
+        System.out.println(Arrays.asList(1, 2, 3, 6, 9, 8, 7, 4, 5).equals(r1)
+                + " : " + Arrays.toString(r1.toArray()));
+
+        int[][] array2 = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
+        List&lt;Integer&gt; r2 = solution.spiralOrder(array2);
+        System.out.println(Arrays.asList(1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7).equals(r2)
+                + " : " + Arrays.toString(r2.toArray()));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>217. Contains Duplicate</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_217_contains_duplicate">217. Contains Duplicate</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_217_contains_duplicate"><a class="anchor" href="#_217_contains_duplicate"></a>217. Contains Duplicate</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/contains-duplicate/">LeetCode - Contains Duplicate</a></p>
+</div>
+<div class="paragraph">
+<p>Given an array of integers, find if the array contains any duplicates.</p>
+</div>
+<div class="paragraph">
+<p>Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [1,2,3,1]
+<strong>Output:</strong> true</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [1,2,3,4]
+<strong>Output:</strong> false</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [1,1,1,3,3,4,3,2,4,2]
+<strong>Output:</strong> true</pre>
+</div>
+</div>
+<div id="src-0217" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+/**
+ * = 217. Contains Duplicate
+ *
+ * https://leetcode.com/problems/contains-duplicate/[Contains Duplicate - LeetCode]
+ *
+ * Given an array of integers, find if the array contains any duplicates.
+ *
+ * Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: [1,2,3,1]
+ * Output: true
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: [1,2,3,4]
+ * Output: false
+ * ----
+ *
+ * .Example 3:
+ * [source]
+ * ----
+ * Input: [1,1,1,3,3,4,3,2,4,2]
+ * Output: true
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-05 20:01
+ */
+public class _0217_ContainsDuplicate {
+    /**
+     * Runtime: 9 ms, faster than 58.06% of Java online submissions for Contains Duplicate.
+     *
+     * Memory Usage: 44.4 MB, less than 57.76% of Java online submissions for Contains Duplicate.
+     */
+    public boolean containsDuplicate(int[] nums) {
+        if (Objects.isNull(nums) || nums.length &lt; 2) {
+            return false;
+        }
+        Set&lt;Integer&gt; numSet = new HashSet&lt;&gt;();
+        for (int num : nums) {
+            if (numSet.contains(num)) {
+                return true;
+            } else {
+                numSet.add(num);
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Runtime: 5 ms, faster than 96.50% of Java online submissions for Contains Duplicate.
+     *
+     * Memory Usage: 42.1 MB, less than 98.28% of Java online submissions for Contains Duplicate.
+     */
+    public boolean containsDuplicateSort(int[] nums) {
+        if (Objects.isNull(nums) || nums.length &lt; 2) {
+            return false;
+        }
+        Arrays.sort(nums);
+        for (int i = 0; i &lt; nums.length - 1; i++) {
+            if (nums[i] == nums[i + 1]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        _0217_ContainsDuplicate solution = new _0217_ContainsDuplicate();
+        int[] n1 = {1, 2, 3, 1};
+        boolean r1 = solution.containsDuplicate(n1);
+        System.out.println(r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>142. Linked List Cycle II</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_142_linked_list_cycle_ii">142. Linked List Cycle II</a>
+<ul class="sectlevel2">
+<li><a href="#_解题思路分析">解题思路分析</a></li>
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_142_linked_list_cycle_ii"><a class="anchor" href="#_142_linked_list_cycle_ii"></a>142. Linked List Cycle II</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/linked-list-cycle-ii/">LeetCode - Linked List Cycle II</a></p>
+</div>
+<div class="paragraph">
+<p>Given a linked list, return the node where the cycle begins. If there is no cycle, return <code>null</code>.</p>
+</div>
+<div class="paragraph">
+<p>To represent a cycle in the given linked list, we use an integer <code>pos</code> which represents the position (0-indexed) in the linked list where tail connects to. If <code>pos</code> is <code>-1</code>, then there is no cycle in the linked list.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> Do not modify the linked list.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre class="highlight"><code>Input: head = [3,2,0,-4], pos = 1
+Output: tail connects to node index 1
+Explanation: There is a cycle in the linked list, where tail connects to the second node.</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0142-1.png" alt="0142 1">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 2:</div>
+<div class="content">
+<pre class="highlight"><code>Input: head = [1,2], pos = 0
+Output: tail connects to node index 0
+Explanation: There is a cycle in the linked list, where tail connects to the first node.</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0142-2.png" alt="0142 2">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 3:</div>
+<div class="content">
+<pre class="highlight"><code>Input: head = [1], pos = -1
+Output: no cycle
+Explanation: There is no cycle in the linked list.</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0142-3.png" alt="0142 3">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Follow-up:</strong></p>
+</div>
+<div class="paragraph">
+<p>Can you solve it without using extra space?</p>
+</div>
+<div class="sect2">
+<h3 id="_解题思路分析"><a class="anchor" href="#_解题思路分析"></a>解题思路分析</h3>
+<div class="paragraph">
+<p>这是 Floyd&#8217;s Tortoise and Hare (Cycle Detection) 算法。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0142-4.png" alt="0142 4">
+</div>
+</div>
+<div class="paragraph">
+<p>
+\begin{aligned}
+2 \cdot \text { distance }(\text { tortoise }) &amp;=\text { distance }(\text {hare}) \\
+2(F+a) &amp;=F+a+b+a \\
+2 F+2 a &amp;=F+2 a+b \\
+F &amp;=b
+\end{aligned}
+</p>
+</div>
+<div class="paragraph">
+<p>这里解释一下：兔子跑的快，相遇时，兔子跑过的距离是乌龟跑过的距离的两倍。兔子沿着环，跑了一圈多，有多跑了 `
+` 才相遇，所以距离是： \(F+a+b+a\)。</p>
+</div>
+<div class="paragraph">
+<p>这个思路还可以用于解决 <a href="0287-find-the-duplicate-number.html">287. Find the Duplicate Number</a>。</p>
+</div>
+<div class="paragraph">
+<p>没想到有这么多环形探测算法！</p>
+</div>
+<div class="paragraph">
+<p>附加题：尝试其他探测环形算法。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Cycle_detection">Cycle detection - Wikipedia</a></p>
+</li>
+<li>
+<p><a href="https://leetcode-cn.com/problems/linked-list-cycle-ii/solution/huan-xing-lian-biao-ii-by-leetcode/">环形链表 II - 环形链表 II - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given a linked list, return the node where the cycle begins. If there is no cycle, return <code>null</code>.</p>
+</div>
+<div class="paragraph">
+<p>To represent a cycle in the given linked list, we use an integer <code>pos</code> which represents the position (0-indexed) in the linked list where tail connects to. If <code>pos</code> is <code>-1</code>, then there is no cycle in the linked list.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> Do not modify the linked list.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> head = [3,2,0,-4], pos = 1
+<strong>Output:</strong> tail connects to node index 1
+<strong>Explanation:</strong> There is a cycle in the linked list, where tail connects to the second node.</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist.png" alt="circularlinkedlist">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> head = [1,2], pos = 0
+<strong>Output:</strong> tail connects to node index 0
+<strong>Explanation:</strong> There is a cycle in the linked list, where tail connects to the first node.</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test2.png" alt="circularlinkedlist test2">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> head = [1], pos = -1
+<strong>Output:</strong> no cycle
+<strong>Explanation:</strong> There is no cycle in the linked list.</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test3.png" alt="circularlinkedlist test3">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Follow-up</strong>:</p>
+</div>
+<div class="paragraph">
+<p>Can you solve it without using extra space?</p>
+</div>
+<div id="src-0142" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.JsonUtils;
+import com.diguage.algorithm.util.ListNode;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.ListNodeUtils.build;
+
+/**
+ * = 142. Linked List Cycle II
+ *
+ * https://leetcode.com/problems/linked-list-cycle-ii/[Linked List Cycle II - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-28 08:52
+ */
+public class _0142_LinkedListCycleII {
+
+    /**
+     * Runtime: 1 ms, faster than 32.38% of Java online submissions for Linked List Cycle II.
+     * Memory Usage: 41.2 MB, less than 6.32% of Java online submissions for Linked List Cycle II.
+     */
+    public ListNode detectCycle(ListNode head) {
+        if (Objects.isNull(head)) {
+            return null;
+        }
+        ListNode intersect = getIntersect(head);
+        if (Objects.isNull(intersect)) {
+            return null;
+        }
+        ListNode pointer1 = head;
+        ListNode pointer2 = intersect;
+        while (pointer1 != pointer2) {
+            pointer1 = pointer1.next;
+            pointer2 = pointer2.next;
+        }
+        return pointer1;
+    }
+
+    private ListNode getIntersect(ListNode head) {
+        if (Objects.isNull(head)) {
+            return null;
+        }
+        ListNode tortoise = head;
+        ListNode hare = head;
+        while (Objects.nonNull(hare) &amp;&amp; Objects.nonNull(hare.next)) {
+            tortoise = tortoise.next;
+            hare = hare.next.next;
+            if (Objects.equals(tortoise, hare)) {
+                return tortoise;
+            }
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        _0142_LinkedListCycleII solution = new _0142_LinkedListCycleII();
+        ListNode l1 = build(Arrays.asList(3, 2, 0, -4));
+        l1.next.next.next.next = l1.next;
+        ListNode listNode = solution.detectCycle(l1);
+        System.out.println(JsonUtils.toJson(listNode));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains('stemblock')) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+</body>
+</html>

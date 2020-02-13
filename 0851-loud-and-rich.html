@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>851. Loud and Rich</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_851_loud_and_rich">851. Loud and Rich</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_851_loud_and_rich"><a class="anchor" href="#_851_loud_and_rich"></a>851. Loud and Rich</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/loud-and-rich/">LeetCode - Loud and Rich</a></p>
+</div>
+<div class="paragraph">
+<p>In a group of N people (labelled <code>0, 1, 2, &#8230;&#8203;, N-1</code>), each person has different amounts of money, and different levels of quietness.</p>
+</div>
+<div class="paragraph">
+<p>For convenience, we&#8217;ll call the person with label <code>x</code>, simply "person `x`".</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll say that <code>richer[i] = [x, y]</code> if person <code>x</code> definitely has more money than person <code>y</code>.  Note that <code>richer</code> may only be a subset of valid observations.</p>
+</div>
+<div class="paragraph">
+<p>Also, we&#8217;ll say <code>quiet[x] = q</code> if person &lt;font face="monospace"&gt;x has quietness <code>q</code>.</p>
+</div>
+<div class="paragraph">
+<p>Now, return <code>answer</code>, where <code>answer[x] = y</code> if <code>y</code> is the least quiet person (that is, the person <code>y</code> with the smallest value of <code>quiet[y]</code>), among all people who definitely have equal to or more money than person <code>x</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> richer = [[1,0],[2,1],[3,1],[3,7],[4,3],[5,3],[6,3]], quiet = [3,2,5,4,6,1,7,0]
+<strong>Output:</strong> [5,5,2,5,4,5,6,7]
+<strong>Explanation:</strong>
+answer[0] = 5.
+Person 5 has more money than 3, which has more money than 1, which has more money than 0.
+The only person who is quieter (has lower quiet[x]) is person 7, but
+it isn't clear if they have more money than person 0.
+
+answer[7] = 7.
+Among all people that definitely have equal to or more money than person 7
+(which could be persons 3, 4, 5, 6, or 7), the person who is the quietest (has lower quiet[x])
+is person 7.
+
+The other answers can be filled out with similar reasoning.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>1 &#8656; quiet.length = N &#8656; 500</code></p>
+</li>
+<li>
+<p><code>0 &#8656; quiet[i] &lt; N</code>, all <code>quiet[i]</code> are different.</p>
+</li>
+<li>
+<p><code>0 &#8656; richer.length &#8656; N * (N-1) / 2</code></p>
+</li>
+<li>
+<p><code>0 &#8656; richer[i][j] &lt; N</code></p>
+</li>
+<li>
+<p><code>richer[i][0] != richer[i][1]</code></p>
+</li>
+<li>
+<p>`richer[i]&#8217;s are all different.</p>
+</li>
+<li>
+<p>The observations in <code>richer</code> are all logically consistent.</p>
+</li>
+</ol>
+</div>
+<div id="src-0851" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0851-loud-and-rich.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0851_LoudAndRich.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

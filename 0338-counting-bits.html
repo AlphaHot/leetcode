@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>338. Counting Bits</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_338_counting_bits">338. Counting Bits</a>
+<ul class="sectlevel2">
+<li><a href="#_解题分析">解题分析</a></li>
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_338_counting_bits"><a class="anchor" href="#_338_counting_bits"></a>338. Counting Bits</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/counting-bits/">LeetCode - Counting Bits</a></p>
+</div>
+<div class="paragraph">
+<p>Given a non negative integer number <strong>num</strong>. For every numbers <strong>i</strong> in the range <strong>0 ≤ i ≤ num</strong> calculate the number of 1&#8217;s in their binary representation and return them as an array.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre>Input: 2
+Output: [0,1,1]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 2:</div>
+<div class="content">
+<pre>Input: 5
+Output: [0,1,1,2,1,2]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Follow up:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It is very easy to come up with a solution with run time <strong>O(n*sizeof(integer))</strong>. But can you do it in linear time <strong>O(n)</strong> /possibly in a single pass?</p>
+</li>
+<li>
+<p>Space complexity should be <strong>O(n)</strong>.</p>
+</li>
+<li>
+<p>Can you do it like a boss? Do it without using any builtin function like <em>__builtin_popcount</em> in c++ or in any other language.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_解题分析"><a class="anchor" href="#_解题分析"></a>解题分析</h3>
+<div class="paragraph">
+<p>从 <code>0</code> 开始，每个奇数包含 <code>1</code> 的个数，都比前面一个数要多 <code>1</code>。所以，只需要计算偶数包含的 <code>1</code> 的个数，然后奇数直接在前面的基础上加 <code>1</code> 即可。</p>
+</div>
+<div class="paragraph">
+<p>另外一种解法：以 <code>2</code> 的 <code>x</code> 次幂为界，后面的的 <code>x</code> 个数中的 <code>1</code> 的个数，是前面个 <code>x</code> 个数在前面加 <code>1</code> 的结果（位数不够在前面补零，例如从 <code>1</code> 到 <code>5</code>，就是从 <code>1</code> 补零 <code>001</code>，再前面加 <code>1</code>，则为 <code>1001</code>）。</p>
+</div>
+<div class="paragraph">
+<p>
+\begin{aligned}
+(0)&amp;=(0)_{2}\\
+(1)&amp;=(1)_{2}\\
+(2)&amp;=(10)_{2}\\
+(3)&amp;=(11)_{2}\\
+P(x+b)&amp;=P(x)+1, b=2^{m}&gt;x\\
+\end{aligned}
+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">for (int i = 0; i &lt; 99; i++) {
+    int j = 0;
+    for (; Math.pow(2, j) &lt;= i; j++) {
+        if (Math.pow(2, j) == i &amp;&amp; i != 1) {
+            System.out.println("---");
+        }
+    }
+    System.out.printf("%2d  %10s\n", i, Integer.toBinaryString(i));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>用这段代码输出一下，观察一下更明显。</p>
+</div>
+<div class="paragraph">
+<p>这个题的解法跟 <a href="0089-gray-code.html">89. Gray Code</a> 有异曲同工之妙！</p>
+</div>
+<div class="paragraph">
+<p>思考题：尝试"动态规划 + 最低有效位"的解法。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/counting-bits/solution/bi-te-wei-ji-shu-by-leetcode/">比特位计数 - 比特位计数 - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given a non negative integer number <strong>num</strong>. For every numbers <strong>i</strong> in the range <strong>0 ≤ i ≤ num</strong> calculate the number of 1&#8217;s in their binary representation and return them as an array.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 2
+<strong>Output:</strong> [0,1,1]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 5
+<strong>Output:</strong> <code>[0,1,1,2,1,2]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Follow up:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It is very easy to come up with a solution with run time <strong>O(n*sizeof(integer))</strong>. But can you do it in linear time <strong>O(n)</strong> /possibly in a single pass?</p>
+</li>
+<li>
+<p>Space complexity should be <strong>O(n)</strong>.</p>
+</li>
+<li>
+<p>Can you do it like a boss? Do it without using any builtin function like <strong>__builtin_popcount</strong> in c++ or in any other language.</p>
+</li>
+</ul>
+</div>
+<div id="src-0338" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+
+/**
+ * = 338. Counting Bits
+ * &lt;p&gt;
+ * https://leetcode.com/problems/counting-bits/[Counting Bits - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-29 14:50
+ */
+public class _0338_CountingBits {
+    /**
+     * Runtime: 1 ms, faster than 99.73% of Java online submissions for Counting Bits.
+     * Memory Usage: 43 MB, less than 5.88% of Java online submissions for Counting Bits.
+     * &lt;p&gt;
+     * Copy from: https://leetcode-cn.com/problems/counting-bits/solution/bi-te-wei-ji-shu-by-leetcode/[比特位计数 - 比特位计数 - 力扣（LeetCode）]
+     */
+    public int[] countBits(int num) {
+        int[] result = new int[num + 1];
+        int b = 1;
+        int i = 0;
+        while (b &lt;= num) {
+            while (i &lt; b &amp;&amp; i + b &lt;= num) {
+                result[i + b] = result[i] + 1;
+                ++i;
+            }
+            i = 0;
+            b &lt;&lt;= 1;
+        }
+        return result;
+    }
+
+    /**
+     * Runtime: 3 ms, faster than 24.83% of Java online submissions for Counting Bits.
+     * Memory Usage: 43 MB, less than 5.88% of Java online submissions for Counting Bits.
+     */
+    public int[] countBitsEvenOdd(int num) {
+        int[] result = new int[num + 1];
+        for (int i = 0; i &lt;= num; i += 2) {
+            result[i] = bitsInNum(i);
+        }
+        for (int i = 1; i &lt;= num; i += 2) {
+            result[i] = result[i - 1] + 1;
+        }
+        return result;
+    }
+
+    private int bitsInNum(int num) {
+        int result = 0;
+        while (num != 0) {
+            if ((num &amp; 1) == 1) {
+                result++;
+            }
+            num = num &gt;&gt;&gt; 1;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0338_CountingBits solution = new _0338_CountingBits();
+        System.out.println(Arrays.toString(solution.countBits(2)));
+        System.out.println(Arrays.toString(solution.countBits(5)));
+        System.out.println(Arrays.toString(solution.countBits(10)));
+
+for (int i = 0; i &lt; 99; i++) {
+    int j = 0;
+    for (; Math.pow(2, j) &lt;= i; j++) {
+        if (Math.pow(2, j) == i &amp;&amp; i != 1) {
+            System.out.println("---");
+        }
+    }
+    System.out.printf("%2d  %10s\n", i, Integer.toBinaryString(i));
+}
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

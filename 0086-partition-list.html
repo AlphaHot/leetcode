@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>86. Partition List</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_86_partition_list">86. Partition List</a>
+<ul class="sectlevel2">
+<li><a href="#_解题分析">解题分析</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_86_partition_list"><a class="anchor" href="#_86_partition_list"></a>86. Partition List</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/partition-list/">LeetCode - Partition List</a></p>
+</div>
+<div class="paragraph">
+<p>Given a linked list and a value <code>x</code>, partition it such that all nodes less than <code>x</code> come before nodes greater than or equal to <code>x</code>.</p>
+</div>
+<div class="paragraph">
+<p>You should preserve the original relative order of the nodes in each of the two partitions.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>Input: head = 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;2, x = 3
+Output: 1-&gt;2-&gt;2-&gt;4-&gt;3-&gt;5</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_解题分析"><a class="anchor" href="#_解题分析"></a>解题分析</h3>
+<div class="paragraph">
+<p>思路很简单，直接双指针维护大小两个队列就好。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0086-1.png" alt="0086 1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0086-2.png" alt="0086 2">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0086-3.png" alt="0086 3">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0086-4.png" alt="0086 4">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0086-5.png" alt="0086 5">
+</div>
+</div>
+<div class="paragraph">
+<p>Given a linked list and a value <em>x</em>, partition it such that all nodes less than <em>x</em> come before nodes greater than or equal to <em>x</em>.</p>
+</div>
+<div class="paragraph">
+<p>You should preserve the original relative order of the nodes in each of the two partitions.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> head = 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;2, <em>x</em> = 3
+<strong>Output:</strong> 1-&gt;2-&gt;2-&gt;4-&gt;3-&gt;5</pre>
+</div>
+</div>
+<div id="src-0086" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.ListNode;
+
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.ListNodeUtils.build;
+import static com.diguage.algorithm.util.ListNodeUtils.printListNode;
+import static java.util.Arrays.asList;
+
+/**
+ * = 86. Partition List
+ *
+ * https://leetcode.com/problems/partition-list/[Partition List - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-02-05 19:14
+ */
+public class _0086_PartitionList {
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Partition List.
+     * Memory Usage: 37.5 MB, less than 5.77% of Java online submissions for Partition List.
+     */
+    public ListNode partition(ListNode head, int x) {
+        if (Objects.isNull(head)) {
+            return null;
+        }
+        ListNode dummySmall = new ListNode(0);
+        ListNode dummyLarge = new ListNode(0);
+        ListNode tailSmall = dummySmall;
+        ListNode tailLarge = dummyLarge;
+        while (Objects.nonNull(head)) {
+            if (head.val &lt; x) {
+                tailSmall.next = head;
+                tailSmall = tailSmall.next;
+            } else {
+                tailLarge.next = head;
+                tailLarge = tailLarge.next;
+            }
+            head = head.next;
+        }
+        tailLarge.next = null;
+        tailSmall.next = dummyLarge.next;
+
+        return dummySmall.next;
+    }
+
+    public static void main(String[] args) {
+        _0086_PartitionList solution = new _0086_PartitionList();
+        printListNode(solution.partition(build(asList(1, 4, 3, 2, 5, 2)), 3));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

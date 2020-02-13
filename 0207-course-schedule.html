@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>207. Course Schedule</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_207_course_schedule">207. Course Schedule</a>
+<ul class="sectlevel2">
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_207_course_schedule"><a class="anchor" href="#_207_course_schedule"></a>207. Course Schedule</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/course-schedule/">LeetCode - Course Schedule</a></p>
+</div>
+<div class="paragraph">
+<p>TODO: 研究一下图相关算法和拓扑排序。</p>
+</div>
+<div class="paragraph">
+<p>拓扑排序通常用来“排序”具有依赖关系的任务。</p>
+</div>
+<div class="paragraph">
+<p>拓扑排序出来的结果是应该不是有序（升序或降序）。只是一个前后顺序。</p>
+</div>
+<div class="paragraph">
+<p>思考题：参考资料中提到，表示图可以使用"邻接矩阵"和"邻接表"。尝试使用邻接表来重新实现。</p>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="http://songlee24.github.io/2015/05/07/topological-sorting/">拓扑排序（Topological Sorting） | 神奕的博客</a></p>
+</li>
+<li>
+<p><a href="https://www.khanacademy.org/computing/computer-science/algorithms/graph-representation/a/representing-graphs">Representing graphs (article) | Algorithms | Khan Academy</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>There are a total of <em>n</em> courses you have to take, labeled from <code>0</code> to <code>n-1</code>.</p>
+</div>
+<div class="paragraph">
+<p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: <code>[0,1]</code></p>
+</div>
+<div class="paragraph">
+<p>Given the total number of courses and a list of prerequisite <strong>pairs</strong>, is it possible for you to finish all courses?</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 2, [[1,0]]
+<strong>Output:</strong> true
+<strong>Explanation:</strong> There are a total of 2 courses to take.
+             To take course 1 you should have finished course 0. So it is possible.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 2, [[1,0],[0,1]]
+<strong>Output:</strong> false
+<strong>Explanation:</strong> There are a total of 2 courses to take.
+             To take course 1 you should have finished course 0, and to take course 0 you should
+             also have finished course 1. So it is impossible.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The input prerequisites is a graph represented by <strong>a list of edges</strong>, not adjacency matrices. Read more about <a href="https://www.khanacademy.org/computing/computer-science/algorithms/graph-representation/a/representing-graphs">how a graph is represented</a>.</p>
+</li>
+<li>
+<p>You may assume that there are no duplicate edges in the input prerequisites.</p>
+</li>
+</ol>
+</div>
+<div id="src-0207" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+/**
+ * = 207. Course Schedule
+ *
+ * https://leetcode.com/problems/course-schedule/[Course Schedule - LeetCode]
+ *
+ * There are a total of n courses you have to take, labeled from `0` to `n-1`.
+ *
+ * Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: `[0,1]`
+ *
+ * Given the total number of courses and a list of prerequisite *pairs*, is it possible for you to finish all courses?
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: 2, [[1,0]]
+ * Output: true
+ * Explanation: There are a total of 2 courses to take.
+ *              To take course 1 you should have finished course 0. So it is possible.
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: 2, [[1,0],[0,1]]
+ * Output: false
+ * Explanation: There are a total of 2 courses to take.
+ *              To take course 1 you should have finished course 0, and to take course 0 you should
+ *              also have finished course 1. So it is impossible.
+ * ----
+ *
+ * *Note:*
+ *
+ * * The input prerequisites is a graph represented by *a list of edges*, not adjacency matrices. Read more about https://www.khanacademy.org/computing/computer-science/algorithms/graph-representation/a/representing-graphs[how a graph is represented].
+ * * You may assume that there are no duplicate edges in the input prerequisites.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-26 16:36
+ */
+public class _0207_CourseSchedule {
+    /**
+     * Runtime: 20 ms, faster than 36.81% of Java online submissions for Course Schedule.
+     *
+     * Memory Usage: 74.1 MB, less than 5.39% of Java online submissions for Course Schedule.
+     *
+     * Copy from: https://leetcode.com/problems/course-schedule/discuss/58516/Easy-BFS-Topological-sort-Java[Easy BFS Topological sort, Java - LeetCode Discuss]
+     */
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        int[][] matrix = new int[numCourses][numCourses];
+        int[] indegree = new int[numCourses];
+        for (int[] prere : prerequisites) {
+            int latter = prere[0];
+            int formmer = prere[1];
+            matrix[formmer][latter]++;
+            indegree[latter]++;
+        }
+        Queue&lt;Integer&gt; queue = new LinkedList&lt;&gt;();
+        for (int i = 0; i &lt; numCourses; i++) {
+            if (indegree[i] == 0) {
+                queue.offer(i);
+            }
+        }
+        int count = 0;
+        while (!queue.isEmpty()) {
+            Integer course = queue.poll();
+            count++;
+            for (int i = 0; i &lt; numCourses; i++) {
+                if (matrix[course][i] != 0) {
+                    if (--indegree[i] == 0) {
+                        queue.offer(i);
+                    }
+                }
+            }
+        }
+        return count == numCourses;
+    }
+
+    public static void main(String[] args) {
+        _0207_CourseSchedule solution = new _0207_CourseSchedule();
+        int[][] p1 = {{1, 0}};
+        boolean r1 = solution.canFinish(2, p1);
+        System.out.println(r1);
+
+        int[][] p2 = {{1, 0}, {0, 1}};
+        boolean r2 = solution.canFinish(2, p2);
+        System.out.println(!r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1033. Moving Stones Until Consecutive</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1033_moving_stones_until_consecutive">1033. Moving Stones Until Consecutive</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1033_moving_stones_until_consecutive"><a class="anchor" href="#_1033_moving_stones_until_consecutive"></a>1033. Moving Stones Until Consecutive</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/moving-stones-until-consecutive/">LeetCode - Moving Stones Until Consecutive</a></p>
+</div>
+<div class="paragraph">
+<p>Three stones are on a number line at positions <code>a</code>, <code>b</code>, and <code>c</code>.</p>
+</div>
+<div class="paragraph">
+<p>Each turn, you pick up a stone at an endpoint (ie., either the lowest or highest position stone), and move it to an unoccupied position between those endpoints.  Formally, let&#8217;s say the stones are currently at positions <code>x, y, z</code> with <code>x &lt; y &lt; z</code>.  You pick up the stone at either position <code>x</code> or position <code>z</code>, and move that stone to an integer position <code>k</code>, with <code>x &lt; k &lt; z</code> and <code>k != y</code>.</p>
+</div>
+<div class="paragraph">
+<p>The game ends when you cannot make any more moves, ie. the stones are in consecutive positions.</p>
+</div>
+<div class="paragraph">
+<p>When the game ends, what is the minimum and maximum number of moves that you could have made?  Return the answer as an length 2 array: <code>answer = [minimum_moves, maximum_moves]</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> a = 1, b = 2, c = 5
+<strong>Output:</strong> [1,2]
+<strong>Explanation:</strong> Move the stone from 5 to 3, or move the stone from 5 to 4 to 3.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> a = 4, b = 3, c = 2
+<strong>Output:</strong> [0,0]
+<strong>Explanation:</strong> We cannot make any moves.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> a = 3, b = 5, c = 1
+<strong>Output:</strong> [1,2]
+<strong>Explanation:</strong> Move the stone from 1 to 4; or move the stone from 1 to 2 to 4.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>1 &#8656; a &#8656; 100</code></p>
+</li>
+<li>
+<p><code>1 &#8656; b &#8656; 100</code></p>
+</li>
+<li>
+<p><code>1 &#8656; c &#8656; 100</code></p>
+</li>
+<li>
+<p><code>a != b, b != c, c != a</code></p>
+</li>
+</ol>
+</div>
+<div id="src-1033" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1033-moving-stones-until-consecutive.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1033_MovingStonesUntilConsecutive.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

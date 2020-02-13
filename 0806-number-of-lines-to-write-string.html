@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>806. Number of Lines To Write String</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_806_number_of_lines_to_write_string">806. Number of Lines To Write String</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_806_number_of_lines_to_write_string"><a class="anchor" href="#_806_number_of_lines_to_write_string"></a>806. Number of Lines To Write String</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/number-of-lines-to-write-string/">LeetCode - Number of Lines To Write String</a></p>
+</div>
+<div class="paragraph">
+<p>We are to write the letters of a given string <code>S</code>, from left to right into lines. Each line has maximum width 100 units, and if writing a letter would cause the width of the line to exceed 100 units, it is written on the next line. We are given an array <code>widths</code>, an array where widths[0] is the width of 'a', widths[1] is the width of 'b', &#8230;&#8203;, and widths[25] is the width of 'z'.</p>
+</div>
+<div class="paragraph">
+<p>Now answer two questions: how many lines have at least one character from <code>S</code>, and what is the width used by the last such line? Return your answer as an integer list of length 2.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Example :</strong>
+<strong>Input:</strong>
+widths = [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]
+S = "abcdefghijklmnopqrstuvwxyz"
+<strong>Output:</strong> [3, 60]
+<strong>Explanation:</strong>
+All letters have the same length of 10. To write all 26 letters,
+we need two full lines and one line with 60 units.</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Example :</strong>
+<strong>Input:</strong>
+widths = [4,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]
+S = "bbbcccdddaaa"
+<strong>Output:</strong> [2, 4]
+<strong>Explanation:</strong>
+All letters except 'a' have the same length of 10, and
+"bbbcccdddaa" will cover 9 * 10 + 2 * 4 = 98 units.
+For the last 'a', it is written on the second line because
+there is only 2 units left in the first line.
+So the answer is 2 lines, plus 4 units in the second line.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The length of <code>S</code> will be in the range [1, 1000].</p>
+</li>
+<li>
+<p><code>S</code> will only contain lowercase letters.</p>
+</li>
+<li>
+<p><code>widths</code> is an array of length <code>26</code>.</p>
+</li>
+<li>
+<p><code>widths[i]</code> will be in the range of <code>[2, 10]</code>.</p>
+</li>
+</ul>
+</div>
+<div id="src-0806" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0806-number-of-lines-to-write-string.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0806_NumberOfLinesToWriteString.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>215. Kth Largest Element in an Array</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_215_kth_largest_element_in_an_array">215. Kth Largest Element in an Array</a>
+<ul class="sectlevel2">
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_215_kth_largest_element_in_an_array"><a class="anchor" href="#_215_kth_largest_element_in_an_array"></a>215. Kth Largest Element in an Array</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/">LeetCode - Kth Largest Element in an Array</a></p>
+</div>
+<div class="paragraph">
+<p>没想到竟然可以使用快排的套路来解决这个问题。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0215-1.gif" alt="0215 1">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Quickselect">Quickselect - Wikipedia</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Find the *k*th largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> `[3,2,1,5,6,4] `and k = 2
+<strong>Output:</strong> 5</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> `[3,2,3,1,2,4,5,5,6] `and k = 4
+<strong>Output:</strong> 4</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>*Note: *</p>
+</div>
+<div class="paragraph">
+<p>You may assume k is always valid, 1 ≤ k ≤ array&#8217;s length.</p>
+</div>
+<div id="src-0215" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Random;
+
+/**
+ * = 215. Kth Largest Element in an Array
+ *
+ * https://leetcode.com/problems/kth-largest-element-in-an-array/[Kth Largest Element in an Array - LeetCode]
+ *
+ * Find the **k**th largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: [3,2,1,5,6,4] and k = 2
+ * Output: 5
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: [3,2,3,1,2,4,5,5,6] and k = 4
+ * Output: 4
+ * ----
+ *
+ * *Note:*
+ *
+ * You may assume k is always valid, 1 ≤ k ≤ array's length.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-26 18:00
+ */
+public class _0215_KthLargestElementInAnArray {
+    private int[] nums;
+
+    private void swap(int a, int b) {
+        int temp = this.nums[a];
+        this.nums[a] = this.nums[b];
+        this.nums[b] = temp;
+    }
+
+    private int partition(int left, int right, int pivotIndex) {
+        int pivot = this.nums[pivotIndex];
+        // 1. move pivot to end
+        swap(pivotIndex, right);
+        int storeIdex = left;
+
+        // 2. move all smaller elements to the left
+        for (int i = left; i &lt; right; i++) {
+            if (this.nums[i] &lt; pivot) {
+                swap(storeIdex, i);
+                storeIdex++;
+            }
+        }
+        // 3. move pivot to its final place
+        swap(storeIdex, right);
+        return storeIdex;
+    }
+
+    private int quickselect(int left, int right, int kSmallest) {
+        if (left == right) {
+            return this.nums[left];
+        }
+        Random random = new Random();
+        int pivotIndex = left + random.nextInt(right - left);
+
+        pivotIndex = partition(left, right, pivotIndex);
+        if (pivotIndex == kSmallest) {
+            return this.nums[kSmallest];
+        } else if (kSmallest &lt; pivotIndex) {
+            return quickselect(left, pivotIndex - 1, kSmallest);
+        } else {
+            return quickselect(pivotIndex + 1, right, kSmallest);
+        }
+    }
+
+
+    /**
+     * Runtime: 1 ms, faster than 99.47% of Java online submissions for Kth Largest Element in an Array.
+     *
+     * Memory Usage: 41.4 MB, less than 5.18% of Java online submissions for Kth Largest Element in an Array.
+     *
+     * Copy from: https://leetcode-cn.com/problems/kth-largest-element-in-an-array/solution/shu-zu-zhong-de-di-kge-zui-da-yuan-su-by-leetcode/[数组中的第 K 个最大元素 - 数组中的第K个最大元素 - 力扣（LeetCode）]
+     */
+    public int findKthLargest(int[] nums, int k) {
+        this.nums = nums;
+        int size = nums.length;
+        return quickselect(0, size - 1, size - k);
+    }
+
+    /**
+     * Runtime: 6 ms, faster than 62.37% of Java online submissions for Kth Largest Element in an Array.
+     *
+     * Memory Usage: 40.9 MB, less than 5.18% of Java online submissions for Kth Largest Element in an Array.
+     */
+    public int findKthLargestHeap(int[] nums, int k) {
+        PriorityQueue&lt;Integer&gt; heap = new PriorityQueue&lt;&gt;(Comparator.comparingInt(a -&gt; a));
+        for (int num : nums) {
+            heap.add(num);
+            if (heap.size() &gt; k) {
+                heap.poll();
+            }
+        }
+        return heap.poll();
+    }
+
+    public int findKthLargestSort(int[] nums, int k) {
+        Arrays.sort(nums);
+        return nums[nums.length - k];
+    }
+
+    public static void main(String[] args) {
+        _0215_KthLargestElementInAnArray solution = new _0215_KthLargestElementInAnArray();
+        int[] n1 = {3, 2, 1, 5, 6, 4};
+        int r1 = solution.findKthLargest(n1, 2);
+        System.out.println((r1 == 5) + " : " + r1);
+
+        int[] n2 = {3, 2, 3, 1, 2, 4, 5, 5, 6};
+        int r2 = solution.findKthLargest(n2, 4);
+        System.out.println((r2 == 4) + " : " + r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

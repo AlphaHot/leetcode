@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1006. Clumsy Factorial</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1006_clumsy_factorial">1006. Clumsy Factorial</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1006_clumsy_factorial"><a class="anchor" href="#_1006_clumsy_factorial"></a>1006. Clumsy Factorial</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/clumsy-factorial/">LeetCode - Clumsy Factorial</a></p>
+</div>
+<div class="paragraph">
+<p>Normally, the factorial of a positive integer <code>n</code> is the product of all positive integers less than or equal to <code>n</code>.  For example, <code>factorial(10) = 10 * 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1</code>.</p>
+</div>
+<div class="paragraph">
+<p>We instead make a <em>clumsy factorial:</em> using the integers in decreasing order, we swap out the multiply operations for a fixed rotation of operations: multiply (*), divide (/), add (+) and subtract (-) in this order.</p>
+</div>
+<div class="paragraph">
+<p>For example, <code>clumsy(10) = 10 * 9 / 8 + 7 - 6 * 5 / 4 + 3 - 2 * 1</code>.  However, these operations are still applied using the usual order of operations of arithmetic: we do all multiplication and division steps before any addition or subtraction steps, and multiplication and division steps are processed left to right.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the division that we use is <em>floor division</em> such that <code>10 * 9 / 8</code> equals <code>11</code>.  This guarantees the result is an integer.</p>
+</div>
+<div class="paragraph">
+<p><code>&lt;font face="sans-serif, Arial, Verdana, Trebuchet MS"&gt;Implement the clumsy</code> function as defined above: given an integer <code>N</code>, it returns the clumsy factorial of <code>N</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 4
+<strong>Output:</strong> 7
+<strong>Explanation:</strong> 7 = 4 * 3 / 2 + 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 10
+<strong>Output:</strong> 12
+<strong>Explanation:</strong> 12 = 10 * 9 / 8 + 7 - 6 * 5 / 4 + 3 - 2 * 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>1 &#8656; N &#8656; 10000</code></p>
+</li>
+<li>
+<p><code>-2^31 &#8656; answer &#8656; 2^31 - 1</code>  (The answer is guaranteed to fit within a 32-bit integer.)</p>
+</li>
+</ol>
+</div>
+<div id="src-1006" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1006-clumsy-factorial.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1006_ClumsyFactorial.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

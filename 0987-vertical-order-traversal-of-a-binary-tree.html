@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>987. Vertical Order Traversal of a Binary Tree</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_987_vertical_order_traversal_of_a_binary_tree">987. Vertical Order Traversal of a Binary Tree</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_987_vertical_order_traversal_of_a_binary_tree"><a class="anchor" href="#_987_vertical_order_traversal_of_a_binary_tree"></a>987. Vertical Order Traversal of a Binary Tree</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/">LeetCode - Vertical Order Traversal of a Binary Tree</a></p>
+</div>
+<div class="paragraph">
+<p>Given a binary tree, return the <em>vertical order</em> traversal of its nodes values.</p>
+</div>
+<div class="paragraph">
+<p>For each node at position <code>(X, Y)</code>, its left and right children respectively will be at positions <code>(X-1, Y-1)</code> and <code>(X+1, Y-1)</code>.</p>
+</div>
+<div class="paragraph">
+<p>Running a vertical line from <code>X = -infinity</code> to <code>X = +infinity</code>, whenever the vertical line touches some nodes, we report the values of the nodes in order from top to bottom (decreasing <code>Y</code> coordinates).</p>
+</div>
+<div class="paragraph">
+<p>If two nodes have the same position, then the value of the node that is reported first is the value that is smaller.</p>
+</div>
+<div class="paragraph">
+<p>Return an list of non-empty reports in order of <code>X</code> coordinate.  Every report will have a list of values of nodes.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2019/01/31/1236_example_1.PNG" alt="1236 example 1">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [3,9,20,null,null,15,7]
+<strong>Output:</strong> [[9],[3,15],[20],[7]]
+<strong>Explanation:</strong>
+Without loss of generality, we can assume the root node is at position (0, 0):
+Then, the node with value 9 occurs at position (-1, -1);
+The nodes with values 3 and 15 occur at positions (0, 0) and (0, -2);
+The node with value 20 occurs at position (1, -1);
+The node with value 7 occurs at position (2, -2).</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2019/01/31/tree2.png" alt="tree2">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [1,2,3,4,5,6,7]
+<strong>Output:</strong> [[4],[2],[1,5,6],[3],[7]]
+<strong>Explanation:</strong>
+The node with value 5 and the node with value 6 have the same position according to the given scheme.
+However, in the report "[1,5,6]", the node value of 5 comes first since 5 is smaller than 6.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The tree will have between &lt;font face="monospace"&gt;1 and <code>1000</code> nodes.</p>
+</li>
+<li>
+<p>Each node&#8217;s value will be between <code>0</code> and <code>1000</code>.</p>
+</li>
+</ol>
+</div>
+<div id="src-0987" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0987-vertical-order-traversal-of-a-binary-tree.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0987_VerticalOrderTraversalOfABinaryTree.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

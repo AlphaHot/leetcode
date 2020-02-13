@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>175. Combine Two Tables</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_175_combine_two_tables">175. Combine Two Tables</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_175_combine_two_tables"><a class="anchor" href="#_175_combine_two_tables"></a>175. Combine Two Tables</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/combine-two-tables/">LeetCode - Combine Two Tables</a></p>
+</div>
+<div class="paragraph">
+<p>Table: <code>Person</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>----------------------+
+| Column Name | Type    |
+----------------------+
+| PersonId    | int     |
+| FirstName   | varchar |
+| LastName    | varchar |
+----------------------+
+PersonId is the primary key column for this table.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Table: <code>Address</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>----------------------+
+| Column Name | Type    |
+----------------------+
+| AddressId   | int     |
+| PersonId    | int     |
+| City        | varchar |
+| State       | varchar |
+----------------------+
+AddressId is the primary key column for this table.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Write a SQL query for a report that provides the following information for each person in the Person table, regardless if there is an address for each of those people:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>FirstName, LastName, City, State</pre>
+</div>
+</div>
+<div id="src-0175" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sql" data-lang="sql">-- 175. Combine Two Tables
+SELECT p.FirstName,
+       p.LastName,
+       a.City,
+       a.State
+FROM Person p
+         LEFT JOIN Address a
+                   ON p.PersonId = a.PersonId</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

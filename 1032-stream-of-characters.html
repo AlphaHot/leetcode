@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1032. Stream of Characters</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1032_stream_of_characters">1032. Stream of Characters</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1032_stream_of_characters"><a class="anchor" href="#_1032_stream_of_characters"></a>1032. Stream of Characters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/stream-of-characters/">LeetCode - Stream of Characters</a></p>
+</div>
+<div class="paragraph">
+<p>Implement the <code>StreamChecker</code> class as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>StreamChecker(words)</code>: Constructor, init the data structure with the given words.</p>
+</li>
+<li>
+<p><code>query(letter)</code>: returns true if and only if for some <code>k &gt;= 1</code>, the last <code>k</code> characters queried (in order from oldest to newest, including this letter just queried) spell one of the words in the given list.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>StreamChecker streamChecker = new StreamChecker(["cd","f","kl"]); // init the dictionary.
+streamChecker.query('a');          // return false
+streamChecker.query('b');          // return false
+streamChecker.query('c');          // return false
+streamChecker.query('d');          // return true, because 'cd' is in the wordlist
+streamChecker.query('e');          // return false
+streamChecker.query('f');          // return true, because 'f' is in the wordlist
+streamChecker.query('g');          // return false
+streamChecker.query('h');          // return false
+streamChecker.query('i');          // return false
+streamChecker.query('j');          // return false
+streamChecker.query('k');          // return false
+streamChecker.query('l');          // return true, because 'kl' is in the wordlist</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; words.length &#8656; 2000</code></p>
+</li>
+<li>
+<p><code>1 &#8656; words[i].length &#8656; 2000</code></p>
+</li>
+<li>
+<p>Words will only consist of lowercase English letters.</p>
+</li>
+<li>
+<p>Queries will only consist of lowercase English letters.</p>
+</li>
+<li>
+<p>The number of queries is at most 40000.</p>
+</li>
+</ul>
+</div>
+<div id="src-1032" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1032-stream-of-characters.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1032_StreamOfCharacters.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

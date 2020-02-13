@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>798. Smallest Rotation with Highest Score</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_798_smallest_rotation_with_highest_score">798. Smallest Rotation with Highest Score</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_798_smallest_rotation_with_highest_score"><a class="anchor" href="#_798_smallest_rotation_with_highest_score"></a>798. Smallest Rotation with Highest Score</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/smallest-rotation-with-highest-score/">LeetCode - Smallest Rotation with Highest Score</a></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Given an array `A`, we may rotate it by a non-negative integer `K` so that the array becomes `A[K], A[K+1], A{K+2], ... A[A.length - 1], A[0], A[1], ..., A[K-1]`.  Afterward, any entries that are less than or equal to their index are worth 1 point.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, if we have <code>[2, 4, 1, 3, 0]</code>, and we rotate by <code>K = 2</code>, it becomes <code>[1, 3, 0, 2, 4]</code>.  This is worth 3 points because 1 &gt; 0 [no points], 3 &gt; 1 [no points], 0 &#8656; 2 [one point], 2 &#8656; 3 [one point], 4 &#8656; 4 [one point].</p>
+</div>
+<div class="paragraph">
+<p>Over all possible rotations, return the rotation index K that corresponds to the highest score we could receive.  If there are multiple answers, return the smallest such index K.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Example 1:</strong>
+<strong>Input:</strong> [2, 3, 1, 4, 0]
+<strong>Output:</strong> 3
+<strong>Explanation:</strong>
+Scores for each K are listed below:
+K = 0,  A = [2,3,1,4,0],    score 2
+K = 1,  A = [3,1,4,0,2],    score 3
+K = 2,  A = [1,4,0,2,3],    score 3
+K = 3,  A = [4,0,2,3,1],    score 4
+K = 4,  A = [0,2,3,1,4],    score 3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So we should choose K = 3, which has the highest score.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Example 2:</strong>
+<strong>Input:</strong> [1, 3, 0, 2, 4]
+<strong>Output:</strong> 0
+<strong>Explanation:</strong> A will always have 3 points no matter how it shifts.
+So we will choose the smallest K, which is 0.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>A</code> will have length at most <code>20000</code>.</p>
+</li>
+<li>
+<p><code>A[i]</code> will be in the range <code>[0, A.length]</code>.</p>
+</li>
+</ul>
+</div>
+<div id="src-0798" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0798-smallest-rotation-with-highest-score.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0798_SmallestRotationWithHighestScore.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

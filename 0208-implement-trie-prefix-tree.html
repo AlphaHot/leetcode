@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>208. Implement Trie (Prefix Tree)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_208_implement_trie_prefix_tree">208. Implement Trie (Prefix Tree)</a>
+<ul class="sectlevel2">
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_208_implement_trie_prefix_tree"><a class="anchor" href="#_208_implement_trie_prefix_tree"></a>208. Implement Trie (Prefix Tree)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/implement-trie-prefix-tree/">LeetCode - Implement Trie (Prefix Tree)</a></p>
+</div>
+<div class="paragraph">
+<p>没想到 Trie Tree 实现起来一点也不复杂！</p>
+</div>
+<div class="paragraph">
+<p>思考题：如何实现一个工业级的 Trie Tree？</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0208-1.png" alt="0208 1">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Trie">Trie - Wikipedia</a></p>
+</li>
+<li>
+<p><a href="https://www.geeksforgeeks.org/trie-insert-and-search/">Trie | (Insert and Search) - GeeksforGeeks</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Implement a trie with <code>insert</code>, <code>search</code>, and <code>startsWith</code> methods.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Trie trie = new Trie();
+
+trie.insert("apple");
+trie.search("apple");   // returns true
+trie.search("app");     // returns false
+trie.startsWith("app"); // returns true
+trie.insert("app");
+trie.search("app");     // returns true</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You may assume that all inputs are consist of lowercase letters <code>a-z</code>.</p>
+</li>
+<li>
+<p>All inputs are guaranteed to be non-empty strings.</p>
+</li>
+</ul>
+</div>
+<div id="src-0208" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+/**
+ * = 208. Implement Trie (Prefix Tree)
+ *
+ * https://leetcode.com/problems/implement-trie-prefix-tree/[Implement Trie (Prefix Tree) - LeetCode]
+ *
+ * Implement a trie with `insert`, `search`, and `startsWith` methods.
+ *
+ * .Example:
+ * [source,java]
+ * ----
+ * Trie trie = new Trie();
+ *
+ * trie.insert("apple");
+ * trie.search("apple");   // returns true
+ * trie.search("app");     // returns false
+ * trie.startsWith("app"); // returns true
+ * trie.insert("app");
+ * trie.search("app");     // returns true
+ * ----
+ *
+ * *Note:*
+ *
+ * * You may assume that all inputs are consist of lowercase letters `a-z`.
+ * * All inputs are guaranteed to be non-empty strings.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-26 19:47
+ */
+public class _0208_ImplementTriePrefixTree {
+    /**
+     * Runtime: 69 ms, faster than 11.59% of Java online submissions for Implement Trie (Prefix Tree).
+     *
+     * Memory Usage: 62.6 MB, less than 5.77% of Java online submissions for Implement Trie (Prefix Tree).
+     */
+    class Trie {
+        private int ALPHABET_SIZE = 26;
+
+        class TrieNode {
+            private TrieNode[] alphabet;
+            private boolean isEnd;
+
+            public TrieNode() {
+                this.alphabet = new TrieNode[ALPHABET_SIZE];
+                Arrays.fill(this.alphabet, null);
+                this.isEnd = false;
+            }
+        }
+
+        private TrieNode[] root;
+
+        /**
+         * Initialize your data structure here.
+         */
+        public Trie() {
+            this.root = new TrieNode[ALPHABET_SIZE];
+            Arrays.fill(this.root, null);
+        }
+
+        /**
+         * Inserts a word into the trie.
+         */
+        public void insert(String word) {
+            char[] chars = word.toCharArray();
+            TrieNode[] current = this.root;
+            for (int i = 0; i &lt; chars.length; i++) {
+                int index = chars[i] - 'a';
+                if (Objects.isNull(current[index])) {
+                    current[index] = new TrieNode();
+                }
+                if (i == chars.length - 1) {
+                    current[index].isEnd = true;
+                }
+                current = current[index].alphabet;
+            }
+        }
+
+        /**
+         * Returns if the word is in the trie.
+         */
+        public boolean search(String word) {
+            char[] chars = word.toCharArray();
+            TrieNode[] current = this.root;
+            for (int i = 0; i &lt; chars.length; i++) {
+                int index = chars[i] - 'a';
+                if (Objects.isNull(current[index])) {
+                    return false;
+                }
+                if (i == chars.length - 1) {
+                    return current[index].isEnd;
+                }
+                current = current[index].alphabet;
+            }
+            return false;
+        }
+
+        /**
+         * Returns if there is any word in the trie that starts with the given prefix.
+         */
+        public boolean startsWith(String prefix) {
+            char[] chars = prefix.toCharArray();
+            TrieNode[] current = this.root;
+            for (int i = 0; i &lt; chars.length; i++) {
+                int index = chars[i] - 'a';
+                if (Objects.isNull(current[index])) {
+                    return false;
+                }
+                current = current[index].alphabet;
+            }
+            return true;
+        }
+    }
+
+    private void test() {
+        Trie trie = new Trie();
+        trie.insert("apple");
+        System.out.println(trie.search("apple"));
+        System.out.println(!trie.search("app"));
+        System.out.println(trie.startsWith("app"));
+        trie.insert("app");
+        System.out.println(trie.search("app"));
+    }
+
+    public static void main(String[] args) {
+        _0208_ImplementTriePrefixTree solution = new _0208_ImplementTriePrefixTree();
+        solution.test();
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

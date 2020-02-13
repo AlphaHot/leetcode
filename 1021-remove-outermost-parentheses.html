@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1021. Remove Outermost Parentheses</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1021_remove_outermost_parentheses">1021. Remove Outermost Parentheses</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1021_remove_outermost_parentheses"><a class="anchor" href="#_1021_remove_outermost_parentheses"></a>1021. Remove Outermost Parentheses</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/remove-outermost-parentheses/">LeetCode - Remove Outermost Parentheses</a></p>
+</div>
+<div class="paragraph">
+<p>A valid parentheses string is either empty <code>("")</code>, <code>"(" + A + ")"</code>, or <code>A + B</code>, where <code>A</code> and <code>B</code> are valid parentheses strings, and <code>+</code> represents string concatenation.  For example, <code>""</code>, <code>"()"</code>, <code>"))()"</code>, and <code>"(()(()"</code> are all valid parentheses strings.</p>
+</div>
+<div class="paragraph">
+<p>A valid parentheses string <code>S</code> is <strong>primitive</strong> if it is nonempty, and there does not exist a way to split it into <code>S = A+B</code>, with <code>A</code> and <code>B</code> nonempty valid parentheses strings.</p>
+</div>
+<div class="paragraph">
+<p>Given a valid parentheses string <code>S</code>, consider its primitive decomposition: <code>S = P_1 + P_2 + &#8230;&#8203; + P_k</code>, where <code>P_i</code> are primitive valid parentheses strings.</p>
+</div>
+<div class="paragraph">
+<p>Return <code>S</code> after removing the outermost parentheses of every primitive string in the primitive decomposition of <code>S</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ")())" <strong>Output:</strong> "()()()" <strong>Explanation:</strong> The input string is "(()())", with primitive decomposition "(()(" + "(())".
+After removing outer parentheses of each part, this is "()()" + "()" = "()()()".</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ")())(()(()"
+<strong>Output:</strong> "()()()()))" <strong>Explanation:</strong> The input string is "(()())(()(()", with primitive decomposition ")(" + "))" + "(()(()".
+After removing outer parentheses of each part, this is "()()" + "()" + "()))" = "()()()()((".</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "()()"
+<strong>Output:</strong> ""
+<strong>Explanation:</strong>
+The input string is "()()", with primitive decomposition "()" + "()".
+After removing outer parentheses of each part, this is "" + "" = "".</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>S.length &#8656; 10000</code></p>
+</li>
+<li>
+<p><code>S[i]</code> is <code>"("</code> or <code>")"</code></p>
+</li>
+<li>
+<p><code>S</code> is a valid parentheses string</p>
+</li>
+</ol>
+</div>
+<div id="src-1021" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1021-remove-outermost-parentheses.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1021_RemoveOutermostParentheses.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

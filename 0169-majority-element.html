@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>169. Majority Element</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_169_majority_element">169. Majority Element</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_169_majority_element"><a class="anchor" href="#_169_majority_element"></a>169. Majority Element</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/majority-element/">LeetCode - Majority Element</a></p>
+</div>
+<div class="paragraph">
+<p>Boyer-Moore Voting Algorithm 这个算法好巧妙啊！简直妙不可言！</p>
+</div>
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/majority-element/solution/">Majority Element solution - LeetCode</a></p>
+</div>
+<div class="paragraph">
+<p>Given an array of size <em>n</em>, find the majority element. The majority element is the element that appears <strong>more than</strong> <code>&lfloor; n/2 &rfloor;</code> times.</p>
+</div>
+<div class="paragraph">
+<p>You may assume that the array is non-empty and the majority element always exist in the array.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [3,2,3]
+<strong>Output:</strong> 3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [2,2,1,1,1,2,2]
+<strong>Output:</strong> 2</pre>
+</div>
+</div>
+<div id="src-0169" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+/**
+ * = 169. Majority Element
+ *
+ * https://leetcode.com/problems/majority-element/[Majority Element - LeetCode]
+ *
+ * iven an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+ *
+ * You may assume that the array is non-empty and the majority element always exist in the array.
+ *
+ * .Example 3:
+ * [source]
+ * ----
+ * Input: [3,2,3]
+ * Output: 3
+ * ----
+ *
+ * .Example 3:
+ * [source]
+ * ----
+ * Input: [2,2,1,1,1,2,2]
+ * Output: 2
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-05 12:33
+ */
+public class _0169_MajorityElement {
+    /**
+     *Runtime: 2 ms, faster than 61.24% of Java online submissions for Majority Element.
+     *
+     * Memory Usage: 42.4 MB, less than 59.56% of Java online submissions for Majority Element.
+     *
+     * Boyer-Moore Voting Algorithm
+     *
+     * Copy from: https://leetcode.com/problems/majority-element/solution/[Majority Element solution - LeetCode]
+     */
+    public int majorityElement(int[] nums) {
+        int count = 0;
+        Integer candidate = null;
+        for (int num : nums) {
+            if (0 == count) {
+                candidate = num;
+            }
+            count += candidate == num ? +1 : -1;
+        }
+        return candidate;
+    }
+
+    /**
+     * Runtime: 11 ms, faster than 45.56% of Java online submissions for Majority Element.
+     *
+     * Memory Usage: 40.6 MB, less than 99.26% of Java online submissions for Majority Element.
+     */
+    public int majorityElementMap(int[] nums) {
+        if (Objects.isNull(nums) || nums.length == 0) {
+            return 0;
+        }
+        Map&lt;Integer, Integer&gt; numToCountMap = new HashMap&lt;&gt;();
+        for (int num : nums) {
+            Integer count = numToCountMap.getOrDefault(num, 0);
+            numToCountMap.put(num, count + 1);
+        }
+        Map.Entry&lt;Integer, Integer&gt; result = null;
+        for (Map.Entry&lt;Integer, Integer&gt; entry : numToCountMap.entrySet()) {
+            if (result == null || result.getValue() &lt; entry.getValue()) {
+                result = entry;
+            }
+        }
+        return result.getKey();
+    }
+
+    public static void main(String[] args) {
+        _0169_MajorityElement solution = new _0169_MajorityElement();
+        int[] a1 = {3, 2, 3};
+        int r1 = solution.majorityElement(a1);
+        System.out.println((r1 == 3) + " : " + r1);
+
+        int[] a2 = {2, 2, 1, 1, 1, 2, 2};
+        int r2 = solution.majorityElement(a2);
+        System.out.println((r2 == 2) + " : " + r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

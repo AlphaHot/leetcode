@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>966. Vowel Spellchecker</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_966_vowel_spellchecker">966. Vowel Spellchecker</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_966_vowel_spellchecker"><a class="anchor" href="#_966_vowel_spellchecker"></a>966. Vowel Spellchecker</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/vowel-spellchecker/">LeetCode - Vowel Spellchecker</a></p>
+</div>
+<div class="paragraph">
+<p>Given a <code>wordlist</code>, we want to implement a spellchecker that converts a query word into a correct word.</p>
+</div>
+<div class="paragraph">
+<p>For a given <code>query</code> word, the spell checker handles two categories of spelling mistakes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Capitalization: If the query matches a word in the wordlist (<strong>case-insensitive</strong>), then the query word is returned with the same case as the case in the wordlist.</p>
+</li>
+<li>
+<p>Example: <code>wordlist = ["yellow"]</code>, <code>query = "YellOw"</code>: <code>correct = "yellow"</code></p>
+</li>
+<li>
+<p>Example: <code>wordlist = ["Yellow"]</code>, <code>query = "yellow"</code>: <code>correct = "Yellow"</code></p>
+</li>
+<li>
+<p>Example: <code>wordlist = ["yellow"]</code>, <code>query = "yellow"</code>: <code>correct = "yellow"</code></p>
+</li>
+<li>
+<p>Vowel Errors: If after replacing the vowels ('a', 'e', 'i', 'o', 'u') of the query word with any vowel individually, it matches a word in the wordlist (<strong>case-insensitive</strong>), then the query word is returned with the same case as the match in the wordlist.</p>
+</li>
+<li>
+<p>Example: <code>wordlist = ["YellOw"]</code>, <code>query = "yollow"</code>: <code>correct = "YellOw"</code></p>
+</li>
+<li>
+<p>Example: <code>wordlist = ["YellOw"]</code>, <code>query = "yeellow"</code>: <code>correct = ""</code> (no match)</p>
+</li>
+<li>
+<p>Example: <code>wordlist = ["YellOw"]</code>, <code>query = "yllw"</code>: <code>correct = ""</code> (no match)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition, the spell checker operates under the following precedence rules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When the query exactly matches a word in the wordlist (<strong>case-sensitive</strong>), you should return the same word back.</p>
+</li>
+<li>
+<p>When the query matches a word up to capitlization, you should return the first such match in the wordlist.</p>
+</li>
+<li>
+<p>When the query matches a word up to vowel errors, you should return the first such match in the wordlist.</p>
+</li>
+<li>
+<p>If the query has no matches in the wordlist, you should return the empty string.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given some <code>queries</code>, return a list of words <code>answer</code>, where <code>answer[i]</code> is the correct word for <code>query = queries[i]</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> wordlist = ["KiTe","kite","hare","Hare"], queries = ["kite","Kite","KiTe","Hare","HARE","Hear","hear","keti","keet","keto"]
+<strong>Output:</strong> ["kite","KiTe","KiTe","Hare","hare","","","KiTe","","KiTe"]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; wordlist.length &#8656; 5000</code></p>
+</li>
+<li>
+<p><code>1 &#8656; queries.length &#8656; 5000</code></p>
+</li>
+<li>
+<p><code>1 &#8656; wordlist[i].length &#8656; 7</code></p>
+</li>
+<li>
+<p><code>1 &#8656; queries[i].length &#8656; 7</code></p>
+</li>
+<li>
+<p>All strings in <code>wordlist</code> and <code>queries</code> consist only of <strong>english</strong> letters.</p>
+</li>
+</ul>
+</div>
+<div id="src-0966" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0966-vowel-spellchecker.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0966_VowelSpellchecker.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

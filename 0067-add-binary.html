@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>67. Add Binary</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_67_add_binary">67. Add Binary</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_67_add_binary"><a class="anchor" href="#_67_add_binary"></a>67. Add Binary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/add-binary/">LeetCode - Add Binary</a></p>
+</div>
+<div class="paragraph">
+<p>Given two binary strings, return their sum (also a binary string).</p>
+</div>
+<div class="paragraph">
+<p>The input strings are both <strong>non-empty</strong> and contains only characters <code>1</code> or <code>0</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre>Input: a = "11", b = "1"
+Output: "100"</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 2:</div>
+<div class="content">
+<pre>Input: a = "1010", b = "1011"
+Output: "10101"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Given two binary strings, return their sum (also a binary string).</p>
+</div>
+<div class="paragraph">
+<p>The input strings are both <strong>non-empty</strong> and contains only characters <code>1</code> or <code>0</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> a = "11", b = "1"
+<strong>Output:</strong> "100"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> a = "1010", b = "1011"
+<strong>Output:</strong> "10101"</pre>
+</div>
+</div>
+<div id="src-0067" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+/**
+ * = 67. Add Binary
+ *
+ * https://leetcode.com/problems/add-binary/[Add Binary - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-02-02 22:27
+ */
+public class _0067_AddBinary {
+    /**
+     * Runtime: 2 ms, faster than 64.49% of Java online submissions for Add Binary.
+     * Memory Usage: 38.3 MB, less than 5.62% of Java online submissions for Add Binary.
+     */
+    public String addBinary(String a, String b) {
+        StringBuilder result = new StringBuilder();
+        int carr = 0;
+        for (int i = a.length() - 1, j = b.length() - 1; i &gt;= 0 || j &gt;= 0; i--, j--) {
+            int ai = i &gt;= 0 ? a.charAt(i) - '0' : 0;
+            int bi = j &gt;= 0 ? b.charAt(j) - '0' : 0;
+            int sum = carr + ai + bi;
+            result.append(sum &amp; 1);
+            carr = (sum &gt;&gt;&gt; 1) &amp; 1;
+        }
+        result.append(carr &gt; 0 ? carr : "");
+        return result.reverse().toString();
+    }
+
+    public static void main(String[] args) {
+        _0067_AddBinary sollution = new _0067_AddBinary();
+        String r1 = sollution.addBinary("11", "1");
+        System.out.println("100".equals(r1) + " : " + r1);
+
+        String r2 = sollution.addBinary("1010", "1011");
+        System.out.println("10101".equals(r2) + " : " + r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

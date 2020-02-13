@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>877. Stone Game</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_877_stone_game">877. Stone Game</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_877_stone_game"><a class="anchor" href="#_877_stone_game"></a>877. Stone Game</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/stone-game/">LeetCode - Stone Game</a></p>
+</div>
+<div class="paragraph">
+<p>Alex and Lee play a game with piles of stones.  There are an even number of piles <strong>arranged in a row</strong>, and each pile has a positive integer number of stones <code>piles[i]</code>.</p>
+</div>
+<div class="paragraph">
+<p>The objective of the game is to end with the most stones.  The total number of stones is odd, so there are no ties.</p>
+</div>
+<div class="paragraph">
+<p>Alex and Lee take turns, with Alex starting first.  Each turn, a player takes the entire pile of stones from either the beginning or the end of the row.  This continues until there are no more piles left, at which point the person with the most stones wins.</p>
+</div>
+<div class="paragraph">
+<p>Assuming Alex and Lee play optimally, return <code>True</code> if and only if Alex wins the game.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [5,3,4,5]
+<strong>Output:</strong> true
+<strong>Explanation:</strong>
+Alex starts first, and can only take the first 5 or the last 5.
+Say he takes the first 5, so that the row becomes [3, 4, 5].
+If Lee takes 3, then the board is [4, 5], and Alex takes 5 to win with 10 points.
+If Lee takes the last 5, then the board is [3, 4], and Alex takes 4 to win with 9 points.
+This demonstrated that taking the first 5 was a winning move for Alex, so we return true.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>2 &#8656; piles.length &#8656; 500</code></p>
+</li>
+<li>
+<p><code>piles.length</code> is even.</p>
+</li>
+<li>
+<p><code>1 &#8656; piles[i] &#8656; 500</code></p>
+</li>
+<li>
+<p><code>sum(piles)</code> is odd.</p>
+</li>
+</ol>
+</div>
+<div id="src-0877" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0877-stone-game.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0877_StoneGame.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

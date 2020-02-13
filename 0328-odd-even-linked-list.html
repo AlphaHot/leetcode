@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>328. Odd Even Linked List</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_328_odd_even_linked_list">328. Odd Even Linked List</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_328_odd_even_linked_list"><a class="anchor" href="#_328_odd_even_linked_list"></a>328. Odd Even Linked List</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/odd-even-linked-list/">LeetCode - Odd Even Linked List</a></p>
+</div>
+<div class="paragraph">
+<p>使用双指针，将链表拆分成奇偶数两个链表，然后再拼接！确实是个很棒的方法！</p>
+</div>
+<div class="paragraph">
+<p>Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.</p>
+</div>
+<div class="paragraph">
+<p>You should try to do it in place. The program should run in O(1) space complexity and O(nodes) time complexity.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> <code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</code>
+<strong>Output:</strong> <code>1-&gt;3-&gt;5-&gt;2-&gt;4-&gt;NULL</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 2`-&gt;1-&gt;3-&gt;5-&gt;6-&gt;4-&gt;7-&gt;NULL`
+<strong>Output:</strong> <code>2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The relative order inside both the even and odd groups should remain as it was in the input.</p>
+</li>
+<li>
+<p>The first node is considered odd, the second node even and so on &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+<div id="src-0328" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.ListNode;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.ListNodeUtils.build;
+import static com.diguage.algorithm.util.ListNodeUtils.printListNode;
+
+/**
+ * = 328. Odd Even Linked List
+ *
+ * https://leetcode.com/problems/odd-even-linked-list/[Odd Even Linked List - LeetCode]
+ *
+ * Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.
+ *
+ * You should try to do it in place. The program should run in O(1) space complexity and O(nodes) time complexity.
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL
+ * Output: 1-&gt;3-&gt;5-&gt;2-&gt;4-&gt;NULL
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: 2-&gt;1-&gt;3-&gt;5-&gt;6-&gt;4-&gt;7-&gt;NULL
+ * Output: 2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL
+ * ----
+ *
+ * *Note:*
+ *
+ * * The relative order inside both the even and odd groups should remain as it was in the input.
+ * * The first node is considered odd, the second node even and so on ...
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-12 12:20
+ */
+public class _0328_OddEvenLinkedList {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Odd Even Linked List.
+     *
+     * Memory Usage: 38 MB, less than 12.50% of Java online submissions for Odd Even Linked List.
+     *
+     * Copy from: https://leetcode.com/problems/odd-even-linked-list/solution/[Odd Even Linked List solution - LeetCode]
+     */
+    public ListNode oddEvenList(ListNode head) {
+        if (Objects.isNull(head)) {
+            return null;
+        }
+        ListNode odd = head;
+        ListNode even = head.next;
+        ListNode evenHead = even;
+        while (Objects.nonNull(even) &amp;&amp; Objects.nonNull(even.next)) {
+            odd.next = even.next;
+            odd = odd.next;
+            even.next = odd.next;
+            even = even.next;
+        }
+        odd.next = evenHead;
+        return head;
+    }
+
+    public static void main(String[] args) {
+        _0328_OddEvenLinkedList solution = new _0328_OddEvenLinkedList();
+        ListNode r1 = solution.oddEvenList(build(Arrays.asList(1, 2, 3, 4, 5)));
+        printListNode(r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

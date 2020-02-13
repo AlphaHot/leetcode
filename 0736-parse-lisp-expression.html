@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>736. Parse Lisp Expression</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_736_parse_lisp_expression">736. Parse Lisp Expression</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_736_parse_lisp_expression"><a class="anchor" href="#_736_parse_lisp_expression"></a>736. Parse Lisp Expression</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/parse-lisp-expression/">LeetCode - Parse Lisp Expression</a></p>
+</div>
+<div class="paragraph">
+<p>You are given a string <code>expression</code> representing a Lisp-like expression to return the integer value of.</p>
+</div>
+<div class="paragraph">
+<p>The syntax for these expressions is given as follows.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>An expression is either an integer, a let-expression, an add-expression, a mult-expression, or an assigned variable.  Expressions always evaluate to a single integer.&lt;/li&gt;</p>
+</li>
+<li>
+<p>(An integer could be positive or negative.)&lt;/li&gt;</p>
+</li>
+<li>
+<p>A let-expression takes the form <code>(let v1 e1 v2 e2 &#8230;&#8203; vn en expr)</code>, where <code>let</code> is always the string <code>"let"</code>, then there are 1 or more pairs of alternating variables and expressions, meaning that the first variable <code>v1</code> is assigned the value of the expression <code>e1</code>, the second variable <code>v2</code> is assigned the value of the expression <code>e2</code>, and so on <strong>sequentially</strong>; and then the value of this let-expression is the value of the expression <code>expr</code>.&lt;/li&gt;</p>
+</li>
+<li>
+<p>An add-expression takes the form <code>(add e1 e2)</code> where <code>add</code> is always the string <code>"add"</code>, there are always two expressions <code>e1, e2</code>, and this expression evaluates to the addition of the evaluation of <code>e1</code> and the evaluation of <code>e2</code>.&lt;/li&gt;</p>
+</li>
+<li>
+<p>A mult-expression takes the form <code>(mult e1 e2)</code> where <code>mult</code> is always the string <code>"mult"</code>, there are always two expressions <code>e1, e2</code>, and this expression evaluates to the multiplication of the evaluation of <code>e1</code> and the evaluation of <code>e2</code>.&lt;/li&gt;</p>
+</li>
+<li>
+<p>For the purposes of this question, we will use a smaller subset of variable names.  A variable starts with a lowercase letter, then zero or more lowercase letters or digits.  Additionally for your convenience, the names "add", "let", or "mult" are protected and will never be used as variable names.&lt;/li&gt;</p>
+</li>
+<li>
+<p>Finally, there is the concept of scope.  When an expression of a variable name is evaluated, <strong>within the context of that evaluation</strong>, the innermost scope (in terms of parentheses) is checked first for the value of that variable, and then outer scopes are checked sequentially.  It is guaranteed that every expression is legal.  Please see the examples for more details on scope.&lt;/li&gt;</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Evaluation Examples:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> (add 1 2)
+<strong>Output:</strong> 3
+
+<strong>Input:</strong> (mult 3 (add 2 3))
+<strong>Output:</strong> 15
+
+<strong>Input:</strong> (let x 2 (mult x 5))
+<strong>Output:</strong> 10
+
+<strong>Input:</strong> (let x 2 (mult x (let x 3 y 4 (add x y))))
+<strong>Output:</strong> 14
+<strong>Explanation:</strong> In the expression (add x y), when checking for the value of the variable x,
+we check from the innermost scope to the outermost in the context of the variable we are trying to evaluate.
+Since x = 3 is found first, the value of x is 3.
+
+<strong>Input:</strong> (let x 3 x 2 x)
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> Assignment in let statements is processed sequentially.
+
+<strong>Input:</strong> (let x 1 y 2 x (add x y) (add x y))
+<strong>Output:</strong> 5
+<strong>Explanation:</strong> The first (add x y) evaluates as 3, and is assigned to x.
+The second (add x y) evaluates as 3+2 = 5.
+
+<strong>Input:</strong> (let x 2 (add (let x 3 (let x 4 x)) x))
+<strong>Output:</strong> 6
+<strong>Explanation:</strong> Even though (let x 4 x) has a deeper scope, it is outside the context
+of the final x in the add-expression.  That final x will equal 2.
+
+<strong>Input:</strong> (let a1 3 b2 (add a1 1) b2)
+<strong>Output</strong> 4
+<strong>Explanation:</strong> Variable names can contain digits after the first character.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong>
+. The given string <code>expression</code> is well formatted: There are no leading or trailing spaces, there is only a single space separating different components of the string, and no space between adjacent parentheses.  The expression is guaranteed to be legal and evaluate to an integer.&lt;/li&gt;
+. The length of <code>expression</code> is at most 2000.  (It is also non-empty, as that would not be a legal expression.)&lt;/li&gt;
+. The answer and all intermediate calculations of that answer are guaranteed to fit in a 32-bit integer.&lt;/li&gt;</p>
+</div>
+<div id="src-0736" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0736-parse-lisp-expression.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0736_ParseLispExpression.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

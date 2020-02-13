@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1. Two Sum</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1_two_sum">1. Two Sum</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1_two_sum"><a class="anchor" href="#_1_two_sum"></a>1. Two Sum</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/two-sum/">LeetCode - Two Sum</a></p>
+</div>
+<div class="paragraph">
+<p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.</p>
+</div>
+<div class="paragraph">
+<p>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>Given nums = [2, 7, 11, 15], target = 9,
+
+Because nums[<strong>0</strong>] + nums[<strong>1</strong>] = 2 + 7 = 9,
+return [<strong>0</strong>, <strong>1</strong>].</pre>
+</div>
+</div>
+<div id="src-0001" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * = 1. Two Sum
+ *
+ * https://leetcode.com/problems/two-sum/description/[Two Sum - LeetCode]
+ *
+ * Given an array of integers, return indices of the two numbers such that they
+ * add up to a specific target.
+ *
+ * You may assume that each input would have exactly one solution, and you may
+ * not use the same element twice.
+ *
+ * .Example:
+ * [source]
+ * ----
+ * Given nums = [2, 7, 11, 15], target = 9,
+ *
+ * Because nums[0] + nums[1] = 2 + 7 = 9,
+ * return [0, 1].
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2018-06-30
+ */
+public class _0001_TwoSum {
+    /**
+     * 原始算法，时间复杂度为 `O(n^2^)`.
+     *
+     * @param nums   数组
+     * @param target 目标
+     * @return 结果
+     */
+    public static int[] twoSum(int[] nums, int target) {
+        if (nums == null || nums.length &lt; 2) {
+            return null;
+        }
+        for (int i = 0; i &lt; nums.length; i++) {
+            for (int j = i + 1; j &lt; nums.length; j++) {
+                if (nums[i] + nums[j] == target) {
+                    return new int[]{i, j};
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * 优化后的算法，时间复杂度减低为 `O(n)`， 空间复杂度提高了。
+     *
+     * @param nums   数组
+     * @param target 目标
+     * @return 结果
+     */
+    public static int[] twoSumO1(int[] nums, int target) {
+        if (nums == null || nums.length &lt; 2) {
+            return null;
+        }
+
+        Map&lt;Integer, Integer&gt; diffNumToIndexMap = new HashMap&lt;&gt;(nums.length * 4 / 3);
+        for (int i = 0; i &lt; nums.length; i++) {
+            if (diffNumToIndexMap.containsKey(nums[i])) {
+                return new int[]{diffNumToIndexMap.get(nums[i]), i};
+            } else {
+                diffNumToIndexMap.put(target - nums[i], i);
+            }
+        }
+
+        return null;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{4, 9, 2, 7, 11, 15};
+        int target = 8;
+        System.out.println(Arrays.toString(twoSumO1(nums, target)));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

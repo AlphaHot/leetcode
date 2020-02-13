@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>283. Move Zeroes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_283_move_zeroes">283. Move Zeroes</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_283_move_zeroes"><a class="anchor" href="#_283_move_zeroes"></a>283. Move Zeroes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/move-zeroes/">LeetCode - Move Zeroes</a></p>
+</div>
+<div class="paragraph">
+<p>每次答案都比我写的简洁！</p>
+</div>
+<div class="paragraph">
+<p>Given an array <code>nums</code>, write a function to move all `0&#8217;s to the end of it while maintaining the relative order of the non-zero elements.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> <code>[0,1,0,3,12]</code>
+<strong>Output:</strong> <code>[1,3,12,0,0]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You must do this <strong>in-place</strong> without making a copy of the array.</p>
+</li>
+<li>
+<p>Minimize the total number of operations.</p>
+</li>
+</ol>
+</div>
+<div id="src-0283" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+
+/**
+ * = 283. Move Zeroes
+ *
+ * https://leetcode.com/problems/move-zeroes/[Move Zeroes - LeetCode]
+ *
+ * Given an array `nums`, write a function to move all `0`'s to the end of it while maintaining the relative order of the non-zero elements.
+ *
+ * .Example:
+ * [source]
+ * ----
+ * Input: [0,1,0,3,12]
+ * Output: [1,3,12,0,0]
+ * ----
+ *
+ * *Note:*
+ *
+ * . You must do this *in-place* without making a copy of the array.
+ * . Minimize the total number of operations.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-05 22:26
+ */
+public class _0283_MoveZeroes {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Move Zeroes.
+     *
+     * Memory Usage: 38 MB, less than 93.01% of Java online submissions for Move Zeroes.
+     */
+    public void moveZeroes(int[] nums) {
+        int count = 0;
+        for (int i = 0; i &lt; nums.length; i++) {
+            if (nums[i] == 0) {
+                count++;
+                continue;
+            }
+            nums[i - count] = nums[i];
+        }
+        for (int i = nums.length - count; i &lt; nums.length; i++) {
+            nums[i] = 0;
+        }
+    }
+
+    public static void main(String[] args) {
+        _0283_MoveZeroes solution = new _0283_MoveZeroes();
+        int[] a1 = {0, 1, 0, 3, 12};
+        solution.moveZeroes(a1);
+        int[] r1 = {1, 3, 12, 0, 0};
+        System.out.println(Arrays.equals(a1, r1) + " : " + Arrays.toString(a1));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1080. Insufficient Nodes in Root to Leaf Paths</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1080_insufficient_nodes_in_root_to_leaf_paths">1080. Insufficient Nodes in Root to Leaf Paths</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1080_insufficient_nodes_in_root_to_leaf_paths"><a class="anchor" href="#_1080_insufficient_nodes_in_root_to_leaf_paths"></a>1080. Insufficient Nodes in Root to Leaf Paths</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/insufficient-nodes-in-root-to-leaf-paths/">LeetCode - Insufficient Nodes in Root to Leaf Paths</a></p>
+</div>
+<div class="paragraph">
+<p>Given the <code>root</code> of a binary tree, consider all <em>root to leaf paths</em>: paths from the root to any leaf.  (A leaf is a node with no children.)</p>
+</div>
+<div class="paragraph">
+<p>A <code>node</code> is <em>insufficient</em> if <strong>every</strong> such root to leaf path intersecting this <code>node</code> has sum strictly less than <code>limit</code>.</p>
+</div>
+<div class="paragraph">
+<p>Delete all insufficient nodes simultaneously, and return the root of the resulting binary tree.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>image::https://assets.leetcode.com/uploads/2019/06/05/insufficient-11.png[]
+
+<strong>Input:</strong> root = [1,2,3,4,-99,-99,7,8,9,-99,-99,12,13,-99,14], limit = 1
+
+image::https://assets.leetcode.com/uploads/2019/06/05/insufficient-2.png[]
+
+<strong>Output:</strong> [1,2,3,4,null,null,7,8,9,null,14]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>image::https://assets.leetcode.com/uploads/2019/06/05/insufficient-3.png[]
+
+<strong>Input:</strong> root = [5,4,8,11,null,17,4,7,1,null,null,5,3], limit = 22
+
+image::https://assets.leetcode.com/uploads/2019/06/05/insufficient-4.png[]
+
+Output:* [5,4,8,11,null,17,4,7,null,null,null,5]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>image::https://assets.leetcode.com/uploads/2019/06/11/screen-shot-2019-06-11-at-83301-pm.png[]
+
+<strong>Input:</strong> root = [1,2,-3,-5,null,4,null], limit = -1
+
+image::https://assets.leetcode.com/uploads/2019/06/11/screen-shot-2019-06-11-at-83517-pm.png[]
+
+<strong>Output:</strong> [1,null,-3,4]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The given tree will have between <code>1</code> and <code>5000</code> nodes.</p>
+</li>
+<li>
+<p><code>-10^5 &#8656; node.val &#8656; 10^5</code></p>
+</li>
+<li>
+<p><code>-10^9 &#8656; limit &#8656; 10^9</code></p>
+</li>
+</ol>
+</div>
+<div id="src-1080" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1080-insufficient-nodes-in-root-to-leaf-paths.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1080_InsufficientNodesInRootToLeafPaths.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>189. Rotate Array</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_189_rotate_array">189. Rotate Array</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_189_rotate_array"><a class="anchor" href="#_189_rotate_array"></a>189. Rotate Array</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/rotate-array/">LeetCode - Rotate Array</a></p>
+</div>
+<div class="paragraph">
+<p>发现官网测试用例少了一个特殊情况：如果 <code>k</code> 大于两倍数组长度，提交的测试就会报错，但是官网却显示通过。</p>
+</div>
+<div class="paragraph">
+<p>数组反转的方法也不错！反转时，直接使用界限的值进行加减比较简单省事！</p>
+</div>
+<div class="paragraph">
+<p>Given an array, rotate the array to the right by <em>k</em> steps, where <em>k</em> is non-negative.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> <code>[1,2,3,4,5,6,7]</code> and <em>k</em> = 3
+<strong>Output:</strong> <code>[5,6,7,1,2,3,4]</code>
+<strong>Explanation:</strong>
+rotate 1 steps to the right: <code>[7,1,2,3,4,5,6]</code>
+rotate 2 steps to the right: <code>[6,7,1,2,3,4,5]
+`rotate 3 steps to the right: `[5,6,7,1,2,3,4]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> <code>[-1,-100,3,99]</code> and <em>k</em> = 2
+<strong>Output:</strong> [3,99,-1,-100]
+<strong>Explanation:</strong>
+rotate 1 steps to the right: [99,-1,-100,3]
+rotate 2 steps to the right: [3,99,-1,-100]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.</p>
+</li>
+<li>
+<p>Could you do it in-place with O(1) extra space?</p>
+</li>
+</ul>
+</div>
+<div id="src-0189" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+/**
+ * = 189. Rotate Array
+ *
+ * Given an array, rotate the array to the right by k steps, where k is non-negative.
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: [1,2,3,4,5,6,7] and k = 3
+ * Output: [5,6,7,1,2,3,4]
+ * Explanation:
+ * rotate 1 steps to the right: [7,1,2,3,4,5,6]
+ * rotate 2 steps to the right: [6,7,1,2,3,4,5]
+ * rotate 3 steps to the right: [5,6,7,1,2,3,4]
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: [-1,-100,3,99] and k = 2
+ * Output: [3,99,-1,-100]
+ * Explanation:
+ * rotate 1 steps to the right: [99,-1,-100,3]
+ * rotate 2 steps to the right: [3,99,-1,-100]
+ * ----
+ *
+ * *Note:*
+ *
+ * * Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
+ * * Could you do it in-place with O(1) extra space?
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-05 13:05
+ */
+public class _0189_RotateArray {
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Rotate Array.
+     *
+     * Memory Usage: 37.4 MB, less than 100.00% of Java online submissions for Rotate Array.
+     *
+     * Copy from: https://leetcode.com/problems/rotate-array/solution/[Rotate Array solution - LeetCode]
+     */
+    public void rotate(int[] nums, int k) {
+        if (Objects.isNull(nums) || nums.length == 0 || k % nums.length == 0) {
+            return;
+        }
+        k %= nums.length;
+        reverse(nums, 0, nums.length - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, nums.length - 1);
+    }
+
+    private void reverse(int[] nums, int start, int end) {
+        while (start &lt; end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Rotate Array.
+     * &lt;p&gt;
+     * Memory Usage: 38 MB, less than 85.58% of Java online submissions for Rotate Array.
+     */
+    public void rotateExtraArray(int[] nums, int k) {
+        if (Objects.isNull(nums) || nums.length == 0 ||  k % nums.length == 0) {
+            return;
+        }
+        k %= nums.length;
+        int[] temp = new int[k];
+        for (int i = 0; i &lt; k; i++) {
+            temp[k - i - 1] = nums[nums.length - i - 1];
+        }
+        for (int i = nums.length - 1; i &gt;= k; i--) {
+            nums[i] = nums[i - k];
+        }
+        for (int i = 0; i &lt; k; i++) {
+            nums[i] = temp[i];
+        }
+    }
+
+    public static void main(String[] args) {
+        _0189_RotateArray solution = new _0189_RotateArray();
+        int[] a1 = {1, 2, 3, 4, 5, 6, 7};
+        int k1 = 3;
+        solution.rotate(a1, k1);
+        int[] r1 = {5, 6, 7, 1, 2, 3, 4};
+        System.out.println(Arrays.equals(a1, r1) + " : " + Arrays.toString(a1));
+
+        int[] a2 = {-1, -100, 3, 99};
+        int k2 = 10;
+        solution.rotate(a2, k2);
+        int[] r2 = {3, 99, -1, -100};
+        System.out.println(Arrays.equals(a2, r2) + " : " + Arrays.toString(a2));
+
+        int[] a3 = {-1};
+        int k3 = 2;
+        solution.rotate(a3, k3);
+        int[] r3 = {-1};
+        System.out.println(Arrays.equals(a3, r3) + " : " + Arrays.toString(a3));
+
+        int[] a4 = {1, 2};
+        int k4 = 1;
+        solution.rotate(a4, k4);
+        int[] r4 = {2,1};
+        System.out.println(Arrays.equals(a4, r4) + " : " + Arrays.toString(a4));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

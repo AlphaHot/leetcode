@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>138. Copy List with Random Pointer</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_138_copy_list_with_random_pointer">138. Copy List with Random Pointer</a>
+<ul class="sectlevel2">
+<li><a href="#_解题分析">解题分析</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_138_copy_list_with_random_pointer"><a class="anchor" href="#_138_copy_list_with_random_pointer"></a>138. Copy List with Random Pointer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/copy-list-with-random-pointer/">LeetCode - Copy List with Random Pointer</a></p>
+</div>
+<div class="paragraph">
+<p>A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.</p>
+</div>
+<div class="paragraph">
+<p>Return a <a href="https://en.wikipedia.org/wiki/Object_copying#Deep_copy"><strong>deep copy</strong></a> of the list.</p>
+</div>
+<div class="paragraph">
+<p>The Linked List is represented in the input/output as a list of <code>n</code> nodes. Each node is represented as a pair of <code>[val, random_index]</code> where:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>val</code>: an integer representing <code>Node.val</code></p>
+</li>
+<li>
+<p><code>random_index</code>: the index of the node (range from <code>0</code> to <code>n-1</code>) where random pointer points to, or <code>null</code> if it does not point to any node.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0138-copy-list-with-random-pointer-example-1.png" alt="0138 copy list with random pointer example 1">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
+<strong>Output:</strong> [[7,null],[13,0],[11,4],[10,2],[1,0]]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0138-copy-list-with-random-pointer-example-2.png" alt="0138 copy list with random pointer example 2">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> head = [[1,1],[2,1]]
+<strong>Output:</strong> [[1,1],[2,1]]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0138-copy-list-with-random-pointer-example-3.png" alt="0138 copy list with random pointer example 3">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> head = [[3,null],[3,0],[3,null]]
+<strong>Output:</strong> [[3,null],[3,0],[3,null]]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 4:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> head = []
+<strong>Output:</strong> []
+<strong>Explanation:</strong> Given linked list is empty (null pointer), so return null.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>-10000 &#8656; Node.val &#8656; 10000</code></p>
+</li>
+<li>
+<p><code>Node.random</code> is null or pointing to a node in the linked list.</p>
+</li>
+<li>
+<p>Number of Nodes will not exceed 1000.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_解题分析"><a class="anchor" href="#_解题分析"></a>解题分析</h3>
+<div class="paragraph">
+<p>这道题可以使用类似 <a href="133. Clone Graph">133. Clone Graph</a> 的解法来求解。</p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe src="https://www.youtube.com/embed/OvpKeraoxW0?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0138-copy-list-with-random-pointer.jpg" alt="0138 copy list with random pointer">
+</div>
+</div>
+<div class="paragraph">
+<p>这个解法非常精妙！</p>
+</div>
+<div class="paragraph">
+<p>使用 <code>Map</code> 的解法也好巧妙啊！</p>
+</div>
+<div id="src-0138" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+/**
+ * = 138. Copy List with Random Pointer
+ *
+ * https://leetcode.com/problems/copy-list-with-random-pointer/[Copy List with Random Pointer - LeetCode]
+ *
+ * A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.
+ *
+ * Return a deep copy of the list.
+ *
+ * The Linked List is represented in the input/output as a list of n nodes. Each node is represented as a pair of [val, random_index] where:
+ *
+ * * `val`: an integer representing `Node.val`
+ * * `random_index`: the index of the node (range from `0` to `n-1`) where random pointer points to, or `null` if it does not point to any node.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
+ * Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: head = [[1,1],[2,1]]
+ * Output: [[1,1],[2,1]]
+ * ----
+ *
+ * .Example 3:
+ * [source]
+ * ----
+ * Input: head = [[3,null],[3,0],[3,null]]
+ * Output: [[3,null],[3,0],[3,null]]
+ * ----
+ *
+ * .Example 4:
+ * [source]
+ * ----
+ * Input: head = []
+ * Output: []
+ * Explanation: Given linked list is empty (null pointer), so return null.
+ * ----
+ *
+ * *Constraints:*
+ *
+ * * `-10000 &lt;= Node.val &lt;= 10000`
+ * * `Node.random` is null or pointing to a node in the linked list.
+ * * Number of Nodes will not exceed 1000.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-07 22:21
+ */
+public class _0138_CopyListWithRandomPointer {
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Copy List with Random Pointer.
+     *
+     * Memory Usage: 40.6 MB, less than 5.61% of Java online submissions for Copy List with Random Pointer.
+     *
+     * Copy from: https://leetcode.com/problems/copy-list-with-random-pointer/discuss/43488/Java-O(n)-solution[Java O(n) solution - LeetCode Discuss]
+     */
+    public Node copyRandomList(Node head) {
+        if (Objects.isNull(head)) {
+            return null;
+        }
+        Map&lt;Node, Node&gt; dadToChildMap = new HashMap&lt;&gt;();
+        Node current = head;
+        while (Objects.nonNull(current)) {
+            dadToChildMap.put(current, new Node(current.val));
+            current = current.next;
+        }
+
+        current = head;
+        while (Objects.nonNull(current)) {
+            dadToChildMap.get(current).next = dadToChildMap.get(current.next);
+            dadToChildMap.get(current).random = dadToChildMap.get(current.random);
+            current = current.next;
+        }
+
+        return dadToChildMap.get(head);
+    }
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Copy List with Random Pointer.
+     *
+     * Memory Usage: 39.2 MB, less than 5.61% of Java online submissions for Copy List with Random Pointer.
+     *
+     * Copy form: https://leetcode.com/problems/copy-list-with-random-pointer/discuss/43491/A-solution-with-constant-space-complexity-O(1)-and-linear-time-complexity-O(N)[A solution with constant space complexity O(1) and linear time complexity O(N) - LeetCode Discuss]
+     */
+    public Node copyRandomListLink(Node head) {
+        if (Objects.isNull(head)) {
+            return null;
+        }
+        // 第一步：把原始链表和结果链表混编起来。
+        Node acNode = head;
+        while (Objects.nonNull(acNode)) {
+            Node node = new Node(acNode.val);
+            node.next = acNode.next;
+            acNode.next = node;
+            acNode = node.next;
+        }
+        // 第二步：复制 random 指针
+        acNode = head;
+        while (Objects.nonNull(acNode)) {
+            Node random = acNode.random;
+            if (Objects.nonNull(random)) {
+                Node next = acNode.next;
+                next.random = random.next;
+            }
+            acNode = acNode.next.next;
+        }
+
+        // 第三步：拆分出结果链表
+        // Node result = head.next;
+        // Node rcNode = result;
+        // acNode = head;
+        // while (Objects.nonNull(rcNode)) {
+        //     if (Objects.nonNull(rcNode.next)) {
+        //         acNode.next = rcNode.next;
+        //         rcNode.next = rcNode.next.next;
+        //         acNode = acNode.next;
+        //     }
+        //     rcNode = rcNode.next;
+        // }
+        // acNode.next = null;
+
+        Node prefixHead = new Node(0);
+        Node rcNode = prefixHead;
+        acNode = head;
+        while (Objects.nonNull(acNode)) {
+            rcNode.next = acNode.next;
+            acNode.next = acNode.next.next;
+            acNode = acNode.next;
+            rcNode = rcNode.next;
+        }
+
+        return prefixHead.next;
+    }
+
+    public static void main(String[] args) {
+        _0138_CopyListWithRandomPointer solution = new _0138_CopyListWithRandomPointer();
+        Integer[][] a1 = {{7, null}, {13, 0}, {11, 4}, {10, 2}, {1, 0}};
+        Node l1 = build(a1);
+        Node r1 = solution.copyRandomList(l1);
+
+        Integer[][] a2 = {{1, 1}, {2, 1}};
+        Node l2 = build(a2);
+        Node r2 = solution.copyRandomList(l2);
+    }
+
+    public static Node build(Integer[][] array) {
+        Node restult = new Node(array[0][0]);
+        Node current = restult;
+        for (int i = 1; i &lt; array.length; i++) {
+            Node next = new Node(array[i][0]);
+            current.next = next;
+            current = next;
+        }
+
+        current = restult;
+        for (int i = 0; i &lt; array.length; i++) {
+            Integer[] ints = array[i];
+            if (Objects.nonNull(ints[1])) {
+                Node random = restult;
+                for (int j = 0; j &lt; ints[1]; j++) {
+                    random = random.next;
+                }
+                current.random = random;
+            }
+            current = current.next;
+        }
+
+        return restult;
+    }
+
+    static class Node {
+        int val;
+        Node next;
+        Node random;
+
+        public Node(int val) {
+            this.val = val;
+            this.next = null;
+            this.random = null;
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

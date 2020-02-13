@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>102. Binary Tree Level Order Traversal</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_102_binary_tree_level_order_traversal">102. Binary Tree Level Order Traversal</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_102_binary_tree_level_order_traversal"><a class="anchor" href="#_102_binary_tree_level_order_traversal"></a>102. Binary Tree Level Order Traversal</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/">LeetCode - Binary Tree Level Order Traversal</a></p>
+</div>
+<div class="paragraph">
+<p>这个题其实很简单，只要保持需要读取值的那一层的节点就可以了。</p>
+</div>
+<div class="paragraph">
+<p>Given a binary tree, return the <em>level order</em> traversal of its nodes' values. (ie, from left to right, level by level).</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="paragraph">
+<p>Given binary tree <code>[3,9,20,null,null,15,7]</code>,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    3
+   / \
+  9  20
+    /  \
+   15   7</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>return its level order traversal as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[
+  [3],
+  [9,20],
+  [15,7]
+]</pre>
+</div>
+</div>
+<div id="src-0102" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.TreeNode;
+
+import java.util.*;
+
+import static com.diguage.algorithm.util.TreeNodeUtils.buildTree;
+
+/**
+ * = 102. Binary Tree Level Order Traversal
+ *
+ * https://leetcode.com/problems/binary-tree-level-order-traversal/[Binary Tree Level Order Traversal - LeetCode]
+ *
+ * Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
+ *
+ * For example:
+ * Given binary tree `[3,9,20,null,null,15,7]`,
+ *
+ * ----
+ *     3
+ *    / \
+ *   9  20
+ *     /  \
+ *    15   7
+ * ----
+ *
+ * return its level order traversal as:
+ *
+ * ----
+ * [
+ *   [3],
+ *   [9,20],
+ *   [15,7]
+ * ]
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-24 20:40
+ */
+public class _0102_BinaryTreeLevelOrderTraversal {
+
+    /**
+     * Runtime: 3 ms, faster than 5.15% of Java online submissions for Binary Tree Level Order Traversal.
+     *
+     * Memory Usage: 40.2 MB, less than 5.33% of Java online submissions for Binary Tree Level Order Traversal.
+     */
+    public List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) {
+        if (Objects.isNull(root)) {
+            return Collections.emptyList();
+        }
+        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();
+
+        List&lt;TreeNode&gt; level = new ArrayList&lt;&gt;();
+        level.add(root);
+        while (!level.isEmpty()) {
+            List&lt;TreeNode&gt; temp = new ArrayList&lt;&gt;();
+            List&lt;Integer&gt; values = new ArrayList&lt;&gt;(level.size());
+            for (TreeNode node : level) {
+                values.add(node.val);
+                if (Objects.nonNull(node.left)) {
+                    temp.add(node.left);
+                }
+                if (Objects.nonNull(node.right)) {
+                    temp.add(node.right);
+                }
+            }
+            result.add(values);
+            level = temp;
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0102_BinaryTreeLevelOrderTraversal solution = new _0102_BinaryTreeLevelOrderTraversal();
+        List&lt;List&lt;Integer&gt;&gt; r1 = solution.levelOrder(buildTree(Arrays.asList(3, 9, 20, null, null, 15, 7)));
+        System.out.println(r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

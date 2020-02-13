@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1208. Get Equal Substrings Within Budget</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1208_get_equal_substrings_within_budget">1208. Get Equal Substrings Within Budget</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1208_get_equal_substrings_within_budget"><a class="anchor" href="#_1208_get_equal_substrings_within_budget"></a>1208. Get Equal Substrings Within Budget</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/get-equal-substrings-within-budget/">LeetCode - Get Equal Substrings Within Budget</a></p>
+</div>
+<div class="paragraph">
+<p>You are given two strings <code>s</code> and <code>t</code> of the same length. You want to change <code>s</code> to <code>t</code>. Changing the <code>i</code>-th character of <code>s</code> to <code>i</code>-th character of <code>t</code> costs <code>|s[i] - t[i]|</code> that is, the absolute difference between the ASCII values of the characters.</p>
+</div>
+<div class="paragraph">
+<p>You are also given an integer <code>maxCost</code>.</p>
+</div>
+<div class="paragraph">
+<p>Return the maximum length of a substring of <code>s</code> that can be changed to be the same as the corresponding substring of <code>t`with a cost less than or equal to `maxCost</code>.</p>
+</div>
+<div class="paragraph">
+<p>If there is no substring from <code>s</code> that can be changed to its corresponding substring from <code>t</code>, return <code>0</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> s = "abcd", t = "bcdf", maxCost = 3
+<strong>Output:</strong> 3
+<strong>Explanation:</strong>"abc" of s can change to "bcd". That costs 3, so the maximum length is 3.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> s = "abcd", t = "cdef", maxCost = 3
+<strong>Output:</strong> 1
+<strong>Explanation:</strong> Each character in s costs 2 to change to charactor in <code>t, so the maximum length is 1.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> s = "abcd", t = "acde", maxCost = 0
+<strong>Output:</strong> 1
+<strong>Explanation:</strong> You can't make any change, so the maximum length is 1.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; s.length, t.length &#8656; 10^5</code></p>
+</li>
+<li>
+<p><code>0 &#8656; maxCost &#8656; 10^6</code></p>
+</li>
+<li>
+<p><code>s</code> and <code>t</code> only contain lower case English letters.</p>
+</li>
+</ul>
+</div>
+<div id="src-1208" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1208-get-equal-substrings-within-budget.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1208_GetEqualSubstringsWithinBudget.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:09 +0800
+</div>
+</div>
+</body>
+</html>

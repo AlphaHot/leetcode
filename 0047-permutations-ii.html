@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>47. Permutations II</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_47_permutations_ii">47. Permutations II</a>
+<ul class="sectlevel2">
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_47_permutations_ii"><a class="anchor" href="#_47_permutations_ii"></a>47. Permutations II</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/permutations-ii/">LeetCode - Permutations II</a></p>
+</div>
+<div class="paragraph">
+<p>Given a collection of numbers that might contain duplicates, return all possible unique permutations.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre class="highlight"><code>Input: [1,1,2]
+Output:
+[
+  [1,1,2],
+  [1,2,1],
+  [2,1,1]
+]</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0047-1.png" alt="0047 1">
+</div>
+</div>
+<div class="paragraph">
+<p>思考：去重剪枝的判断是怎么实现的？</p>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/permutations-ii/solution/hui-su-suan-fa-python-dai-ma-java-dai-ma-by-liwe-2/">回溯搜索 + 剪枝 - 全排列 II - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given a collection of numbers that might contain duplicates, return all possible unique permutations.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [1,1,2]
+<strong>Output:</strong>
+[
+  [1,1,2],
+  [1,2,1],
+  [2,1,1]
+]</pre>
+</div>
+</div>
+<div id="src-0047" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.*;
+
+/**
+ * = 47. Permutations II
+ *
+ * https://leetcode.com/problems/permutations-ii/[Permutations II - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-27 20:29
+ */
+public class _0047_PermutationsII {
+    /**
+     * Runtime: 1 ms, faster than 100.00% of Java online submissions for Permutations II.
+     * Memory Usage: 41.6 MB, less than 11.94% of Java online submissions for Permutations II.
+     */
+    public List&lt;List&lt;Integer&gt;&gt; permuteUnique(int[] nums) {
+        if (Objects.isNull(nums) || nums.length == 0) {
+            return Collections.emptyList();
+        }
+        Arrays.sort(nums);
+        boolean[] used = new boolean[nums.length];
+        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();
+        backtrack(nums, 0, used, result, new ArrayDeque&lt;&gt;());
+        return result;
+    }
+
+    private void backtrack(int[] nums, int startIndex, boolean[] used,
+                           List&lt;List&lt;Integer&gt;&gt; result, Deque&lt;Integer&gt; current) {
+        if (nums.length == startIndex) {
+            result.add(new ArrayList&lt;&gt;(current));
+            return;
+        }
+
+        for (int i = 0; i &lt; nums.length; i++) {
+            if (!used[i]) {
+
+                // 修改 2：在 used[i - 1] 刚刚被撤销的时候剪枝，说明接下来会被选择，搜索一定会重复，故"剪枝"
+                if (i &gt; 0 &amp;&amp; nums[i - 1] == nums[i] &amp;&amp; !used[i - 1]) {
+                    continue;
+                }
+
+                used[i] = true;
+                current.addLast(nums[i]);
+                backtrack(nums, startIndex + 1, used, result, current);
+
+                current.removeLast();
+                used[i] = false;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        _0047_PermutationsII solution = new _0047_PermutationsII();
+        int[] n1 = {1, 1, 2};
+        System.out.println(solution.permuteUnique(n1));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>18. 4Sum</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_18_4sum">18. 4Sum</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_18_4sum"><a class="anchor" href="#_18_4sum"></a>18. 4Sum</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/4sum/">LeetCode - 4Sum</a></p>
+</div>
+<div class="paragraph">
+<p>Given an array <code>nums</code> of <em>n</em> integers and an integer <code>target</code>, are there elements <em>a</em>, <em>b</em>, <em>c</em>, and <em>d</em> in <code>nums</code> such that <em>a</em> + <em>b</em> + <em>c</em> + <em>d</em> = <code>target</code>? Find all unique quadruplets in the array which gives the sum of <code>target</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="paragraph">
+<p>The solution set must not contain duplicate quadruplets.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Given array nums = [1, 0, -1, 0, -2, 2], and target = 0.
+
+A solution set is:
+[
+  [-1,  0, 0, 1],
+  [-2, -1, 1, 2],
+  [-2,  0, 0, 2]
+]</pre>
+</div>
+</div>
+<div id="src-0018" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.*;
+
+/**
+ * = 18. 4Sum
+ *
+ * https://leetcode.com/problems/4sum/description/[4Sum - LeetCode]
+ *
+ * Given an array `nums` of n integers and an integer `target`, are there
+ * elements `a`, `b`, `c`, and `d` in `nums` such that `a + b + c + d = target`?
+ * Find all unique quadruplets in the array which gives the sum of target.
+ *
+ * == Note
+ *
+ * The solution set must not contain duplicate quadruplets.
+ *
+ * .Example:
+ * [source]
+ * ----
+ * Given array nums = [1, 0, -1, 0, -2, 2], and target = 0.
+ *
+ * A solution set is:
+ * [
+ *   [-1,  0, 0, 1],
+ *   [-2, -1, 1, 2],
+ *   [-2,  0, 0, 2]
+ * ]
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2018-07-15 00:58
+ */
+public class _0018_4Sum {
+    /**
+     * Runtime: 4 ms, faster than 94.46% of Java online submissions for 4Sum.
+     *
+     * Memory Usage: 40.7 MB, less than 52.17% of Java online submissions for 4Sum.
+     */
+    public List&lt;List&lt;Integer&gt;&gt; fourSum(int[] nums, int target) {
+        int numCount = 4;
+        if (Objects.isNull(nums) || nums.length &lt; numCount) {
+            return Collections.emptyList();
+        }
+
+        Arrays.sort(nums);
+        int length = nums.length;
+        if (target &lt; numCount * nums[0] || numCount * nums[length - 1] &lt; target) {
+            return Collections.emptyList();
+        }
+
+        List&lt;List&lt;Integer&gt;&gt; result = new LinkedList&lt;&gt;();
+        for (int i = 0; i &lt; length - 3; i++) {
+            if (i &gt; 0 &amp;&amp; nums[i] == nums[i - 1]) {
+                continue;
+            }
+            for (int j = i + 1; j &lt; length - 2; j++) {
+                if (j &gt; i + 1 &amp;&amp; nums[j] == nums[j - 1]) {
+                    continue;
+                }
+                int twoSumTarget = target - nums[i] - nums[j];
+                int minTwoSum = nums[j + 1] + nums[j + 2];
+                int maxTwoSum = nums[length - 1] + nums[length - 2];
+                if (twoSumTarget &lt; minTwoSum || maxTwoSum &lt; twoSumTarget) {
+                    continue;
+                }
+                for (int m = j + 1, n = length - 1; m &lt; n; ) {
+                    int twoSum = nums[m] + nums[n];
+                    if (twoSum &lt; twoSumTarget) {
+                        while (m &lt; n &amp;&amp; nums[m] == nums[m + 1]) {
+                            m++;
+                        }
+                        m++;
+                    } else if (twoSumTarget &lt; twoSum) {
+                        while (m &lt; n &amp;&amp; nums[n - 1] == nums[n]) {
+                            n--;
+                        }
+                        n--;
+                    } else {
+                        result.add(Arrays.asList(nums[i], nums[j], nums[m], nums[n]));
+
+                        while (m &lt; n &amp;&amp; nums[m] == nums[m + 1]) {
+                            m++;
+                        }
+                        m++;
+
+                        while (m &lt; n &amp;&amp; nums[n - 1] == nums[n]) {
+                            n--;
+                        }
+                        n--;
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0018_4Sum solution = new _0018_4Sum();
+        List&lt;List&lt;Integer&gt;&gt; r1 = solution.fourSum(new int[]{1, 0, -1, 0, -2, 2}, 0);
+        System.out.println(Arrays.deepToString(r1.toArray()));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

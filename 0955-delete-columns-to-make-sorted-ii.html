@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>955. Delete Columns to Make Sorted II</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_955_delete_columns_to_make_sorted_ii">955. Delete Columns to Make Sorted II</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_955_delete_columns_to_make_sorted_ii"><a class="anchor" href="#_955_delete_columns_to_make_sorted_ii"></a>955. Delete Columns to Make Sorted II</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/delete-columns-to-make-sorted-ii/">LeetCode - Delete Columns to Make Sorted II</a></p>
+</div>
+<div class="paragraph">
+<p>We are given an array <code>A</code> of <code>N</code> lowercase letter strings, all of the same length.</p>
+</div>
+<div class="paragraph">
+<p>Now, we may choose any set of deletion indices, and for each string, we delete all the characters in those indices.</p>
+</div>
+<div class="paragraph">
+<p>For example, if we have an array <code>A = ["abcdef","uvwxyz"]</code> and deletion indices <code>{0, 2, 3}</code>, then the final array after deletions is <code>["bef","vyz"]</code>.</p>
+</div>
+<div class="paragraph">
+<p>Suppose we chose a set of deletion indices <code>D</code> such that after deletions, the final array has its elements in <strong>lexicographic</strong> order (<code>A[0] &#8656; A[1] &#8656; A[2] &#8230;&#8203; &#8656; A[A.length - 1]</code>).</p>
+</div>
+<div class="paragraph">
+<p>Return the minimum possible value of <code>D.length</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ["ca","bb","ac"]
+<strong>Output:</strong> 1
+<strong>Explanation:</strong>
+After deleting the first column, A = ["a", "b", "c"].
+Now A is in lexicographic order (ie. A[0] &lt;= A[1] &lt;= A[2]).
+We require at least 1 deletion since initially A was not in lexicographic order, so the answer is 1.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ["xc","yb","za"]
+<strong>Output:</strong> 0
+<strong>Explanation:</strong>
+A is already in lexicographic order, so we don't need to delete anything.
+Note that the rows of A are not necessarily in lexicographic order:
+ie. it is NOT necessarily true that (A[0][0] &lt;= A[0][1] &lt;= ...)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ["zyx","wvu","tsr"]
+<strong>Output:</strong> 3
+<strong>Explanation:</strong>
+We have to delete every column.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>1 &#8656; A.length &#8656; 100</code></p>
+</li>
+<li>
+<p><code>1 &#8656; A[i].length &#8656; 100</code></p>
+</li>
+</ol>
+</div>
+<div id="src-0955" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0955-delete-columns-to-make-sorted-ii.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0955_DeleteColumnsToMakeSortedII.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

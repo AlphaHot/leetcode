@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>721. Accounts Merge</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_721_accounts_merge">721. Accounts Merge</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_721_accounts_merge"><a class="anchor" href="#_721_accounts_merge"></a>721. Accounts Merge</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/accounts-merge/">LeetCode - Accounts Merge</a></p>
+</div>
+<div class="paragraph">
+<p>Given a list <code>accounts</code>, each element <code>accounts[i]</code> is a list of strings, where the first element <code>accounts[i][0]</code> is a <em>name</em>, and the rest of the elements are <em>emails</em> representing emails of the account.</p>
+</div>
+<div class="paragraph">
+<p>Now, we would like to merge these accounts.  Two accounts definitely belong to the same person if there is some email that is common to both accounts.  Note that even if two accounts have the same name, they may belong to different people as people could have the same name.  A person can have any number of accounts initially, but all of their accounts definitely have the same name.</p>
+</div>
+<div class="paragraph">
+<p>After merging the accounts, return the accounts in the following format: the first element of each account is the name, and the rest of the elements are emails <strong>in sorted order</strong>.  The accounts themselves can be returned in any order.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+accounts = [["John", "<a href="mailto:johnsmith@mail.com">johnsmith@mail.com</a>", "<a href="mailto:john00@mail.com">john00@mail.com</a>"], ["John", "<a href="mailto:johnnybravo@mail.com">johnnybravo@mail.com</a>"], ["John", "<a href="mailto:johnsmith@mail.com">johnsmith@mail.com</a>", "<a href="mailto:john_newyork@mail.com">john_newyork@mail.com</a>"], ["Mary", "<a href="mailto:mary@mail.com">mary@mail.com</a>"]]
+<strong>Output:</strong> [["John", '<a href="mailto:john00@mail.com">john00@mail.com</a>', '<a href="mailto:john_newyork@mail.com">john_newyork@mail.com</a>', '<a href="mailto:johnsmith@mail.com">johnsmith@mail.com</a>'],  ["John", "<a href="mailto:johnnybravo@mail.com">johnnybravo@mail.com</a>"], ["Mary", "<a href="mailto:mary@mail.com">mary@mail.com</a>"]]
+<strong>Explanation:</strong>
+The first and third John's are the same person as they have the common email "<a href="mailto:johnsmith@mail.com">johnsmith@mail.com</a>".
+The second John and Mary are different people as none of their email addresses are used by other accounts.
+We could return these lists in any order, for example the answer [['Mary', '<a href="mailto:mary@mail.com">mary@mail.com</a>'], ['John', '<a href="mailto:johnnybravo@mail.com">johnnybravo@mail.com</a>'],
+['John', '<a href="mailto:john00@mail.com">john00@mail.com</a>', '<a href="mailto:john_newyork@mail.com">john_newyork@mail.com</a>', '<a href="mailto:johnsmith@mail.com">johnsmith@mail.com</a>']] would still be accepted.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong>
+. The length of <code>accounts</code> will be in the range <code>[1, 1000]</code>.&lt;/li&gt;
+. The length of <code>accounts[i]</code> will be in the range <code>[1, 10]</code>.&lt;/li&gt;
+. The length of <code>accounts[i][j]</code> will be in the range <code>[1, 30]</code>.&lt;/li&gt;</p>
+</div>
+<div id="src-0721" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0721-accounts-merge.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0721_AccountsMerge.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

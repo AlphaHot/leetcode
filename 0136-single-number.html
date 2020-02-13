@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>136. Single Number</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_136_single_number">136. Single Number</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_136_single_number"><a class="anchor" href="#_136_single_number"></a>136. Single Number</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/single-number/">LeetCode - Single Number</a></p>
+</div>
+<div class="paragraph">
+<p>Given a <strong>non-empty</strong> array of integers, every element appears <em>twice</em> except for one. Find that single one.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="paragraph">
+<p>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [2,2,1]
+<strong>Output:</strong> 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [4,1,2,1,2]
+<strong>Output:</strong> 4</pre>
+</div>
+</div>
+<div id="src-0136" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+/**
+ * = 136. Single Number
+ *
+ * https://leetcode.com/problems/single-number/[Single Number - LeetCode]
+ *
+ * Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+ *
+ * *Note:*
+ *
+ * Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: [2,2,1]
+ * Output: 1
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: [4,1,2,1,2]
+ * Output: 4
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-01 12:38
+ */
+public class _0136_SingleNumber {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Single Number.
+     *
+     * Memory Usage: 38.5 MB, less than 98.52% of Java online submissions for Single Number.
+     */
+    public int singleNumber(int[] nums) {
+        if (Objects.isNull(nums) || nums.length == 0) {
+            return 0;
+        }
+        int result = nums[0];
+        for (int i = 1; i &lt; nums.length; i++) {
+            result ^= nums[i];
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0136_SingleNumber solution = new _0136_SingleNumber();
+        int[] a1 = {2, 2, 1};
+        int r1 = solution.singleNumber(a1);
+        System.out.println((r1 == 1) + " : " + r1);
+
+        int[] a2 = {4, 1, 2, 1, 2};
+        int r2 = solution.singleNumber(a2);
+        System.out.println((r2 == 4) + " : " + r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

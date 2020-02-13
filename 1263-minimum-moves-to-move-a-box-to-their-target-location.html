@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1263. Minimum Moves to Move a Box to Their Target Location</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1263_minimum_moves_to_move_a_box_to_their_target_location">1263. Minimum Moves to Move a Box to Their Target Location</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1263_minimum_moves_to_move_a_box_to_their_target_location"><a class="anchor" href="#_1263_minimum_moves_to_move_a_box_to_their_target_location"></a>1263. Minimum Moves to Move a Box to Their Target Location</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/minimum-moves-to-move-a-box-to-their-target-location/">LeetCode - Minimum Moves to Move a Box to Their Target Location</a></p>
+</div>
+<div class="paragraph">
+<p>Storekeeper is a game in which the player pushes boxes around in a warehouse trying to get them to target locations.</p>
+</div>
+<div class="paragraph">
+<p>The game is represented by a <code>grid</code> of size <code>m x n</code>, where each element is a wall, floor, or a box.</p>
+</div>
+<div class="paragraph">
+<p>Your task is move the box <code>'B'</code> to the target position <code>'T'</code> under the following rules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Player is represented by character <code>'S'</code> and can move up, down, left, right in the <code>grid</code> if it is a floor (empy cell).</p>
+</li>
+<li>
+<p>Floor is represented by character <code>'.'</code> that means free cell to walk.</p>
+</li>
+<li>
+<p>Wall is represented by character <code>'#'</code> that means obstacle  (impossible to walk there).</p>
+</li>
+<li>
+<p>There is only one box <code>'B'</code> and one target cell <code>'T'</code> in the <code>grid</code>.</p>
+</li>
+<li>
+<p>The box can be moved to an adjacent free cell by standing next to the box and then moving in the direction of the box. This is a <strong>push</strong>.</p>
+</li>
+<li>
+<p>The player cannot walk through the box.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Return the minimum number of <strong>pushes</strong> to move the box to the target. If there is no way to reach the target, return <code>-1</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2019/11/06/sample_1_1620.png" alt="sample 1 1620">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> grid = [["<mark>","</mark>","<mark>","</mark>","<mark>","</mark>"],
+               ["<mark>","T","</mark>","<mark>","</mark>","<mark>"],
+               ["</mark>",".",".","B",".","<mark>"],
+               ["</mark>",".","<mark>","</mark>",".","<mark>"],
+               ["</mark>",".",".",".","S","<mark>"],
+               ["</mark>","<mark>","</mark>","<mark>","</mark>","#"]]
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> We return only the number of times the box is pushed.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> grid = [["<mark>","</mark>","<mark>","</mark>","<mark>","</mark>"],
+               ["<mark>","T","</mark>","<mark>","</mark>","<mark>"],
+               ["</mark>",".",".","B",".","<mark>"],
+               ["</mark>","<mark>","</mark>","<mark>",".","</mark>"],
+               ["<mark>",".",".",".","S","</mark>"],
+               ["<mark>","</mark>","<mark>","</mark>","<mark>","</mark>"]]
+<strong>Output:</strong> -1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> grid = [["<mark>","</mark>","<mark>","</mark>","<mark>","</mark>"],
+               ["<mark>","T",".",".","</mark>","<mark>"],
+               ["</mark>",".","<mark>","B",".","</mark>"],
+               ["<mark>",".",".",".",".","</mark>"],
+               ["<mark>",".",".",".","S","</mark>"],
+               ["<mark>","</mark>","<mark>","</mark>","<mark>","</mark>"]]
+<strong>Output:</strong> 5
+<strong>Explanation:</strong>  push the box down, left, left, up and up.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 4:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> grid = [["<mark>","</mark>","<mark>","</mark>","<mark>","</mark>","<mark>"],
+               ["</mark>","S","<mark>",".","B","T","</mark>"],
+               ["<mark>","</mark>","<mark>","</mark>","<mark>","</mark>","#"]]
+<strong>Output:</strong> -1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>m == grid.length</code></p>
+</li>
+<li>
+<p><code>n == grid[i].length</code></p>
+</li>
+<li>
+<p><code>1 &#8656; m &#8656; 20</code></p>
+</li>
+<li>
+<p><code>1 &#8656; n &#8656; 20</code></p>
+</li>
+<li>
+<p><code>grid</code> contains only characters <code>'.'</code>, <code>'#'</code>,  <code>'S'</code> , <code>'T'</code>, or <code>'B'</code>.</p>
+</li>
+<li>
+<p>There is only one character <code>'S'</code>, <code>'B'</code> &lt;font face="sans-serif, Arial, Verdana, Trebuchet MS"&gt;and <code>'T'</code> in the <code>grid</code>.</p>
+</li>
+</ul>
+</div>
+<div id="src-1263" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1263-minimum-moves-to-move-a-box-to-their-target-location.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1263_MinimumMovesToMoveABoxToTheirTargetLocation.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:09 +0800
+</div>
+</div>
+</body>
+</html>

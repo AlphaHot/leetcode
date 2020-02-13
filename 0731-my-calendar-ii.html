@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>731. My Calendar II</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_731_my_calendar_ii">731. My Calendar II</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_731_my_calendar_ii"><a class="anchor" href="#_731_my_calendar_ii"></a>731. My Calendar II</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/my-calendar-ii/">LeetCode - My Calendar II</a></p>
+</div>
+<div class="paragraph">
+<p>Implement a <code>MyCalendarTwo</code> class to store your events. A new event can be added if adding the event will not cause a <strong>triple</strong> booking.</p>
+</div>
+<div class="paragraph">
+<p>Your class will have one method, <code>book(int start, int end)</code>. Formally, this represents a booking on the half open interval <code>[start, end)</code>, the range of real numbers <code>x</code> such that <code>start &#8656; x &lt; end</code>.</p>
+</div>
+<div class="paragraph">
+<p>A <em>triple booking</em> happens when <strong>three</strong> events have some non-empty intersection (ie., there is some time that is common to all 3 events.)</p>
+</div>
+<div class="paragraph">
+<p>For each call to the method <code>MyCalendar.book</code>, return <code>true</code> if the event can be added to the calendar successfully without causing a <strong>triple</strong> booking. Otherwise, return <code>false</code> and do not add the event to the calendar.
+Your class will be called like this: <code>MyCalendar cal = new MyCalendar();</code> <code>MyCalendar.book(start, end)</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>MyCalendar();
+MyCalendar.book(10, 20); // returns true
+MyCalendar.book(50, 60); // returns true
+MyCalendar.book(10, 40); // returns true
+MyCalendar.book(5, 15); // returns false
+MyCalendar.book(5, 10); // returns true
+MyCalendar.book(25, 55); // returns true
+<strong>Explanation:</strong>
+The first two events can be booked.  The third event can be double booked.
+The fourth event (5, 15) can't be booked, because it would result in a triple booking.
+The fifth event (5, 10) can be booked, as it does not use time 10 which is already double booked.
+The sixth event (25, 55) can be booked, as the time in [25, 40) will be double booked with the third event;
+the time [40, 50) will be single booked, and the time [50, 55) will be double booked with the second event.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The number of calls to <code>MyCalendar.book</code> per test case will be at most <code>1000</code>.</p>
+</li>
+<li>
+<p>In calls to <code>MyCalendar.book(start, end)</code>, <code>start</code> and <code>end</code> are integers in the range <code>[0, 10^9]</code>.</p>
+</li>
+</ul>
+</div>
+<div id="src-0731" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0731-my-calendar-ii.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0731_MyCalendarII.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

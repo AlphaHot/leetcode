@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>91. Decode Ways</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_91_decode_ways">91. Decode Ways</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_91_decode_ways"><a class="anchor" href="#_91_decode_ways"></a>91. Decode Ways</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/decode-ways/">LeetCode - Decode Ways</a></p>
+</div>
+<div class="paragraph">
+<p>这道题可以使用动态规划算法解决。学习《算法导论》中"动态规划"的解题步骤，再推演几次这个解题方法。</p>
+</div>
+<div class="paragraph">
+<p>A message containing letters from <code>A-Z</code> is being encoded to numbers using the following mapping:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>'A' -&gt; 1
+'B' -&gt; 2
+...
+'Z' -&gt; 26</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Given a <strong>non-empty</strong> string containing only digits, determine the total number of ways to decode it.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "12"
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> It could be decoded as "AB" (1 2) or "L" (12).</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "226"
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).</pre>
+</div>
+</div>
+<div id="src-0091" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+/**
+ * = 91. Decode Ways
+ *
+ * https://leetcode.com/problems/decode-ways/[Decode Ways - LeetCode]
+ *
+ * A message containing letters from `A-Z` is being encoded to numbers using the following mapping:
+ *
+ * ----
+ * 'A' -&gt; 1
+ * 'B' -&gt; 2
+ * ...
+ * 'Z' -&gt; 26
+ * ----
+ *
+ * Given a *non-empty* string containing only digits, determine the total number of ways to decode it.
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: "12"
+ * Output: 2
+ * Explanation: It could be decoded as "AB" (1 2) or "L" (12).
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: "226"
+ * Output: 3
+ * Explanation: It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-18 00:20
+ */
+public class _0091_DecodeWays {
+    /**
+     * Runtime: 3 ms, faster than 19.41% of Java online submissions for Decode Ways.
+     *
+     * Memory Usage: 41.5 MB, less than 5.66% of Java online submissions for Decode Ways.
+     *
+     * Copy from: https://leetcode.com/problems/decode-ways/discuss/30357/DP-Solution-(Java)-for-reference[DP Solution (Java) for reference - LeetCode Discuss]
+     */
+    public int numDecodings(String s) {
+        if (Objects.isNull(s) || s.length() == 0) {
+            return 0;
+        }
+        int length = s.length();
+        int[] memo = new int[length + 1];
+        memo[length] = 1;
+        memo[length - 1] = s.charAt(length - 1) != '0' ? 1 : 0;
+        for (int i = length - 2; i &gt;= 0; i--) {
+            if (s.charAt(i) == '0') {
+                continue;
+            } else {
+                int value = Integer.parseInt(s.substring(i, i + 2));
+                memo[i] = value &lt;= 26 ? memo[i + 1] + memo[i + 2] : memo[i + 1];
+            }
+        }
+        return memo[0];
+    }
+
+    public static void main(String[] args) {
+        _0091_DecodeWays solution = new _0091_DecodeWays();
+
+        int r4 = solution.numDecodings("27");
+        System.out.println((r4 == 1) + " : " + r4);
+
+        int r1 = solution.numDecodings("12");
+        System.out.println((r1 == 2) + " : " + r1);
+
+        int r2 = solution.numDecodings("226");
+        System.out.println((r2 == 3) + " : " + r2);
+
+        int r3 = solution.numDecodings("0");
+        System.out.println((r3 == 0) + " : " + r3);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

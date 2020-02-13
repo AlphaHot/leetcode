@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>975. Odd Even Jump</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_975_odd_even_jump">975. Odd Even Jump</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_975_odd_even_jump"><a class="anchor" href="#_975_odd_even_jump"></a>975. Odd Even Jump</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/odd-even-jump/">LeetCode - Odd Even Jump</a></p>
+</div>
+<div class="paragraph">
+<p>You are given an integer array <code>A</code>.  From some starting index, you can make a series of jumps.  The (1st, 3rd, 5th, &#8230;&#8203;) jumps in the series are called <em>odd numbered jumps</em>, and the (2nd, 4th, 6th, &#8230;&#8203;) jumps in the series are called <em>even numbered jumps</em>.</p>
+</div>
+<div class="paragraph">
+<p>You may from index <code>i</code> jump forward to index <code>&lt;font face="monospace"&gt;j</code> (with <code>i &lt; j</code>) in the following way:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>During odd numbered jumps (ie. jumps 1, 3, 5, &#8230;&#8203;), you jump to the index &lt;font face="monospace"&gt;j such that <code>A[i] &#8656; A[j]</code> and <code>A[j]</code> is the smallest possible value.  If there are multiple such indexes <code>&lt;font face="monospace"&gt;j</code>, you can only jump to the <strong>smallest</strong> such index <code>&lt;font face="monospace"&gt;j</code>.</p>
+</li>
+<li>
+<p>During even numbered jumps (ie. jumps 2, 4, 6, &#8230;&#8203;), you jump to the index &lt;font face="monospace"&gt;j such that <code>A[i] &gt;= A[j]</code> and <code>A[j]</code> is the largest possible value.  If there are multiple such indexes <code>&lt;font face="monospace"&gt;j</code>, you can only jump to the <strong>smallest</strong> such index <code>&lt;font face="monospace"&gt;j</code>.</p>
+</li>
+<li>
+<p>(It may be the case that for some index <code>&lt;font face="monospace"&gt;i,</code> there are no legal jumps.)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A starting index is <em>good</em> if, starting from that index, you can reach the end of the array (index <code>A.length - 1</code>) by jumping some number of times (possibly 0 or more than once.)</p>
+</div>
+<div class="paragraph">
+<p>Return the number of good starting indexes.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [10,13,12,14,15]
+<strong>Output:</strong> 2
+<strong>Explanation:</strong>
+From starting index i = 0, we can jump to i = 2 (since A[2] is the smallest among A[1], A[2], A[3], A[4] that is greater or equal to A[0]), then we can't jump any more.
+From starting index i = 1 and i = 2, we can jump to i = 3, then we can't jump any more.
+From starting index i = 3, we can jump to i = 4, so we've reached the end.
+From starting index i = 4, we've reached the end already.
+In total, there are 2 different starting indexes (i = 3, i = 4) where we can reach the end with some number of jumps.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [2,3,1,1,4]
+<strong>Output:</strong> 3
+<strong>Explanation:</strong>
+From starting index i = 0, we make jumps to i = 1, i = 2, i = 3:
+
+During our 1st jump (odd numbered), we first jump to i = 1 because A[1] is the smallest value in (A[1], A[2], A[3], A[4]) that is greater than or equal to A[0].
+
+During our 2nd jump (even numbered), we jump from i = 1 to i = 2 because A[2] is the largest value in (A[2], A[3], A[4]) that is less than or equal to A[1].  A[3] is also the largest value, but 2 is a smaller index, so we can only jump to i = 2 and not i = 3.
+
+During our 3rd jump (odd numbered), we jump from i = 2 to i = 3 because A[3] is the smallest value in (A[3], A[4]) that is greater than or equal to A[2].
+
+We can't jump from i = 3 to i = 4, so the starting index i = 0 is not good.
+
+In a similar manner, we can deduce that:
+From starting index i = 1, we jump to i = 4, so we reach the end.
+From starting index i = 2, we jump to i = 3, and then we can't jump anymore.
+From starting index i = 3, we jump to i = 4, so we reach the end.
+From starting index i = 4, we are already at the end.
+In total, there are 3 different starting indexes (i = 1, i = 3, i = 4) where we can reach the end with some number of jumps.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [5,1,3,4,2]
+<strong>Output:</strong> 3
+<strong>Explanation:</strong>
+We can reach the end from starting indexes 1, 2, and 4.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; A.length &#8656; 20000</code></p>
+</li>
+<li>
+<p><code>0 &#8656; A[i] &lt; 100000</code></p>
+</li>
+</ul>
+</div>
+<div id="src-0975" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0975-odd-even-jump.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0975_OddEvenJump.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

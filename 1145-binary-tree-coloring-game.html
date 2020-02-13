@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1145. Binary Tree Coloring Game</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1145_binary_tree_coloring_game">1145. Binary Tree Coloring Game</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1145_binary_tree_coloring_game"><a class="anchor" href="#_1145_binary_tree_coloring_game"></a>1145. Binary Tree Coloring Game</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/binary-tree-coloring-game/">LeetCode - Binary Tree Coloring Game</a></p>
+</div>
+<div class="paragraph">
+<p>Two players play a turn based game on a binary tree.  We are given the <code>root</code> of this binary tree, and the number of nodes <code>n</code> in the tree.  <code>n</code> is odd, and each node has a distinct value from <code>1</code> to <code>n</code>.</p>
+</div>
+<div class="paragraph">
+<p>Initially, the first player names a value <code>x</code> with <code>1 &#8656; x &#8656; n</code>, and the second player names a value <code>y</code> with <code>1 &#8656; y &#8656; n</code> and <code>y != x</code>.  The first player colors the node with value <code>x</code> red, and the second player colors the node with value <code>y</code> blue.</p>
+</div>
+<div class="paragraph">
+<p>Then, the players take turns starting with the first player.  In each turn, that player chooses a node of their color (red if player 1, blue if player 2) and colors an <strong>uncolored</strong> neighbor of the chosen node (either the left child, right child, or parent of the chosen node.)</p>
+</div>
+<div class="paragraph">
+<p>If (and only if) a player cannot choose such a node in this way, they must pass their turn.  If both players pass their turn, the game ends, and the winner is the player that colored more nodes.</p>
+</div>
+<div class="paragraph">
+<p>You are the second player.  If it is possible to choose such a <code>y</code> to ensure you win the game, return <code>true</code>.  If it is not possible, return <code>false</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2019/08/01/1480-binary-tree-coloring-game.png" alt="1480 binary tree coloring game">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> root = [1,2,3,4,5,6,7,8,9,10,11], n = 11, x = 3
+<strong>Output:</strong> true
+<strong>Explanation:</strong> The second player can choose the node with value 2.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>root</code> is the root of a binary tree with <code>n</code> nodes and distinct node values from <code>1</code> to <code>n</code>.</p>
+</li>
+<li>
+<p><code>n</code> is odd.</p>
+</li>
+<li>
+<p><code>1 &#8656; x &#8656; n &#8656; 100</code></p>
+</li>
+</ul>
+</div>
+<div id="src-1145" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1145-binary-tree-coloring-game.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1145_BinaryTreeColoringGame.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

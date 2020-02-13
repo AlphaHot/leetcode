@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>27. Remove Element</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_27_remove_element">27. Remove Element</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_27_remove_element"><a class="anchor" href="#_27_remove_element"></a>27. Remove Element</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/remove-element/">LeetCode - Remove Element</a></p>
+</div>
+<div class="paragraph">
+<p>Given an array <em>nums</em> and a value <em>val</em>, remove all instances of that value <a href="https://en.wikipedia.org/wiki/In-place_algorithm"><strong>in-place</strong></a> and return the new length.</p>
+</div>
+<div class="paragraph">
+<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm">in-place</a></strong> with O(1) extra memory.</p>
+</div>
+<div class="paragraph">
+<p>The order of elements can be changed. It doesn&#8217;t matter what you leave beyond the new length.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Given <em>nums</em> = <strong>[3,2,2,3]</strong>, <em>val</em> = <strong>3</strong>,
+
+Your function should return length = <strong>2</strong>, with the first two elements of <em>nums</em> being <strong>2</strong>.
+
+It doesn't matter what you leave beyond the returned length.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Given <em>nums</em> = <strong>[0,1,2,2,3,0,4,2]</strong>, <em>val</em> = <strong>2</strong>,
+
+Your function should return length = <strong><code>5</code></strong>, with the first five elements of <em>`nums`</em> containing <strong><code>0</code></strong>, <strong><code>1</code></strong>, <strong><code>3</code></strong>, <strong><code>0</code></strong>, and <strong>4</strong>.
+
+Note that the order of those five elements can be arbitrary.
+
+It doesn't matter what values are set beyond the returned length.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Clarification:</strong></p>
+</div>
+<div class="paragraph">
+<p>Confused why the returned value is an integer but your answer is an array?</p>
+</div>
+<div class="paragraph">
+<p>Note that the input array is passed in by <strong>reference</strong>, which means modification to the input array will be known to the caller as well.</p>
+</div>
+<div class="paragraph">
+<p>Internally you can think of this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>// <strong>nums</strong> is passed in by reference. (i.e., without making a copy)
+int len = removeElement(nums, val);
+
+// any modification to <strong>nums</strong> in your function would be known by the caller.
+// using the length returned by your function, it prints the first <strong>len</strong> elements.
+for (int i = 0; i &lt; len; i++) {
+    print(nums[i]);
+}</pre>
+</div>
+</div>
+<div id="src-0027" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+
+/**
+ * = 27. Remove Element
+ *
+ * https://leetcode.com/problems/remove-element/description/[Remove Element - LeetCode]
+ *
+ * Given an array `nums` and a value `val`, remove all instances of that value
+ * *https://en.wikipedia.org/wiki/In-place_algorithm[in-place]* and return the new length.
+ *
+ * Do not allocate extra space for another array, you must do this by *modifying
+ * the input array* *https://en.wikipedia.org/wiki/In-place_algorithm[in-place]* with O(1) extra memory.
+ *
+ * The order of elements can be changed. It doesn't matter what you leave beyond the new length.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Given nums = [3,2,2,3], val = 3,
+ *
+ * Your function should return length = 2, with the first two elements of nums being 2.
+ *
+ * It doesn't matter what you leave beyond the returned length.
+ * ----
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Given nums = [0,1,2,2,3,0,4,2], val = 2,
+ *
+ * Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4.
+ *
+ * Note that the order of those five elements can be arbitrary.
+ *
+ * It doesn't matter what values are set beyond the returned length.
+ * ----
+ *
+ * == Clarification:
+ *
+ * Confused why the returned value is an integer but your answer is an array?
+ *
+ * Note that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.
+ *
+ * Internally you can think of this:
+ *
+ * [source]
+ * ----
+ * // nums is passed in by reference. (i.e., without making a copy)
+ * int len = removeElement(nums, val);
+ *
+ * // any modification to nums in your function would be known by the caller.
+ * // using the length returned by your function, it prints the first len elements.
+ * for (int i = 0; i &lt; len; i++) {
+ *     print(nums[i]);
+ * }
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2018-07-19 18:55
+ */
+public class _0027_RemoveElement {
+    public static int removeElement(int[] nums, int val) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int result = nums.length;
+        int minuendIndex = 0;
+        for (int i = 0; i &lt; nums.length; i++) {
+            if (minuendIndex &gt; 0) {
+                nums[i - minuendIndex] = nums[i];
+            }
+            if (nums[i] == val) {
+                result--;
+                minuendIndex++;
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{0, 1, 2, 2, 3, 0, 4, 2};
+        int val = 2;
+        System.out.println(removeElement(nums, val));
+        System.out.println(Arrays.toString(nums));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

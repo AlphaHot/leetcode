@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>995. Minimum Number of K Consecutive Bit Flips</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_995_minimum_number_of_k_consecutive_bit_flips">995. Minimum Number of K Consecutive Bit Flips</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_995_minimum_number_of_k_consecutive_bit_flips"><a class="anchor" href="#_995_minimum_number_of_k_consecutive_bit_flips"></a>995. Minimum Number of K Consecutive Bit Flips</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/">LeetCode - Minimum Number of K Consecutive Bit Flips</a></p>
+</div>
+<div class="paragraph">
+<p>In an array <code>A</code> containing only 0s and 1s, a _`K`-bit flip _consists of choosing a (contiguous) subarray of length <code>K</code> and simultaneously changing every 0 in the subarray to 1, and every 1 in the subarray to 0.</p>
+</div>
+<div class="paragraph">
+<p>Return the minimum number of <code>K</code>-bit flips required so that there is no 0 in the array.  If it is not possible, return <code>-1</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> A = [0,1,0], K = 1
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> Flip A[0], then flip A[2].</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> A = [1,1,0], K = 2
+<strong>Output:</strong> -1
+<strong>Explanation:</strong> No matter how we flip subarrays of size 2, we can't make the array become [1,1,1].</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> A = [0,0,0,1,0,1,1,0], K = 3
+<strong>Output:</strong> 3
+<strong>Explanation:</strong>
+Flip A[0],A[1],A[2]: A becomes [1,1,1,1,0,1,1,0]
+Flip A[4],A[5],A[6]: A becomes [1,1,1,1,1,0,0,0]
+Flip A[5],A[6],A[7]: A becomes [1,1,1,1,1,1,1,1]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>1 &#8656; A.length &#8656; 30000</code></p>
+</li>
+<li>
+<p><code>1 &#8656; K &#8656; A.length</code></p>
+</li>
+</ol>
+</div>
+<div id="src-0995" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0995-minimum-number-of-k-consecutive-bit-flips.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0995_MinimumNumberOfKConsecutiveBitFlips.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

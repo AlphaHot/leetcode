@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>103. Binary Tree Zigzag Level Order Traversal</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_103_binary_tree_zigzag_level_order_traversal">103. Binary Tree Zigzag Level Order Traversal</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_103_binary_tree_zigzag_level_order_traversal"><a class="anchor" href="#_103_binary_tree_zigzag_level_order_traversal"></a>103. Binary Tree Zigzag Level Order Traversal</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/">LeetCode - Binary Tree Zigzag Level Order Traversal</a></p>
+</div>
+<div class="paragraph">
+<p>思考题：思考一下如何使用深度优先来解决这个问题？</p>
+</div>
+<div class="paragraph">
+<p>Given a binary tree, return the <em>zigzag level order</em> traversal of its nodes' values. (ie, from left to right, then right to left for the next level and alternate between).</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="paragraph">
+<p>Given binary tree <code>[3,9,20,null,null,15,7]</code>,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    3
+   / \
+  9  20
+    /  \
+   15   7</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>return its zigzag level order traversal as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[
+  [3],
+  [20,9],
+  [15,7]
+]</pre>
+</div>
+</div>
+<div id="src-0103" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.TreeNode;
+
+import java.util.*;
+
+import static com.diguage.algorithm.util.TreeNodeUtils.buildTree;
+
+/**
+ * = 103. Binary Tree Zigzag Level Order Traversal
+ *
+ * https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/[Binary Tree Zigzag Level Order Traversal - LeetCode]
+ *
+ * Given a binary tree, return the zigzag level order traversal of its nodes' values. (ie, from left to right, then right to left for the next level and alternate between).
+ *
+ * For example:
+ * Given binary tree `[3,9,20,null,null,15,7]`,
+ *
+ * ----
+ *     3
+ *    / \
+ *   9  20
+ *     /  \
+ *    15   7
+ * ----
+ *
+ * return its zigzag level order traversal as:
+ *
+ * ----
+ * [
+ *   [3],
+ *   [20,9],
+ *   [15,7]
+ * ]
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-24 21:12
+ */
+public class _0103_BinaryTreeZigzagLevelOrderTraversal {
+
+    /**
+     * Runtime: 1 ms, faster than 75.19% of Java online submissions for Binary Tree Zigzag Level Order Traversal.
+     *
+     * Memory Usage: 41.5 MB, less than 5.77% of Java online submissions for Binary Tree Zigzag Level Order Traversal.
+     */
+    public List&lt;List&lt;Integer&gt;&gt; zigzagLevelOrder(TreeNode root) {
+        if (Objects.isNull(root)) {
+            return Collections.emptyList();
+        }
+        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();
+        List&lt;TreeNode&gt; level = new ArrayList&lt;&gt;();
+        level.add(root);
+        boolean isReverse = false;
+        while (!level.isEmpty()) {
+            List&lt;TreeNode&gt; temp = new ArrayList&lt;&gt;();
+            List&lt;Integer&gt; values = new ArrayList&lt;&gt;(level.size());
+            for (TreeNode node : level) {
+                if (isReverse) {
+                    values.add(0, node.val);
+                } else {
+                    values.add(node.val);
+                }
+                if (Objects.nonNull(node.left)) {
+                    temp.add(node.left);
+                }
+                if (Objects.nonNull(node.right)) {
+                    temp.add(node.right);
+                }
+            }
+            result.add(values);
+            level = temp;
+            isReverse = !isReverse;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0103_BinaryTreeZigzagLevelOrderTraversal solution = new _0103_BinaryTreeZigzagLevelOrderTraversal();
+        List&lt;List&lt;Integer&gt;&gt; r2 = solution.zigzagLevelOrder(buildTree(Arrays.asList(1, 2, 3, 4, null, null, 5)));
+        System.out.println(r2);
+
+        List&lt;List&lt;Integer&gt;&gt; r1 = solution.zigzagLevelOrder(buildTree(Arrays.asList(3, 9, 20, null, null, 15, 7)));
+        System.out.println(r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

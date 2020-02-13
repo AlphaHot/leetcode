@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>406. Queue Reconstruction by Height</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_406_queue_reconstruction_by_height">406. Queue Reconstruction by Height</a>
+<ul class="sectlevel2">
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_406_queue_reconstruction_by_height"><a class="anchor" href="#_406_queue_reconstruction_by_height"></a>406. Queue Reconstruction by Height</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/queue-reconstruction-by-height/">LeetCode - Queue Reconstruction by Height</a></p>
+</div>
+<div class="paragraph">
+<p>Suppose you have a random list of people standing in a queue. Each person is described by a pair of integers <code>(h, k)</code>, where <code>h</code> is the height of the person and <code>k</code> is the number of people in front of this person who have a height greater than or equal to <code>h</code>. Write an algorithm to reconstruct the queue.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="paragraph">
+<p>The number of people is less than 1,100.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example</div>
+<div class="content">
+<pre>Input:
+[[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]
+
+Output:
+[[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这道题有点不明觉厉。</p>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/queue-reconstruction-by-height/solution/gen-ju-shen-gao-zhong-jian-dui-lie-by-leetcode/">根据身高重建队列 - 根据身高重建队列 - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Suppose you have a random list of people standing in a queue. Each person is described by a pair of integers <code>(h, k)</code>, where <code>h</code> is the height of the person and <code>k</code> is the number of people in front of this person who have a height greater than or equal to <code>h</code>. Write an algorithm to reconstruct the queue.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="paragraph">
+<p>The number of people is less than 1,100.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Input:
+[[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]
+
+Output:
+[[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]</pre>
+</div>
+</div>
+<div id="src-0406" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
+/**
+ * = 406. Queue Reconstruction by Height
+ *
+ * https://leetcode.com/problems/queue-reconstruction-by-height/[Queue Reconstruction by Height - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-29 17:20
+ */
+public class _0406_QueueReconstructionByHeight {
+    /**
+     * Runtime: 8 ms, faster than 39.43% of Java online submissions for Queue Reconstruction by Height.
+     * Memory Usage: 42.6 MB, less than 89.36% of Java online submissions for Queue Reconstruction by Height.
+     */
+    public int[][] reconstructQueue(int[][] people) {
+        Arrays.sort(people, (a, b) -&gt; a[0] == b[0] ? a[1] - b[1] : b[0] - a[0]);
+        List&lt;int[]&gt; queue = new LinkedList&lt;&gt;();
+        for (int[] person : people) {
+            queue.add(person[1], person);
+        }
+        int length = people.length;
+        return queue.toArray(new int[length][2]);
+    }
+
+    public static void main(String[] args) {
+        _0406_QueueReconstructionByHeight solution = new _0406_QueueReconstructionByHeight();
+        int[][] p1 = {{7, 0}, {4, 4}, {7, 1}, {5, 0}, {6, 1}, {5, 2}};
+        int[][] r1 = solution.reconstructQueue(p1);
+        System.out.println(Arrays.deepToString(p1));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

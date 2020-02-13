@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>26. Remove Duplicates from Sorted Array</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_26_remove_duplicates_from_sorted_array">26. Remove Duplicates from Sorted Array</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_26_remove_duplicates_from_sorted_array"><a class="anchor" href="#_26_remove_duplicates_from_sorted_array"></a>26. Remove Duplicates from Sorted Array</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/">LeetCode - Remove Duplicates from Sorted Array</a></p>
+</div>
+<div class="paragraph">
+<p>Given a sorted array <em>nums</em>, remove the duplicates <a href="https://en.wikipedia.org/wiki/In-place_algorithm"><strong>in-place</strong></a> such that each element appear only <em>once</em> and return the new length.</p>
+</div>
+<div class="paragraph">
+<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm">in-place</a></strong> with O(1) extra memory.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Given <em>nums</em> = <strong>[1,1,2]</strong>,
+
+Your function should return length = <strong><code>2</code></strong>, with the first two elements of <em>`nums`</em> being <strong><code>1</code></strong> and <strong><code>2</code></strong> respectively.
+
+It doesn't matter what you leave beyond the returned length.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Given <em>nums</em> = <strong>[0,0,1,1,1,2,2,3,3,4]</strong>,
+
+Your function should return length = <strong><code>5</code></strong>, with the first five elements of <em>`nums`</em> being modified to <strong><code>0</code></strong>, <strong><code>1</code></strong>, <strong><code>2</code></strong>, <strong><code>3</code></strong>, and <strong><code>4</code></strong> respectively.
+
+It doesn't matter what values are set beyond the returned length.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Clarification:</strong></p>
+</div>
+<div class="paragraph">
+<p>Confused why the returned value is an integer but your answer is an array?</p>
+</div>
+<div class="paragraph">
+<p>Note that the input array is passed in by <strong>reference</strong>, which means modification to the input array will be known to the caller as well.</p>
+</div>
+<div class="paragraph">
+<p>Internally you can think of this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>// <strong>nums</strong> is passed in by reference. (i.e., without making a copy)
+int len = removeDuplicates(nums);
+
+// any modification to <strong>nums</strong> in your function would be known by the caller.
+// using the length returned by your function, it prints the first <strong>len</strong> elements.
+for (int i = 0; i &lt; len; i++) {
+    print(nums[i]);
+}</pre>
+</div>
+</div>
+<div id="src-0026" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+
+/**
+ * = 26. Remove Duplicates from Sorted Array
+ *
+ * https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/[Remove Duplicates from Sorted Array - LeetCode]
+ *
+ * Given a sorted array `nums`, remove the duplicates
+ * *https://en.wikipedia.org/wiki/In-place_algorithm[in-place]* such that each
+ * element appear only once and return the new length.
+ *
+ * Do not allocate extra space for another array, you must do this by *modifying
+ * the input array* *https://en.wikipedia.org/wiki/In-place_algorithm[in-place]*
+ * with O(1) extra memory.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Given nums = [1,1,2],
+ *
+ * Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.
+ *
+ * It doesn't matter what you leave beyond the returned length.
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Given nums = [0,0,1,1,1,2,2,3,3,4],
+ *
+ * Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.
+ *
+ * It doesn't matter what values are set beyond the returned length.
+ * ----
+ *
+ * == Clarification
+ *
+ * Confused why the returned value is an integer but your answer is an array?
+ *
+ * Note that the input array is passed in by *reference*, which means modification to the input array will be known to the caller as well.
+ *
+ * Internally you can think of this:
+ *
+ * [source]
+ * ----
+ * // nums is passed in by reference. (i.e., without making a copy)
+ * int len = removeDuplicates(nums);
+ *
+ * // any modification to nums in your function would be known by the caller.
+ * // using the length returned by your function, it prints the first len elements.
+ * for (int i = 0; i &lt; len; i++) {
+ * print(nums[i]);
+ * }
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2018-07-19 18:34
+ */
+public class _0026_RemoveDuplicatesFromSortedArray {
+    public static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int result = nums.length;
+        if (nums.length == 1) {
+            return result;
+        }
+
+        int previousNum = nums[0];
+        int minuendIndex = 0;
+        for (int i = 1; i &lt; nums.length; i++) {
+            if (previousNum == nums[i]) {
+                minuendIndex++;
+                result--;
+            } else {
+                previousNum = nums[i];
+            }
+            if (minuendIndex &gt; 0) {
+                nums[i - minuendIndex] = nums[i];
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        System.out.println(removeDuplicates(nums));
+        System.out.println(Arrays.toString(nums));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

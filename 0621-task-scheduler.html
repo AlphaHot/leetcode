@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>621. Task Scheduler</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_621_task_scheduler">621. Task Scheduler</a>
+<ul class="sectlevel2">
+<li><a href="#_解题分析">解题分析</a></li>
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_621_task_scheduler"><a class="anchor" href="#_621_task_scheduler"></a>621. Task Scheduler</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/task-scheduler/">LeetCode - Task Scheduler</a></p>
+</div>
+<div class="paragraph">
+<p>Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks. Tasks could be done without original order. Each task could be done in one interval. For each interval, CPU could finish one task or just be idle.</p>
+</div>
+<div class="paragraph">
+<p>However, there is a non-negative cooling interval <code>n</code> that means between <strong>two same tasks</strong>, there must be at least <code>n</code> intervals that CPU are doing different tasks or just be idle.</p>
+</div>
+<div class="paragraph">
+<p>You need to return the <strong>least</strong> number of intervals the CPU will take to finish all the given tasks.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>Input: tasks = ["A","A","A","B","B","B"], n = 2
+Output: 8
+Explanation: A -&gt; B -&gt; idle -&gt; A -&gt; B -&gt; idle -&gt; A -&gt; B.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The number of tasks is in the range [1, 10000].</p>
+</li>
+<li>
+<p>The integer n is in the range [0, 100].</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_解题分析"><a class="anchor" href="#_解题分析"></a>解题分析</h3>
+<div class="paragraph">
+<p>这道题有三个点需要注意：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>因为要任务休息时间，所以，出现次数最多的任务，会持续得更长，有将任务按照出现次数排序，优先安排次数多的任务。</p>
+</li>
+<li>
+<p>结果关注的是总共需要完成的时间，所以不需要关注具体执行的是哪个任务。</p>
+</li>
+<li>
+<p>需要"空转时间"的处理。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>解题思路：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>将任务按类型分组，正好A-Z用一个int[26]保存任务类型个数</p>
+</li>
+<li>
+<p>对数组进行排序，优先排列个数（count）最大的任务，如题得到的时间至少为 retCount =（count-1）* (n+1) + 1 =&#8658; A&#8594;X&#8594;X&#8594;A&#8594;X&#8594;X&#8594;A(X为其他任务或者待命)</p>
+</li>
+<li>
+<p>再排序下一个任务，如果下一个任务B个数和最大任务数一致，则retCount++ =&#8658; A&#8594;B&#8594;X&#8594;A&#8594;B&#8594;X&#8594;A&#8594;B</p>
+</li>
+<li>
+<p>如果空位都插满之后还有任务，那就随便在这些间隔里面插入就可以，因为间隔长度肯定会大于n，在这种情况下就是任务的总数是最小所需时间</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/task-scheduler/solution/ren-wu-diao-du-qi-by-leetcode/">任务调度器 - 任务调度器 - 力扣（LeetCode）</a></p>
+</li>
+<li>
+<p><a href="https://leetcode-cn.com/problems/task-scheduler/solution/621-ren-wu-diao-du-qi-java-jie-ti-zhu-shi-ying-gai/">621. 任务调度器&#8212;&#8203;Java&#8212;&#8203;解题注释应该能看懂 - 任务调度器 - 力扣（LeetCode）</a>&#8201;&#8212;&#8201;这个解释清楚。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks. Tasks could be done without original order. Each task could be done in one interval. For each interval, CPU could finish one task or just be idle.</p>
+</div>
+<div class="paragraph">
+<p>However, there is a non-negative cooling interval <strong>n</strong> that means between two <strong>same tasks</strong>, there must be at least n intervals that CPU are doing different tasks or just be idle.</p>
+</div>
+<div class="paragraph">
+<p>You need to return the <strong>least</strong> number of intervals the CPU will take to finish all the given tasks.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> tasks = ["A","A","A","B","B","B"], n = 2
+<strong>Output:</strong> 8
+<strong>Explanation:</strong> A -&gt; B -&gt; idle -&gt; A -&gt; B -&gt; idle -&gt; A -&gt; B.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The number of tasks is in the range [1, 10000].</p>
+</li>
+<li>
+<p>The integer n is in the range [0, 100].</p>
+</li>
+</ol>
+</div>
+<div id="src-0621" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.*;
+
+/**
+ * = 621. Task Scheduler
+ *
+ * https://leetcode.com/problems/task-scheduler/[Task Scheduler - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-31 21:26
+ */
+public class _0621_TaskScheduler {
+    /**
+     * Runtime: 2 ms, faster than 99.97% of Java online submissions for Task Scheduler.
+     * Memory Usage: 42.7 MB, less than 5.88% of Java online submissions for Task Scheduler.
+     *
+     * Copy from: https://leetcode-cn.com/problems/task-scheduler/solution/621-ren-wu-diao-du-qi-java-jie-ti-zhu-shi-ying-gai/[621. 任务调度器--Java--解题注释应该能看懂 - 任务调度器 - 力扣（LeetCode）]
+     */
+    public int leastInterval(char[] tasks, int n) {
+        if (Objects.isNull(tasks) || tasks.length == 0) {
+            return 0;
+        }
+        int[] counts = new int[26];
+        for (char task : tasks) {
+            counts[task - 'A']++;
+        }
+        Arrays.sort(counts);
+        int maxCount = counts[25];
+        int restCount = (maxCount - 1) * (n + 1) + 1;
+        for (int i = 24; i &gt;= 0 &amp;&amp; counts[i] == maxCount; i--) {
+            restCount++;
+        }
+        return Math.max(restCount, tasks.length);
+    }
+
+    /**
+     * Runtime: 2 ms, faster than 99.97% of Java online submissions for Task Scheduler.
+     * Memory Usage: 42.6 MB, less than 5.88% of Java online submissions for Task Scheduler.
+     * &lt;p&gt;
+     * Copy from: https://leetcode-cn.com/problems/task-scheduler/solution/ren-wu-diao-du-qi-by-leetcode/[任务调度器 - 任务调度器 - 力扣（LeetCode）]
+     */
+    public int leastInterval1(char[] tasks, int n) {
+        if (Objects.isNull(tasks) || tasks.length == 0) {
+            return 0;
+        }
+        int[] counts = new int[26];
+        for (char task : tasks) {
+            counts[task - 'A']++;
+        }
+        Arrays.sort(counts);
+        int maxValue = counts[25] - 1;
+        int idleSlots = maxValue * n;
+        for (int i = 24; i &gt;= 0 &amp;&amp; counts[i] &gt; 0; i--) {
+            idleSlots -= Math.min(maxValue, counts[i]);
+        }
+        return idleSlots &gt; 0 ? idleSlots + tasks.length : tasks.length;
+    }
+
+    /**
+     * Runtime: 29 ms, faster than 42.49% of Java online submissions for Task Scheduler.
+     * Memory Usage: 41.9 MB, less than 5.88% of Java online submissions for Task Scheduler.
+     * &lt;p&gt;
+     * Copy from: https://leetcode-cn.com/problems/task-scheduler/solution/ren-wu-diao-du-qi-by-leetcode/[任务调度器 - 任务调度器 - 力扣（LeetCode）]
+     */
+    public int leastIntervalQueue(char[] tasks, int n) {
+        if (Objects.isNull(tasks) || tasks.length == 0) {
+            return 0;
+        }
+        int[] counts = new int[26];
+        for (char c : tasks) {
+            counts[c - 'A']++;
+        }
+        PriorityQueue&lt;Integer&gt; queue = new PriorityQueue&lt;&gt;(Collections.reverseOrder());
+        for (int count : counts) {
+            if (count &gt; 0) {
+                queue.add(count);
+            }
+        }
+        int time = 0;
+        while (!queue.isEmpty()) {
+            List&lt;Integer&gt; temp = new ArrayList&lt;&gt;();
+            int i = 0;
+            while (i &lt;= n) {
+                if (!queue.isEmpty()) {
+                    if (queue.peek() &gt; 1) {
+                        temp.add(queue.poll() - 1);
+                    } else {
+                        queue.poll();
+                    }
+                }
+                time++;
+                i++;
+                if (queue.isEmpty() &amp;&amp; temp.isEmpty()) {
+                    break;
+                }
+            }
+            for (Integer count : temp) {
+                queue.add(count);
+            }
+        }
+        return time;
+    }
+
+    public static void main(String[] args) {
+        _0621_TaskScheduler solution = new _0621_TaskScheduler();
+        int r1 = solution.leastInterval("AAABBB".toCharArray(), 2);
+        System.out.println((r1 == 8) + " : " + r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

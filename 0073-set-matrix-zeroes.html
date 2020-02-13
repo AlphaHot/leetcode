@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>73. Set Matrix Zeroes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_73_set_matrix_zeroes">73. Set Matrix Zeroes</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_73_set_matrix_zeroes"><a class="anchor" href="#_73_set_matrix_zeroes"></a>73. Set Matrix Zeroes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/set-matrix-zeroes/">LeetCode - Set Matrix Zeroes</a></p>
+</div>
+<div class="paragraph">
+<p>Given a <em>m</em> x <em>n</em> matrix, if an element is 0, set its entire row and column to 0. Do it <a href="https://en.wikipedia.org/wiki/In-place_algorithm"><strong>in-place</strong></a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+[
+  [1,1,1],
+  [1,0,1],
+  [1,1,1]
+]
+<strong>Output:</strong>
+[
+  [1,0,1],
+  [0,0,0],
+  [1,0,1]
+]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+[
+  [0,1,2,0],
+  [3,4,5,2],
+  [1,3,1,5]
+]
+<strong>Output:</strong>
+[
+  [0,0,0,0],
+  [0,4,5,0],
+  [0,3,1,0]
+]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Follow up:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A straight forward solution using O(<em>m__n</em>) space is probably a bad idea.</p>
+</li>
+<li>
+<p>A simple improvement uses O(<em>m</em> + <em>n</em>) space, but still not the best solution.</p>
+</li>
+<li>
+<p>Could you devise a constant space solution?</p>
+</li>
+</ul>
+</div>
+<div id="src-0073" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.PrintUtils.printMatrix;
+
+/**
+ * = 73. Set Matrix Zeroes
+ *
+ * https://leetcode.com/problems/set-matrix-zeroes/[Set Matrix Zeroes - LeetCode]
+ *
+ * Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in-place.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input:
+ * [
+ *   [1,1,1],
+ *   [1,0,1],
+ *   [1,1,1]
+ * ]
+ * Output:
+ * [
+ *   [1,0,1],
+ *   [0,0,0],
+ *   [1,0,1]
+ * ]
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input:
+ * [
+ *   [0,1,2,0],
+ *   [3,4,5,2],
+ *   [1,3,1,5]
+ * ]
+ * Output:
+ * [
+ *   [0,0,0,0],
+ *   [0,4,5,0],
+ *   [0,3,1,0]
+ * ]
+ * ----
+ *
+ * *Follow up:*
+ *
+ * * A straight forward solution using O(mn) space is probably a bad idea.
+ * * A simple improvement uses O(m + n) space, but still not the best solution.
+ * * Could you devise a constant space solution?
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2019-10-27 00:59
+ */
+public class _0073_SetMatrixZeroes {
+    /**
+     * Runtime: 1 ms, faster than 100.00% of Java online submissions for Set Matrix Zeroes.
+     *
+     * Memory Usage: 50.4 MB, less than 5.71% of Java online submissions for Set Matrix Zeroes.
+     */
+    public void setZeroes(int[][] matrix) {
+        if (Objects.isNull(matrix) || matrix[0].length == 0) {
+            return;
+        }
+        /**
+         * 0 all is 0;
+         * 1 row is 0;
+         * 2 column is 0;
+         * 3 is not 0;
+         */
+        int flag = 3;
+        int value = matrix[0][0];
+        if (value == 0) {
+            flag = 0;
+        }
+        int column = matrix.length;
+        int row = matrix[0].length;
+        for (int i = 0; i &lt; column; i++) {
+            for (int j = 0; j &lt; row; j++) {
+                if (matrix[i][j] == 0) {
+                    matrix[i][0] = 0;
+                    matrix[0][j] = 0;
+                    if (i == 0 &amp;&amp; j &gt; 0 &amp;&amp; flag != 0) {
+                        flag = 1;
+                    }
+                    if (i &gt; 0 &amp;&amp; j == 0 &amp;&amp; flag != 0) {
+                        if (flag == 1) {
+                            flag = 0;
+                        } else {
+                            flag = 2;
+                        }
+                    }
+                }
+            }
+        }
+//        printMatrix(matrix);
+        for (int i = 1; i &lt; column; i++) {
+            if (matrix[i][0] == 0) {
+                Arrays.fill(matrix[i], 0);
+            }
+        }
+        for (int j = 1; j &lt; row; j++) {
+            if (matrix[0][j] == 0) {
+                for (int i = 0; i &lt; column; i++) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+        if (flag == 0) {
+            Arrays.fill(matrix[0], 0);
+            for (int i = 0; i &lt; column; i++) {
+                matrix[i][0] = 0;
+            }
+        } else if (flag == 1) {
+            Arrays.fill(matrix[0], 0);
+        } else if (flag == 2) {
+            for (int i = 0; i &lt; column; i++) {
+                matrix[i][0] = 0;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        _0073_SetMatrixZeroes solution = new _0073_SetMatrixZeroes();
+//        int[][] matrix = {{1, 1, 1}, {1, 0, 1}, {1, 1, 1}};
+//        printMatrix(matrix);
+//        solution.setZeroes(matrix);
+//        printMatrix(matrix);
+//
+//        int[][] matrix2 = {{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 0, 1, 5}};
+//        printMatrix(matrix2);
+//        solution.setZeroes(matrix2);
+//        printMatrix(matrix2);
+//
+//        int[][] matrix3 = {{6, 1, 2, 7}, {0, 4, 5, 2}, {1, 3, 1, 5}};
+//        printMatrix(matrix3);
+//        solution.setZeroes(matrix3);
+//        printMatrix(matrix3);
+//
+//        int[][] matrix4 = {{6, 1, 0, 7}, {8, 4, 5, 2}, {1, 3, 1, 5}};
+//        printMatrix(matrix4);
+//        solution.setZeroes(matrix4);
+//        printMatrix(matrix4);
+
+        int[][] matrix5 = {
+                {8, 3, 6, 9, 7, 8, 0, 6},
+                {0, 3, 7, 0, 0, 4, 3, 8},
+                {5, 3, 6, 7, 1, 6, 2, 6},
+                {8, 7, 2, 5, 0, 6, 4, 0},
+                {0, 2, 9, 9, 3, 9, 7, 3}};
+        printMatrix(matrix5);
+        solution.setZeroes(matrix5);
+        printMatrix(matrix5);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>341. Flatten Nested List Iterator</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_341_flatten_nested_list_iterator">341. Flatten Nested List Iterator</a>
+<ul class="sectlevel2">
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_341_flatten_nested_list_iterator"><a class="anchor" href="#_341_flatten_nested_list_iterator"></a>341. Flatten Nested List Iterator</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/flatten-nested-list-iterator/">LeetCode - Flatten Nested List Iterator</a></p>
+</div>
+<div class="paragraph">
+<p>Given a nested list of integers, implement an iterator to flatten it.</p>
+</div>
+<div class="paragraph">
+<p>Each element is either an integer, or a list&#8201;&#8212;&#8201;whose elements may also be integers or other lists.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre class="highlight"><code>Input: [[1,1],2,[1,1]]
+Output: [1,1,2,1,1]
+Explanation: By calling next repeatedly until hasNext returns false,
+             the order of elements returned by next should be: [1,1,2,1,1].</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 2:</div>
+<div class="content">
+<pre class="highlight"><code>Input: [1,[4,[6]]]
+Output: [1,4,6]
+Explanation: By calling next repeatedly until hasNext returns false,
+             the order of elements returned by next should be: [1,4,6].</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>思考题：这道题还可以使用栈来实现。尝试一下。</p>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/flatten-nested-list-iterator/solution/shi-yong-di-gui-he-zhan-liang-chong-jie-fa-jin-xin/">使用递归和栈两种解法进行对比 - 扁平化嵌套列表迭代器 - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given a nested list of integers, implement an iterator to flatten it.</p>
+</div>
+<div class="paragraph">
+<p>Each element is either an integer, or a list&#8201;&#8212;&#8201;whose elements may also be integers or other lists.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [[1,1],2,[1,1]]
+<strong>Output:</strong> [1,1,2,1,1]
+<strong>Explanation:</strong> By calling <em>next</em> repeatedly until <em>hasNext</em> returns false,
+             the order of elements returned by <em>next</em> should be: <code>[1,1,2,1,1]</code>.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [1,[4,[6]]]
+<strong>Output:</strong> [1,4,6]
+<strong>Explanation:</strong> By calling <em>next</em> repeatedly until <em>hasNext</em> returns false,
+             the order of elements returned by <em>next</em> should be: <code>[1,4,6]</code>.</pre>
+</div>
+</div>
+<div id="src-0341" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.*;
+
+/**
+ * = 341. Flatten Nested List Iterator
+ *
+ * https://leetcode.com/problems/flatten-nested-list-iterator/[Flatten Nested List Iterator - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-27 15:17
+ */
+public class _0341_FlattenNestedListIterator {
+    public interface NestedInteger {
+
+        // @return true if this NestedInteger holds a single integer, rather than a nested list.
+        public boolean isInteger();
+
+        // @return the single integer that this NestedInteger holds, if it holds a single integer
+        // Return null if this NestedInteger holds a nested list
+        public Integer getInteger();
+
+        // @return the nested list that this NestedInteger holds, if it holds a nested list
+        // Return null if this NestedInteger holds a single integer
+        public List&lt;NestedInteger&gt; getList();
+    }
+
+    /**
+     * Runtime: 2 ms, faster than 99.89% of Java online submissions for Flatten Nested List Iterator.
+     *
+     * Memory Usage: 42.9 MB, less than 5.00% of Java online submissions for Flatten Nested List Iterator.
+     */
+    public class NestedIterator implements Iterator&lt;Integer&gt; {
+        private Queue&lt;Integer&gt; queue;
+
+        public NestedIterator(List&lt;NestedInteger&gt; nestedList) {
+            queue = new LinkedList&lt;&gt;();
+            dfs(nestedList);
+        }
+
+        private void dfs(List&lt;NestedInteger&gt; nestedList) {
+            if (Objects.isNull(nestedList) || nestedList.isEmpty()) {
+                return;
+            }
+
+            for (NestedInteger nestedInteger : nestedList) {
+                if (nestedInteger.isInteger()) {
+                    queue.offer(nestedInteger.getInteger());
+                } else {
+                    dfs(nestedInteger.getList());
+                }
+            }
+        }
+
+        @Override
+        public Integer next() {
+            return queue.poll();
+        }
+
+        @Override
+        public boolean hasNext() {
+            return !queue.isEmpty();
+        }
+    }
+
+    private void test() {
+        List&lt;NestedInteger&gt; nestedList = new ArrayList&lt;&gt;();
+        NestedIterator iterator = new NestedIterator(nestedList);
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
+
+    public static void main(String[] args) {
+        _0341_FlattenNestedListIterator solution = new _0341_FlattenNestedListIterator();
+        solution.test();
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

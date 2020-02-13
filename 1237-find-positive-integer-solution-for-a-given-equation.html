@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1237. Find Positive Integer Solution for a Given Equation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1237_find_positive_integer_solution_for_a_given_equation">1237. Find Positive Integer Solution for a Given Equation</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1237_find_positive_integer_solution_for_a_given_equation"><a class="anchor" href="#_1237_find_positive_integer_solution_for_a_given_equation"></a>1237. Find Positive Integer Solution for a Given Equation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/find-positive-integer-solution-for-a-given-equation/">LeetCode - Find Positive Integer Solution for a Given Equation</a></p>
+</div>
+<div class="paragraph">
+<p>Given a function  <code>f(x, y)</code> and a value <code>z</code>, return all positive integer pairs <code>x</code> and <code>y</code> where <code>f(x,y) == z</code>.</p>
+</div>
+<div class="paragraph">
+<p>The function is constantly increasing, i.e.:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>f(x, y) &lt; f(x + 1, y)</code></p>
+</li>
+<li>
+<p><code>f(x, y) &lt; f(x, y + 1)</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The function interface is defined like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>interface CustomFunction {
+public:
+  // Returns positive integer f(x, y) for any given positive integer x and y.
+  int f(int x, int y);
+};</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For custom testing purposes you&#8217;re given an integer <code>function_id</code> and a target <code>z</code> as input, where <code>function_id</code> represent one function from an secret internal list, on the examples you&#8217;ll know only two functions from the list.</p>
+</div>
+<div class="paragraph">
+<p>You may return the solutions in any order.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> function_id = 1, z = 5
+<strong>Output:</strong> [[1,4],[2,3],[3,2],[4,1]]
+<strong>Explanation:</strong> function_id = 1 means that f(x, y) = x + y</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> function_id = 2, z = 5
+<strong>Output:</strong> [[1,5],[5,1]]
+<strong>Explanation:</strong> function_id = 2 means that f(x, y) = x * y</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; function_id &#8656; 9</code></p>
+</li>
+<li>
+<p><code>1 &#8656; z &#8656; 100</code></p>
+</li>
+<li>
+<p>It&#8217;s guaranteed that the solutions of <code>f(x, y) == z</code> will be on the range <code>1 &#8656; x, y &#8656; 1000</code></p>
+</li>
+<li>
+<p>It&#8217;s also guaranteed that <code>f(x, y)</code> will fit in 32 bit signed integer if <code>1 &#8656; x, y &#8656; 1000</code></p>
+</li>
+</ul>
+</div>
+<div id="src-1237" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1237-find-positive-integer-solution-for-a-given-equation.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1237_FindPositiveIntegerSolutionForAGivenEquation.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:09 +0800
+</div>
+</div>
+</body>
+</html>

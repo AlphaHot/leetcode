@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>529. Minesweeper</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_529_minesweeper">529. Minesweeper</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_529_minesweeper"><a class="anchor" href="#_529_minesweeper"></a>529. Minesweeper</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/minesweeper/">LeetCode - Minesweeper</a></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s play the minesweeper game (&lt;a href="https://en.wikipedia.org/wiki/Minesweeper_(video_game)"&gt;Wikipedia&lt;/a&gt;, &lt;a href="http://minesweeperonline.com"&gt;online game&lt;/a&gt;)!</p>
+</div>
+<div class="paragraph">
+<p>You are given a 2D char matrix representing the game board. <strong>'M'</strong> represents an <strong>unrevealed</strong> mine, <strong>'E'</strong> represents an <strong>unrevealed</strong> empty square, <strong>'B'</strong> represents a <strong>revealed</strong> blank square that has no adjacent (above, below, left, right, and all 4 diagonals) mines, <strong>digit</strong> ('1' to '8') represents how many mines are adjacent to this <strong>revealed</strong> square, and finally <strong>'X'</strong> represents a <strong>revealed</strong> mine.</p>
+</div>
+<div class="paragraph">
+<p>Now given the next click position (row and column indices) among all the <strong>unrevealed</strong> squares ('M' or 'E'), return the board after revealing this position according to the following rules:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If a mine ('M') is revealed, then the game is over - change it to <strong>'X'</strong>.</p>
+</li>
+<li>
+<p>If an empty square ('E') with <strong>no adjacent mines</strong> is revealed, then change it to revealed blank ('B') and all of its adjacent <strong>unrevealed</strong> squares should be revealed recursively.</p>
+</li>
+<li>
+<p>If an empty square ('E') with <strong>at least one adjacent mine</strong> is revealed, then change it to a digit ('1' to '8') representing the number of adjacent mines.</p>
+</li>
+<li>
+<p>Return the board when no more squares will be revealed.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+
+[['E', 'E', 'E', 'E', 'E'],
+ ['E', 'E', 'M', 'E', 'E'],
+ ['E', 'E', 'E', 'E', 'E'],
+ ['E', 'E', 'E', 'E', 'E']]
+
+Click : [3,0]
+
+<strong>Output:</strong>
+
+[['B', '1', 'E', '1', 'B'],
+ ['B', '1', 'M', '1', 'B'],
+ ['B', '1', '1', '1', 'B'],
+ ['B', 'B', 'B', 'B', 'B']]
+
+<strong>Explanation:</strong>
+
+image::https://assets.leetcode.com/uploads/2018/10/12/minesweeper_example_1.png[]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+
+[['B', '1', 'E', '1', 'B'],
+ ['B', '1', 'M', '1', 'B'],
+ ['B', '1', '1', '1', 'B'],
+ ['B', 'B', 'B', 'B', 'B']]
+
+Click : [1,2]
+
+<strong>Output:</strong>
+
+[['B', '1', 'E', '1', 'B'],
+ ['B', '1', 'X', '1', 'B'],
+ ['B', '1', '1', '1', 'B'],
+ ['B', 'B', 'B', 'B', 'B']]
+
+<strong>Explanation:</strong>
+
+image::https://assets.leetcode.com/uploads/2018/10/12/minesweeper_example_2.png[]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The range of the input matrix&#8217;s height and width is [1,50].</p>
+</li>
+<li>
+<p>The click position will only be an unrevealed square ('M' or 'E'), which also means the input board contains at least one clickable square.</p>
+</li>
+<li>
+<p>The input board won&#8217;t be a stage when game is over (some mines have been revealed).</p>
+</li>
+<li>
+<p>For simplicity, not mentioned rules should be ignored in this problem. For example, you <strong>don&#8217;t</strong> need to reveal all the unrevealed mines when the game is over, consider any cases that you will win the game or flag any squares.</p>
+</li>
+</ol>
+</div>
+<div id="src-0529" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0529-minesweeper.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0529_Minesweeper.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

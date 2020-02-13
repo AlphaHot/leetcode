@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>48. Rotate Image</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_48_rotate_image">48. Rotate Image</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_48_rotate_image"><a class="anchor" href="#_48_rotate_image"></a>48. Rotate Image</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/rotate-image/">LeetCode - Rotate Image</a></p>
+</div>
+<div class="paragraph">
+<p>You are given an <em>n</em> x <em>n</em> 2D matrix representing an image.</p>
+</div>
+<div class="paragraph">
+<p>Rotate the image by 90 degrees (clockwise).</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="paragraph">
+<p>You have to rotate the image <a href="https://en.wikipedia.org/wiki/In-place_algorithm"><strong>in-place</strong></a>, which means you have to modify the input 2D matrix directly. <strong>DO NOT</strong> allocate another 2D matrix and do the rotation.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Given <strong>input matrix</strong> =
+[
+  [1,2,3],
+  [4,5,6],
+  [7,8,9]
+],
+
+rotate the input matrix <strong>in-place</strong> such that it becomes:
+[
+  [7,4,1],
+  [8,5,2],
+  [9,6,3]
+]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Given <strong>input matrix</strong> =
+[
+  [ 5, 1, 9,11],
+  [ 2, 4, 8,10],
+  [13, 3, 6, 7],
+  [15,14,12,16]
+],
+
+rotate the input matrix <strong>in-place</strong> such that it becomes:
+[
+  [15,13, 2, 5],
+  [14, 3, 4, 1],
+  [12, 6, 8, 9],
+  [16, 7,10,11]
+]</pre>
+</div>
+</div>
+<div id="src-0048" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.PrintUtils.printMatrix;
+
+/**
+ * = 48. Rotate Image
+ *
+ * https://leetcode.com/problems/rotate-image/[Rotate Image - LeetCode]
+ *
+ * You are given an n x n 2D matrix representing an image.
+ *
+ * Rotate the image by 90 degrees (clockwise).
+ *
+ * *Note:*
+ *
+ * You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Given input matrix =
+ * [
+ *   [1,2,3],
+ *   [4,5,6],
+ *   [7,8,9]
+ * ],
+ *
+ * rotate the input matrix in-place such that it becomes:
+ * [
+ *   [7,4,1],
+ *   [8,5,2],
+ *   [9,6,3]
+ * ]
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Given input matrix =
+ * [
+ *   [ 5, 1, 9,11],
+ *   [ 2, 4, 8,10],
+ *   [13, 3, 6, 7],
+ *   [15,14,12,16]
+ * ],
+ *
+ * rotate the input matrix in-place such that it becomes:
+ * [
+ *   [15,13, 2, 5],
+ *   [14, 3, 4, 1],
+ *   [12, 6, 8, 9],
+ *   [16, 7,10,11]
+ * ]
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2019-10-24 00:57:55
+ */
+public class _0048_RotateImage {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Rotate Image.
+     *
+     * Memory Usage: 36.3 MB, less than 100.00% of Java online submissions for Rotate Image.
+     */
+    public void rotate(int[][] matrix) {
+        if (Objects.isNull(matrix) || matrix.length == 0) {
+            return;
+        }
+        int length = matrix.length;
+        // 先交换行，这样操作更方便，但是也会有更多的额外空间。
+        for (int i = 0; i &lt; length / 2; i++) {
+            int[] temp = matrix[i];
+            matrix[i] = matrix[length - 1 - i];
+            matrix[length - 1 - i] = temp;
+        }
+//        printMatrix(matrix);
+        for (int i = 0; i &lt; length; i++) {
+            for (int j = 0; j &lt; i; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+    }
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Rotate Image.
+     *
+     * Memory Usage: 36.2 MB, less than 100.00% of Java online submissions for Rotate Image.
+     */
+    public void rotate1(int[][] matrix) {
+        if (Objects.isNull(matrix) || matrix.length == 0) {
+            return;
+        }
+        int length = matrix.length;
+        for (int i = 0; i &lt; length; i++) {
+            for (int j = 0; j &lt; i; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+        printMatrix(matrix);
+        for (int i = 0; i &lt; length; i++) {
+            for (int j = 0; j &lt; length / 2; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[i][length - j - 1];
+                matrix[i][length - j - 1] = temp;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        _0048_RotateImage solution = new _0048_RotateImage();
+        int[][] array1 = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        printMatrix(array1);
+        solution.rotate(array1);
+        printMatrix(array1);
+
+        int[][] array2 = {{5, 1, 9, 11}, {2, 4, 8, 10}, {13, 3, 6, 7}, {15, 14, 12, 16}};
+        printMatrix(array2);
+        solution.rotate(array2);
+        printMatrix(array2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

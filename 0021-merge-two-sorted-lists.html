@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>21. Merge Two Sorted Lists</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_21_merge_two_sorted_lists">21. Merge Two Sorted Lists</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_21_merge_two_sorted_lists"><a class="anchor" href="#_21_merge_two_sorted_lists"></a>21. Merge Two Sorted Lists</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/merge-two-sorted-lists/">LeetCode - Merge Two Sorted Lists</a></p>
+</div>
+<div class="paragraph">
+<p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 1-&gt;2-&gt;4, 1-&gt;3-&gt;4
+<strong>Output:</strong> 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</pre>
+</div>
+</div>
+<div id="src-0021" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.ListNode;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.ListNodeUtils.build;
+import static com.diguage.algorithm.util.ListNodeUtils.isOrder;
+
+/**
+ * = 21. Merge Two Sorted Lists
+ *
+ * https://leetcode.com/problems/merge-two-sorted-lists/[Merge Two Sorted Lists - LeetCode]
+ *
+ * Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
+ *
+ * .Example:
+ * [source]
+ * ----
+ * Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4
+ * Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2019-07-26 08:49
+ */
+public class _0021_MergeTwoSortedLists {
+    /**
+     * Runtime: 1 ms, faster than 28.15% of Java online submissions for Merge Two Sorted Lists.
+     *
+     * Memory Usage: 39.8 MB, less than 14.45% of Java online submissions for Merge Two Sorted Lists.
+     */
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (Objects.isNull(l1)) {
+            return l2;
+        }
+        if (Objects.isNull(l2)) {
+            return l1;
+        }
+        ListNode result = null;
+        ListNode p1 = l1;
+        ListNode p2 = l2;
+        ListNode tail = null;
+
+        while (Objects.nonNull(p1) &amp;&amp; Objects.nonNull(p2)) {
+            int v1 = p1.val;
+            int v2 = p2.val;
+            ListNode temp = null;
+            if (v1 &lt; v2) {
+                temp = p1;
+                p1 = p1.next;
+            } else {
+                temp = p2;
+                p2 = p2.next;
+            }
+            if (Objects.isNull(tail)) {
+                result = temp;
+                tail = temp;
+            } else {
+                tail.next = temp;
+                tail = temp;
+            }
+        }
+        if (Objects.isNull(p1)) {
+            tail.next = p2;
+        }
+
+        if (Objects.isNull(p2)) {
+            tail.next = p1;
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0021_MergeTwoSortedLists solution = new _0021_MergeTwoSortedLists();
+        ListNode l1 = build(Arrays.asList());
+        ListNode l2 = build(Arrays.asList());
+        ListNode r1 = solution.mergeTwoLists(l1, l2);
+        System.out.println(isOrder(r1));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

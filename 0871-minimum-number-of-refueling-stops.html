@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>871. Minimum Number of Refueling Stops</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_871_minimum_number_of_refueling_stops">871. Minimum Number of Refueling Stops</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_871_minimum_number_of_refueling_stops"><a class="anchor" href="#_871_minimum_number_of_refueling_stops"></a>871. Minimum Number of Refueling Stops</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/minimum-number-of-refueling-stops/">LeetCode - Minimum Number of Refueling Stops</a></p>
+</div>
+<div class="paragraph">
+<p>A car travels from a starting position to a destination which is <code>target</code> miles east of the starting position.</p>
+</div>
+<div class="paragraph">
+<p>Along the way, there are gas stations.  Each <code>station[i]</code> represents a gas station that is <code>station[i][0]</code> miles east of the starting position, and has <code>station[i][1]</code> liters of gas.</p>
+</div>
+<div class="paragraph">
+<p>The car starts with an infinite tank of gas, which initially has <code>startFuel</code> liters of fuel in it.  It uses 1 liter of gas per 1 mile that it drives.</p>
+</div>
+<div class="paragraph">
+<p>When the car reaches a gas station, it may stop and refuel, transferring all the gas from the station into the car.</p>
+</div>
+<div class="paragraph">
+<p>What is the least number of refueling stops the car must make in order to reach its destination?  If it cannot reach the destination, return <code>-1</code>.</p>
+</div>
+<div class="paragraph">
+<p>Note that if the car reaches a gas station with 0 fuel left, the car can still refuel there.  If the car reaches the destination with 0 fuel left, it is still considered to have arrived.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> target = 1, startFuel = 1, stations = []
+<strong>Output:</strong> 0
+<strong>Explanation:</strong> We can reach the target without refueling.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> target = 100, startFuel = 1, stations = [[10,100]]
+<strong>Output:</strong> -1
+<strong>Explanation:</strong> We can't reach the target (or even the first gas station).</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> target = 100, startFuel = 10, stations = [[10,60],[20,30],[30,30],[60,40]]
+<strong>Output:</strong> 2
+<strong>Explanation:</strong>
+We start with 10 liters of fuel.
+We drive to position 10, expending 10 liters of fuel.  We refuel from 0 liters to 60 liters of gas.
+Then, we drive from position 10 to position 60 (expending 50 liters of fuel),
+and refuel from 10 liters to 50 liters of gas.  We then drive to and reach the target.
+We made 2 refueling stops along the way, so we return 2.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>1 &#8656; target, startFuel, stations[i][1] &#8656; 10^9</code></p>
+</li>
+<li>
+<p><code>0 &#8656; stations.length &#8656; 500</code></p>
+</li>
+<li>
+<p><code>0 &lt; stations[0][0] &lt; stations[1][0] &lt; &#8230;&#8203; &lt; stations[stations.length-1][0] &lt; target</code></p>
+</li>
+</ol>
+</div>
+<div id="src-0871" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0871-minimum-number-of-refueling-stops.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0871_MinimumNumberOfRefuelingStops.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

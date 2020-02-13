@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>139. Word Break</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_139_word_break">139. Word Break</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_139_word_break"><a class="anchor" href="#_139_word_break"></a>139. Word Break</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/word-break/">LeetCode - Word Break</a></p>
+</div>
+<div class="paragraph">
+<p>TODO: 似乎明白了，又似乎不明白。</p>
+</div>
+<div class="paragraph">
+<p>Given a <strong>non-empty</strong> string <em>s</em> and a dictionary <em>wordDict</em> containing a list of <strong>non-empty</strong> words, determine if <em>s</em> can be segmented into a space-separated sequence of one or more dictionary words.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The same word in the dictionary may be reused multiple times in the segmentation.</p>
+</li>
+<li>
+<p>You may assume the dictionary does not contain duplicate words.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> s = "leetcode", wordDict = ["leet", "code"]
+<strong>Output:</strong> true
+<strong>Explanation:</strong> Return true because <code>"leetcode"</code> can be segmented as <code>"leet code"</code>.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> s = "applepenapple", wordDict = ["apple", "pen"]
+<strong>Output:</strong> true
+<strong>Explanation:</strong> Return true because <code>&#8220;applepenapple&#8221;</code> can be segmented as <code>&#8220;apple pen apple&#8221;</code>.
+             Note that you are allowed to reuse a dictionary word.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
+<strong>Output:</strong> false</pre>
+</div>
+</div>
+<div id="src-0139" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+/**
+ * = 139. Word Break
+ *
+ * https://leetcode.com/problems/word-break/[Word Break - LeetCode]
+ *
+ * Given a *non-empty* string s and a dictionary wordDict containing a list of *non-empty* words, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
+ *
+ * *Note:*
+ *
+ * * The same word in the dictionary may be reused multiple times in the segmentation.
+ * * You may assume the dictionary does not contain duplicate words.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: s = "leetcode", wordDict = ["leet", "code"]
+ * Output: true
+ * Explanation: Return true because "leetcode" can be segmented as "leet code".
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: s = "applepenapple", wordDict = ["apple", "pen"]
+ * Output: true
+ * Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".
+ *              Note that you are allowed to reuse a dictionary word.
+ * ----
+ *
+ * .Example 3:
+ * [source]
+ * ----
+ * Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
+ * Output: false
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-24 09:39
+ */
+public class _0139_WordBreak {
+    /**
+     * Runtime: 11 ms, faster than 6.65% of Java online submissions for Word Break.
+     *
+     * Memory Usage: 44.3 MB, less than 5.08% of Java online submissions for Word Break.
+     *
+     * Copy from: https://leetcode-cn.com/problems/word-break/solution/dan-ci-chai-fen-by-leetcode/[单词拆分 - 单词拆分 - 力扣（LeetCode）]
+     */
+    public boolean wordBreak(String s, List&lt;String&gt; wordDict) {
+        boolean[] dp = new boolean[s.length() + 1];
+        Arrays.fill(dp, false);
+        dp[0] = true;
+        Set&lt;String&gt; dict = new HashSet&lt;&gt;(wordDict);
+        for (int i = 1; i &lt;= s.length(); i++) {
+            for (int j = 0; j &lt; i; j++) {
+                if (dp[j] &amp;&amp; dict.contains(s.substring(j, i))) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[s.length()];
+    }
+
+    public static void main(String[] args) {
+        _0139_WordBreak solution = new _0139_WordBreak();
+
+        boolean r4 = solution.wordBreak("aaaaaaa", Arrays.asList("aaaa", "aaa"));
+        System.out.println(r4);
+
+        boolean r1 = solution.wordBreak("leetcode", Arrays.asList("leet", "code"));
+        System.out.println(r1);
+
+        boolean r2 = solution.wordBreak("applepenapple", Arrays.asList("apple", "pen"));
+        System.out.println(r2);
+
+        boolean r3 = solution.wordBreak("catsandog", Arrays.asList("cats", "dog", "sand", "and", "cat"));
+        System.out.println(!r3);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

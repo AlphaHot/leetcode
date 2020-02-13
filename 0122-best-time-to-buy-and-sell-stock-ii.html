@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>122. Best Time to Buy and Sell Stock II</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_122_best_time_to_buy_and_sell_stock_ii">122. Best Time to Buy and Sell Stock II</a>
+<ul class="sectlevel2">
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_122_best_time_to_buy_and_sell_stock_ii"><a class="anchor" href="#_122_best_time_to_buy_and_sell_stock_ii"></a>122. Best Time to Buy and Sell Stock II</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/">LeetCode - Best Time to Buy and Sell Stock II</a></p>
+</div>
+<div class="paragraph">
+<p>Say you have an array for which the <em>i<sup>th</sup></em> element is the price of a given stock on day <em>i</em>.</p>
+</div>
+<div class="paragraph">
+<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).</p>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre>Input: [7,1,5,3,6,4]
+Output: 7
+Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+             Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 2:</div>
+<div class="content">
+<pre>Input: [1,2,3,4,5]
+Output: 4
+Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+             Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are
+             engaging multiple transactions at the same time. You must sell before buying again.</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 3:</div>
+<div class="content">
+<pre>Input: [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transaction is done, i.e. max profit = 0.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>针对 <a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/solution/yi-ge-fang-fa-tuan-mie-6-dao-gu-piao-wen-ti-by-lab/">一个方法团灭 6 道股票问题 - 最佳买卖股票时机含冷冻期 - 力扣（LeetCode）</a> 这个解题框架，进行小试牛刀。</p>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/solution/yi-ge-fang-fa-tuan-mie-6-dao-gu-piao-wen-ti-by-lab/">一个方法团灭 6 道股票问题 - 最佳买卖股票时机含冷冻期 - 力扣（LeetCode）</a></p>
+</li>
+<li>
+<p><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/solution/dong-tai-gui-hua-shen-ru-fen-xi-by-wang-yan-19/">动态规划深入分析 - 最佳买卖股票时机含冷冻期 - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Say you have an array for which the <em>i</em><sup>th</sup> element is the price of a given stock on day <em>i</em>.</p>
+</div>
+<div class="paragraph">
+<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [7,1,5,3,6,4]
+<strong>Output:</strong> 7
+<strong>Explanation:</strong> Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+             Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [1,2,3,4,5]
+<strong>Output:</strong> 4
+<strong>Explanation:</strong> Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+             Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are
+             engaging multiple transactions at the same time. You must sell before buying again.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [7,6,4,3,1]
+<strong>Output:</strong> 0
+<strong>Explanation:</strong> In this case, no transaction is done, i.e. max profit = 0.</pre>
+</div>
+</div>
+<div id="src-0122" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+/**
+ * = 122. Best Time to Buy and Sell Stock II
+ *
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/[Best Time to Buy and Sell Stock II - LeetCode]
+ *
+ * Say you have an array for which the ith element is the price of a given stock on day i.
+ *
+ * Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
+ *
+ * Note: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: [7,1,5,3,6,4]
+ * Output: 7
+ * Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+ *              Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: [1,2,3,4,5]
+ * Output: 4
+ * Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+ *              Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are
+ *              engaging multiple transactions at the same time. You must sell before buying again.
+ * ----
+ *
+ * .Example 3:
+ * [source]
+ * ----
+ * Input: [7,6,4,3,1]
+ * Output: 0
+ * Explanation: In this case, no transaction is done, i.e. max profit = 0.
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-04 10:55
+ */
+public class _0122_BestTimeToBuyAndSellStockII {
+
+    /**
+     * Runtime: 1 ms, faster than 87.57% of Java online submissions for Best Time to Buy and Sell Stock II.
+     * Memory Usage: 42.8 MB, less than 5.71% of Java online submissions for Best Time to Buy and Sell Stock II.
+     *
+     * Copy from: https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/solution/yi-ge-fang-fa-tuan-mie-6-dao-gu-piao-wen-ti-by-lab/[一个方法团灭 6 道股票问题 - 最佳买卖股票时机含冷冻期 - 力扣（LeetCode）]
+     */
+    public int maxProfitDp(int[] prices) {
+        int dp0 = 0;
+        int dp1 = Integer.MIN_VALUE;
+        for (int i = 0; i &lt; prices.length; i++) {
+            dp0 = Math.max(dp0, dp1 + prices[i]);
+            dp1 = Math.max(dp1, dp0 - prices[i]);
+        }
+        return dp0;
+    }
+    /**
+     * Runtime: 1 ms, faster than 85.09% of Java online submissions for Best Time to Buy and Sell Stock II.
+     *
+     * Memory Usage: 37 MB, less than 100.00% of Java online submissions for Best Time to Buy and Sell Stock II.
+     */
+    public int maxProfit(int[] prices) {
+        if (Objects.isNull(prices) || prices.length == 0) {
+            return 0;
+        }
+        int result = 0;
+        for (int i = 1; i &lt; prices.length; i++) {
+            if (prices[i - 1] &lt; prices[i]) {
+                result += prices[i] - prices[i - 1];
+            }
+        }
+        return result;
+    }
+    /**
+     * Runtime: 1 ms, faster than 85.09% of Java online submissions for Best Time to Buy and Sell Stock II.
+     *
+     * Memory Usage: 37 MB, less than 100.00% of Java online submissions for Best Time to Buy and Sell Stock II.
+     *
+     * 我的思路，别人的代码。
+     */
+    public int maxProfitPeakValleyApproach(int[] prices) {
+        if (Objects.isNull(prices) || prices.length == 0) {
+            return 0;
+        }
+        int i = 0;
+        int valley = prices[0];
+        int peak = prices[0];
+        int result = 0;
+        while (i &lt; prices.length - 1) {
+            while (i &lt; prices.length - 1 &amp;&amp; prices[i] &gt; prices[i + 1]) {
+                i++;
+            }
+            valley = prices[i];
+            while (i &lt; prices.length - 1 &amp;&amp; prices[i] &lt; prices[i++]) {
+                i++;
+            }
+            peak = prices[i];
+            result += peak - valley;
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0122_BestTimeToBuyAndSellStockII solution = new _0122_BestTimeToBuyAndSellStockII();
+
+        int[] a1 = {7, 1, 5, 3, 6, 4};
+        int r1 = solution.maxProfit(a1);
+        System.out.println((r1 == 7) + " : " + r1);
+
+        int[] a2 = {1, 2, 3, 4, 5};
+        int r2 = solution.maxProfit(a2);
+        System.out.println((r2 == 4) + " : " + r2);
+
+        int[] a3 = {7, 6, 4, 3, 1};
+        int r3 = solution.maxProfit(a3);
+        System.out.println((r3 == 0) + " : " + r3);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

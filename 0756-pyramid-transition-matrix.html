@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>756. Pyramid Transition Matrix</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_756_pyramid_transition_matrix">756. Pyramid Transition Matrix</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_756_pyramid_transition_matrix"><a class="anchor" href="#_756_pyramid_transition_matrix"></a>756. Pyramid Transition Matrix</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/pyramid-transition-matrix/">LeetCode - Pyramid Transition Matrix</a></p>
+</div>
+<div class="paragraph">
+<p>We are stacking blocks to form a pyramid. Each block has a color which is a one letter string.</p>
+</div>
+<div class="paragraph">
+<p>We are allowed to place any color block <code>C</code> on top of two adjacent blocks of colors <code>A</code> and <code>B</code>, if and only if <code>ABC</code> is an allowed triple.</p>
+</div>
+<div class="paragraph">
+<p>We start with a bottom row of <code>bottom</code>, represented as a single string. We also start with a list of allowed triples <code>allowed</code>. Each allowed triple is represented as a string of length 3.</p>
+</div>
+<div class="paragraph">
+<p>Return true if we can build the pyramid all the way to the top, otherwise false.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> bottom = "BCD", allowed = ["BCG", "CDE", "GEA", "FFF"]
+<strong>Output:</strong> true
+<strong>Explanation:</strong>
+We can stack the pyramid like this:
+    A
+   / \
+  G   E
+ / \ / \
+B   C   D
+
+We are allowed to place G on top of B and C because BCG is an allowed triple.  Similarly, we can place E on top of C and D, then A on top of G and E.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> bottom = "AABA", allowed = ["AAA", "AAB", "ABA", "ABB", "BAC"]
+<strong>Output:</strong> false
+<strong>Explanation:</strong>
+We can't stack the pyramid to the top.
+Note that there could be allowed triples (A, B, C) and (A, B, D) with C != D.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>bottom</code> will be a string with length in range <code>[2, 8]</code>.</p>
+</li>
+<li>
+<p><code>allowed</code> will have length in range <code>[0, 200]</code>.</p>
+</li>
+<li>
+<p>Letters in all strings will be chosen from the set <code>{'A', 'B', 'C', 'D', 'E', 'F', 'G'}</code>.</p>
+</li>
+</ol>
+</div>
+<div id="src-0756" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0756-pyramid-transition-matrix.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0756_PyramidTransitionMatrix.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

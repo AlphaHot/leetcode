@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>107. Binary Tree Level Order Traversal II</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_107_binary_tree_level_order_traversal_ii">107. Binary Tree Level Order Traversal II</a>
+<ul class="sectlevel2">
+<li><a href="#_解题分析">解题分析</a></li>
+<li><a href="#_思考题">思考题</a></li>
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_107_binary_tree_level_order_traversal_ii"><a class="anchor" href="#_107_binary_tree_level_order_traversal_ii"></a>107. Binary Tree Level Order Traversal II</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal-ii/">LeetCode - Binary Tree Level Order Traversal II</a></p>
+</div>
+<div class="paragraph">
+<p>Given a binary tree, return the bottom-up level order traversal of its nodes' values. (ie, from left to right, level by level from leaf to root).</p>
+</div>
+<div class="paragraph">
+<p>For example:<br>
+Given binary tree <code>[3,9,20,null,null,15,7]</code>,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   3
+  / \
+ 9  20
+   /  \
+  15   7</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>return its bottom-up level order traversal as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[
+  [15,7],
+  [9,20],
+  [3]
+]</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_解题分析"><a class="anchor" href="#_解题分析"></a>解题分析</h3>
+<div class="paragraph">
+<p>分层访问，然后再把顺序反转过来。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_思考题"><a class="anchor" href="#_思考题"></a>思考题</h3>
+<div class="paragraph">
+<p>尝试一下递归的解法！</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/solution/107er-cha-shu-de-ceng-ci-bian-li-iidui-lie-fa-he-d/">107二叉树的层次遍历II（队列法和递归法） - 二叉树的层次遍历 II - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given a binary tree, return the <em>bottom-up level order</em> traversal of its nodes' values. (ie, from left to right, level by level from leaf to root).</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="paragraph">
+<p>Given binary tree <code>[3,9,20,null,null,15,7]</code>,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    3
+   / \
+  9  20
+    /  \
+   15   7</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>return its bottom-up level order traversal as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[
+  [15,7],
+  [9,20],
+  [3]
+]</pre>
+</div>
+</div>
+<div id="src-0107" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.PrintUtils;
+import com.diguage.algorithm.util.TreeNode;
+
+import java.util.*;
+
+import static com.diguage.algorithm.util.TreeNodeUtils.buildTree;
+import static java.util.Arrays.asList;
+
+/**
+ * = 107. Binary Tree Level Order Traversal II
+ *
+ * https://leetcode.com/problems/binary-tree-level-order-traversal-ii/[Binary Tree Level Order Traversal II - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-02-05 23:20
+ */
+public class _0107_BinaryTreeLevelOrderTraversalII {
+
+    /**
+     * Runtime: 1 ms, faster than 86.28% of Java online submissions for Binary Tree Level Order Traversal II.
+     * Memory Usage: 38.8 MB, less than 5.00% of Java online submissions for Binary Tree Level Order Traversal II.
+     */
+    public List&lt;List&lt;Integer&gt;&gt; levelOrderBottom(TreeNode root) {
+        if (Objects.isNull(root)) {
+            return Collections.emptyList();
+        }
+        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();
+        Deque&lt;TreeNode&gt; deque = new LinkedList&lt;&gt;();
+        deque.addLast(root);
+        while (!deque.isEmpty()) {
+            int size = deque.size();
+            List&lt;Integer&gt; nums = new ArrayList&lt;&gt;(size);
+            for (int i = 0; i &lt; size; i++) {
+                TreeNode node = deque.removeFirst();
+                nums.add(node.val);
+                if (Objects.nonNull(node.left)) {
+                    deque.addLast(node.left);
+                }
+                if (Objects.nonNull(node.right)) {
+                    deque.addLast(node.right);
+                }
+            }
+            result.add(nums);
+        }
+        Collections.reverse(result);
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0107_BinaryTreeLevelOrderTraversalII solution = new _0107_BinaryTreeLevelOrderTraversalII();
+        List&lt;List&lt;Integer&gt;&gt; r1 = solution.levelOrderBottom(buildTree(asList(3, 9, 20, null, null, 15, 7)));
+        PrintUtils.printMatrix(r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>558. Quad Tree Intersection</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_558_quad_tree_intersection">558. Quad Tree Intersection</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_558_quad_tree_intersection"><a class="anchor" href="#_558_quad_tree_intersection"></a>558. Quad Tree Intersection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/quad-tree-intersection/">LeetCode - Quad Tree Intersection</a></p>
+</div>
+<div class="paragraph">
+<p>A quadtree is a tree data in which each internal node has exactly four children: <code>topLeft</code>, <code>topRight</code>, <code>bottomLeft</code> and <code>bottomRight</code>. Quad trees are often used to partition a two-dimensional space by recursively subdividing it into four quadrants or regions.</p>
+</div>
+<div class="paragraph">
+<p>We want to store True/False information in our quad tree. The quad tree is used to represent a <code>N * N</code> boolean grid. For each node, it will be subdivided into four children nodes <strong>until the values in the region it represents are all the same</strong>. Each node has another two boolean attributes : <code>isLeaf</code> and <code>val</code>. <code>isLeaf</code> is true if and only if the node is a leaf node. The <code>val</code> attribute for a leaf node contains the value of the region it represents.</p>
+</div>
+<div class="paragraph">
+<p>For example, below are two quad trees A and B:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>A:
+--------------+   T: true
+|       |       |   F: false
+|   T   |   T   |
+|       |       |
+--------------+
+|       |       |
+|   F   |   F   |
+|       |       |
+--------------+
+topLeft: T
+topRight: T
+bottomLeft: F
+bottomRight: F
+
+B:
+-------------
+|       | F | F |
+|   T   ------+
+|       | T | T |
+-------------
+|       |       |
+|   T   |   F   |
+|       |       |
+--------------+
+topLeft: T
+topRight:
+     topLeft: F
+     topRight: F
+     bottomLeft: T
+     bottomRight: T
+bottomLeft: T
+bottomRight: F</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Your task is to implement a function that will take two quadtrees and return a quadtree that represents the logical OR (or union) of the two trees.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>A:                 B:                 C (A or B):
+--------------+  -------------  --------------+
+|       |       |  |       | F | F |  |       |       |
+|   T   |   T   |  |   T   ------+  |   T   |   T   |
+|       |       |  |       | T | T |  |       |       |
+--------------+  -------------  --------------+
+|       |       |  |       |       |  |       |       |
+|   F   |   F   |  |   T   |   F   |  |   T   |   F   |
+|       |       |  |       |       |  |       |       |
+--------------+  --------------+  --------------+</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Both <code>A</code> and <code>B</code> represent grids of size <code>N * N</code>.</p>
+</li>
+<li>
+<p><code>N</code> is guaranteed to be a power of 2.</p>
+</li>
+<li>
+<p>If you want to know more about the quad tree, you can refer to its &lt;a href="https://en.wikipedia.org/wiki/Quadtree"&gt;wiki&lt;/a&gt;.</p>
+</li>
+<li>
+<p>The logic OR operation is defined as this: "A or B" is true if <code>A is true</code>, or if <code>B is true</code>, or if <code>both A and B are true</code>.</p>
+</li>
+</ol>
+</div>
+<div id="src-0558" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0558-quad-tree-intersection.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0558_QuadTreeIntersection.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

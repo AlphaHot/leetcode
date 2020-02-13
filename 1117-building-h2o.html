@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1117. Building H2O</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1117_building_h2o">1117. Building H2O</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1117_building_h2o"><a class="anchor" href="#_1117_building_h2o"></a>1117. Building H2O</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/building-h2o/">LeetCode - Building H2O</a></p>
+</div>
+<div class="paragraph">
+<p>There are two kinds of threads, <code>oxygen</code> and <code>hydrogen</code>. Your goal is to group these threads to form water molecules. There is a barrier where each thread has to wait until a complete molecule can be formed. Hydrogen and oxygen threads will be given <code>releaseHydrogen</code> and <code>releaseOxygen</code> methods respectively, which will allow them to pass the barrier. These threads should pass the barrier in groups of three, and they must be able to immediately bond with each other to form a water molecule. You must guarantee that all the threads from one molecule bond <em>before</em> any other threads from the next molecule do.</p>
+</div>
+<div class="paragraph">
+<p>In other words:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If an oxygen thread arrives at the barrier when no hydrogen threads are present, it has to wait for two hydrogen threads.</p>
+</li>
+<li>
+<p>If a hydrogen thread arrives at the barrier when no other threads are present, it has to wait for an oxygen thread and another hydrogen thread.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We don&rsquo;t have to worry about matching the threads up explicitly; that is, the threads do not necessarily know which other threads they are paired up with. The key is just that threads pass the barrier in complete sets; thus, if we examine the sequence of threads that bond and divide them into groups of three, each group should contain one oxygen and two hydrogen threads.</p>
+</div>
+<div class="paragraph">
+<p>Write synchronization code for oxygen and hydrogen molecules that enforces these constraints.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "HOH"
+<strong>Output:</strong> "HHO"
+<strong>Explanation:</strong> "HOH" and "OHH" are also valid answers.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "OOHHHH"
+<strong>Output:</strong> "HHOHHO"
+<strong>Explanation:</strong> "HOHHHO", "OHHHHO", "HHOHOH", "HOHHOH", "OHHHOH", "HHOOHH", "HOHOHH" and "OHHOHH" are also valid answers.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Total length of input string will be 3_n_, where 1 ≤ <em>n</em> ≤ 20.</p>
+</li>
+<li>
+<p>Total number of <code>H</code> will be 2_n_ in the input string.</p>
+</li>
+<li>
+<p>Total number of <code>O</code> will be <em>n</em> in the input string.</p>
+</li>
+</ul>
+</div>
+<div id="src-1117" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1117-building-h2o.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1117_BuildingH2O.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

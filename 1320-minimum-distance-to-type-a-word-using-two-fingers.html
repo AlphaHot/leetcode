@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1320. Minimum Distance to Type a Word Using Two Fingers</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1320_minimum_distance_to_type_a_word_using_two_fingers">1320. Minimum Distance to Type a Word Using Two Fingers</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1320_minimum_distance_to_type_a_word_using_two_fingers"><a class="anchor" href="#_1320_minimum_distance_to_type_a_word_using_two_fingers"></a>1320. Minimum Distance to Type a Word Using Two Fingers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/minimum-distance-to-type-a-word-using-two-fingers/">LeetCode - Minimum Distance to Type a Word Using Two Fingers</a></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2020/01/02/leetcode_keyboard.png" alt="leetcode keyboard">
+</div>
+</div>
+<div class="paragraph">
+<p>You have a keyboard layout as shown above in the XY plane, where each English uppercase letter is located at some coordinate, for example, the letter <strong>A</strong> is located at coordinate <strong>(0,0)</strong>, the letter <strong>B</strong> is located at coordinate <strong>(0,1)</strong>, the letter <strong>P</strong> is located at coordinate <strong>(2,3)</strong> and the letter <strong>Z</strong> is located at coordinate <strong>(4,1)</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Given the string <code>word</code>, return the minimum total distance to type such string using only two fingers. The distance between coordinates <strong>(x<sub>1</sub>,y<sub>1</sub>)</strong> and <strong>(x<sub>2</sub>,y<sub>2</sub>)</strong> is <strong>|x<sub>1</sub> - x<sub>2</sub>| + |y<sub>1</sub> - y<sub>2</sub>|</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Note that the initial positions of your two fingers are considered free so don&#8217;t count towards your total distance, also your two fingers do not have to start at the first letter or the first two letters.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> word = "CAKE"
+<strong>Output:</strong> 3
+*Explanation:
+*Using two fingers, one optimal way to type "CAKE" is:
+Finger 1 on letter 'C' -&gt; cost = 0
+Finger 1 on letter 'A' -&gt; cost = Distance from letter 'C' to letter 'A' = 2
+Finger 2 on letter 'K' -&gt; cost = 0
+Finger 2 on letter 'E' -&gt; cost = Distance from letter 'K' to letter 'E' = 1
+Total distance = 3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> word = "HAPPY"
+<strong>Output:</strong> 6
+<strong>Explanation:</strong>
+Using two fingers, one optimal way to type "HAPPY" is:
+Finger 1 on letter 'H' -&gt; cost = 0
+Finger 1 on letter 'A' -&gt; cost = Distance from letter 'H' to letter 'A' = 2
+Finger 2 on letter 'P' -&gt; cost = 0
+Finger 2 on letter 'P' -&gt; cost = Distance from letter 'P' to letter 'P' = 0
+Finger 1 on letter 'Y' -&gt; cost = Distance from letter 'A' to letter 'Y' = 4
+Total distance = 6</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> word = "NEW"
+<strong>Output:</strong> 3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 4:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> word = "YEAR"
+<strong>Output:</strong> 7</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>2 &#8656; word.length &#8656; 300</code></p>
+</li>
+<li>
+<p>Each &lt;code data-stringify-type="code"&gt;word[i]` is an English uppercase letter.</p>
+</li>
+</ul>
+</div>
+<div id="src-1320" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1320-minimum-distance-to-type-a-word-using-two-fingers.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1320_MinimumDistanceToTypeAWordUsingTwoFingers.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:09 +0800
+</div>
+</div>
+</body>
+</html>

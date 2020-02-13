@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>242. Valid Anagram</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_242_valid_anagram">242. Valid Anagram</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_242_valid_anagram"><a class="anchor" href="#_242_valid_anagram"></a>242. Valid Anagram</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/valid-anagram/">LeetCode - Valid Anagram</a></p>
+</div>
+<div class="paragraph">
+<p>两种解法都可以，还是要多做题啊！</p>
+</div>
+<div class="paragraph">
+<p>Given two strings <em>s</em> and <em>t _, write a function to determine if _t</em> is an anagram of <em>s</em>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> <em>s</em> = "anagram", <em>t</em> = "nagaram"
+<strong>Output:</strong> true</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> <em>s</em> = "rat", <em>t</em> = "car"
+<strong>Output:</strong> false</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="paragraph">
+<p>You may assume the string contains only lowercase alphabets.</p>
+</div>
+<div class="paragraph">
+<p><strong>Follow up:</strong></p>
+</div>
+<div class="paragraph">
+<p>What if the inputs contain unicode characters? How would you adapt your solution to such case?</p>
+</div>
+<div id="src-0242" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+/**
+ * = 242. Valid Anagram
+ *
+ * Given two strings `s` and `t` , write a function to determine if `t` is an anagram of `s`.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: s = "anagram", t = "nagaram"
+ * Output: true
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: s = "rat", t = "car"
+ * Output: false
+ * ----
+ *
+ * *Note:*
+ * You may assume the string contains only lowercase alphabets.
+ *
+ * *Follow up:*
+ *
+ * What if the inputs contain unicode characters? How would you adapt your solution to such case?
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-10 23:48
+ */
+public class _0242_ValidAnagram {
+    /**
+     * Runtime: 3 ms, faster than 93.97% of Java online submissions for Valid Anagram.
+     *
+     * Memory Usage: 36.2 MB, less than 98.06% of Java online submissions for Valid Anagram.
+     */
+    public boolean isAnagram(String s, String t) {
+        if (Objects.isNull(s) &amp;&amp; Objects.isNull(t)) {
+            return true;
+        }
+        if (Objects.isNull(s) || Objects.isNull(t)) {
+            return false;
+        }
+        int[] sChartCount = new int[26];
+        for (char c : s.toCharArray()) {
+            sChartCount[c - 'a']++;
+        }
+        int[] tChartCount = new int[26];
+        for (char c : t.toCharArray()) {
+            tChartCount[c - 'a']++;
+        }
+        return Arrays.equals(sChartCount, tChartCount);
+    }
+
+    /**
+     * Runtime: 3 ms, faster than 93.97% of Java online submissions for Valid Anagram.
+     *
+     * Memory Usage: 37.9 MB, less than 64.51% of Java online submissions for Valid Anagram.
+     */
+    public boolean isAnagramSort(String s, String t) {
+        char[] sChars = s.toCharArray();
+        Arrays.sort(sChars);
+        char[] tChars = t.toCharArray();
+        Arrays.sort(tChars);
+        return Arrays.equals(sChars, tChars);
+    }
+
+    public static void main(String[] args) {
+        _0242_ValidAnagram solution = new _0242_ValidAnagram();
+        boolean r1 = solution.isAnagram("anagram", "nagaram");
+        System.out.println(r1);
+
+        boolean r2 = solution.isAnagram("rat", "car");
+        System.out.println(r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

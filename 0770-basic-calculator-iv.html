@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>770. Basic Calculator IV</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_770_basic_calculator_iv">770. Basic Calculator IV</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_770_basic_calculator_iv"><a class="anchor" href="#_770_basic_calculator_iv"></a>770. Basic Calculator IV</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/basic-calculator-iv/">LeetCode - Basic Calculator IV</a></p>
+</div>
+<div class="paragraph">
+<p>Given an <code>expression</code> such as <code>expression = "e + 8 - a + 5"</code> and an evaluation map such as <code>{"e": 1}</code> (given in terms of <code>evalvars = ["e"]</code> and <code>evalints = [1]</code>), return a list of tokens representing the simplified expression, such as <code>["-1*a","14"]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An expression alternates chunks and symbols, with a space separating each chunk and symbol.</p>
+</li>
+<li>
+<p>A chunk is either an expression in parentheses, a variable, or a non-negative integer.</p>
+</li>
+<li>
+<p>A variable is a string of lowercase letters (not including digits.) Note that variables can be multiple letters, and note that variables never have a leading coefficient or unary operator like <code>"2x"</code> or <code>"-x"</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Expressions are evaluated in the usual order: brackets first, then multiplication, then addition and subtraction. For example, <code>expression = "1 + 2 * 3"</code> has an answer of <code>["7"]</code>.</p>
+</div>
+<div class="paragraph">
+<p>The format of the output is as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For each term of free variables with non-zero coefficient, we write the free variables within a term in sorted order lexicographically. For example, we would never write a term like <code>"b*a*c"</code>, only <code>"a*b*c"</code>.</p>
+</li>
+<li>
+<p>Terms have degree equal to the number of free variables being multiplied, counting multiplicity. (For example, <code>"a*a*b*c"</code> has degree 4.) We write the largest degree terms of our answer first, breaking ties by lexicographic order ignoring the leading coefficient of the term.</p>
+</li>
+<li>
+<p>The leading coefficient of the term is placed directly to the left with an asterisk separating it from the variables (if they exist.)  A leading coefficient of 1 is still printed.</p>
+</li>
+<li>
+<p>An example of a well formatted answer is <code>["-2*a*a*a", "3*a*a*b", "3*b*b", "4*a", "5*c", "-6"]</code></p>
+</li>
+<li>
+<p>Terms (including constant terms) with coefficient 0 are not included.  For example, an expression of "0" has an output of [].</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> expression = "e + 8 - a + 5", evalvars = ["e"], evalints = [1]
+<strong>Output:</strong> ["-1*a","14"]
+
+<strong>Input:</strong> expression = "e - 8 + temperature - pressure",
+evalvars = ["e", "temperature"], evalints = [1, 12]
+<strong>Output:</strong> ["-1*pressure","5"]
+
+<strong>Input:</strong> expression = "(e + 8) * (e - 8)", evalvars = [], evalints = []
+<strong>Output:</strong> ["1*e*e","-64"]
+
+<strong>Input:</strong> expression = "7 - 7", evalvars = [], evalints = []
+<strong>Output:</strong> []
+
+<strong>Input:</strong> expression = "a * b * c + b * a * c * 4", evalvars = [], evalints = []
+<strong>Output:</strong> ["5*a*b*c"]
+
+<strong>Input:</strong> expression = "a - b) * (b - c) + (c - a * a - b) + (b - c) * (c - a",
+evalvars = [], evalints = []
+<strong>Output:</strong> ["-1*a*a*b*b","2*a*a*b*c","-1*a*a*c*c","1*a*b*b*b","-1*a*b*b*c","-1*a*b*c*c","1*a*c*c*c","-1*b*b*b*c","2*b*b*c*c","-1*b*c*c*c","2*a*a*b","-2*a*a*c","-2*a*b*b","2*a*c*c","1*b*b*b","-1*b*b*c","1*b*c*c","-1*c*c*c","-1*a*a","1*a*b","1*a*c","-1*b*c"]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>expression</code> will have length in range <code>[1, 250]</code>.</p>
+</li>
+<li>
+<p><code>evalvars, evalints</code> will have equal lengths in range <code>[0, 100]</code>.</p>
+</li>
+</ul>
+</div>
+<div id="src-0770" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0770-basic-calculator-iv.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0770_BasicCalculatorIV.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

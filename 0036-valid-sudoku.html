@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>36. Valid Sudoku</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_36_valid_sudoku">36. Valid Sudoku</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_36_valid_sudoku"><a class="anchor" href="#_36_valid_sudoku"></a>36. Valid Sudoku</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/valid-sudoku/">LeetCode - Valid Sudoku</a></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0036-valid-sudoku.png" alt="0036 valid sudoku">
+</div>
+</div>
+<div class="paragraph">
+<p>Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated <strong>according to the following rules</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each row must contain the digits <code>1-9</code> without repetition.</p>
+</li>
+<li>
+<p>Each column must contain the digits <code>1-9</code> without repetition.</p>
+</li>
+<li>
+<p>Each of the 9 <code>3x3</code> sub-boxes of the grid must contain the digits <code>1-9</code> without repetition.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png" alt="250px Sudoku by L2G 20050714.svg">
+</div>
+</div>
+<div class="paragraph">
+<p><span class="small">A partially filled sudoku which is valid.</span></p>
+</div>
+<div class="paragraph">
+<p>The Sudoku board could be partially filled, where empty cells are filled with the character <code>'.'</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+[
+  ["5","3",".",".","7",".",".",".","."],
+  ["6",".",".","1","9","5",".",".","."],
+  [".","9","8",".",".",".",".","6","."],
+  ["8",".",".",".","6",".",".",".","3"],
+  ["4",".",".","8",".","3",".",".","1"],
+  ["7",".",".",".","2",".",".",".","6"],
+  [".","6",".",".",".",".","2","8","."],
+  [".",".",".","4","1","9",".",".","5"],
+  [".",".",".",".","8",".",".","7","9"]
+]
+<strong>Output:</strong> true</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+[
+  ["8","3",".",".","7",".",".",".","."],
+  ["6",".",".","1","9","5",".",".","."],
+  [".","9","8",".",".",".",".","6","."],
+  ["8",".",".",".","6",".",".",".","3"],
+  ["4",".",".","8",".","3",".",".","1"],
+  ["7",".",".",".","2",".",".",".","6"],
+  [".","6",".",".",".",".","2","8","."],
+  [".",".",".","4","1","9",".",".","5"],
+  [".",".",".",".","8",".",".","7","9"]
+]
+<strong>Output:</strong> false
+<strong>Explanation:</strong> Same as Example 1, except with the <strong>5</strong> in the top left corner being
+    modified to <strong>8</strong>. Since there are two 8's in the top left 3x3 sub-box, it is invalid.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A Sudoku board (partially filled) could be valid but is not necessarily solvable.</p>
+</li>
+<li>
+<p>Only the filled cells need to be validated according to the mentioned rules.</p>
+</li>
+<li>
+<p>The given board contain only digits <code>1-9</code> and the character <code>'.'</code>.</p>
+</li>
+<li>
+<p>The given board size is always <code>9x9</code>.</p>
+</li>
+</ul>
+</div>
+<div id="src-0036" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+/**
+ * = 36. Valid Sudoku
+ *
+ * https://leetcode.com/problems/valid-sudoku/[Valid Sudoku - LeetCode]
+ *
+ * Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated *according to the following rules:*
+ *
+ * . Each row must contain the digits `1-9` without repetition.
+ * . Each column must contain the digits `1-9` without repetition.
+ * . Each of the 9 3x3 sub-boxes of the grid must contain the digits `1-9` without repetition.
+ *
+ * The Sudoku board could be partially filled, where empty cells are filled with the character `'.'`.
+ *
+ * ----
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input:
+ * [
+ *   ["5","3",".",".","7",".",".",".","."],
+ *   ["6",".",".","1","9","5",".",".","."],
+ *   [".","9","8",".",".",".",".","6","."],
+ *   ["8",".",".",".","6",".",".",".","3"],
+ *   ["4",".",".","8",".","3",".",".","1"],
+ *   ["7",".",".",".","2",".",".",".","6"],
+ *   [".","6",".",".",".",".","2","8","."],
+ *   [".",".",".","4","1","9",".",".","5"],
+ *   [".",".",".",".","8",".",".","7","9"]
+ * ]
+ * Output: true
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input:
+ * [
+ *   ["8","3",".",".","7",".",".",".","."],
+ *   ["6",".",".","1","9","5",".",".","."],
+ *   [".","9","8",".",".",".",".","6","."],
+ *   ["8",".",".",".","6",".",".",".","3"],
+ *   ["4",".",".","8",".","3",".",".","1"],
+ *   ["7",".",".",".","2",".",".",".","6"],
+ *   [".","6",".",".",".",".","2","8","."],
+ *   [".",".",".","4","1","9",".",".","5"],
+ *   [".",".",".",".","8",".",".","7","9"]
+ * ]
+ * Output: false
+ * Explanation: Same as Example 1, except with the 5 in the top left corner being
+ *     modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.
+ * ----
+ *
+ * *Note:*
+ *
+ * * A Sudoku board (partially filled) could be valid but is not necessarily solvable.
+ * * Only the filled cells need to be validated according to the mentioned rules.
+ * * The given board contain only digits `1-9` and the character `'.'`.
+ * * The given board size is always 9x9.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-06 12:24
+ */
+public class _0036_ValidSudoku {
+    /**
+     * Runtime: 5 ms, faster than 21.21% of Java online submissions for Valid Sudoku.
+     *
+     * Memory Usage: 43.2 MB, less than 95.65% of Java online submissions for Valid Sudoku.
+     *
+     * Copy from: https://leetcode.com/problems/valid-sudoku/discuss/15472/Short%2BSimple-Java-using-Strings[Short+Simple Java using Strings - LeetCode Discuss]
+     */
+    public boolean isValidSudoku(char[][] board) {
+        Set&lt;String&gt; numbers = new HashSet&lt;&gt;(board.length * board.length);
+        for (int y = 0; y &lt; board.length; y++) {
+            for (int x = 0; x &lt; board[y].length; x++) {
+                if (!Objects.equals(board[y][x], '.')) {
+                    String value = "(" + board[y][x] + ")";
+                    if (!numbers.add(y + value)
+                            || !numbers.add(value + x)
+                            || !numbers.add(y / 3 + value + x / 3)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        _0036_ValidSudoku solution = new _0036_ValidSudoku();
+        char[][] b1 = {
+                {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+                {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+                {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+                {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+                {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+                {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+                {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+                {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+                {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
+        };
+        boolean r1 = solution.isValidSudoku(b1);
+        System.out.println(r1);
+
+        char[][] b2 = {
+                {'8', '3', '.', '.', '7', '.', '.', '.', '.'},
+                {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+                {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+                {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+                {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+                {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+                {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+                {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+                {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
+        };
+        boolean r2 = solution.isValidSudoku(b2);
+        System.out.println(!r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

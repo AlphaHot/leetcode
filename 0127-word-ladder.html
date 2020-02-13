@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>127. Word Ladder</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_127_word_ladder">127. Word Ladder</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_127_word_ladder"><a class="anchor" href="#_127_word_ladder"></a>127. Word Ladder</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/word-ladder/">LeetCode - Word Ladder</a></p>
+</div>
+<div class="paragraph">
+<p>通过 <a href="https://leetcode.com/problems/word-ladder/solution/">Word Ladder - LeetCode</a> 讲解，竟然可以抽象成无向无权图，然后通过 <code>Queue</code> 将其串联起来，实在好精巧。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0127-1.png" alt="0127 1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0127-2.png" alt="0127 2">
+</div>
+</div>
+<div class="paragraph">
+<p>Given two words (<em>beginWord</em> and <em>endWord</em>), and a dictionary&#8217;s word list, find the length of shortest transformation sequence from <em>beginWord</em> to <em>endWord</em>, such that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Only one letter can be changed at a time.</p>
+</li>
+<li>
+<p>Each transformed word must exist in the word list. Note that <em>beginWord</em> is <em>not</em> a transformed word.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Return 0 if there is no such transformation sequence.</p>
+</li>
+<li>
+<p>All words have the same length.</p>
+</li>
+<li>
+<p>All words contain only lowercase alphabetic characters.</p>
+</li>
+<li>
+<p>You may assume no duplicates in the word list.</p>
+</li>
+<li>
+<p>You may assume <em>beginWord</em> and <em>endWord</em> are non-empty and are not the same.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+beginWord = "hit",
+endWord = "cog",
+wordList = ["hot","dot","dog","lot","log","cog"]
+
+<strong>Output:</strong> 5
+
+<strong>Explanation:</strong> As one shortest transformation is "hit" -&gt; "hot" -&gt; "dot" -&gt; "dog" -&gt; "cog",
+return its length 5.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+beginWord = "hit"
+endWord = "cog"
+wordList = ["hot","dot","dog","lot","log"]
+
+<strong>Output:</strong> 0
+
+<strong>Explanation:</strong> The endWord "cog" is not in wordList, therefore no possible* *transformation.</pre>
+</div>
+</div>
+<div id="src-0127" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import javafx.util.Pair;
+
+import java.util.*;
+
+/**
+ * = 127. Word Ladder
+ *
+ * https://leetcode.com/problems/word-ladder/[Word Ladder - LeetCode]
+ *
+ * Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation sequence from beginWord to endWord, such that:
+ *
+ * . Only one letter can be changed at a time.
+ * . Each transformed word must exist in the word list. Note that beginWord is not a transformed word.
+ *
+ * *Note:*
+ *
+ * * Return 0 if there is no such transformation sequence.
+ * * All words have the same length.
+ * * All words contain only lowercase alphabetic characters.
+ * * You may assume no duplicates in the word list.
+ * * You may assume beginWord and endWord are non-empty and are not the same.
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input:
+ * beginWord = "hit",
+ * endWord = "cog",
+ * wordList = ["hot","dot","dog","lot","log","cog"]
+ *
+ * Output: 5
+ *
+ * Explanation: As one shortest transformation is "hit" -&gt; "hot" -&gt; "dot" -&gt; "dog" -&gt; "cog",
+ * return its length 5.
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input:
+ * beginWord = "hit"
+ * endWord = "cog"
+ * wordList = ["hot","dot","dog","lot","log"]
+ *
+ * Output: 0
+ *
+ * Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-25 18:43
+ */
+public class _0127_WordLadder {
+    /**
+     * Runtime: 43 ms, faster than 80.36% of Java online submissions for Word Ladder.
+     *
+     * Memory Usage: 49.1 MB, less than 5.11% of Java online submissions for Word Ladder.
+     *
+     * Copy from: https://leetcode.com/problems/word-ladder/solution/[Word Ladder solution - LeetCode]
+     */
+    public int ladderLength(String beginWord, String endWord, List&lt;String&gt; wordList) {
+        int L = beginWord.length();
+        Map&lt;String, List&lt;String&gt;&gt; allComboDict = new HashMap&lt;&gt;();
+        wordList.forEach(word -&gt; {
+            for (int i = 0; i &lt; L; i++) {
+                String newWord = word.substring(0, i) + "*" + word.substring(i + 1, L);
+                List&lt;String&gt; transformations = allComboDict.getOrDefault(newWord, new ArrayList&lt;&gt;());
+                transformations.add(word);
+                allComboDict.put(newWord, transformations);
+            }
+        });
+
+        Queue&lt;Pair&lt;String, Integer&gt;&gt; Q = new LinkedList&lt;&gt;();
+        Q.add(new Pair&lt;&gt;(beginWord, 1));
+        Map&lt;String, Boolean&gt; visited = new HashMap&lt;&gt;();
+        visited.put(beginWord, true);
+
+        while (!Q.isEmpty()) {
+            Pair&lt;String, Integer&gt; node = Q.remove();
+            String word = node.getKey();
+            Integer level = node.getValue();
+            for (int i = 0; i &lt; L; i++) {
+                String newWord = word.substring(0, i) + "*" + word.substring(i + 1, L);
+                for (String adjacentWord : allComboDict.getOrDefault(newWord, Collections.emptyList())) {
+                    if (adjacentWord.equals(endWord)) {
+                        return level + 1;
+                    }
+                    if (!visited.containsKey(adjacentWord)) {
+                        visited.put(adjacentWord, true);
+                        Q.add(new Pair&lt;&gt;(adjacentWord, level + 1));
+                    }
+                }
+            }
+        }
+
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        _0127_WordLadder solution = new _0127_WordLadder();
+        int r1 = solution.ladderLength("hit", "cog", Arrays.asList("hot", "dot", "dog", "lot", "log", "cog"));
+        System.out.println((r1 == 5) + " : " + r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

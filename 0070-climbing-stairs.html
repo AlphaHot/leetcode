@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>70. Climbing Stairs</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_70_climbing_stairs">70. Climbing Stairs</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_70_climbing_stairs"><a class="anchor" href="#_70_climbing_stairs"></a>70. Climbing Stairs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/climbing-stairs/">LeetCode - Climbing Stairs</a></p>
+</div>
+<div class="paragraph">
+<p>最简单只有一个台阶，只有 1 种方法；</p>
+</div>
+<div class="paragraph">
+<p>当有两个台阶时，可以从地面跳起；也可以从第一个台阶跳起；</p>
+</div>
+<div class="paragraph">
+<p>以此类推：当第 n 个台阶时，可以从第 n-2 个台阶跳起；也可以从第 n-1 个台阶跳起。</p>
+</div>
+<div class="paragraph">
+<p>到这里就很明显了，这是一个斐波那契数列。</p>
+</div>
+<div class="paragraph">
+<p>让 D瓜哥 使用 <a href="https://www.diguage.com/post/dynamic-programming/">动态规划的模式</a> 来重新解读一下：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>刻画一个最优解的结构特征：跳到第 n 个台阶最多的跳法。</p>
+</li>
+<li>
+<p>递归地定义最优解的值： <code>dp[n] = dp[n-2] + dp[n-1]</code>。</p>
+</li>
+<li>
+<p>计算最优解的值，通常采用自底向上的方法：D瓜哥也按照动态规划（注意表格）的方式来实现，采用自底向上+备忘录的方式来求解，创建一个长度为 n+1 的数组，第 i 个元素表示有相应的跳法，则第 1 个元素为 1，第 2 个元素为 2。然后以此类推……</p>
+</li>
+<li>
+<p>利用计算出的信息构造一个最优解。这一步不需要，暂时忽略。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>D瓜哥 再插播一句，知道是斐波那契数列，各种解法都好搞了，甚至可以使用斐波那契数列公式来解题了。😆</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\$F_{n}=1 / \sqrt{5}\left[\left(\frac{1+\sqrt{5}}{2}\right)^{n}-\left(\frac{1-\sqrt{5}}{2}\right)^{n}\right]\$
+</div>
+</div>
+<div class="paragraph">
+<p>You are climbing a stair case. It takes <em>n</em> steps to reach to the top.</p>
+</div>
+<div class="paragraph">
+<p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> Given <em>n</em> will be a positive integer.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 2
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> There are two ways to climb to the top.
+1. 1 step + 1 step
+2. 2 steps</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 3
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> There are three ways to climb to the top.
+1. 1 step + 1 step + 1 step
+2. 1 step + 2 steps
+3. 2 steps + 1 step</pre>
+</div>
+</div>
+<div id="src-0070" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+/**
+ * = 70. Climbing Stairs
+ *
+ * https://leetcode.com/problems/climbing-stairs/[Climbing Stairs - LeetCode]
+ *
+ * You are climbing a stair case. It takes n steps to reach to the top.
+ *
+ * Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+ *
+ * *Note:* Given n will be a positive integer.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: 2
+ * Output: 2
+ * Explanation: There are two ways to climb to the top.
+ * 1. 1 step + 1 step
+ * 2. 2 steps
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: 3
+ * Output: 3
+ * Explanation: There are three ways to climb to the top.
+ * 1. 1 step + 1 step + 1 step
+ * 2. 1 step + 2 steps
+ * 3. 2 steps + 1 step
+ * ----
+ *
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-23 21:29
+ */
+public class _0070_ClimbingStairs {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Climbing Stairs.
+     *
+     * Memory Usage: 40.8 MB, less than 5.26% of Java online submissions for Climbing Stairs.
+     *
+     * Copy from: https://leetcode.com/problems/climbing-stairs/solution/[Climbing Stairs solution - LeetCode]
+     */
+    public int climbStairs(int n) {
+        int[] dp = new int[n + 1];
+        dp[0] = 1;
+        dp[1] = 1;
+        for (int i = 2; i &lt;= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        return dp[n];
+    }
+
+    public static void main(String[] args) {
+        _0070_ClimbingStairs solution = new _0070_ClimbingStairs();
+        int r1 = solution.climbStairs(2);
+        System.out.println((r1 == 2) + " : " + r1);
+
+        int r2 = solution.climbStairs(3);
+        System.out.println((r2 == 3) + " : " + r2);
+
+        int r3 = solution.climbStairs(4);
+        System.out.println((r3 == 5) + " : " + r3);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains('stemblock')) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+</body>
+</html>

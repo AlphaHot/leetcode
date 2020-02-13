@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>893. Groups of Special-Equivalent Strings</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_893_groups_of_special_equivalent_strings">893. Groups of Special-Equivalent Strings</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_893_groups_of_special_equivalent_strings"><a class="anchor" href="#_893_groups_of_special_equivalent_strings"></a>893. Groups of Special-Equivalent Strings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/groups-of-special-equivalent-strings/">LeetCode - Groups of Special-Equivalent Strings</a></p>
+</div>
+<div class="paragraph">
+<p>You are given an array <code>A</code> of strings.</p>
+</div>
+<div class="paragraph">
+<p>A <em>move onto <code>S`</em> consists of swapping any two even indexed characters of `S</code>, or any two odd indexed characters of <code>S</code>.</p>
+</div>
+<div class="paragraph">
+<p>Two strings <code>S</code> and <code>T</code> are <em>special-equivalent</em> if after any number of <em>moves onto <code>S`</em>, `S == T</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example, <code>S = "zzxy"</code> and <code>T = "xyzz"</code> are special-equivalent because we may make the moves <code>"zzxy" &#8594; "xzzy" &#8594; "xyzz"</code> that swap <code>S[0]</code> and <code>S[2]</code>, then <code>S[1]</code> and <code>S[3]</code>.</p>
+</div>
+<div class="paragraph">
+<p>Now, a <em>group of special-equivalent strings from `A`</em> is a non-empty subset of A such that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Every pair of strings in the group are special equivalent, and;</p>
+</li>
+<li>
+<p>The group is the largest size possible (ie., there isn&#8217;t a string S not in the group such that S is special equivalent to every string in the group)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Return the number of groups of special-equivalent strings from <code>A</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ["abcd","cdab","cbad","xyzz","zzxy","zzyx"]
+<strong>Output:</strong> 3
+<strong>Explanation:</strong>
+One group is ["abcd", "cdab", "cbad"], since they are all pairwise special equivalent, and none of the other strings are all pairwise special equivalent to these.
+
+The other two groups are ["xyzz", "zzxy"] and ["zzyx"].  Note that in particular, "zzxy" is not special equivalent to "zzyx".</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ["abc","acb","bac","bca","cab","cba"]
+<strong>Output:</strong> 3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; A.length &#8656; 1000</code></p>
+</li>
+<li>
+<p><code>1 &#8656; A[i].length &#8656; 20</code></p>
+</li>
+<li>
+<p>All <code>A[i]</code> have the same length.</p>
+</li>
+<li>
+<p>All <code>A[i]</code> consist of only lowercase letters.</p>
+</li>
+</ul>
+</div>
+<div id="src-0893" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0893-groups-of-special-equivalent-strings.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0893_GroupsOfSpecialEquivalentStrings.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

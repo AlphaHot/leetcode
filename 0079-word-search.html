@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>79. Word Search</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_79_word_search">79. Word Search</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_79_word_search"><a class="anchor" href="#_79_word_search"></a>79. Word Search</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/word-search/">LeetCode - Word Search</a></p>
+</div>
+<div class="paragraph">
+<p>Given a 2D board and a word, find if the word exists in the grid.</p>
+</div>
+<div class="paragraph">
+<p>The word can be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>board =
+[
+  ['A','B','C','E'],
+  ['S','F','C','S'],
+  ['A','D','E','E']
+]
+
+Given word = "<strong>ABCCED</strong>", return <strong>true</strong>.
+Given word = "<strong>SEE</strong>", return <strong>true</strong>.
+Given word = "<strong>ABCB</strong>", return <strong>false</strong>.</pre>
+</div>
+</div>
+<div id="src-0079" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+/**
+ * = 79. Word Search
+ *
+ * https://leetcode.com/problems/word-search/[Word Search - LeetCode]
+ *
+ * Given a 2D board and a word, find if the word exists in the grid.
+ *
+ * The word can be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.
+ *
+ * .Example:
+ * [source]
+ * ----
+ * board =
+ * [
+ *   ['A','B','C','E'],
+ *   ['S','F','C','S'],
+ *   ['A','D','E','E']
+ * ]
+ *
+ * Given word = "ABCCED", return true.
+ * Given word = "SEE", return true.
+ * Given word = "ABCB", return false.
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-03 17:31
+ */
+public class _0079_WordSearch {
+
+    /**
+     * Runtime: 4 ms, faster than 89.90% of Java online submissions for Word Search.
+     *
+     * Memory Usage: 38.4 MB, less than 97.96% of Java online submissions for Word Search.
+     *
+     * Copy from: https://leetcode.com/problems/word-search/discuss/27658/Accepted-very-short-Java-solution.-No-additional-space.[Accepted very short Java solution. No additional space. - LeetCode Discuss]
+     */
+    public boolean exist(char[][] board, String word) {
+        if (Objects.isNull(board) || board.length == 0) {
+            return false;
+        }
+        if (Objects.isNull(word) || word.length() == 0) {
+            return false;
+        }
+        char[] chars = word.toCharArray();
+        for (int y = 0; y &lt; board.length; y++) {
+            for (int x = 0; x &lt; board[y].length; x++) {
+                if (exist(board, y, x, chars, 0)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean exist(char[][] board, int y, int x, char[] word, int i) {
+        if (i == word.length) {
+            return true;
+        }
+        if (y &lt; 0 || x &lt; 0 || y == board.length || x == board[y].length) {
+            return false;
+        }
+        if (board[y][x] != word[i]) {
+            return false;
+        }
+        board[y][x] = Character.MAX_VALUE;
+        boolean existable = exist(board, y - 1, x, word, i + 1)
+                || exist(board, y, x + 1, word, i + 1)
+                || exist(board, y + 1, x, word, i + 1)
+                || exist(board, y, x - 1, word, i + 1);
+        board[y][x] = word[i];
+        return existable;
+    }
+
+    public static void main(String[] args) {
+        _0079_WordSearch solution = new _0079_WordSearch();
+        char[][] board = {
+                {'A', 'B', 'C', 'E'},
+                {'S', 'F', 'C', 'S'},
+                {'A', 'D', 'E', 'E'}};
+        String w1 = "ABCCED";
+        boolean r1 = solution.exist(board, w1);
+        System.out.println((r1) + " : " + r1);
+
+        String w2 = "SEE";
+        boolean r2 = solution.exist(board, w2);
+        System.out.println((r2) + " : " + r2);
+
+        String w3 = "ABCB";
+        boolean r3 = solution.exist(board, w3);
+        System.out.println((!r3) + " : " + r3);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

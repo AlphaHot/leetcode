@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>9. Palindrome Number</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_9_palindrome_number">9. Palindrome Number</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_9_palindrome_number"><a class="anchor" href="#_9_palindrome_number"></a>9. Palindrome Number</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/palindrome-number/">LeetCode - Palindrome Number</a></p>
+</div>
+<div class="paragraph">
+<p>Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre><strong>Input:</strong> 121
+<strong>Output:</strong> true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 2:</div>
+<div class="content">
+<pre><strong>Input:</strong> -121
+<strong>Output:</strong> false
+<strong>Explanation:</strong> From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 3:</div>
+<div class="content">
+<pre><strong>Input:</strong> 10
+<strong>Output:</strong> false
+<strong>Explanation:</strong> Reads 01 from right to left. Therefore it is not a palindrome.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Follow up:</strong></p>
+</div>
+<div class="paragraph">
+<p>Coud you solve it without converting the integer to a string?</p>
+</div>
+<div id="src-0009" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * = 9. Palindrome Number
+ *
+ * https://leetcode.com/problems/palindrome-number/description/[Palindrome Number - LeetCode]
+ *
+ * Determine whether an integer is a palindrome. An integer is a palindrome when
+ * it reads the same backward as forward.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: 121
+ * Output: true
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: -121
+ * Output: false
+ * Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+ * ----
+ *
+ * .Example 3:
+ * [source]
+ * ----
+ * Input: 10
+ * Output: false
+ * Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+ * ----
+ *
+ * == Follow up
+ *
+ * Coud you solve it without converting the integer to a string?
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2018-07-01
+ */
+public class _0009_PalindromeNumber {
+    public static boolean isPalindrome(int x) {
+        boolean result = true;
+        if (x &lt; 0) {
+            return false;
+        }
+        int multiBitNumStarter = 10;
+        if (x &lt; multiBitNumStarter) {
+            return result;
+        }
+        List&lt;Integer&gt; bitNums = new ArrayList&lt;&gt;(25);
+        for (int i = x; i &gt; 0; i /= 10) {
+            bitNums.add(i % 10);
+        }
+        int halfLength = bitNums.size() / 2;
+        for (int i = 0; i &lt; halfLength; i++) {
+            if (!bitNums.get(i).equals(bitNums.get(bitNums.size() - i - 1))) {
+                result = false;
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isPalindrome(121));
+        System.out.println(isPalindrome(-121));
+        System.out.println(isPalindrome(10));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

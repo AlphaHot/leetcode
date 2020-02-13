@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>90. Subsets II</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_90_subsets_ii">90. Subsets II</a>
+<ul class="sectlevel2">
+<li><a href="#_解题分析">解题分析</a></li>
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_90_subsets_ii"><a class="anchor" href="#_90_subsets_ii"></a>90. Subsets II</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/subsets-ii/">LeetCode - Subsets II</a></p>
+</div>
+<div class="paragraph">
+<p>Given a collection of integers that might contain duplicates, <code>nums</code>, return all possible subsets (the power set).</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> The solution set must not contain duplicate subsets.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>Input: [1,2,2]
+Output:
+[
+  [2],
+  [1],
+  [1,2,2],
+  [2,2],
+  [1,2],
+  []
+]</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_解题分析"><a class="anchor" href="#_解题分析"></a>解题分析</h3>
+<div class="paragraph">
+<p>这道题跟 <a href="0078-subsets.html">78. Subsets</a> 类似。不一样的地方是要处理重复元素：</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0090-1.png" alt="0090 1">
+</div>
+</div>
+<div class="paragraph">
+<p>第 4 行新添加的 2 要加到第 3 行的所有解中，而第 3 行的一部分解是旧解，一部分是新解。可以看到，我们黑色部分是由第 3 行的旧解产生的，橙色部分是由新解产生的。</p>
+</div>
+<div class="paragraph">
+<p>而第 1 行到第 2 行，已经在旧解中加入了 2 产生了第 2 行的橙色部分，所以这里如果再在旧解中加 2 产生黑色部分就造成了重复。</p>
+</div>
+<div class="paragraph">
+<p>所以当有重复数字的时候，我们只考虑上一步的新解，算法中用一个指针保存每一步的新解开始的位置即可。</p>
+</div>
+<div class="paragraph">
+<p>如果使用递归回溯来解决这个问题，遇到重复的直接跳过就可以了，因为重复字段已经处理过一次了。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/subsets-ii/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-19/">详细通俗的思路分析，多解法 - 子集 II - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given a collection of integers that might contain duplicates, <strong><em>nums</em></strong>, return all possible subsets (the power set).</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> The solution set must not contain duplicate subsets.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [1,2,2]
+<strong>Output:</strong>
+[
+  [2],
+  [1],
+  [1,2,2],
+  [2,2],
+  [1,2],
+  []
+]</pre>
+</div>
+</div>
+<div id="src-0090" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.*;
+
+/**
+ * = 90. Subsets II
+ *
+ * https://leetcode.com/problems/subsets-ii/[Subsets II - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-02-05 21:28
+ */
+public class _0090_SubsetsII {
+    /**
+     * Runtime: 2 ms, faster than 27.76% of Java online submissions for Subsets II.
+     * Memory Usage: 39.4 MB, less than 5.88% of Java online submissions for Subsets II.
+     */
+    public List&lt;List&lt;Integer&gt;&gt; subsetsWithDup(int[] nums) {
+        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();
+        Arrays.sort(nums);
+        backtrack(nums, 0, new ArrayDeque&lt;&gt;(), result);
+        return result;
+    }
+
+    private void backtrack(int[] nums, int start, Deque&lt;Integer&gt; current, List&lt;List&lt;Integer&gt;&gt; result) {
+        result.add(new ArrayList&lt;&gt;(current));
+        for (int i = start; i &lt; nums.length; i++) {
+            if (i &gt; start &amp;&amp; nums[i - 1] == nums[i]) {
+                continue;
+            }
+            int num = nums[i];
+            current.addLast(num);
+            backtrack(nums, i + 1, current, result);
+            current.removeLast();
+        }
+    }
+
+    /**
+     * Runtime: 2 ms, faster than 27.76% of Java online submissions for Subsets II.
+     * Memory Usage: 39.3 MB, less than 5.88% of Java online submissions for Subsets II.
+     *
+     * Copy from: https://leetcode-cn.com/problems/subsets-ii/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-19/[详细通俗的思路分析，多解法 - 子集 II - 力扣（LeetCode）]
+     */
+    public List&lt;List&lt;Integer&gt;&gt; subsetsWithDupAppend(int[] nums) {
+        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();
+        result.add(Collections.emptyList());
+        Arrays.sort(nums);
+        //保存新解的开始位置
+        int start = 1;
+        for (int i = 0; i &lt; nums.length; i++) {
+            List&lt;List&lt;Integer&gt;&gt; temp = new LinkedList&lt;&gt;();
+            for (int j = 0; j &lt; result.size(); j++) {
+                //如果出现重复数字，就跳过所有旧解
+                if (i &gt; 0 &amp;&amp; nums[i - 1] == nums[i] &amp;&amp; j &lt; start) {
+                    continue;
+                }
+                List&lt;Integer&gt; list = result.get(j);
+                List&lt;Integer&gt; newList = new ArrayList&lt;&gt;(list);
+                newList.add(nums[i]);
+                temp.add(newList);
+            }
+            start = result.size();
+            result.addAll(temp);
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0090_SubsetsII solution = new _0090_SubsetsII();
+        System.out.println(Arrays.toString(solution.subsetsWithDup(new int[]{1, 2, 2}).toArray()));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

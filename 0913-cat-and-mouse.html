@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>913. Cat and Mouse</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_913_cat_and_mouse">913. Cat and Mouse</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_913_cat_and_mouse"><a class="anchor" href="#_913_cat_and_mouse"></a>913. Cat and Mouse</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/cat-and-mouse/">LeetCode - Cat and Mouse</a></p>
+</div>
+<div class="paragraph">
+<p>A game on an <strong>undirected</strong> graph is played by two players, Mouse and Cat, who alternate turns.</p>
+</div>
+<div class="paragraph">
+<p>The graph is given as follows: <code>graph[a]</code> is a list of all nodes <code>b</code> such that <code>ab</code> is an edge of the graph.</p>
+</div>
+<div class="paragraph">
+<p>Mouse starts at node 1 and goes first, Cat starts at node 2 and goes second, and there is a Hole at node 0.</p>
+</div>
+<div class="paragraph">
+<p>During each player&#8217;s turn, they <strong>must</strong> travel along one edge of the graph that meets where they are.  For example, if the Mouse is at node <code>1</code>, it <strong>must</strong> travel to any node in <code>graph[1]</code>.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, it is not allowed for the Cat to travel to the Hole (node 0.)</p>
+</div>
+<div class="paragraph">
+<p>Then, the game can end in 3 ways:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If ever the Cat occupies the same node as the Mouse, the Cat wins.</p>
+</li>
+<li>
+<p>If ever the Mouse reaches the Hole, the Mouse wins.</p>
+</li>
+<li>
+<p>If ever a position is repeated (ie. the players are in the same position as a previous turn, and it is the same player&#8217;s turn to move), the game is a draw.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given a <code>graph</code>, and assuming both players play optimally, return <code>1</code> if the game is won by Mouse, <code>2</code> if the game is won by Cat, and <code>0</code> if the game is a draw.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [[2,5],[3],[0,4,5],[1,4,5],[2,3],[0,2,3]]
+<strong>Output:</strong> 0
+<strong>Explanation:</strong>
+4---3---1
+|   |
+2---5
+ \ /
+  0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>3 &#8656; graph.length &#8656; 50</code></p>
+</li>
+<li>
+<p>It is guaranteed that <code>graph[1]</code> is non-empty.</p>
+</li>
+<li>
+<p>It is guaranteed that <code>graph[2]</code> contains a non-zero element.</p>
+</li>
+</ul>
+</div>
+<div id="src-0913" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0913-cat-and-mouse.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0913_CatAndMouse.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

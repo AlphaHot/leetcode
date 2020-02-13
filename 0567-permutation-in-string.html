@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>567. Permutation in String</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_567_permutation_in_string">567. Permutation in String</a>
+<ul class="sectlevel2">
+<li><a href="#_解题分析">解题分析</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_567_permutation_in_string"><a class="anchor" href="#_567_permutation_in_string"></a>567. Permutation in String</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/permutation-in-string/">LeetCode - Permutation in String</a></p>
+</div>
+<div class="paragraph">
+<p>Given two strings <code>s1</code> and <code>s2</code>, write a function to return true if <code>s2</code> contains the permutation of <code>s1</code>. In other words, one of the first string&#8217;s permutations is the <strong>substring</strong> of the second string.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre>Input: s1 = "ab" s2 = "eidbaooo"
+Output: True
+Explanation: s2 contains one permutation of s1 ("ba").</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 2:</div>
+<div class="content">
+<pre>Input:s1= "ab" s2 = "eidboaoo"
+Output: False</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The input strings only contain lower case letters.</p>
+</li>
+<li>
+<p>The length of both given strings is in range [1, 10,000].</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_解题分析"><a class="anchor" href="#_解题分析"></a>解题分析</h3>
+<div class="paragraph">
+<p>滑动窗口大法好！</p>
+</div>
+<div class="paragraph">
+<p>Given two strings <strong>s1</strong> and <strong>s2</strong>, write a function to return true if <strong>s2</strong> contains the permutation of <strong>s1</strong>. In other words, one of the first string&#8217;s permutations is the <strong>substring</strong> of the second string.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> s1 = "ab" s2 = "eidbaooo"
+<strong>Output:</strong> True
+<strong>Explanation:</strong> s2 contains one permutation of s1 ("ba").</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> s1= "ab" s2 = "eidboaoo"
+<strong>Output:</strong> False</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The input strings only contain lower case letters.</p>
+</li>
+<li>
+<p>The length of both given strings is in range [1, 10,000].</p>
+</li>
+</ol>
+</div>
+<div id="src-0567" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+/**
+ * = 567. Permutation in String
+ *
+ * https://leetcode.com/problems/permutation-in-string/[Permutation in String - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-30 18:05
+ */
+public class _0567_PermutationInString {
+    /**
+     * Runtime: 14 ms, faster than 45.41% of Java online submissions for Permutation in String.
+     * Memory Usage: 39.4 MB, less than 7.69% of Java online submissions for Permutation in String.
+     */
+    public boolean checkInclusion(String s1, String s2) {
+        if (Objects.isNull(s1) || s1.length() == 0) {
+            return true;
+        }
+        if (Objects.isNull(s2) || s2.length() == 0 || s2.length() &lt; s1.length()) {
+            return false;
+        }
+        Map&lt;Character, Integer&gt; needs = new HashMap&lt;&gt;();
+        for (char c : s1.toCharArray()) {
+            needs.put(c, needs.getOrDefault(c, 0) + 1);
+        }
+        int left = 0, right = 0;
+        int match = 0;
+        Map&lt;Character, Integer&gt; windows = new HashMap&lt;&gt;();
+        while (right &lt; s2.length()) {
+            char rChar = s2.charAt(right);
+            if (needs.containsKey(rChar)) {
+                int rCount = windows.getOrDefault(rChar, 0) + 1;
+                windows.put(rChar, rCount);
+                if (rCount == needs.get(rChar)) {
+                    match++;
+                }
+            }
+            right++;
+
+            while (match == needs.size()) {
+                if (right - left == s1.length()) {
+                    return true;
+                }
+                char lChar = s2.charAt(left);
+                if (needs.containsKey(lChar)) {
+                    int lCount = windows.get(lChar) - 1;
+                    windows.put(lChar, lCount);
+                    if (lCount &lt; needs.get(lChar)) {
+                        match--;
+                    }
+                }
+                left++;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        _0567_PermutationInString solution = new _0567_PermutationInString();
+        System.out.println(solution.checkInclusion("ab", "eidbaooo"));
+        System.out.println(solution.checkInclusion("ab", "eidboaoo"));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

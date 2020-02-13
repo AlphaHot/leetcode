@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>380. Insert Delete GetRandom O(1)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_380_insert_delete_getrandom_o1">380. Insert Delete GetRandom O(1)</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_380_insert_delete_getrandom_o1"><a class="anchor" href="#_380_insert_delete_getrandom_o1"></a>380. Insert Delete GetRandom O(1)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/insert-delete-getrandom-o1/">LeetCode - Insert Delete GetRandom O(1)</a></p>
+</div>
+<div class="paragraph">
+<p>Design a data structure that supports all following operations in <em>average</em> <strong>O(1)</strong> time.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>insert(val)</code>: Inserts an item val to the set if not already present.</p>
+</li>
+<li>
+<p><code>remove(val)</code>: Removes an item val from the set if present.</p>
+</li>
+<li>
+<p><code>getRandom</code>: Returns a random element from current set of elements. Each element must have the <strong>same probability</strong> of being returned.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>// Init an empty set.
+RandomizedSet randomSet = new RandomizedSet();
+
+// Inserts 1 to the set. Returns true as 1 was inserted successfully.
+randomSet.insert(1);
+
+// Returns false as 2 does not exist in the set.
+randomSet.remove(2);
+
+// Inserts 2 to the set, returns true. Set now contains [1,2].
+randomSet.insert(2);
+
+// getRandom should return either 1 or 2 randomly.
+randomSet.getRandom();
+
+// Removes 1 from the set, returns true. Set now contains [2].
+randomSet.remove(1);
+
+// 2 was already in the set, so return false.
+randomSet.insert(2);
+
+// Since 2 is the only number in the set, getRandom always return 2.
+randomSet.getRandom();</pre>
+</div>
+</div>
+<div id="src-0380" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.*;
+
+/**
+ * = 380. Insert Delete GetRandom O(1)
+ *
+ * https://leetcode.com/problems/insert-delete-getrandom-o1/[Insert Delete GetRandom O(1) - LeetCode]
+ *
+ * Design a data structure that supports all following operations in average *O(1)* time.
+ *
+ * . `insert(val)`: Inserts an item val to the set if not already present.
+ * . `remove(val)`: Removes an item val from the set if present.
+ * . `getRandom`: Returns a random element from current set of elements. Each element must have the *same probability* of being returned.
+ *
+ * .Example:
+ * [source]
+ * ----
+ * // Init an empty set.
+ * RandomizedSet randomSet = new RandomizedSet();
+ *
+ * // Inserts 1 to the set. Returns true as 1 was inserted successfully.
+ * randomSet.insert(1);
+ *
+ * // Returns false as 2 does not exist in the set.
+ * randomSet.remove(2);
+ *
+ * // Inserts 2 to the set, returns true. Set now contains [1,2].
+ * randomSet.insert(2);
+ *
+ * // getRandom should return either 1 or 2 randomly.
+ * randomSet.getRandom();
+ *
+ * // Removes 1 from the set, returns true. Set now contains [2].
+ * randomSet.remove(1);
+ *
+ * // 2 was already in the set, so return false.
+ * randomSet.insert(2);
+ *
+ * // Since 2 is the only number in the set, getRandom always return 2.
+ * randomSet.getRandom();
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-05 23:47
+ */
+public class _0380_InsertDeleteGetRandomO1 {
+    public static void main(String[] args) {
+        RandomizedSet solution = new RandomizedSet();
+        solution.insert(3);
+        solution.insert(3);
+        solution.insert(1);
+        solution.remove(3);
+        int random = solution.getRandom();
+        System.out.println(random);
+    }
+
+    /**
+     * Runtime: 12 ms, faster than 47.51% of Java online submissions for Insert Delete GetRandom O(1).
+     *
+     * Memory Usage: 44 MB, less than 96.00% of Java online submissions for Insert Delete GetRandom O(1).
+     *
+     * Copy from: https://leetcode.com/problems/insert-delete-getrandom-o1/submissions/[Insert Delete GetRandom O(1) - LeetCode]
+     */
+    static
+    class RandomizedSet {
+
+        private List&lt;Integer&gt; nums;
+        private Map&lt;Integer, Integer&gt; numToIndexMap;
+
+        /** Initialize your data structure here. */
+        public RandomizedSet() {
+            nums = new ArrayList&lt;&gt;();
+            numToIndexMap = new HashMap&lt;&gt;();
+        }
+
+        /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
+        public boolean insert(int val) {
+            if (numToIndexMap.containsKey(val)) {
+                return false;
+            }
+            numToIndexMap.put(val, nums.size());
+            nums.add(val);
+            return true;
+        }
+
+        /** Removes a value from the set. Returns true if the set contained the specified element. */
+        public boolean remove(int val) {
+            if (!numToIndexMap.containsKey(val)) {
+                return false;
+            }
+            Integer index = numToIndexMap.get(val);
+            if (index &lt; nums.size() - 1) {
+                Integer lastNum = nums.get(nums.size() - 1);
+                nums.set(index, lastNum);
+                numToIndexMap.put(lastNum, index);
+            }
+            numToIndexMap.remove(val);
+            nums.remove(nums.size() - 1);
+            return true;
+        }
+
+        /** Get a random element from the set. */
+        public int getRandom() {
+            Random random = new Random();
+            return nums.get(random.nextInt(nums.size()));
+        }
+    }
+}
+
+
+
+/**
+ * Your RandomizedSet object will be instantiated and called as such:
+ * RandomizedSet obj = new RandomizedSet();
+ * boolean param_1 = obj.insert(val);
+ * boolean param_2 = obj.remove(val);
+ * int param_3 = obj.getRandom();
+ */</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

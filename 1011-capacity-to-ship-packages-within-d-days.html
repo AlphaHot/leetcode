@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1011. Capacity To Ship Packages Within D Days</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1011_capacity_to_ship_packages_within_d_days">1011. Capacity To Ship Packages Within D Days</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1011_capacity_to_ship_packages_within_d_days"><a class="anchor" href="#_1011_capacity_to_ship_packages_within_d_days"></a>1011. Capacity To Ship Packages Within D Days</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/">LeetCode - Capacity To Ship Packages Within D Days</a></p>
+</div>
+<div class="paragraph">
+<p>A conveyor belt has packages that must be shipped from one port to another within <code>D</code> days.</p>
+</div>
+<div class="paragraph">
+<p>The <code>i</code>-th package on the conveyor belt has a weight of <code>weights[i]</code>.  Each day, we load the ship with packages on the conveyor belt (in the order given by <code>weights</code>). We may not load more weight than the maximum weight capacity of the ship.</p>
+</div>
+<div class="paragraph">
+<p>Return the least weight capacity of the ship that will result in all the packages on the conveyor belt being shipped within <code>D</code> days.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> weights = [1,2,3,4,5,6,7,8,9,10], D = 5
+<strong>Output:</strong> 15
+<strong>Explanation:</strong>
+A ship capacity of 15 is the minimum to ship all the packages in 5 days like this:
+1st day: 1, 2, 3, 4, 5
+2nd day: 6, 7
+3rd day: 8
+4th day: 9
+5th day: 10
+
+Note that the cargo must be shipped in the order given, so using a ship of capacity 14 and splitting the packages into parts like (2, 3, 4, 5), (1, 6, 7), (8), (9), (10) is not allowed.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> weights = [3,2,2,4,1,4], D = 3
+<strong>Output:</strong> 6
+<strong>Explanation:</strong>
+A ship capacity of 6 is the minimum to ship all the packages in 3 days like this:
+1st day: 3, 2
+2nd day: 2, 4
+3rd day: 1, 4</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> weights = [1,2,3,1,1], D = 4
+<strong>Output:</strong> 3
+<strong>Explanation:</strong>
+1st day: 1
+2nd day: 2
+3rd day: 3
+4th day: 1, 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>1 &#8656; D &#8656; weights.length &#8656; 50000</code></p>
+</li>
+<li>
+<p><code>1 &#8656; weights[i] &#8656; 500</code></p>
+</li>
+</ol>
+</div>
+<div id="src-1011" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1011-capacity-to-ship-packages-within-d-days.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1011_CapacityToShipPackagesWithinDDays.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

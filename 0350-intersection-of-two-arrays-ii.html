@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>350. Intersection of Two Arrays II</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_350_intersection_of_two_arrays_ii">350. Intersection of Two Arrays II</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_350_intersection_of_two_arrays_ii"><a class="anchor" href="#_350_intersection_of_two_arrays_ii"></a>350. Intersection of Two Arrays II</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/intersection-of-two-arrays-ii/">LeetCode - Intersection of Two Arrays II</a></p>
+</div>
+<div class="paragraph">
+<p>Given two arrays, write a function to compute their intersection.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> nums1 = [1,2,2,1], nums2 = [2,2]
+<strong>Output:</strong> [2,2]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+<strong>Output:</strong> [4,9]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each element in the result should appear as many times as it shows in both arrays.</p>
+</li>
+<li>
+<p>The result can be in any order.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Follow up:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What if the given array is already sorted? How would you optimize your algorithm?</p>
+</li>
+<li>
+<p>What if <em>nums1</em>'s size is small compared to <em>nums2</em>'s size? Which algorithm is better?</p>
+</li>
+<li>
+<p>What if elements of <em>nums2</em> are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?</p>
+</li>
+</ul>
+</div>
+<div id="src-0350" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.*;
+
+/**
+ * = 350. Intersection of Two Arrays II
+ *
+ * Given two arrays, write a function to compute their intersection.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: nums1 = [1,2,2,1], nums2 = [2,2]
+ * Output: [2,2]
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+ * Output: [4,9]
+ * ----
+ *
+ * *Note:*
+ *
+ * * Each element in the result should appear as many times as it shows in both arrays.
+ * * The result can be in any order.
+ *
+ * *Follow up:*
+ *
+ * * What if the given array is already sorted? How would you optimize your algorithm?
+ * * What if nums1's size is small compared to nums2's size? Which algorithm is better?
+ * * What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-11 10:00
+ */
+public class _0350_IntersectionOfTwoArraysIi {
+
+    /**
+     * Runtime: 2 ms, faster than 88.63% of Java online submissions for Intersection of Two Arrays II.
+     *
+     * Memory Usage: 37 MB, less than 83.87% of Java online submissions for Intersection of Two Arrays II.
+     *
+     * Copy from: https://leetcode.com/problems/intersection-of-two-arrays-ii/discuss/82241/AC-solution-using-Java-HashMap/86567[AC solution using Java HashMap - LeetCode Discuss]
+     */
+    public int[] intersect(int[] nums1, int[] nums2) {
+        if (Objects.isNull(nums1) || nums1.length == 0
+                || Objects.isNull(nums2) || nums2.length == 0) {
+            return new int[0];
+        }
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        List&lt;Integer&gt; resultList = new ArrayList&lt;&gt;();
+        int i = 0, j = 0;
+        while (i &lt; nums1.length &amp;&amp; j &lt; nums2.length) {
+            if (nums1[i] &lt; nums2[j]) {
+                i++;
+            } else if (nums1[i] &gt; nums2[j]) {
+                j++;
+            } else {
+                resultList.add(nums1[i]);
+                i++;
+                j++;
+            }
+        }
+        int[] result = new int[resultList.size()];
+        for (int k = 0; k &lt; result.length; k++) {
+            result[k] = resultList.get(k);
+        }
+        return result;
+    }
+
+    /**
+     * Runtime: 4 ms, faster than 24.04% of Java online submissions for Intersection of Two Arrays II.
+     *
+     * Memory Usage: 36.8 MB, less than 83.87% of Java online submissions for Intersection of Two Arrays II.
+     */
+    public int[] intersectMap(int[] nums1, int[] nums2) {
+        if (Objects.isNull(nums1) || nums1.length == 0
+                || Objects.isNull(nums2) || nums2.length == 0) {
+            return new int[0];
+        }
+        Map&lt;Integer, Integer&gt; numToCountMap1 = getNumToCountMap(nums1);
+        // 这个其实没有必要，可以直接循环生成结果List，把原来的count值逐渐减少就好
+        Map&lt;Integer, Integer&gt; numToCountMap2 = getNumToCountMap(nums2);
+        Map&lt;Integer, Integer&gt; small, big;
+        if (numToCountMap1.size() &gt; numToCountMap2.size()) {
+            big = numToCountMap1;
+            small = numToCountMap2;
+        } else {
+            big = numToCountMap2;
+            small = numToCountMap1;
+        }
+        Map&lt;Integer, Integer&gt; resultMap = new HashMap&lt;&gt;();
+        int resultLength = 0;
+        for (Map.Entry&lt;Integer, Integer&gt; entry : small.entrySet()) {
+            Integer num = entry.getKey();
+            Integer count = big.getOrDefault(num, 0);
+            if (count &gt; 0) {
+                int minCount = Math.min(entry.getValue(), count);
+                resultMap.put(num, minCount);
+                resultLength += minCount;
+            }
+        }
+        int[] result = new int[resultLength];
+        for (Map.Entry&lt;Integer, Integer&gt; entry : resultMap.entrySet()) {
+            for (int i = 0; i &lt; entry.getValue(); i++) {
+                result[--resultLength] = entry.getKey();
+            }
+        }
+        return result;
+    }
+
+    private Map&lt;Integer, Integer&gt; getNumToCountMap(int[] nums1) {
+        Map&lt;Integer, Integer&gt; numToCountMap1 = new HashMap&lt;&gt;();
+        for (int num : nums1) {
+            Integer count = numToCountMap1.getOrDefault(num, 0);
+            numToCountMap1.put(num, ++count);
+        }
+        return numToCountMap1;
+    }
+
+    public static void main(String[] args) {
+        _0350_IntersectionOfTwoArraysIi solution = new _0350_IntersectionOfTwoArraysIi();
+        int[] r1 = solution.intersect(new int[]{1, 2, 2, 1}, new int[]{2, 2});
+        System.out.println(Arrays.toString(r1));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

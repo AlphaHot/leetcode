@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>289. Game of Life</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_289_game_of_life">289. Game of Life</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_289_game_of_life"><a class="anchor" href="#_289_game_of_life"></a>289. Game of Life</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/game-of-life/">LeetCode - Game of Life</a></p>
+</div>
+<div class="paragraph">
+<p>According to the <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Wikipedia&#8217;s article</a>: "The <strong>Game of Life</strong>, also known simply as <strong>Life</strong>, is a cellular automaton devised by the British mathematician John Horton Conway in 1970."</p>
+</div>
+<div class="paragraph">
+<p>Given a <em>board</em> with <em>m</em> by <em>n</em> cells, each cell has an initial state <em>live</em> (1) or <em>dead</em> (0). Each cell interacts with its <a href="https://en.wikipedia.org/wiki/Moore_neighborhood">eight neighbors</a> (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Any live cell with fewer than two live neighbors dies, as if caused by under-population.</p>
+</li>
+<li>
+<p>Any live cell with two or three live neighbors lives on to the next generation.</p>
+</li>
+<li>
+<p>Any live cell with more than three live neighbors dies, as if by over-population..</p>
+</li>
+<li>
+<p>Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Write a function to compute the next state (after one update) of the board given its current state. The next state is created by applying the above rules simultaneously to every cell in the current state, where births and deaths occur simultaneously.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+[
+  [0,1,0],
+  [0,0,1],
+  [1,1,1],
+  [0,0,0]
+]
+
+<strong>Output:</strong>
+[
+  [0,0,0],
+  [1,0,1],
+  [0,1,1],
+  [0,1,0]
+]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Follow up</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Could you solve it in-place? Remember that the board needs to be updated at the same time: You cannot update some cells first and then use their updated values to update other cells.</p>
+</li>
+<li>
+<p>In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches the border of the array. How would you address these problems?</p>
+</li>
+</ol>
+</div>
+<div id="src-0289" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.PrintUtils.printMatrix;
+
+/**
+ * = 289. Game of Life
+ *
+ * https://leetcode.com/problems/game-of-life/[Game of Life - LeetCode]
+ *
+ * According to the https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life[Wikipedia's article]:
+ * "The **Game of Life**, also known simply as *Life*, is a cellular automaton devised by the
+ * British mathematician John Horton Conway in 1970."
+ *
+ * Given a board with m by n cells, each cell has an initial state live (1) or dead (0). Each
+ * cell interacts with its https://en.wikipedia.org/wiki/Moore_neighborhood[eight neighbors]
+ * (horizontal, vertical, diagonal) using the following four rules (taken from the above
+ * Wikipedia article):
+ *
+ * . Any live cell with fewer than two live neighbors dies, as if caused by under-population.
+ * . Any live cell with two or three live neighbors lives on to the next generation.
+ * . Any live cell with more than three live neighbors dies, as if by over-population..
+ * . Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+ *
+ * Write a function to compute the next state (after one update) of the board given its current state. The next state is created by applying the above rules simultaneously to every cell in the current state, where births and deaths occur simultaneously.
+ *
+ * .Example:
+ * [source]
+ * ----
+ * Input:
+ * [
+ *   [0,1,0],
+ *   [0,0,1],
+ *   [1,1,1],
+ *   [0,0,0]
+ * ]
+ * Output:
+ * [
+ *   [0,0,0],
+ *   [1,0,1],
+ *   [0,1,1],
+ *   [0,1,0]
+ * ]
+ * ----
+ *
+ * *Follow up:*
+ *
+ * . Could you solve it in-place? Remember that the board needs to be updated at the same time: You cannot update some cells first and then use their updated values to update other cells.
+ * . In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches the border of the array. How would you address these problems?
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2019-10-29 00:01
+ */
+public class _0289_GameOfLife {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Game of Life.
+     *
+     * Memory Usage: 35.1 MB, less than 100.00% of Java online submissions for Game of Life.
+     */
+    public void gameOfLife(int[][] board) {
+        if (Objects.isNull(board) || board.length == 0 || board[0].length == 0) {
+            return;
+        }
+        for (int i = 0; i &lt; board.length; i++) {
+            for (int j = 0; j &lt; board[0].length; j++) {
+                board[i][j] = countOfLive(board, i, j);
+            }
+        }
+        for (int i = 0; i &lt; board.length; i++) {
+            for (int j = 0; j &lt; board[0].length; j++) {
+                int value = 0;
+                if (isLive(board, i, j)) {
+                    value = 1;
+                }
+                board[i][j] = value;
+            }
+        }
+    }
+
+    private boolean isLive(int[][] matrix, int i, int j) {
+        int value = matrix[i][j];
+        if (value == 12 || value == 13 || value == -3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private int countOfLive(int[][] matrix, int i, int j) {
+        int count = 0;
+        int value = matrix[i][j];
+        int iLength = matrix.length;
+        int jLength = matrix[0].length;
+
+
+        if (i - 1 &gt;= 0) {
+            if (j - 1 &gt;= 0) {
+                count += matrix[i - 1][j - 1] &gt; 0 ? 1 : 0;
+            }
+
+            count += matrix[i - 1][j] &gt; 0 ? 1 : 0;
+
+            if (j + 1 &lt; jLength) {
+                count += matrix[i - 1][j + 1] &gt; 0 ? 1 : 0;
+            }
+        }
+
+        if (j - 1 &gt;= 0) {
+            count += matrix[i][j - 1] &gt; 0 ? 1 : 0;
+        }
+        if (j + 1 &lt; jLength) {
+            count += matrix[i][j + 1] &gt; 0 ? 1 : 0;
+        }
+
+        if (i + 1 &lt; iLength) {
+            if (j - 1 &gt;= 0) {
+                count += matrix[i + 1][j - 1] &gt; 0 ? 1 : 0;
+            }
+
+            count += matrix[i + 1][j] &gt; 0 ? 1 : 0;
+
+            if (j + 1 &lt; jLength) {
+                count += matrix[i + 1][j + 1] &gt; 0 ? 1 : 0;
+            }
+        }
+
+        if (value &gt; 0) {
+            return count + 10;
+        } else {
+            return -count;
+        }
+    }
+
+    public static void main(String[] args) {
+        _0289_GameOfLife solution = new _0289_GameOfLife();
+        int[][] matrix = {{0, 1, 0}, {0, 0, 1}, {1, 1, 1}, {0, 0, 0}};
+        printMatrix(matrix);
+        solution.gameOfLife(matrix);
+        printMatrix(matrix);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

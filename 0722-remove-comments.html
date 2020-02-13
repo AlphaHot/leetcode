@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>722. Remove Comments</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_722_remove_comments">722. Remove Comments</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_722_remove_comments"><a class="anchor" href="#_722_remove_comments"></a>722. Remove Comments</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/remove-comments/">LeetCode - Remove Comments</a></p>
+</div>
+<div class="paragraph">
+<p>Given a C++ program, remove comments from it. The program <code>source</code> is an array where <code>source[i]</code> is the <code>i</code>-th line of the source code.  This represents the result of splitting the original source code string by the newline character <code>\n</code>.</p>
+</div>
+<div class="paragraph">
+<p>In C++, there are two types of comments, line comments, and block comments.</p>
+</div>
+<div class="paragraph">
+<p>The string <code>//</code> denotes a line comment, which represents that it and rest of the characters to the right of it in the same line should be ignored.</p>
+</div>
+<div class="paragraph">
+<p>The string <code>/<strong></code> denotes a block comment, which represents that all characters until the next (non-overlapping) occurrence of <code></strong>/</code> should be ignored.  (Here, occurrences happen in reading order: line by line from left to right.)  To be clear, the string <code>/*/</code> does not yet end the block comment, as the ending would be overlapping the beginning.</p>
+</div>
+<div class="paragraph">
+<p>The first effective comment takes precedence over others: if the string <code>//</code> occurs in a block comment, it is ignored. Similarly, if the string <code>/*</code> occurs in a line or block comment, it is also ignored.</p>
+</div>
+<div class="paragraph">
+<p>If a certain line of code is empty after removing comments, you must not output that line: each string in the answer list will be non-empty.</p>
+</div>
+<div class="paragraph">
+<p>There will be no control characters, single quote, or double quote characters.  For example, <code>source = "string s = "/* Not a comment. */";"</code> will not be a test case.  (Also, nothing else such as defines or macros will interfere with the comments.)</p>
+</div>
+<div class="paragraph">
+<p>It is guaranteed that every open block comment will eventually be closed, so <code>/*</code> outside of a line or block comment always starts a new comment.</p>
+</div>
+<div class="paragraph">
+<p>Finally, implicit newline characters can be deleted by block comments.  Please see the examples below for details.</p>
+</div>
+<div class="paragraph">
+<p>After removing the comments from the source code, return the source code in the same format.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="paragraph">
+<p>&lt;pre style="white-space: pre-wrap"&gt;
+<strong>Input:</strong>
+source = ["/<strong>Test program */", "int main()", "{ ", "  // variable declaration ", "int a, b, c;", "/</strong> This is a test", "   multiline  ", "   comment for ", "   testing */", "a = b + c;", "}"]</p>
+</div>
+<div class="paragraph">
+<p>The line by line code is visualized as below:
+/<strong>Test program */
+int main()
+{
+  // variable declaration
+int a, b, c;
+/</strong> This is a test
+   multiline
+   comment for
+   testing */
+a = b + c;
+}</p>
+</div>
+<div class="paragraph">
+<p><strong>Output:</strong> ["int main()","{ ","  ","int a, b, c;","a = b + c;","}"]</p>
+</div>
+<div class="paragraph">
+<p>The line by line code is visualized as below:
+int main()
+{</p>
+</div>
+<div class="paragraph">
+<p>int a, b, c;
+a = b + c;
+}</p>
+</div>
+<div class="paragraph">
+<p><strong>Explanation:</strong>
+The string <code>/*</code> denotes a block comment, including line 1 and lines 6-9. The string <code>//</code> denotes line 4 as comments.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>*Example 2:*
+
+
+&lt;pre style="white-space: pre-wrap"&gt;
+*Input:*
+source = ["a/*comment", "line", "more_comment*/b"]
+*Output:* ["ab"]
+*Explanation:* The original source string is "a/*comment*\n*line*\n*more_comment*/b", where we have bolded the newline characters.  After deletion, the _implicit_ newline characters are deleted, leaving the string "ab", which when delimited by newline characters becomes ["ab"].</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong>
+. The length of <code>source</code> is in the range <code>[1, 100]</code>.&lt;/li&gt;
+. The length of <code>source[i]</code> is in the range <code>[0, 80]</code>.&lt;/li&gt;
+. Every open block comment is eventually closed.&lt;/li&gt;
+. There are no single-quote, double-quote, or control characters in the source code.&lt;/li&gt;</p>
+</div>
+<div id="src-0722" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0722-remove-comments.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0722_RemoveComments.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

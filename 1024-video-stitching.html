@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1024. Video Stitching</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1024_video_stitching">1024. Video Stitching</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1024_video_stitching"><a class="anchor" href="#_1024_video_stitching"></a>1024. Video Stitching</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/video-stitching/">LeetCode - Video Stitching</a></p>
+</div>
+<div class="paragraph">
+<p>You are given a series of video clips from a sporting event that lasted <code>T</code> seconds.  These video clips can be overlapping with each other and have varied lengths.</p>
+</div>
+<div class="paragraph">
+<p>Each video clip <code>clips[i]</code> is an interval: it starts at time <code>clips[i][0]</code> and ends at time <code>clips[i][1]</code>.  We can cut these clips into segments freely: for example, a clip <code>[0, 7]</code> can be cut into segments <code>[0, 1] + [1, 3] + [3, 7]</code>.</p>
+</div>
+<div class="paragraph">
+<p>Return the minimum number of clips needed so that we can cut the clips into segments that cover the entire sporting event (<code>[0, T]</code>).  If the task is impossible, return <code>-1</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> clips = [[0,2],[4,6],[8,10],[1,9],[1,5],[5,9]], T = 10
+<strong>Output:</strong> 3
+<strong>Explanation:</strong>
+We take the clips [0,2], [8,10], [1,9]; a total of 3 clips.
+Then, we can reconstruct the sporting event as follows:
+We cut [1,9] into segments [1,2] + [2,8] + [8,9].
+Now we have segments [0,2] + [2,8] + [8,10] which cover the sporting event [0, 10].</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> clips = [[0,1],[1,2]], T = 5
+<strong>Output:</strong> -1
+<strong>Explanation:</strong>
+We can't cover [0,5] with only [0,1] and [0,2].</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> clips = [[0,1],[6,8],[0,2],[5,6],[0,4],[0,3],[6,7],[1,3],[4,7],[1,4],[2,5],[2,6],[3,4],[4,5],[5,7],[6,9]], T = 9
+<strong>Output:</strong> 3
+<strong>Explanation:</strong>
+We can take clips [0,4], [4,7], and [6,9].</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 4:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> clips = [[0,4],[2,8]], T = 5
+<strong>Output:</strong> 2
+<strong>Explanation:</strong>
+Notice you can have extra video after the event ends.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>1 &#8656; clips.length &#8656; 100</code></p>
+</li>
+<li>
+<p><code>0 &#8656; clips[i][0], clips[i][1] &#8656; 100</code></p>
+</li>
+<li>
+<p><code>0 &#8656; T &#8656; 100</code></p>
+</li>
+</ol>
+</div>
+<div id="src-1024" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1024-video-stitching.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1024_VideoStitching.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>933. Number of Recent Calls</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_933_number_of_recent_calls">933. Number of Recent Calls</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_933_number_of_recent_calls"><a class="anchor" href="#_933_number_of_recent_calls"></a>933. Number of Recent Calls</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/number-of-recent-calls/">LeetCode - Number of Recent Calls</a></p>
+</div>
+<div class="paragraph">
+<p>Write a class <code>RecentCounter</code> to count recent requests.</p>
+</div>
+<div class="paragraph">
+<p>It has only one method: <code>ping(int t)</code>, where t represents some time in milliseconds.</p>
+</div>
+<div class="paragraph">
+<p>Return the number of `ping`s that have been made from 3000 milliseconds ago until now.</p>
+</div>
+<div class="paragraph">
+<p>Any ping with time in <code>[t - 3000, t]</code> will count, including the current ping.</p>
+</div>
+<div class="paragraph">
+<p>It is guaranteed that every call to <code>ping</code> uses a strictly larger value of <code>t</code> than before.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> inputs = ["RecentCounter","ping","ping","ping","ping"], inputs = [[],[1],[100],[3001],[3002]]
+<strong>Output:</strong> [null,1,2,3,3]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Each test case will have at most <code>10000</code> calls to <code>ping</code>.</p>
+</li>
+<li>
+<p>Each test case will call <code>ping</code> with strictly increasing values of <code>t</code>.</p>
+</li>
+<li>
+<p>Each call to ping will have <code>1 &#8656; t &#8656; 10^9</code>.</p>
+</li>
+</ol>
+</div>
+<div id="src-0933" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0933-number-of-recent-calls.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0933_NumberOfRecentCalls.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

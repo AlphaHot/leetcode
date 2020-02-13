@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>49. Group Anagrams</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_49_group_anagrams">49. Group Anagrams</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_49_group_anagrams"><a class="anchor" href="#_49_group_anagrams"></a>49. Group Anagrams</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/group-anagrams/">LeetCode - Group Anagrams</a></p>
+</div>
+<div class="paragraph">
+<p>计数字符数量的解法有些精巧！这里想起来了波利亚在《怎样解题》中，着重强调的一点：一点要充分挖掘题目中的一直变量。题目中已经明确给出，所有的字符都是小写字符。但却没有意识到它的重要性！</p>
+</div>
+<div class="paragraph">
+<p>Given an array of strings, group anagrams together.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> <code>["eat", "tea", "tan", "ate", "nat", "bat"]</code>,
+<strong>Output:</strong>
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All inputs will be in lowercase.</p>
+</li>
+<li>
+<p>The order of your output does not matter.</p>
+</li>
+</ul>
+</div>
+<div id="src-0049" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.*;
+
+/**
+ * = 49. Group Anagrams
+ *
+ * https://leetcode.com/problems/group-anagrams/[Group Anagrams - LeetCode]
+ *
+ * Given an array of strings, group anagrams together.
+ *
+ * .Example:
+ * [source]
+ * ----
+ * Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+ * Output:
+ * [
+ *   ["ate","eat","tea"],
+ *   ["nat","tan"],
+ *   ["bat"]
+ * ]
+ * ----
+ *
+ * *Note:*
+ *
+ * * All inputs will be in lowercase.
+ * * The order of your output does not matter.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-06 21:42
+ */
+public class _0049_GroupAnagrams {
+    /**
+     * Runtime: 16 ms, faster than 22.85% of Java online submissions for Group Anagrams.
+     *
+     * Memory Usage: 40.4 MB, less than 96.49% of Java online submissions for Group Anagrams.
+     */
+    public List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) {
+        if (Objects.isNull(strs) || strs.length == 0) {
+            return Collections.emptyList();
+        }
+        Map&lt;String, List&lt;String&gt;&gt; charsToStringsMap = new HashMap&lt;&gt;();
+        int[] count = new int[26];
+        for (String str : strs) {
+            Arrays.fill(count, 0);
+            char[] chars = str.toCharArray();
+            for (char aChar : chars) {
+                count[aChar - 'a']++;
+            }
+            StringBuilder builder = new StringBuilder(26 * 2);
+            for (int i : count) {
+                builder.append("#").append(i);
+            }
+            String key = builder.toString();
+            List&lt;String&gt; strings = charsToStringsMap.getOrDefault(key, new ArrayList&lt;&gt;());
+            strings.add(str);
+            charsToStringsMap.put(key, strings);
+        }
+        return new ArrayList&lt;&gt;(charsToStringsMap.values());
+    }
+
+    /**
+     * Runtime: 8 ms, faster than 96.90% of Java online submissions for Group Anagrams.
+     *
+     * Memory Usage: 41.1 MB, less than 95.32% of Java online submissions for Group Anagrams.
+     */
+    public List&lt;List&lt;String&gt;&gt; groupAnagramsSort(String[] strs) {
+        if (Objects.isNull(strs) || strs.length == 0) {
+            return Collections.emptyList();
+        }
+        Map&lt;String, List&lt;String&gt;&gt; charsToStringsMap = new HashMap&lt;&gt;();
+        for (String str : strs) {
+            char[] chars = str.toCharArray();
+            Arrays.sort(chars);
+            String key = new String(chars);
+            List&lt;String&gt; strings = charsToStringsMap.getOrDefault(key, new ArrayList&lt;&gt;());
+            strings.add(str);
+            charsToStringsMap.put(key, strings);
+        }
+        return new ArrayList&lt;&gt;(charsToStringsMap.values());
+    }
+
+    public static void main(String[] args) {
+        _0049_GroupAnagrams solution = new _0049_GroupAnagrams();
+        String[] s1 = {"eat", "tea", "tan", "ate", "nat", "bat"};
+        List&lt;List&lt;String&gt;&gt; r1 = solution.groupAnagrams(s1);
+        System.out.println(Arrays.deepToString(r1.toArray()));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

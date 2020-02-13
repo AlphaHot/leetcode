@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>59. Spiral Matrix II</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_59_spiral_matrix_ii">59. Spiral Matrix II</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_59_spiral_matrix_ii"><a class="anchor" href="#_59_spiral_matrix_ii"></a>59. Spiral Matrix II</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/spiral-matrix-ii/">LeetCode - Spiral Matrix II</a></p>
+</div>
+<div class="paragraph">
+<p>Given a positive integer <em>n</em>, generate a square matrix filled with elements from 1 to <em>n</em><sup>2</sup> in spiral order.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 3
+<strong>Output:</strong>
+[
+ [ 1, 2, 3 ],
+ [ 8, 9, 4 ],
+ [ 7, 6, 5 ]
+]</pre>
+</div>
+</div>
+<div id="src-0059" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import static com.diguage.algorithm.util.PrintUtils.printMatrix;
+
+/**
+ * = 59. Spiral Matrix II
+ *
+ * https://leetcode.com/problems/spiral-matrix-ii/[Spiral Matrix II - LeetCode]
+ *
+ * Given a positive integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.
+ *
+ * .Example:
+ * [source]
+ * ----
+ * Input: 3
+ * Output:
+ * [
+ *   [ 1, 2, 3 ],
+ *   [ 8, 9, 4 ],
+ *   [ 7, 6, 5 ]
+ * ]
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2019-10-26 00:54
+ */
+public class _0059_SpiralMatrixII {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Spiral Matrix II.
+     *
+     * Memory Usage: 34.3 MB, less than 8.33% of Java online submissions for Spiral Matrix II.
+     */
+    public int[][] generateMatrix(int n) {
+        int x1 = 0, x2 = n - 1;
+        int y1 = 0, y2 = n - 1;
+        int i = 1;
+        int[][] matrix = new int[n][n];
+        while (x1 &lt;= x2 &amp;&amp; y1 &lt;= y2) {
+            for (int x = x1; x &lt;= x2; x++) {
+                matrix[y1][x] = i++;
+            }
+            for (int y = y1 + 1; y &lt;= y2; y++) {
+                matrix[y][x2] = i++;
+            }
+            if (x1 &lt; x2 &amp;&amp; y1 &lt; y2) {
+                for (int x = x2 - 1; x &gt; x1; x--) {
+                    matrix[y2][x] = i++;
+                }
+                for (int y = y2; y &gt; y1; y--) {
+                    matrix[y][x1] = i++;
+                }
+            }
+            x1++;
+            x2--;
+            y1++;
+            y2--;
+        }
+
+        return matrix;
+    }
+
+    public static void main(String[] args) {
+        _0059_SpiralMatrixII solution = new _0059_SpiralMatrixII();
+        int[][] r1 = solution.generateMatrix(5);
+        printMatrix(r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

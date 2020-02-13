@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>649. Dota2 Senate</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_649_dota2_senate">649. Dota2 Senate</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_649_dota2_senate"><a class="anchor" href="#_649_dota2_senate"></a>649. Dota2 Senate</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/dota2-senate/">LeetCode - Dota2 Senate</a></p>
+</div>
+<div class="paragraph">
+<p>In the world of Dota2, there are two parties: the <code>Radiant</code> and the <code>Dire</code>.</p>
+</div>
+<div class="paragraph">
+<p>The Dota2 senate consists of senators coming from two parties. Now the senate wants to make a decision about a change in the Dota2 game. The voting for this change is a round-based procedure. In each round, each senator can exercise <code>one</code> of the two rights:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Ban one senator&#8217;s right</code>:</p>
+<div class="literalblock">
+<div class="content">
+<pre>	A senator can make another senator lose *all his rights* in this and all the following rounds.
+. `Announce the victory`:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>If this senator found the senators who still have rights to vote are all from *the same party*, he can announce the victory and make the decision about the change in the game.</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given a string representing each senator&#8217;s party belonging. The character 'R' and 'D' represent the <code>Radiant</code> party and the <code>Dire</code> party respectively. Then if there are <code>n</code> senators, the size of the given string will be <code>n</code>.</p>
+</div>
+<div class="paragraph">
+<p>The round-based procedure starts from the first senator to the last senator in the given order. This procedure will last until the end of voting. All the senators who have lost their rights will be skipped during the procedure.</p>
+</div>
+<div class="paragraph">
+<p>Suppose every senator is smart enough and will play the best strategy for his own party, you need to predict which party will finally announce the victory and make the change in the Dota2 game. The output should be <code>Radiant</code> or <code>Dire</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "RD"
+<strong>Output:</strong> "Radiant"
+<strong>Explanation:</strong> The first senator comes from Radiant and he can just ban the next senator's right in the round 1.
+And the second senator can't exercise any rights any more since his right has been banned.
+And in the round 2, the first senator can just announce the victory since he is the only guy in the senate who can vote.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "RDD"
+<strong>Output:</strong> "Dire"
+<strong>Explanation:</strong>
+The first senator comes from Radiant and he can just ban the next senator's right in the round 1.
+And the second senator can't exercise any rights anymore since his right has been banned.
+And the third senator comes from Dire and he can ban the first senator's right in the round 1.
+And in the round 2, the third senator can just announce the victory since he is the only guy in the senate who can vote.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The length of the given string will in the range [1, 10,000].</p>
+</li>
+</ol>
+</div>
+<div id="src-0649" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0649-dota2-senate.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0649_Dota2Senate.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

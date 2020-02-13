@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>101. Symmetric Tree</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_101_symmetric_tree">101. Symmetric Tree</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_101_symmetric_tree"><a class="anchor" href="#_101_symmetric_tree"></a>101. Symmetric Tree</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/symmetric-tree/">LeetCode - Symmetric Tree</a></p>
+</div>
+<div class="paragraph">
+<p>为什么执行结果显示递归更快？而不是队列呢？</p>
+</div>
+<div class="paragraph">
+<p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
+</div>
+<div class="paragraph">
+<p>For example, this binary tree <code>[1,2,2,3,4,4,3]</code> is symmetric:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    1
+   / \
+  2   2
+ / \ / \
+3  4 4  3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>But the following <code>[1,2,2,null,3,null,3]</code> is not:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    1
+   / \
+  2   2
+   \   \
+   3    3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="paragraph">
+<p>Bonus points if you could solve it both recursively and iteratively.</p>
+</div>
+<div id="src-0101" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.TreeNode;
+import com.diguage.algorithm.util.TreeNodeUtils;
+
+import java.util.*;
+
+/**
+ * = 101. Symmetric Tree
+ *
+ * https://leetcode.com/problems/symmetric-tree/[Symmetric Tree - LeetCode]
+ *
+ * Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+ *
+ * For example, this binary tree `[1,2,2,3,4,4,3]` is symmetric:
+ *
+ * ----
+ *     1
+ *    / \
+ *   2   2
+ *  / \ / \
+ * 3  4 4  3
+ * ----
+ *
+ * But the following `[1,2,2,null,3,null,3]` is not:
+ *
+ * ----
+ *     1
+ *    / \
+ *   2   2
+ *    \   \
+ *    3    3
+ * ----
+ *
+ * **Note:**
+ *
+ * Bonus points if you could solve it both recursively and iteratively.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-02 00:20
+ */
+public class _0101_SymmetricTree {
+    public boolean isSymmetric(TreeNode root) {
+        return isMirror(root, root);
+    }
+
+    private boolean isMirror(TreeNode t1, TreeNode t2) {
+        if (Objects.isNull(t1) &amp;&amp; Objects.isNull(t2)) {
+            return true;
+        }
+        if (Objects.isNull(t1)||Objects.isNull(t2)) {
+            return false;
+        }
+        return (Objects.equals(t1.val, t2.val))
+                &amp;&amp; isMirror(t1.left, t2.right)
+                &amp;&amp; isMirror(t1.right, t2.left);
+    }
+
+    /**
+     * Runtime: 1 ms, faster than 36.88% of Java online submissions for Symmetric Tree.
+     *
+     * Memory Usage: 38.9 MB, less than 43.54% of Java online submissions for Symmetric Tree.
+     */
+    public boolean isSymmetricIterative(TreeNode root) {
+        Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();
+        queue.add(root);
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode t1 = queue.poll();
+            TreeNode t2 = queue.poll();
+            if (Objects.isNull(t1) &amp;&amp; Objects.isNull(t2)) {
+                continue;
+            }
+            if (Objects.isNull(t1) || Objects.isNull(t2)) {
+                return false;
+            }
+            if (!Objects.equals(t1.val, t2.val)) {
+                return false;
+            }
+            queue.add(t1.left);
+            queue.add(t2.right);
+            queue.add(t1.right);
+            queue.add(t2.left);
+        }
+        return true;
+    }
+
+    /**
+     * Runtime: 228 ms, faster than 36.88% of Java online submissions for Symmetric Tree.
+     *
+     * Memory Usage: 92.6 MB, less than 5.44% of Java online submissions for Symmetric Tree.
+     */
+    public boolean isSymmetricBfs(TreeNode root) {
+        if (Objects.isNull(root)) {
+            return true;
+        }
+        ArrayList&lt;TreeNode&gt; parent = new ArrayList&lt;&gt;();
+        parent.add(root);
+        while (!parent.isEmpty()) {
+            HashSet&lt;TreeNode&gt; nodes = new HashSet&lt;&gt;(parent);
+            if (nodes.size() == 1 &amp;&amp; nodes.contains(null)) {
+                return true;
+            }
+            ArrayList&lt;TreeNode&gt; children = new ArrayList&lt;&gt;(parent.size() * 2);
+            for (TreeNode node : parent) {
+                if (Objects.isNull(node)) {
+                    children.add(null);
+                    children.add(null);
+                } else {
+                    children.add(node.left);
+                    children.add(node.right);
+                }
+            }
+            for (int i = 0; i &lt; children.size() / 2; i++) {
+                TreeNode left = children.get(i);
+                TreeNode right = children.get(children.size() - 1 - i);
+                if (Objects.isNull(left) &amp;&amp; Objects.isNull(right)) {
+                    continue;
+                }
+                if (Objects.isNull(left) || Objects.isNull(right)) {
+                    return false;
+                }
+                if (!Objects.equals(left.val, right.val)) {
+                    return false;
+                }
+            }
+            parent = children;
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        _0101_SymmetricTree solution = new _0101_SymmetricTree();
+
+        List&lt;Integer&gt; a1 = Arrays.asList(1, 2, 2, 3, 4, 4, 3);
+        TreeNode t1 = TreeNodeUtils.buildTree(a1);
+        boolean r1 = solution.isSymmetric(t1);
+        System.out.println((r1 == true) + " : " + r1);
+
+        List&lt;Integer&gt; a2 = Arrays.asList(1, 2, 2, null, 3, null, 3);
+        TreeNode t2 = TreeNodeUtils.buildTree(a2);
+        boolean r2 = solution.isSymmetric(t2);
+        System.out.println((r2 == false) + " : " + r2);
+
+        List&lt;Integer&gt; a3 = Arrays.asList(1, 2, 2, null, 3, 3);
+        TreeNode t3 = TreeNodeUtils.buildTree(a3);
+        boolean r3 = solution.isSymmetric(t3);
+        System.out.println((r3 == true) + " : " + r3);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

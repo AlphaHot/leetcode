@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1129. Shortest Path with Alternating Colors</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1129_shortest_path_with_alternating_colors">1129. Shortest Path with Alternating Colors</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1129_shortest_path_with_alternating_colors"><a class="anchor" href="#_1129_shortest_path_with_alternating_colors"></a>1129. Shortest Path with Alternating Colors</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/shortest-path-with-alternating-colors/">LeetCode - Shortest Path with Alternating Colors</a></p>
+</div>
+<div class="paragraph">
+<p>Consider a directed graph, with nodes labelled <code>0, 1, &#8230;&#8203;, n-1</code>.  In this graph, each edge is either red or blue, and there could be self-edges or parallel edges.</p>
+</div>
+<div class="paragraph">
+<p>Each <code>[i, j]</code> in <code>red_edges</code> denotes a red directed edge from node <code>i</code> to node <code>j</code>.  Similarly, each <code>[i, j]</code> in <code>blue_edges</code> denotes a blue directed edge from node <code>i</code> to node <code>j</code>.</p>
+</div>
+<div class="paragraph">
+<p>Return an array <code>answer</code> of length <code>n</code>, where each <code>answer[X]</code> is the length of the shortest path from node <code>0</code> to node <code>X</code> such that the edge colors alternate along the path (or <code>-1</code> if such a path doesn&#8217;t exist).</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> n = 3, red_edges = [[0,1],[1,2]], blue_edges = []
+<strong>Output:</strong> [0,1,-1]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> n = 3, red_edges = [[0,1]], blue_edges = [[2,1]]
+<strong>Output:</strong> [0,1,-1]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> n = 3, red_edges = [[1,0]], blue_edges = [[2,1]]
+<strong>Output:</strong> [0,-1,-1]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 4:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> n = 3, red_edges = [[0,1]], blue_edges = [[1,2]]
+<strong>Output:</strong> [0,1,2]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 5:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> n = 3, red_edges = [[0,1],[0,2]], blue_edges = [[1,0]]
+<strong>Output:</strong> [0,1,1]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; n &#8656; 100</code></p>
+</li>
+<li>
+<p><code>red_edges.length &#8656; 400</code></p>
+</li>
+<li>
+<p><code>blue_edges.length &#8656; 400</code></p>
+</li>
+<li>
+<p><code>red_edges[i].length == blue_edges[i].length == 2</code></p>
+</li>
+<li>
+<p><code>0 &#8656; red_edges[i][j], blue_edges[i][j] &lt; n</code></p>
+</li>
+</ul>
+</div>
+<div id="src-1129" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1129-shortest-path-with-alternating-colors.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1129_ShortestPathWithAlternatingColors.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

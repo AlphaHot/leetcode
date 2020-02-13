@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>172. Factorial Trailing Zeroes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_172_factorial_trailing_zeroes">172. Factorial Trailing Zeroes</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_172_factorial_trailing_zeroes"><a class="anchor" href="#_172_factorial_trailing_zeroes"></a>172. Factorial Trailing Zeroes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/factorial-trailing-zeroes/">LeetCode - Factorial Trailing Zeroes</a></p>
+</div>
+<div class="paragraph">
+<p>这个题的解题思路也很精巧，D瓜哥先来举例说明一下。</p>
+</div>
+<div class="paragraph">
+<p>先来说明一下，产生零的因素：<code>5</code>(乘以2)，<code>10</code>，<code>15</code>………，即 <code>5</code> 的偶数倍。另外，显而易见，偶数比 <code>5</code> 的多很多，所以，我们只需要关注 <code>5</code> 的个数即可。D瓜哥用下面的序列来做进一步分析：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>05,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,125,130
+ ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓   ↓   ↓   ↓   ↓   ↓   ↓   ↓
+ 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19, 20, 21, 22, 23, 24, 25, 26
+             ↓              ↓              ↓               ↓                   ↓
+             1,             2,             3,              4,                  5,
+                                                                               ↓
+                                                                               1,</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>为了方便说明，我把第一行做了处理，只关注 <code>5x</code> 的数，每个数都可以产生一个 <code>0</code>。</p>
+</div>
+<div class="paragraph">
+<p>将第一行的数除以 <code>5</code>，就得到了第二行的数字。这些数字中，一串 <code>5x</code> 的数，每个数又可以产生一个 <code>0</code>。</p>
+</div>
+<div class="paragraph">
+<p>以此类推，直到最后的序列只剩下不超过 <code>5</code> 截止。上面每行中的 <code>5x</code> 数字的个数就是我们需要的结果：结尾 <code>0</code> 的个数。</p>
+</div>
+<div class="paragraph">
+<p>思路上，我受到了 <a href="https://leetcode.com/problems/factorial-trailing-zeroes/discuss/196311/topic">这详尽的思路令我茅塞顿开！递归非递归都有哦！ - LeetCode Discuss</a> 的启发。但是，自认为比他的解释更容易理解。</p>
+</div>
+<div class="paragraph">
+<p>Given an integer <em>n</em>, return the number of trailing zeroes in <em>n</em>!.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 3
+<strong>Output:</strong> 0
+<strong>Explanation:</strong> 3! = 6, no trailing zero.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 5
+<strong>Output:</strong> 1
+<strong>Explanation:</strong> 5! = 120, one trailing zero.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>*Note: *Your solution should be in logarithmic time complexity.</p>
+</div>
+<div id="src-0172" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+/**
+ * = 172. Factorial Trailing Zeroes
+ *
+ * https://leetcode.com/problems/factorial-trailing-zeroes/[Factorial Trailing Zeroes - LeetCode]
+ *
+ * Given an integer n, return the number of trailing zeroes in n!.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: 3
+ * Output: 0
+ * Explanation: 3! = 6, no trailing zero.
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: 5
+ * Output: 1
+ * Explanation: 5! = 120, one trailing zero.
+ * ----
+ *
+ * *Note:* Your solution should be in logarithmic time complexity.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-14 12:11
+ */
+public class _0172_FactorialTrailingZeroes {
+
+    /**
+     * Runtime: 1 ms, faster than 97.29% of Java online submissions for Factorial Trailing Zeroes.
+     *
+     * Memory Usage: 34 MB, less than 7.69% of Java online submissions for Factorial Trailing Zeroes.
+     */
+    public int trailingZeroes(int n) {
+        int result = 0;
+        while (n &gt; 0) {
+            result += n / 5;
+            n /= 5;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0172_FactorialTrailingZeroes solultion = new _0172_FactorialTrailingZeroes();
+        int r1 = solultion.trailingZeroes(5);
+        System.out.println((r1 == 1) + " : " + r1);
+
+        int r2 = solultion.trailingZeroes(100);
+        System.out.println((r2 == 1) + " : " + r2);
+
+        int r3 = solultion.trailingZeroes(30);
+        System.out.println((r3 == 7) + " : " + r3);
+
+        int r4 = solultion.trailingZeroes(200);
+        System.out.println((r4 == 49) + " : " + r4);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

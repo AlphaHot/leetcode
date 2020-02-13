@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>100. Same Tree</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_100_same_tree">100. Same Tree</a>
+<ul class="sectlevel2">
+<li><a href="#_解题分析">解题分析</a></li>
+<li><a href="#_思考题">思考题</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_100_same_tree"><a class="anchor" href="#_100_same_tree"></a>100. Same Tree</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/same-tree/">LeetCode - Same Tree</a></p>
+</div>
+<div class="paragraph">
+<p>Given two binary trees, write a function to check if they are the same or not.</p>
+</div>
+<div class="paragraph">
+<p>Two binary trees are considered the same if they are structurally identical and the nodes have the same value.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre>Input:     1         1
+          / \       / \
+         2   3     2   3
+
+        [1,2,3],   [1,2,3]
+
+Output: true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 2:</div>
+<div class="content">
+<pre>Input:     1         1
+          /           \
+         2             2
+
+        [1,2],     [1,null,2]
+
+Output: false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 3:</div>
+<div class="content">
+<pre>Input:     1         1
+          / \       / \
+         2   1     1   2
+
+        [1,2,1],   [1,1,2]
+
+Output: false</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_解题分析"><a class="anchor" href="#_解题分析"></a>解题分析</h3>
+<div class="paragraph">
+<p>解题思路很简单，就是做不停地做递归调用就好。不过，要注意的时，为了加快速度，遇到不等就返回，不需要再进行下一步操作。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_思考题"><a class="anchor" href="#_思考题"></a>思考题</h3>
+<div class="paragraph">
+<p>尝试一下迭代的解决方案。</p>
+</div>
+<div class="paragraph">
+<p>Given two binary trees, write a function to check if they are the same or not.</p>
+</div>
+<div class="paragraph">
+<p>Two binary trees are considered the same if they are structurally identical and the nodes have the same value.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>     1         1
+          / \       / \
+         2   3     2   3
+
+        [1,2,3],   [1,2,3]
+
+<strong>Output:</strong> true</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>     1         1
+          /           \
+         2             2
+
+        [1,2],     [1,null,2]
+
+<strong>Output:</strong> false</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>     1         1
+          / \       / \
+         2   1     1   2
+
+        [1,2,1],   [1,1,2]
+
+<strong>Output:</strong> false</pre>
+</div>
+</div>
+<div id="src-0100" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.TreeNode;
+
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.TreeNodeUtils.buildTree;
+import static java.util.Arrays.asList;
+
+/**
+ * = 100. Same Tree
+ *
+ * https://leetcode.com/problems/same-tree/[Same Tree - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-02-05 09:53
+ */
+public class _0100_SameTree {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Same Tree.
+     * Memory Usage: 36.4 MB, less than 5.75% of Java online submissions for Same Tree.
+     */
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if (Objects.isNull(p) &amp;&amp; Objects.isNull(q)) {
+            return true;
+        }
+        if (Objects.isNull(p) || Objects.isNull(q)) {
+            return false;
+        }
+        if (p.val != q.val) {
+            return false;
+        }
+        boolean left = isSameTree(p.left, q.left);
+        if (!left) {
+            return false;
+        }
+        return isSameTree(p.right, q.right);
+    }
+
+    public static void main(String[] args) {
+        _0100_SameTree solution = new _0100_SameTree();
+        boolean r1 = solution.isSameTree(buildTree(asList(1, 2)), buildTree(asList(1, null, 2)));
+        System.out.println(!r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

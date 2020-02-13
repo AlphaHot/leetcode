@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>707. Design Linked List</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_707_design_linked_list">707. Design Linked List</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_707_design_linked_list"><a class="anchor" href="#_707_design_linked_list"></a>707. Design Linked List</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/design-linked-list/">LeetCode - Design Linked List</a></p>
+</div>
+<div class="paragraph">
+<p>Design your implementation of the linked list. You can choose to use the singly linked list or the doubly linked list. A node in a singly linked list should have two attributes: <code>val</code> and <code>next</code>. <code>val</code> is the value of the current node, and <code>next</code> is a pointer/reference to the next node. If you want to use the doubly linked list, you will need one more attribute <code>prev</code> to indicate the previous node in the linked list. Assume all nodes in the linked list are 0-indexed.</p>
+</div>
+<div class="paragraph">
+<p>Implement these functions in your linked list class:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>get(index)</code> : Get the value of the <code>index</code>-th node in the linked list. If the index is invalid, return <code>-1</code>.</p>
+</li>
+<li>
+<p><code>addAtHead(val)</code> : Add a node of value <code>val</code> before the first element of the linked list. After the insertion, the new node will be the first node of the linked list.</p>
+</li>
+<li>
+<p><code>addAtTail(val)</code> : Append a node of value <code>val</code> to the last element of the linked list.</p>
+</li>
+<li>
+<p><code>addAtIndex(index, val)</code> : Add a node of value <code>val</code> before the <code>index</code>-th node in the linked list. If <code>index</code> equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted.</p>
+</li>
+<li>
+<p><code>deleteAtIndex(index)</code> : Delete the <code>index</code>-th node in the linked list, if the index is valid.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+["MyLinkedList","addAtHead","addAtTail","addAtIndex","get","deleteAtIndex","get"]
+[[],[1],[3],[1,2],[1],[1],[1]]
+<strong>Output:</strong>
+[null,null,null,null,2,null,3]
+
+<strong>Explanation:</strong>
+MyLinkedList linkedList = new MyLinkedList(); // Initialize empty LinkedList
+linkedList.addAtHead(1);
+linkedList.addAtTail(3);
+linkedList.addAtIndex(1, 2);  // linked list becomes 1-&gt;2-&gt;3
+linkedList.get(1);            // returns 2
+linkedList.deleteAtIndex(1);  // now the linked list is 1-&gt;3
+linkedList.get(1);            // returns 3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>0 &#8656; index,val &#8656; 1000</code></p>
+</li>
+<li>
+<p>Please do not use the built-in LinkedList library.</p>
+</li>
+<li>
+<p>At most <code>2000</code> calls will be made to <code>get</code>, <code>addAtHead</code>, <code>addAtTail</code>,  <code>addAtIndex</code> and <code>deleteAtIndex</code>.</p>
+</li>
+</ul>
+</div>
+<div id="src-0707" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0707-design-linked-list.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0707_DesignLinkedList.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

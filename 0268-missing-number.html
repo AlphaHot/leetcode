@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>268. Missing Number</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_268_missing_number">268. Missing Number</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_268_missing_number"><a class="anchor" href="#_268_missing_number"></a>268. Missing Number</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/missing-number/">LeetCode - Missing Number</a></p>
+</div>
+<div class="paragraph">
+<p>这道题跟 <a href="https://leetcode.com/problems/first-missing-positive/">41. First Missing Positive</a> 很像！</p>
+</div>
+<div class="paragraph">
+<p>Given an array containing <em>n</em> distinct numbers taken from <code>0, 1, 2, &#8230;&#8203;, n</code>, find the one that is missing from the array.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [3,0,1]
+<strong>Output:</strong> 2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [9,6,4,2,3,5,7,0,1]
+<strong>Output:</strong> 8</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong>:</p>
+</div>
+<div class="paragraph">
+<p>Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?</p>
+</div>
+<div id="src-0268" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+/**
+ * = 268. Missing Number
+ *
+ * https://leetcode.com/problems/missing-number/[Missing Number - LeetCode]
+ *
+ * Given an array containing n distinct numbers taken from `0, 1, 2, ..., n`, find the one that is missing from the array.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: [3,0,1]
+ * Output: 2
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: [9,6,4,2,3,5,7,0,1]
+ * Output: 8
+ * ----
+ *
+ * *Note:*
+ *
+ * Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-05 21:30
+ */
+public class _0268_MissingNumber {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Missing Number.
+     *
+     * Memory Usage: 38.9 MB, less than 100.00% of Java online submissions for Missing Number.
+     *
+     * Copy from: https://leetcode.com/problems/missing-number/solution/[Missing Number solution - LeetCode]
+     */
+    public int missingNumber(int[] nums) {
+        int actualSum = 0;
+        for (int num : nums) {
+            actualSum += num;
+        }
+        int expectSum = nums.length * (nums.length + 1) / 2;
+        return expectSum - actualSum;
+    }
+
+    /**
+     * Runtime: 7 ms, faster than 24.02% of Java online submissions for Missing Number.
+     *
+     * Memory Usage: 39.8 MB, less than 100.00% of Java online submissions for Missing Number.
+     */
+    public int missingNumberSort(int[] nums) {
+        if (Objects.isNull(nums) || nums.length == 0) {
+            return 0;
+        }
+        Arrays.sort(nums);
+        for (int i = 0; i &lt; nums.length; i++) {
+            if (nums[i] != i) {
+                return i;
+            }
+        }
+        if (nums[nums.length - 1] == nums.length - 1) {
+            return nums.length;
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        _0268_MissingNumber solution = new _0268_MissingNumber();
+        int[] a1 = {3, 0, 1};
+        int r1 = solution.missingNumber(a1);
+        System.out.println((r1 == 2) + " : " + r1);
+
+        int[] a2 = {9, 6, 4, 2, 3, 5, 7, 0, 1};
+        int r2 = solution.missingNumber(a2);
+        System.out.println((r2 == 8) + " : " + r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

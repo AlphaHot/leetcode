@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>179. Largest Number</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_179_largest_number">179. Largest Number</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_179_largest_number"><a class="anchor" href="#_179_largest_number"></a>179. Largest Number</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/largest-number/">LeetCode - Largest Number</a></p>
+</div>
+<div class="paragraph">
+<p>这道题很容易想到需要根据数字的字符串大小进行倒序排列（目的是将首个数字比较大的数字排在前面）。很容想到需要自定义 <code>Comparator</code>。最简单省事的方式就是直接将排序的两个字符串相加（左右，右左）进行比较就可以了。</p>
+</div>
+<div class="paragraph">
+<p>Given a list of non negative integers, arrange them such that they form the largest number.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> <code>[10,2]</code>
+<strong>Output:</strong> "`210"`</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> <code>[3,30,34,5,9]</code>
+<strong>Output:</strong> "`9534330"`</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> The result may be very large, so you need to return a string instead of an integer.</p>
+</div>
+<div id="src-0179" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+
+/**
+ * = 179. Largest Number
+ *
+ * https://leetcode.com/problems/largest-number/[Largest Number - LeetCode]
+ *
+ * Given a list of non negative integers, arrange them such that they form the largest number.
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: [10,2]
+ * Output: "210"
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: [3,30,34,5,9]
+ * Output: "9534330"
+ * ----
+ *
+ * *Note:* The result may be very large, so you need to return a string instead of an integer.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-25 22:29
+ */
+public class _0179_LargestNumber {
+    /**
+     * Runtime: 21 ms, faster than 6.20% of Java online submissions for Largest Number.
+     *
+     * Memory Usage: 40.9 MB, less than 6.67% of Java online submissions for Largest Number.
+     */
+    public String largestNumber(int[] nums) {
+        String[] strings = new String[nums.length];
+        for (int i = 0; i &lt; nums.length; i++) {
+            strings[i] = String.valueOf(nums[i]);
+        }
+
+        Arrays.sort(strings, (a, b) -&gt; {
+            String s1 = a + b;
+            String s2 = b + a;
+            return s2.compareTo(s1);
+        });
+
+        if ("0".equals(strings[0])) {
+            return "0";
+        }
+
+        return String.join("", strings);
+    }
+
+    public static void main(String[] args) {
+        _0179_LargestNumber solution = new _0179_LargestNumber();
+        int[] n3 = {121, 12};
+        String r3 = solution.largestNumber(n3);
+        System.out.println("12121".equals(r3) + " : " + r3);
+
+        int[] n1 = {10, 2};
+        String r1 = solution.largestNumber(n1);
+        System.out.println("210".equals(r1) + " : " + r1);
+
+        int[] n2 = {3, 30, 34, 5, 9};
+        String r2 = solution.largestNumber(n2);
+        System.out.println("9534330".equals(r2) + " : " + r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

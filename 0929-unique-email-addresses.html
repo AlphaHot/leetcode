@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>929. Unique Email Addresses</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_929_unique_email_addresses">929. Unique Email Addresses</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_929_unique_email_addresses"><a class="anchor" href="#_929_unique_email_addresses"></a>929. Unique Email Addresses</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/unique-email-addresses/">LeetCode - Unique Email Addresses</a></p>
+</div>
+<div class="paragraph">
+<p>Every email consists of a local name and a domain name, separated by the @ sign.</p>
+</div>
+<div class="paragraph">
+<p>For example, in <code>alice@leetcode.com</code>, <code>alice</code> is the local name, and <code>leetcode.com</code> is the domain name.</p>
+</div>
+<div class="paragraph">
+<p>Besides lowercase letters, these emails may contain &#8217;.'`s or &#8217;+'`s.</p>
+</div>
+<div class="paragraph">
+<p>If you add periods (<code>'.'</code>) between some characters in the <strong>local name</strong> part of an email address, mail sent there will be forwarded to the same address without dots in the local name.  For example, <code>"<a href="mailto:alice.z@leetcode.com">alice.z@leetcode.com</a>"</code> and <code>"<a href="mailto:alicez@leetcode.com">alicez@leetcode.com</a>"</code> forward to the same email address.  (Note that this rule does not apply for domain names.)</p>
+</div>
+<div class="paragraph">
+<p>If you add a plus (<code>'+'</code>) in the <strong>local name</strong>, everything after the first plus sign will be <strong>ignored</strong>. This allows certain emails to be filtered, for example <code>m.y+name@email.com</code> will be forwarded to <code>my@email.com</code>.  (Again, this rule does not apply for domain names.)</p>
+</div>
+<div class="paragraph">
+<p>It is possible to use both of these rules at the same time.</p>
+</div>
+<div class="paragraph">
+<p>Given a list of <code>emails</code>, we send one email to each address in the list.  How many different addresses actually receive mails?</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ["<a href="mailto:test.email+alex@leetcode.com">test.email+alex@leetcode.com</a>","<a href="mailto:test.e.mail+bob.cathy@leetcode.com">test.e.mail+bob.cathy@leetcode.com</a>","<a href="mailto:testemail+david@lee.tcode.com">testemail+david@lee.tcode.com</a>"]
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> "<a href="mailto:testemail@leetcode.com">testemail@leetcode.com</a>" and "<a href="mailto:testemail@lee.tcode.com">testemail@lee.tcode.com</a>" actually receive mails</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; emails[i].length &#8656; 100</code></p>
+</li>
+<li>
+<p><code>1 &#8656; emails.length &#8656; 100</code></p>
+</li>
+<li>
+<p>Each <code>emails[i]</code> contains exactly one <code>'@'</code> character.</p>
+</li>
+<li>
+<p>All local and domain names are non-empty.</p>
+</li>
+<li>
+<p>Local names do not start with a <code>'+'</code> character.</p>
+</li>
+</ul>
+</div>
+<div id="src-0929" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0929-unique-email-addresses.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0929_UniqueEmailAddresses.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

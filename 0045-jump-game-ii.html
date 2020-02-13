@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>45. Jump Game II</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_45_jump_game_ii">45. Jump Game II</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_45_jump_game_ii"><a class="anchor" href="#_45_jump_game_ii"></a>45. Jump Game II</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/jump-game-ii/">LeetCode - Jump Game II</a></p>
+</div>
+<div class="paragraph">
+<p>Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
+</div>
+<div class="paragraph">
+<p>Each element in the array represents your maximum jump length at that position.</p>
+</div>
+<div class="paragraph">
+<p>Your goal is to reach the last index in the minimum number of jumps.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [2,3,1,1,4]
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> The minimum number of jumps to reach the last index is 2.
+    Jump 1 step from index 0 to 1, then 3 steps to the last index.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="paragraph">
+<p>You can assume that you can always reach the last index.</p>
+</div>
+<div id="src-0045" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+/**
+ * = 45. Jump Game II
+ *
+ * https://leetcode.com/problems/jump-game-ii/[Jump Game II - LeetCode]
+ *
+ * Given an array of non-negative integers, you are initially positioned at the first index of the array.
+ *
+ * Each element in the array represents your maximum jump length at that position.
+ *
+ * Your goal is to reach the last index in the minimum number of jumps.
+ *
+ * .Example:
+ * [source]
+ * ----
+ * Input: [2,3,1,1,4]
+ * Output: 2
+ * Explanation: The minimum number of jumps to reach the last index is 2.
+ * Jump 1 step from index 0 to 1, then 3 steps to the last index.
+ * ----
+ *
+ * *Note:*
+ *
+ * You can assume that you can always reach the last index.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2019-10-26 11:29
+ */
+public class _0045_JumpGameII {
+    /**
+     * Runtime: 1 ms, faster than 99.98% of Java online submissions for Jump Game II.
+     *
+     * Memory Usage: 36.4 MB, less than 100.00% of Java online submissions for Jump Game II.
+     */
+    public int jump(int[] nums) {
+        if (Objects.isNull(nums) || nums.length == 0) {
+            return 0;
+        }
+        int step = 0;
+        int currentStepEnd = 0;
+        int currentFarthestIndex = 0;
+        for (int i = 0; i &lt; nums.length - 1; i++) {
+            currentFarthestIndex = Math.max(currentFarthestIndex, i + nums[i]);
+            if (i == currentStepEnd) {
+                step++;
+                currentStepEnd = currentFarthestIndex;
+            }
+        }
+        return step;
+    }
+
+    // TODO: Dynamic Programming
+
+    public static void main(String[] args) {
+        _0045_JumpGameII solution = new _0045_JumpGameII();
+        int r1 = solution.jump(new int[]{2, 3, 1, 1, 4});
+        System.out.println((r1 == 2) + " : " + r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

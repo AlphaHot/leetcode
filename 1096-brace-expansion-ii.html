@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1096. Brace Expansion II</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1096_brace_expansion_ii">1096. Brace Expansion II</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1096_brace_expansion_ii"><a class="anchor" href="#_1096_brace_expansion_ii"></a>1096. Brace Expansion II</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/brace-expansion-ii/">LeetCode - Brace Expansion II</a></p>
+</div>
+<div class="paragraph">
+<p>Under a grammar given below, strings can represent a set of lowercase words.  Let&#8217;s use <code>R(expr)</code> to denote the <strong>set</strong> of words the expression represents.</p>
+</div>
+<div class="paragraph">
+<p>Grammar can best be understood through simple examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Single letters represent a singleton set containing that word.</p>
+</li>
+<li>
+<p><code>R("a") = {"a"}</code></p>
+</li>
+<li>
+<p><code>R("w") = {"w"}</code></p>
+</li>
+<li>
+<p>When we take a comma delimited list of 2 or more expressions, we take the union of possibilities.</p>
+</li>
+<li>
+<p><code>R("{a,b,c}") = {"a","b","c"}</code></p>
+</li>
+<li>
+<p><code>R("{{a,b},{b,c}}") = {"a","b","c"}</code> (notice the final set only contains each word at most once)</p>
+</li>
+<li>
+<p>When we concatenate two expressions, we take the set of possible concatenations between two words where the first word comes from the first expression and the second word comes from the second expression.</p>
+</li>
+<li>
+<p><code>R("{a,b}{c,d}") = {"ac","ad","bc","bd"}</code></p>
+</li>
+<li>
+<p><code>R("a{b,c}{d,e}f{g,h}") = {"abdfg", "abdfh", "abefg", "abefh", "acdfg", "acdfh", "acefg", "acefh"}</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Formally, the 3 rules for our grammar:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For every lowercase letter <code>x</code>, we have <code>R(x) = {x}</code></p>
+</li>
+<li>
+<p>For expressions <code>e_1, e_2, &#8230;&#8203; , e_k</code> with <code>k &gt;= 2</code>, we have <code>R({e_1,e_2,&#8230;&#8203;}) = R(e_1) &cup; R(e_2) &cup; &#8230;&#8203;</code></p>
+</li>
+<li>
+<p>For expressions <code>e_1</code> and <code>e_2</code>, we have <code>R(e_1 + e_2) = {a + b for (a, b) in R(e_1) &times; R(e_2)}</code>, where + denotes concatenation, and &times; denotes the cartesian product.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given an <code>expression</code> representing a set of words under the given grammar, return the sorted list of words that the expression represents.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "{a,b}{c,{d,e}}"
+<strong>Output:</strong> ["ac","ad","ae","bc","bd","be"]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "{{a,z},a{b,c},{ab,z}}"
+<strong>Output:</strong> ["a","ab","ac","z"]
+<strong>Explanation:</strong> Each distinct word is written only once in the final answer.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; expression.length &#8656; 60</code></p>
+</li>
+<li>
+<p><code>expression[i]</code> consists of <code>'{'</code>, <code>'}'</code>, &#8217;,'`or lowercase English letters.</p>
+</li>
+<li>
+<p>The given <code>expression</code> represents a set of words based on the grammar given in the description.</p>
+</li>
+</ul>
+</div>
+<div id="src-1096" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1096-brace-expansion-ii.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1096_BraceExpansionII.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

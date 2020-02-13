@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>167. Two Sum II - Input array is sorted</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_167_two_sum_ii_input_array_is_sorted">167. Two Sum II - Input array is sorted</a>
+<ul class="sectlevel2">
+<li><a href="#_解题思路">解题思路</a></li>
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_167_two_sum_ii_input_array_is_sorted"><a class="anchor" href="#_167_two_sum_ii_input_array_is_sorted"></a>167. Two Sum II - Input array is sorted</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/">LeetCode - Two Sum II - Input array is sorted</a></p>
+</div>
+<div class="paragraph">
+<p>Given an array of integers that is already <strong>sorted in ascending order</strong>, find two numbers such that they add up to a specific target number.</p>
+</div>
+<div class="paragraph">
+<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Your returned answers (both index1 and index2) are not zero-based.</p>
+</li>
+<li>
+<p>You may assume that each input would have <strong>exactly</strong> one solution and you may not use the <strong>same</strong> element twice.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>Input: numbers = [2,7,11,15], target = 9
+Output: [1,2]
+Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_解题思路"><a class="anchor" href="#_解题思路"></a>解题思路</h3>
+<div class="paragraph">
+<p>利用输入数组的有序性，可以从两边向中级"挤压"来查找正确解。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/solution/liang-shu-zhi-he-ii-shu-ru-you-xu-shu-zu-by-leetco/">两数之和 II - 输入有序数组 - 两数之和 II - 输入有序数组 - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given an array of integers that is already <strong><em>sorted in ascending order</em></strong>, find two numbers such that they add up to a specific target number.</p>
+</div>
+<div class="paragraph">
+<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Your returned answers (both index1 and index2) are not zero-based.</p>
+</li>
+<li>
+<p>You may assume that each input would have <em>exactly</em> one solution and you may not use the <em>same</em> element twice.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> numbers = [2,7,11,15], target = 9
+<strong>Output:</strong> [1,2]
+<strong>Explanation:</strong> The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.</pre>
+</div>
+</div>
+<div id="src-0167" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * = 167. Two Sum II - Input array is sorted
+ *
+ * https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/[Two Sum II - Input array is sorted - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-02-04 23:35
+ */
+public class _0167_TwoSumIIInputArrayIsSorted {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Two Sum II - Input array is sorted.
+     * Memory Usage: 42.2 MB, less than 5.22% of Java online submissions for Two Sum II - Input array is sorted.
+     *
+     * Copy from: https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/solution/liang-shu-zhi-he-ii-shu-ru-you-xu-shu-zu-by-leetco/[两数之和 II - 输入有序数组 - 两数之和 II - 输入有序数组 - 力扣（LeetCode）]
+     */
+    public int[] twoSum(int[] numbers, int target) {
+        int low = 0, high = numbers.length - 1;
+        while (low &lt; high) {
+            int sum = numbers[low] + numbers[high];
+            if (sum == target) {
+                return new int[]{low + 1, high + 1};
+            } else if (sum &lt; target) {
+                low++;
+            } else {
+                high--;
+            }
+        }
+
+        return new int[]{-1, -1};
+    }
+
+    /**
+     * Runtime: 4 ms, faster than 14.69% of Java online submissions for Two Sum II - Input array is sorted.
+     * Memory Usage: 41.8 MB, less than 5.22% of Java online submissions for Two Sum II - Input array is sorted.
+     */
+    public int[] twoSumPair(int[] numbers, int target) {
+        Map&lt;Integer, Pair&gt; valueToIndexMap = new HashMap&lt;&gt;();
+        for (int i = 0; i &lt; numbers.length; i++) {
+            valueToIndexMap.put(numbers[i], new Pair(numbers[i], i + 1));
+        }
+        for (int i = 0; i &lt; numbers.length; i++) {
+            int diff = target - numbers[i];
+            if (valueToIndexMap.containsKey(diff)) {
+                Pair pair = valueToIndexMap.get(diff);
+                return new int[]{i + 1, pair.index};
+            }
+        }
+        return null;
+    }
+
+    private class Pair {
+        int value;
+        int index;
+
+        public Pair(int value, int index) {
+            this.value = value;
+            this.index = index;
+        }
+    }
+
+    public static void main(String[] args) {
+        _0167_TwoSumIIInputArrayIsSorted solution = new _0167_TwoSumIIInputArrayIsSorted();
+        System.out.println(Arrays.toString(solution.twoSum(new int[]{2, 7, 11, 15}, 9)));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

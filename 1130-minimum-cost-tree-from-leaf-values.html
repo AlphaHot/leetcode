@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1130. Minimum Cost Tree From Leaf Values</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1130_minimum_cost_tree_from_leaf_values">1130. Minimum Cost Tree From Leaf Values</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1130_minimum_cost_tree_from_leaf_values"><a class="anchor" href="#_1130_minimum_cost_tree_from_leaf_values"></a>1130. Minimum Cost Tree From Leaf Values</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/">LeetCode - Minimum Cost Tree From Leaf Values</a></p>
+</div>
+<div class="paragraph">
+<p>Given an array <code>arr</code> of positive integers, consider all binary trees such that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each node has either 0 or 2 children;</p>
+</li>
+<li>
+<p>The values of <code>arr</code> correspond to the values of each <strong>leaf</strong> in an in-order traversal of the tree.  <em>(Recall that a node is a leaf if and only if it has 0 children.)</em></p>
+</li>
+<li>
+<p>The value of each non-leaf node is equal to the product of the largest leaf value in its left and right subtree respectively.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Among all possible binary trees considered, return the smallest possible sum of the values of each non-leaf node.  It is guaranteed this sum fits into a 32-bit integer.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> arr = [6,2,4]
+<strong>Output:</strong> 32
+<strong>Explanation:</strong>
+There are two possible trees.  The first has non-leaf node sum 36, and the second has non-leaf node sum 32.
+
+    24            24
+   /  \          /  \
+  12   4        6    8
+ /  \               / \
+6    2             2   4</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>2 &#8656; arr.length &#8656; 40</code></p>
+</li>
+<li>
+<p><code>1 &#8656; arr[i] &#8656; 15</code></p>
+</li>
+<li>
+<p>It is guaranteed that the answer fits into a 32-bit signed integer (ie. it is less than <code>2^31</code>).</p>
+</li>
+</ul>
+</div>
+<div id="src-1130" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1130-minimum-cost-tree-from-leaf-values.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1130_MinimumCostTreeFromLeafValues.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

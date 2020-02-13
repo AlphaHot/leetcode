@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>682. Baseball Game</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_682_baseball_game">682. Baseball Game</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_682_baseball_game"><a class="anchor" href="#_682_baseball_game"></a>682. Baseball Game</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/baseball-game/">LeetCode - Baseball Game</a></p>
+</div>
+<div class="paragraph">
+<p>You&#8217;re now a baseball game point recorder.</p>
+</div>
+<div class="paragraph">
+<p>Given a list of strings, each string can be one of the 4 following types:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Integer</code> (one round&#8217;s score): Directly represents the number of points you get in this round.</p>
+</li>
+<li>
+<p><code>"+"</code> (one round&#8217;s score): Represents that the points you get in this round are the sum of the last two <code>valid</code> round&#8217;s points.</p>
+</li>
+<li>
+<p><code>"D"</code> (one round&#8217;s score): Represents that the points you get in this round are the doubled data of the last <code>valid</code> round&#8217;s points.</p>
+</li>
+<li>
+<p><code>"C"</code> (an operation, which isn&#8217;t a round&#8217;s score): Represents the last <code>valid</code> round&#8217;s points you get were invalid and should be removed.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Each round&#8217;s operation is permanent and could have an impact on the round before and the round after.</p>
+</div>
+<div class="paragraph">
+<p>You need to return the sum of the points you could get in all the rounds.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ["5","2","C","D","+"]
+<strong>Output:</strong> 30
+<strong>Explanation:</strong>
+Round 1: You could get 5 points. The sum is: 5.
+Round 2: You could get 2 points. The sum is: 7.
+Operation 1: The round 2's data was invalid. The sum is: 5.
+Round 3: You could get 10 points (the round 2's data has been removed). The sum is: 15.
+Round 4: You could get 5 + 10 = 15 points. The sum is: 30.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ["5","-2","4","C","D","9","",""]
+<strong>Output:</strong> 27
+<strong>Explanation:</strong>
+Round 1: You could get 5 points. The sum is: 5.
+Round 2: You could get -2 points. The sum is: 3.
+Round 3: You could get 4 points. The sum is: 7.
+Operation 1: The round 3's data is invalid. The sum is: 3.
+Round 4: You could get -4 points (the round 3's data has been removed). The sum is: -1.
+Round 5: You could get 9 points. The sum is: 8.
+Round 6: You could get -4 + 9 = 5 points. The sum is 13.
+Round 7: You could get 9 + 5 = 14 points. The sum is 27.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The size of the input list will be between 1 and 1000.</p>
+</li>
+<li>
+<p>Every integer represented in the list will be between -30000 and 30000.</p>
+</li>
+</ol>
+</div>
+<div id="src-0682" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0682-baseball-game.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0682_BaseballGame.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

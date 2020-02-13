@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>936. Stamping The Sequence</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_936_stamping_the_sequence">936. Stamping The Sequence</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_936_stamping_the_sequence"><a class="anchor" href="#_936_stamping_the_sequence"></a>936. Stamping The Sequence</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/stamping-the-sequence/">LeetCode - Stamping The Sequence</a></p>
+</div>
+<div class="paragraph">
+<p>You want to form a <code>target</code> string of <strong>lowercase letters</strong>.</p>
+</div>
+<div class="paragraph">
+<p>At the beginning, your sequence is <code>target.length</code> <code>'?'</code> marks.  You also have a <code>stamp</code> of lowercase letters.</p>
+</div>
+<div class="paragraph">
+<p>On each turn, you may place the stamp over the sequence, and replace every letter in the sequence with the corresponding letter from the stamp.  You can make up to <code>10 * target.length</code> turns.</p>
+</div>
+<div class="paragraph">
+<p>For example, if the initial sequence is &lt;font face="monospace"&gt;"?????", and your stamp is <code>"abc"</code>,  then you may make &lt;font face="monospace"&gt;"abc??", "?abc?", "??abc" in the first turn.  (Note that the stamp must be fully contained in the boundaries of the sequence in order to stamp.)</p>
+</div>
+<div class="paragraph">
+<p>If the sequence is possible to stamp, then return an array of the index of the left-most letter being stamped at each turn.  If the sequence is not possible to stamp, return an empty array.</p>
+</div>
+<div class="paragraph">
+<p>For example, if the sequence is &lt;font face="monospace"&gt;"ababc", and the stamp is <code>"abc"</code>, then we could return the answer <code>[0, 2]</code>, corresponding to the moves &lt;font face="monospace"&gt;"?????" &#8594; "abc??" &#8594; "ababc".</p>
+</div>
+<div class="paragraph">
+<p>Also, if the sequence is possible to stamp, it is guaranteed it is possible to stamp within <code>10 * target.length</code> moves.  Any answers specifying more than this number of moves will not be accepted.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> stamp = "abc", target = "ababc"
+<strong>Output:</strong> [0,2]
+([1,0,2] would also be accepted as an answer, as well as some other answers.)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> stamp = " abca", target = "aabcaca"
+<strong>Output:</strong> [3,0,1]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>1 &#8656; stamp.length &#8656; target.length &#8656; 1000</code></p>
+</li>
+<li>
+<p><code>stamp</code> and <code>target</code> only contain lowercase letters.</p>
+</li>
+</ol>
+</div>
+<div id="src-0936" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0936-stamping-the-sequence.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0936_StampingTheSequence.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

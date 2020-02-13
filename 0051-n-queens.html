@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>51. N-Queens</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_51_n_queens">51. N-Queens</a>
+<ul class="sectlevel2">
+<li><a href="#_解题分析">解题分析</a></li>
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_51_n_queens"><a class="anchor" href="#_51_n_queens"></a>51. N-Queens</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/n-queens/">LeetCode - N-Queens</a></p>
+</div>
+<div class="paragraph">
+<p>The <strong><em>n</em>-queens</strong> puzzle is the problem of placing <strong>n</strong> queens on an <strong>n×n</strong> chessboard such that no two queens attack each other.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0051-0-8-queens.png" alt="0051 0 8 queens">
+</div>
+</div>
+<div class="paragraph">
+<p>Given an integer <strong>n</strong>, return all distinct solutions to the <strong><em>n</em>-queens</strong> puzzle.</p>
+</div>
+<div class="paragraph">
+<p>Each solution contains a distinct board configuration of the <strong><em>n</em>-queens</strong>' placement, where <code>Q</code> and <code>.</code> both indicate a queen and an empty space respectively.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>Input: 4
+Output: [
+ [".Q..",  // Solution 1
+  "...Q",
+  "Q...",
+  "..Q."],
+
+ ["..Q.",  // Solution 2
+  "Q...",
+  "...Q",
+  ".Q.."]
+ ]
+
+Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above.</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_解题分析"><a class="anchor" href="#_解题分析"></a>解题分析</h3>
+<div class="paragraph">
+<p>八皇后问题是回溯思想的经典题目。</p>
+</div>
+<div class="paragraph">
+<p>当在棋盘上放置了一个皇后后，立即排除当前行，列和对应的两个对角线。这里有一点可以优化：<strong>我们从上向下进行尝试，所以，只需要判断当前行以上的相关节点是否冲突即可。</strong>另外，先检查再渐进点，合适之后，再向前走，可以做到有效地剪枝。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0051-1.png" alt="0051 1">
+</div>
+</div>
+<div class="paragraph">
+<p>这里有个知识点需要注意：</p>
+</div>
+<div class="paragraph">
+<p>对于所有的主对角线有 <code>行号 + 列号 = 常数</code>；<br>
+对于所有的次对角线有 <code>行号 - 列号 = 常数</code>。<br>
+如下图所示：</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0051-2.png" alt="0051 2">
+</div>
+</div>
+<div class="paragraph">
+<p>利用回溯解题时，只回溯一半，然后将每个解反转即可求得另外一般解。这里有个细节需要注意：<strong>如果长度是奇数，而且第一行中间是合法位置，则在回溯过程中已经产生了对称解法。就不需要再反转了。</strong>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/n-queens/solution/nhuang-hou-by-leetcode/">51. N皇后 题解 - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The <em>n</em>-queens puzzle is the problem of placing <em>n</em> queens on an <em>n</em>&times;_n_ chessboard such that no two queens attack each other.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2018/10/12/8-queens.png" alt="8 queens">
+</div>
+</div>
+<div class="paragraph">
+<p>Given an integer <em>n</em>, return all distinct solutions to the <em>n</em>-queens puzzle.</p>
+</div>
+<div class="paragraph">
+<p>Each solution contains a distinct board configuration of the <em>n</em>-queens' placement, where <code>'Q'</code> and <code>'.'</code> both indicate a queen and an empty space respectively.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 4
+<strong>Output:</strong> [
+ [".Q..",  // Solution 1
+  "...Q",
+  "Q...",
+  "..Q."],
+
+ ["..Q.",  // Solution 2
+  "Q...",
+  "...Q",
+  ".Q.."]
+]
+<strong>Explanation:</strong> There exist two distinct solutions to the 4-queens puzzle as shown above.</pre>
+</div>
+</div>
+<div id="src-0051" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.diguage.algorithm.util.PrintUtils.printMatrix;
+
+/**
+ * = 51. N-Queens
+ *
+ * [N-Queens - LeetCode](https://leetcode.com/problems/n-queens/)
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-02-05 12:55
+ */
+public class _0051_NQueens {
+    /**
+     * Runtime: 4 ms, faster than 64.59% of Java online submissions for N-Queens.
+     * Memory Usage: 41.3 MB, less than 5.41% of Java online submissions for N-Queens.
+     */
+    public List&lt;List&lt;String&gt;&gt; solveNQueens(int n) {
+        int[][] matrix = new int[n][n];
+        List&lt;List&lt;String&gt;&gt; result = new ArrayList&lt;&gt;();
+        backtrack(matrix, 0, 0, result);
+        int size = result.size();
+        if (size == 0) {
+            return result;
+        }
+        for (int i = 0; i &lt; size; i++) {
+            List&lt;String&gt; om = result.get(i);
+            // 如果长度是奇数，而且第一行中间是合法位置，则在回溯过程中已经产生了对称解法。
+            if (!(n % 2 == 1 &amp;&amp; om.get(0).charAt(getMid(n)) == 'Q')) {
+                List&lt;String&gt; nm = reverseMatrix(om);
+                result.add(nm);
+            }
+        }
+        return result;
+    }
+
+    private List&lt;String&gt; reverseMatrix(List&lt;String&gt; matrix) {
+        List&lt;String&gt; result = new ArrayList&lt;&gt;(matrix.size());
+        for (String s : matrix) {
+            StringBuilder sb = new StringBuilder(s);
+            result.add(sb.reverse().toString());
+        }
+        return result;
+    }
+
+    private void backtrack(int[][] matrix, int y, int step, List&lt;List&lt;String&gt;&gt; result) {
+        int length = matrix.length;
+        if (step == length) {
+            result.add(matrixToList(matrix));
+            return;
+        }
+        for (int xi = 0; xi &lt; length; xi++) {
+            if (y == 0) {
+                int mid = getMid(length);
+                if (mid &lt; xi) {
+                    break;
+                }
+            }
+            if (isValid(matrix, y, xi)) {
+                matrix[y][xi] = 1;
+                backtrack(matrix, y + 1, step + 1, result);
+                matrix[y][xi] = 0;
+            }
+        }
+    }
+
+    private int getMid(int length) {
+        return length % 2 == 0 ? length / 2 - 1 : length / 2;
+    }
+
+    private List&lt;String&gt; matrixToList(int[][] matrix) {
+        List&lt;String&gt; result = new ArrayList&lt;&gt;(matrix.length);
+        for (int y = 0; y &lt; matrix.length; y++) {
+            StringBuilder sb = new StringBuilder();
+            for (int x = 0; x &lt; matrix[0].length; x++) {
+                if (matrix[y][x] == 0) {
+                    sb.append(".");
+                } else {
+                    sb.append("Q");
+                }
+            }
+            result.add(sb.toString());
+        }
+        return result;
+    }
+
+    private boolean isValid(int[][] matrix, int y, int x) {
+        int len = matrix.length;
+        // 同列
+        for (int i = 0; i &lt; y; i++) {
+            if (matrix[i][x] == 1) {
+                return false;
+            }
+        }
+//        // 同行
+//        for (int i = 0; i &lt; len; i++) {
+//            if (i != x &amp;&amp; matrix[y][i] == 1) {
+//                return false;
+//            }
+//        }
+        // 左上角
+        for (int i = 1; i &lt; len &amp;&amp; y - i &gt;= 0 &amp;&amp; x - i &gt;= 0; i++) {
+            if (matrix[y - i][x - i] == 1) {
+                return false;
+            }
+        }
+        // 右上角：从右上角到最下角的对角线，他们 "行号 + 列号 = 常数"
+        int sum = x + y;
+        for (int yi = y - 1; yi &gt;= 0 &amp;&amp; 0 &lt;= sum - yi &amp;&amp; sum - yi &lt; len; yi--) {
+            if (matrix[yi][sum - yi] == 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        _0051_NQueens solution = new _0051_NQueens();
+
+        List&lt;List&lt;String&gt;&gt; r1 = solution.solveNQueens(14);
+        printMatrix(r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

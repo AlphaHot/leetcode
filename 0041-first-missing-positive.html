@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>41. First Missing Positive</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_41_first_missing_positive">41. First Missing Positive</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_41_first_missing_positive"><a class="anchor" href="#_41_first_missing_positive"></a>41. First Missing Positive</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/first-missing-positive/">LeetCode - First Missing Positive</a></p>
+</div>
+<div class="paragraph">
+<p>这道题跟 <a href="https://leetcode.com/problems/missing-number/">268. Missing Number - LeetCode</a> 很像！</p>
+</div>
+<div class="paragraph">
+<p>Given an unsorted integer array, find the smallest missing positive integer.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Input: [1,2,0]
+Output: 3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Input: [3,4,-1,1]
+Output: 2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Input: [7,8,9,11,12]
+Output: 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="paragraph">
+<p>Your algorithm should run in <em>O</em>(<em>n</em>) time and uses constant extra space.</p>
+</div>
+<div id="src-0041" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+/**
+ * = 41. First Missing Positive
+ *
+ * https://leetcode.com/problems/first-missing-positive/[First Missing Positive - LeetCode]
+ *
+ * Given an unsorted integer array, find the smallest missing positive integer.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: [1,2,0]
+ * Output: 3
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: [3,4,-1,1]
+ * Output: 2
+ * ----
+ *
+ * .Example 3:
+ * [source]
+ * ----
+ * Input: [7,8,9,11,12]
+ * Output: 1
+ * ----
+ *
+ * *Note:*
+ *
+ * Your algorithm should run in O(n) time and uses constant extra space.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2019-10-23 12:54:29
+ */
+public class _0041_FirstMissingPositive {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for First Missing Positive.
+     *
+     * Memory Usage: 34.6 MB, less than 100.00% of Java online submissions for First Missing Positive.
+     */
+    public int firstMissingPositive(int[] nums) {
+        if (Objects.isNull(nums) || nums.length == 0) {
+            return 1;
+        }
+        int length = nums.length;
+        for (int i = 0; i &lt; length; ) {
+            int iNum = nums[i];
+            if (0 &lt; iNum &amp;&amp; iNum &lt;= length &amp;&amp; nums[iNum - 1] != iNum) {
+                swap(nums, i, iNum - 1);
+            } else {
+                i++;
+            }
+        }
+        int i = 0;
+        while (i &lt; length &amp;&amp; nums[i] == i + 1) {
+            i++;
+        }
+
+        return i + 1;
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        _0041_FirstMissingPositive solution = new _0041_FirstMissingPositive();
+        int i1 = solution.firstMissingPositive(new int[]{1, 2, 0});
+        System.out.println((i1 == 3) + ", " + i1);
+
+        int i2 = solution.firstMissingPositive(new int[]{3, 4, -1, 1});
+        System.out.println((i2 == 2) + ", " + i2);
+
+        int i3 = solution.firstMissingPositive(new int[]{7, 8, 9, 11, 12});
+        System.out.println((i3 == 1) + ", " + i3);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>488. Zuma Game</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_488_zuma_game">488. Zuma Game</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_488_zuma_game"><a class="anchor" href="#_488_zuma_game"></a>488. Zuma Game</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/zuma-game/">LeetCode - Zuma Game</a></p>
+</div>
+<div class="paragraph">
+<p>Think about Zuma Game. You have a row of balls on the table, colored red&#174;, yellow(Y), blue(B), green(G), and white(W). You also have several balls in your hand.</p>
+</div>
+<div class="paragraph">
+<p>Each time, you may choose a ball in your hand, and insert it into the row (including the leftmost place and rightmost place). Then, if there is a group of 3 or more balls in the same color touching, remove these balls. Keep doing this until no more balls can be removed.</p>
+</div>
+<div class="paragraph">
+<p>Find the minimal balls you have to insert to remove all the balls on the table. If you cannot remove all the balls, output -1.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> board = "WRRBBW", hand = "RB"
+<strong>Output:</strong> -1
+<strong>Explanation:</strong> WRRBBW -&gt; WRR[R]BBW -&gt; WBBW -&gt; WBB[B]W -&gt; WW</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> board = "WWRRBBWW", hand = "WRBRW"
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> WWRRBBWW -&gt; WWRR[R]BBWW -&gt; WWBBWW -&gt; WWBB[B]WW -&gt; WWWW -&gt; empty</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> board = "G", hand = "GGGGG"
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> G -&gt; G[G] -&gt; GG[G] -&gt; empty</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 4:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> board = "RBYYBBRRB", hand = "YRBGB"
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> RBYYBBRRB -&gt; RBYY[Y]BBRRB -&gt; RBBBRRB -&gt; RRRB -&gt; B -&gt; B[B] -&gt; BB[B] -&gt; empty</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You may assume that the initial row of balls on the table won&rsquo;t have any 3 or more consecutive balls with the same color.</p>
+</li>
+<li>
+<p>The number of balls on the table won&#8217;t exceed 16, and the string represents these balls is called "board" in the input.</p>
+</li>
+<li>
+<p>The number of balls in your hand won&#8217;t exceed 5, and the string represents these balls is called "hand" in the input.</p>
+</li>
+<li>
+<p>Both input strings will be non-empty and only contain characters 'R','Y','B','G','W'.</p>
+</li>
+</ul>
+</div>
+<div id="src-0488" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0488-zuma-game.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0488_ZumaGame.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

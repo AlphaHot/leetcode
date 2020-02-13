@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>617. Merge Two Binary Trees</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_617_merge_two_binary_trees">617. Merge Two Binary Trees</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_617_merge_two_binary_trees"><a class="anchor" href="#_617_merge_two_binary_trees"></a>617. Merge Two Binary Trees</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/merge-two-binary-trees/">LeetCode - Merge Two Binary Trees</a></p>
+</div>
+<div class="paragraph">
+<p>Given two binary trees and imagine that when you put one of them to cover the other, some nodes of the two trees are overlapped while the others are not.</p>
+</div>
+<div class="paragraph">
+<p>You need to merge them into a new binary tree. The merge rule is that if two nodes overlap, then sum node values up as the new value of the merged node. Otherwise, the NOT null node will be used as the node of new tree.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>Input:
+      Tree 1                     Tree 2
+          1                         2
+         / \                       / \
+        3   2                     1   3
+       /                           \   \
+      5                             4   7
+Output:
+      Merged tree:
+          3
+         / \
+        4   5
+       / \   \
+      5   4   7</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> The merging process must start from the root nodes of both trees.</p>
+</div>
+<div class="paragraph">
+<p>Given two binary trees and imagine that when you put one of them to cover the other, some nodes of the two trees are overlapped while the others are not.</p>
+</div>
+<div class="paragraph">
+<p>You need to merge them into a new binary tree. The merge rule is that if two nodes overlap, then sum node values up as the new value of the merged node. Otherwise, the NOT null node will be used as the node of new tree.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+	Tree 1                     Tree 2
+          1                         2
+         / \                       / \
+        3   2                     1   3
+       /                           \   \
+      5                             4   7
+<strong>Output:</strong>
+Merged tree:
+	     3
+	    / \
+	   4   5
+	  / \   \
+	 5   4   7</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> The merging process must start from the root nodes of both trees.</p>
+</div>
+<div id="src-0617" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.JsonUtils;
+import com.diguage.algorithm.util.TreeNode;
+
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.TreeNodeUtils.buildTree;
+import static java.util.Arrays.asList;
+
+/**
+ * = 617. Merge Two Binary Trees
+ *
+ * https://leetcode.com/problems/merge-two-binary-trees/[Merge Two Binary Trees - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-29 16:17
+ */
+public class _0617_MergeTwoBinaryTrees {
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Merge Two Binary Trees.
+     * Memory Usage: 41.6 MB, less than 22.22% of Java online submissions for Merge Two Binary Trees.
+     */
+    public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+        if (Objects.isNull(t1)) {
+            return t2;
+        }
+        if (Objects.isNull(t2)) {
+            return t1;
+        }
+        t1.val += t2.val;
+        t1.left = mergeTrees(t1.left, t2.left);
+        t1.right = mergeTrees(t1.right, t2.right);
+        return t1;
+    }
+
+    public static void main(String[] args) {
+        _0617_MergeTwoBinaryTrees solution = new _0617_MergeTwoBinaryTrees();
+        TreeNode r1 = solution.mergeTrees(buildTree(asList(1, 3, 2, 5)), buildTree(asList(2, 1, 3, null, 4, 7)));
+        System.out.println(JsonUtils.toJson(r1));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>87. Scramble String</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_87_scramble_string">87. Scramble String</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_87_scramble_string"><a class="anchor" href="#_87_scramble_string"></a>87. Scramble String</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/scramble-string/">LeetCode - Scramble String</a></p>
+</div>
+<div class="paragraph">
+<p>Given a string <em>s1</em>, we may represent it as a binary tree by partitioning it to two non-empty substrings recursively.</p>
+</div>
+<div class="paragraph">
+<p>Below is one possible representation of <em>s1</em> = <code>"great"</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    great
+   /    \
+  gr    eat
+ / \    /  \
+g   r  e   at
+           / \
+          a   t</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To scramble the string, we may choose any non-leaf node and swap its two children.</p>
+</div>
+<div class="paragraph">
+<p>For example, if we choose the node <code>"gr"</code> and swap its two children, it produces a scrambled string <code>"rgeat"</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    rgeat
+   /    \
+  rg    eat
+ / \    /  \
+r   g  e   at
+           / \
+          a   t</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We say that <code>"rgeat"</code> is a scrambled string of <code>"great"</code>.</p>
+</div>
+<div class="paragraph">
+<p>Similarly, if we continue to swap the children of nodes <code>"eat"</code> and <code>"at"</code>, it produces a scrambled string <code>"rgtae"</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    rgtae
+   /    \
+  rg    tae
+ / \    /  \
+r   g  ta  e
+       / \
+      t   a</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We say that <code>"rgtae"</code> is a scrambled string of <code>"great"</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given two strings <em>s1</em> and <em>s2</em> of the same length, determine if <em>s2</em> is a scrambled string of <em>s1</em>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> s1 = "great", s2 = "rgeat"
+<strong>Output:</strong> true</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> s1 = "abcde", s2 = "caebd"
+<strong>Output:</strong> false</pre>
+</div>
+</div>
+<div id="src-0087" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0087-scramble-string.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0087_ScrambleString.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

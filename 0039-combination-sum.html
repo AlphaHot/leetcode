@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>39. Combination Sum</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_39_combination_sum">39. Combination Sum</a>
+<ul class="sectlevel2">
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_39_combination_sum"><a class="anchor" href="#_39_combination_sum"></a>39. Combination Sum</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/combination-sum/">LeetCode - Combination Sum</a></p>
+</div>
+<div class="paragraph">
+<p>Given a <strong>set</strong> of candidate numbers (<code>candidates</code>) (<strong>without duplicates</strong>) and a target number (<code>target</code>), find all unique combinations in <code>candidates</code> where the candidate numbers sums to <code>target</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>same</strong> repeated number may be chosen from <code>candidates</code> unlimited number of times.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All numbers (including target) will be positive integers.</p>
+</li>
+<li>
+<p>The solution set must not contain duplicate combinations.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre class="highlight"><code>Input: candidates = [2,3,6,7], target = 7,
+A solution set is:
+[
+  [7],
+  [2,2,3]
+]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 2:</div>
+<div class="content">
+<pre class="highlight"><code>Input: candidates = [2,3,5], target = 8,
+A solution set is:
+[
+  [2,2,2,2],
+  [2,3,3],
+  [3,5]
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>参考 <a href="0046-permutations.html">46. Permutations</a> 认真学习一下回溯思想。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0039-1.png" alt="0039 1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0039-2.png" alt="0039 2">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0039-3.png" alt="0039 3">
+</div>
+</div>
+<div class="paragraph">
+<p>思考题：如何做剪枝？这道题通过做剪枝从 164ms 优化到了 9ms。</p>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/combination-sum/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-m-2/">回溯算法 + 剪枝（Python、Java、C++） - 组合总和 - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given a <strong>set</strong> of candidate numbers (<code>candidates</code>) <strong>(without duplicates)</strong> and a target number (<code>target</code>), find all unique combinations in <code>candidates</code> where the candidate numbers sums to <code>target</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>same</strong> repeated number may be chosen from <code>candidates</code> unlimited number of times.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All numbers (including <code>target</code>) will be positive integers.</p>
+</li>
+<li>
+<p>The solution set must not contain duplicate combinations.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> candidates = <code>[2,3,6,7], `target = `7</code>,
+<strong>A solution set is:</strong>
+[
+  [7],
+  [2,2,3]
+]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> candidates = [2,3,5]`, `target = 8,
+<strong>A solution set is:</strong>
+[
+  [2,2,2,2],
+  [2,3,3],
+  [3,5]
+]</pre>
+</div>
+</div>
+<div id="src-0039" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * = 39. Combination Sum
+ * &lt;p&gt;
+ * https://leetcode.com/problems/combination-sum/description/[Combination Sum - LeetCode]
+ * &lt;p&gt;
+ * Given a set of candidate numbers (candidates) (without duplicates) and a
+ * target number (target), find all unique combinations in candidates where
+ * the candidate numbers sums to target.
+ * &lt;p&gt;
+ * The same repeated number may be chosen from candidates unlimited number of times.
+ * &lt;p&gt;
+ * *Note:*
+ * &lt;p&gt;
+ * * All numbers (including target) will be positive integers.
+ * * The solution set must not contain duplicate combinations.
+ * &lt;p&gt;
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: candidates = [2,3,6,7], target = 7,
+ * A solution set is:
+ * [
+ * [7],
+ * [2,2,3]
+ * ]
+ * ----
+ * &lt;p&gt;
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: candidates = [2,3,5], target = 8,
+ * A solution set is:
+ * [
+ * [2,2,2,2],
+ * [2,3,3],
+ * [3,5]
+ * ]
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2018-09-16 21:56
+ */
+public class _0039_CombinationSum {
+    /**
+     * Runtime: 164 ms, faster than 5.05% of Java online submissions for Combination Sum.
+     * Memory Usage: 45.5 MB, less than 5.19% of Java online submissions for Combination Sum.
+     * &lt;p&gt;
+     * ↓
+     * &lt;p&gt;
+     * Runtime: 9 ms, faster than 17.31% of Java online submissions for Combination Sum.
+     * Memory Usage: 41 MB, less than 5.19% of Java online submissions for Combination Sum.
+     */
+    public List&lt;List&lt;Integer&gt;&gt; combinationSum(int[] candidates, int target) {
+        if (null == candidates || candidates.length == 0) {
+            return Collections.emptyList();
+        }
+        Arrays.sort(candidates);
+
+        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();
+        backtrack(candidates, target, result, new ArrayList&lt;&gt;());
+        return result;
+    }
+
+    private void backtrack(int[] candidates, int target, List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; current) {
+        if (target == 0) {
+            result.add(new ArrayList&lt;&gt;(current));
+        }
+        if (target &lt; 0) {
+            return;
+        }
+        for (int candidate : candidates) {
+            if (!current.isEmpty() &amp;&amp; current.get(current.size() - 1) &gt; candidate) {
+                continue;
+            }
+            current.add(candidate);
+            backtrack(candidates, target - candidate, result, current);
+            current.remove(current.size() - 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        _0039_CombinationSum solution = new _0039_CombinationSum();
+        System.out.println(solution.combinationSum(new int[]{2, 3, 6, 7}, 7));
+        System.out.println(solution.combinationSum(new int[]{2, 3, 5}, 8));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

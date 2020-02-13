@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1111. Maximum Nesting Depth of Two Valid Parentheses Strings</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1111_maximum_nesting_depth_of_two_valid_parentheses_strings">1111. Maximum Nesting Depth of Two Valid Parentheses Strings</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1111_maximum_nesting_depth_of_two_valid_parentheses_strings"><a class="anchor" href="#_1111_maximum_nesting_depth_of_two_valid_parentheses_strings"></a>1111. Maximum Nesting Depth of Two Valid Parentheses Strings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/maximum-nesting-depth-of-two-valid-parentheses-strings/">LeetCode - Maximum Nesting Depth of Two Valid Parentheses Strings</a></p>
+</div>
+<div class="paragraph">
+<p>A string is a <em>valid parentheses string</em> (denoted VPS) if and only if it consists of <code>"("</code> and <code>")"</code> characters only, and:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It is the empty string, or</p>
+</li>
+<li>
+<p>It can be written as <code>AB</code> (<code>A</code> concatenated with <code>B</code>), where <code>A</code> and <code>B</code> are VPS&#8217;s, or</p>
+</li>
+<li>
+<p>It can be written as <code>(A)</code>, where <code>A</code> is a VPS.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We can similarly define the <em>nesting depth</em> <code>depth(S)</code> of any VPS <code>S</code> as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>depth("") = 0</code></p>
+</li>
+<li>
+<p><code>depth(A + B) = max(depth(A), depth(B))</code>, where <code>A</code> and <code>B</code> are VPS&#8217;s</p>
+</li>
+<li>
+<p><code>depth("(" + A + ")") = 1 + depth(A)</code>, where <code>A</code> is a VPS.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example,  <code>""</code>, <code>"()()"</code>, and <code>"())("</code> are VPS&#8217;s (with nesting depths 0, 1, and 2), and <code>")("</code> and <code>"(()"</code> are not VPS&#8217;s.</p>
+</div>
+<div class="paragraph">
+<p>Given a VPS &lt;font face="monospace"&gt;seq, split it into two disjoint subsequences <code>A</code> and <code>B</code>, such that <code>A</code> and <code>B</code> are VPS&#8217;s (and <code>A.length + B.length = seq.length</code>).</p>
+</div>
+<div class="paragraph">
+<p>Now choose <strong>any</strong> such <code>A</code> and <code>B</code> such that <code>max(depth(A), depth(B))</code> is the minimum possible value.</p>
+</div>
+<div class="paragraph">
+<p>Return an <code>answer</code> array (of length <code>seq.length</code>) that encodes such a choice of <code>A</code> and <code>B</code>:  <code>answer[i] = 0</code> if <code>seq[i]</code> is part of <code>A</code>, else <code>answer[i] = 1</code>.  Note that even though multiple answers may exist, you may return any of them.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> seq = ")("
+<strong>Output:</strong> [0,1,1,1,1,0]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> seq = "()(())()"
+<strong>Output:</strong> [0,0,0,1,1,0,1,1]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; seq.size &#8656; 10000</code></p>
+</li>
+</ul>
+</div>
+<div id="src-1111" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1111-maximum-nesting-depth-of-two-valid-parentheses-strings.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1111_MaximumNestingDepthOfTwoValidParenthesesStrings.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

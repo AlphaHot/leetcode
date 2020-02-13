@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1001. Grid Illumination</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1001_grid_illumination">1001. Grid Illumination</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1001_grid_illumination"><a class="anchor" href="#_1001_grid_illumination"></a>1001. Grid Illumination</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/grid-illumination/">LeetCode - Grid Illumination</a></p>
+</div>
+<div class="paragraph">
+<p>On a <code>N x N</code> grid of cells, each cell <code>(x, y)</code> with <code>0 &#8656; x &lt; N</code> and <code>0 &#8656; y &lt; N</code> has a lamp.</p>
+</div>
+<div class="paragraph">
+<p>Initially, some number of lamps are on.  <code>lamps[i]</code> tells us the location of the <code>i</code>-th lamp that is on.  Each lamp that is on illuminates every square on its x-axis, y-axis, and both diagonals (similar to a Queen in chess).</p>
+</div>
+<div class="paragraph">
+<p>For the i-th query <code>queries[i] = (x, y)</code>, the answer to the query is 1 if the cell (x, y) is illuminated, else 0.</p>
+</div>
+<div class="paragraph">
+<p>After each query <code>(x, y)</code> [in the order given by <code>queries</code>], we turn off any lamps that are at cell <code>(x, y)</code> or are adjacent 8-directionally (ie., share a corner or edge with cell <code>(x, y)</code>.)</p>
+</div>
+<div class="paragraph">
+<p>Return an array of answers.  Each value <code>answer[i]</code> should be equal to the answer of the <code>i</code>-th query <code>queries[i]</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> N = 5, lamps = [[0,0],[4,4]], queries = [[1,1],[1,0]]
+<strong>Output:</strong> [1,0]
+<strong>Explanation:</strong>
+Before performing the first query we have both lamps [0,0] and [4,4] on.
+The grid representing which cells are lit looks like this, where [0,0] is the top left corner, and [4,4] is the bottom right corner:
+1 1 1 1 1
+1 1 0 0 1
+1 0 1 0 1
+1 0 0 1 1
+1 1 1 1 1
+Then the query at [1, 1] returns 1 because the cell is lit.  After this query, the lamp at [0, 0] turns off, and the grid now looks like this:
+1 0 0 0 1
+0 1 0 0 1
+0 0 1 0 1
+0 0 0 1 1
+1 1 1 1 1
+Before performing the second query we have only the lamp [4,4] on.  Now the query at [1,0] returns 0, because the cell is no longer lit.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>1 &#8656; N &#8656; 10^9</code></p>
+</li>
+<li>
+<p><code>0 &#8656; lamps.length &#8656; 20000</code></p>
+</li>
+<li>
+<p><code>0 &#8656; queries.length &#8656; 20000</code></p>
+</li>
+<li>
+<p><code>lamps[i].length == queries[i].length == 2</code></p>
+</li>
+</ol>
+</div>
+<div id="src-1001" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1001-grid-illumination.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1001_GridIllumination.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

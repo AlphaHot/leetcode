@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>262. Trips and Users</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_262_trips_and_users">262. Trips and Users</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_262_trips_and_users"><a class="anchor" href="#_262_trips_and_users"></a>262. Trips and Users</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/trips-and-users/">LeetCode - Trips and Users</a></p>
+</div>
+<div class="paragraph">
+<p>The <code>Trips</code> table holds all taxi trips. Each trip has a unique Id, while Client_Id and Driver_Id are both foreign keys to the Users_Id at the <code>Users</code> table. Status is an ENUM type of (&lsquo;completed&rsquo;, &lsquo;cancelled_by_driver&rsquo;, &lsquo;cancelled_by_client&rsquo;).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>-----------------------------------------------------------------+
+| Id | Client_Id | Driver_Id | City_Id |        Status      |Request_at|
+-----------------------------------------------------------------+
+| 1  |     1     |    10     |    1    |     completed      |2013-10-01|
+| 2  |     2     |    11     |    1    | cancelled_by_driver|2013-10-01|
+| 3  |     3     |    12     |    6    |     completed      |2013-10-01|
+| 4  |     4     |    13     |    6    | cancelled_by_client|2013-10-01|
+| 5  |     1     |    10     |    1    |     completed      |2013-10-02|
+| 6  |     2     |    11     |    6    |     completed      |2013-10-02|
+| 7  |     3     |    12     |    6    |     completed      |2013-10-02|
+| 8  |     2     |    12     |    12   |     completed      |2013-10-03|
+| 9  |     3     |    10     |    12   |     completed      |2013-10-03|
+| 10 |     4     |    13     |    12   | cancelled_by_driver|2013-10-03|
+-----------------------------------------------------------------+</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>Users</code> table holds all users. Each user has an unique Users_Id, and Role is an ENUM type of (&lsquo;client&rsquo;, &lsquo;driver&rsquo;, &lsquo;partner&rsquo;).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>--------------------------
+| Users_Id | Banned |  Role  |
+--------------------------
+|    1     |   No   | client |
+|    2     |   Yes  | client |
+|    3     |   No   | client |
+|    4     |   No   | client |
+|    10    |   No   | driver |
+|    11    |   No   | driver |
+|    12    |   No   | driver |
+|    13    |   No   | driver |
+--------------------------</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Write a SQL query to find the cancellation rate of requests made by unbanned users (both client and driver must be unbanned) between <strong>Oct 1, 2013</strong> and <strong>Oct 3, 2013</strong>. The cancellation rate is computed by dividing the number of canceled (by client or driver) requests made by unbanned users by the total number of requests made by unbanned users.</p>
+</div>
+<div class="paragraph">
+<p>For the above tables, your SQL query should return the following rows with the cancellation rate being rounded to <em>two</em> decimal places.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>-------------------------------+
+|     Day    | Cancellation Rate |
+-------------------------------+
+| 2013-10-01 |       0.33        |
+| 2013-10-02 |       0.00        |
+| 2013-10-03 |       0.50        |
+-------------------------------+</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Credits:</strong></p>
+</div>
+<div class="paragraph">
+<p>Special thanks to &lt;a href="https://leetcode.com/discuss/user/cak1erlizhou"&gt;@cak1erlizhou&lt;/a&gt; for contributing this question, writing the problem description and adding part of the test cases.</p>
+</div>
+<div id="src-0262" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0262-trips-and-users.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0262_TripsAndUsers.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

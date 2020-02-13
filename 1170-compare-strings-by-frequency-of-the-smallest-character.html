@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1170. Compare Strings by Frequency of the Smallest Character</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1170_compare_strings_by_frequency_of_the_smallest_character">1170. Compare Strings by Frequency of the Smallest Character</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1170_compare_strings_by_frequency_of_the_smallest_character"><a class="anchor" href="#_1170_compare_strings_by_frequency_of_the_smallest_character"></a>1170. Compare Strings by Frequency of the Smallest Character</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/compare-strings-by-frequency-of-the-smallest-character/">LeetCode - Compare Strings by Frequency of the Smallest Character</a></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s define a function <code>f(s)</code> over a non-empty string <code>s</code>, which calculates the frequency of the smallest character in <code>s</code>. For example, if <code>s = "dcce"</code> then <code>f(s) = 2</code> because the smallest character is <code>"c"</code> and its frequency is 2.</p>
+</div>
+<div class="paragraph">
+<p>Now, given string arrays <code>queries</code> and <code>words</code>, return an integer array <code>answer</code>, where each <code>answer[i]</code> is the number of words such that <code>f(queries[i])</code> &lt; <code>f(W)</code>, where <code>W</code> is a word in <code>words</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> queries = ["cbd"], words = ["zaaaz"]
+<strong>Output:</strong> [1]
+<strong>Explanation:</strong> On the first query we have f("cbd") = 1, f("zaaaz") = 3 so f("cbd") &lt; f("zaaaz").</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> queries = ["bbb","cc"], words = ["a","aa","aaa","aaaa"]
+<strong>Output:</strong> [1,2]
+<strong>Explanation:</strong> On the first query only f("bbb") &lt; f("aaaa"). On the second query both f("aaa") and f("aaaa") are both &gt; f("cc").</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; queries.length &#8656; 2000</code></p>
+</li>
+<li>
+<p><code>1 &#8656; words.length &#8656; 2000</code></p>
+</li>
+<li>
+<p><code>1 &#8656; queries[i].length, words[i].length &#8656; 10</code></p>
+</li>
+<li>
+<p><code>queries[i][j]</code>, <code>words[i][j]</code> are English lowercase letters.</p>
+</li>
+</ul>
+</div>
+<div id="src-1170" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1170-compare-strings-by-frequency-of-the-smallest-character.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1170_CompareStringsByFrequencyOfTheSmallestCharacter.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:09 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>155. Min Stack</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_155_min_stack">155. Min Stack</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_155_min_stack"><a class="anchor" href="#_155_min_stack"></a>155. Min Stack</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/min-stack/">LeetCode - Min Stack</a></p>
+</div>
+<div class="paragraph">
+<p>这道题解法还挺多。只使用一个栈的方案，还需要再思考思考。</p>
+</div>
+<div class="paragraph">
+<p>TODO</p>
+</div>
+<div class="paragraph">
+<p>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>push(x)&#8201;&#8212;&#8201;Push element x onto stack.</p>
+</li>
+<li>
+<p>pop()&#8201;&#8212;&#8201;Removes the element on top of the stack.</p>
+</li>
+<li>
+<p>top()&#8201;&#8212;&#8201;Get the top element.</p>
+</li>
+<li>
+<p>getMin()&#8201;&#8212;&#8201;Retrieve the minimum element in the stack.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>MinStack minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin();   --&gt; Returns -3.
+minStack.pop();
+minStack.top();      --&gt; Returns 0.
+minStack.getMin();   --&gt; Returns -2.</pre>
+</div>
+</div>
+<div id="src-0155" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Stack;
+
+/**
+ * = 155. Min Stack
+ *
+ * https://leetcode.com/problems/min-stack/[Min Stack - LeetCode]
+ *
+ * Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+ *
+ * * push(x) -- Push element x onto stack.
+ * * pop() -- Removes the element on top of the stack.
+ * * top() -- Get the top element.
+ * * getMin() -- Retrieve the minimum element in the stack.
+ *
+ *
+ * .Example:
+ * [source]
+ * ----
+ * MinStack minStack = new MinStack();
+ * minStack.push(-2);
+ * minStack.push(0);
+ * minStack.push(-3);
+ * minStack.getMin();   --&gt; Returns -3.
+ * minStack.pop();
+ * minStack.top();      --&gt; Returns 0.
+ * minStack.getMin();   --&gt; Returns -2.
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-24 16:40
+ */
+class _0155_MinStack {
+
+    // Runtime: 8 ms, faster than 18.94% of Java online submissions for Min Stack.
+    // Memory Usage: 46.2 MB, less than 5.08% of Java online submissions for Min Stack.
+    private Stack&lt;Integer&gt; stack;
+    private Stack&lt;Integer&gt; helper;
+
+    /**
+     * initialize your data structure here.
+     */
+    public _0155_MinStack() {
+        stack = new Stack&lt;&gt;();
+        helper = new Stack&lt;&gt;();
+    }
+
+    public void push(int x) {
+        stack.push(x);
+        if (helper.isEmpty() || x &lt; helper.peek()) {
+            helper.push(x);
+        } else {
+            helper.push(helper.peek());
+        }
+    }
+
+    public void pop() {
+        stack.pop();
+        helper.pop();
+    }
+
+    public int top() {
+        return stack.peek();
+    }
+
+    public int getMin() {
+        return helper.peek();
+    }
+
+//    Runtime: 10 ms, faster than 14.80% of Java online submissions for Min Stack.
+//    Memory Usage: 46.6 MB, less than 5.08% of Java online submissions for Min Stack.
+//    private Stack&lt;Integer&gt; stack;
+//    private PriorityQueue&lt;Integer&gt; queue;
+//
+//    /**
+//     * initialize your data structure here.
+//     */
+//    public MinStack() {
+//        stack = new Stack&lt;&gt;();
+//        queue = new PriorityQueue&lt;&gt;();
+//    }
+//
+//    public void push(int x) {
+//        stack.push(x);
+//        queue.add(x);
+//    }
+//
+//    public void pop() {
+//        Integer value = stack.pop();
+//        queue.remove(value);
+//    }
+//
+//    public int top() {
+//        return stack.peek();
+//    }
+//
+//    public int getMin() {
+//        return queue.peek();
+//    }
+
+    public static void main(String[] args) {
+        _0155_MinStack solution = new _0155_MinStack();
+        solution.push(-2);
+        solution.push(0);
+        solution.push(-3);
+        System.out.println(solution.getMin()); // -3
+        solution.pop();
+        System.out.println(solution.top()); // 0
+        System.out.println(solution.getMin()); // -2
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

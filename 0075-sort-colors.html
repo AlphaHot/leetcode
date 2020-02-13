@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>75. Sort Colors</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_75_sort_colors">75. Sort Colors</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_75_sort_colors"><a class="anchor" href="#_75_sort_colors"></a>75. Sort Colors</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/sort-colors/">LeetCode - Sort Colors</a></p>
+</div>
+<div class="paragraph">
+<p>Given an array with <em>n</em> objects colored red, white or blue, sort them *https://en.wikipedia.org/wiki/In-place_algorithm[in-place] *so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
+</div>
+<div class="paragraph">
+<p>Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> You are not suppose to use the library&#8217;s sort function for this problem.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [2,0,2,1,1,0]
+<strong>Output:</strong> [0,0,1,1,2,2]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Follow up:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A rather straight forward solution is a two-pass algorithm using counting sort.</p>
+<div class="literalblock">
+<div class="content">
+<pre>	First, iterate the array counting number of 0's, 1's, and 2's, then overwrite array with total number of 0's, then 1's and followed by 2's.
+* Could you come up with a one-pass algorithm using only constant space?</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="src-0075" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+/**
+ * = 75. Sort Colors
+ *
+ * https://leetcode.com/problems/sort-colors/[Sort Colors - LeetCode]
+ *
+ * Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.
+ *
+ * Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.
+ *
+ * Note: You are not suppose to use the library's sort function for this problem.
+ *
+ * .Example:
+ * [source]
+ * ----
+ * Input: [2,0,2,1,1,0]
+ * Output: [0,0,1,1,2,2]
+ * ----
+ *
+ * *Follow up:*
+ *
+ * * A rather straight forward solution is a two-pass algorithm using counting sort.
+ * +
+ * First, iterate the array counting number of 0's, 1's, and 2's, then overwrite array with total number of 0's, then 1's and followed by 2's.
+ * +
+ * * Could you come up with a one-pass algorithm using only constant space?
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2019-10-29 01:01
+ */
+public class _0075_SortColors {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Sort Colors.
+     *
+     * Memory Usage: 35.2 MB, less than 99.21% of Java online submissions for Sort Colors.
+     */
+    public void sortColors(int[] nums) {
+        if (Objects.isNull(nums) || nums.length &lt;= 1) {
+            return;
+        }
+        int current = 0;
+        int head = 0;
+        int tail = nums.length - 1;
+        while (current &lt;= tail) {
+            if (nums[current] == 0) {
+                swap(nums, current, head);
+                head++;
+                current++;
+            } else if (nums[current] == 2) {
+                swap(nums, current, tail);
+                tail--;
+                // 这了不需要 current++，就是把这个数字重新排队一遍！
+            } else {
+                current++;
+            }
+        }
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        _0075_SortColors solution = new _0075_SortColors();
+        int[] array = {2, 0, 2, 1, 1, 0};
+        System.out.println(Arrays.toString(array));
+        solution.sortColors(array);
+        System.out.println(Arrays.toString(array));
+
+        int[] array2 = {1, 2, 0, 0};
+        System.out.println(Arrays.toString(array2));
+        solution.sortColors(array2);
+        System.out.println(Arrays.toString(array2));
+
+        int[] array3 = {1, 2, 2, 2, 2, 0, 0, 0, 1, 1};
+        System.out.println(Arrays.toString(array3));
+        solution.sortColors(array3);
+        System.out.println(Arrays.toString(array3));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

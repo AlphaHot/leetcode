@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1000. Minimum Cost to Merge Stones</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1000_minimum_cost_to_merge_stones">1000. Minimum Cost to Merge Stones</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1000_minimum_cost_to_merge_stones"><a class="anchor" href="#_1000_minimum_cost_to_merge_stones"></a>1000. Minimum Cost to Merge Stones</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/minimum-cost-to-merge-stones/">LeetCode - Minimum Cost to Merge Stones</a></p>
+</div>
+<div class="paragraph">
+<p>There are <code>N</code> piles of stones arranged in a row.  The <code>i</code>-th pile has <code>stones[i]</code> stones.</p>
+</div>
+<div class="paragraph">
+<p>A <em>move</em> consists of merging <strong>exactly <code>K</code> consecutive</strong> piles into one pile, and the cost of this move is equal to the total number of stones in these <code>K</code> piles.</p>
+</div>
+<div class="paragraph">
+<p>Find the minimum cost to merge all piles of stones into one pile.  If it is impossible, return <code>-1</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> stones = [3,2,4,1], K = 2
+<strong>Output:</strong> 20
+<strong>Explanation:</strong>
+We start with [3, 2, 4, 1].
+We merge [3, 2] for a cost of 5, and we are left with [5, 4, 1].
+We merge [4, 1] for a cost of 5, and we are left with [5, 5].
+We merge [5, 5] for a cost of 10, and we are left with [10].
+The total cost was 20, and this is the minimum possible.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> stones = [3,2,4,1], K = 3
+<strong>Output:</strong> -1
+<strong>Explanation:</strong> After any merge operation, there are 2 piles left, and we can't merge anymore.  So the task is impossible.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> stones = [3,5,1,2,6], K = 3
+<strong>Output:</strong> 25
+<strong>Explanation:</strong>
+We start with [3, 5, 1, 2, 6].
+We merge [5, 1, 2] for a cost of 8, and we are left with [3, 8, 6].
+We merge [3, 8, 6] for a cost of 17, and we are left with [17].
+The total cost was 25, and this is the minimum possible.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; stones.length &#8656; 30</code></p>
+</li>
+<li>
+<p><code>2 &#8656; K &#8656; 30</code></p>
+</li>
+<li>
+<p><code>1 &#8656; stones[i] &#8656; 100</code></p>
+</li>
+</ul>
+</div>
+<div id="src-1000" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1000-minimum-cost-to-merge-stones.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1000_MinimumCostToMergeStones.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

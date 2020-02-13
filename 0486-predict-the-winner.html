@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>486. Predict the Winner</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_486_predict_the_winner">486. Predict the Winner</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_486_predict_the_winner"><a class="anchor" href="#_486_predict_the_winner"></a>486. Predict the Winner</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/predict-the-winner/">LeetCode - Predict the Winner</a></p>
+</div>
+<div class="paragraph">
+<p>Given an array of scores that are non-negative integers. Player 1 picks one of the numbers from either end of the array followed by the player 2 and then player 1 and so on. Each time a player picks a number, that number will not be available for the next player. This continues until all the scores have been chosen. The player with the maximum score wins.</p>
+</div>
+<div class="paragraph">
+<p>Given an array of scores, predict whether player 1 is the winner. You can assume each player plays to maximize his score.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [1, 5, 2]
+<strong>Output:</strong> False
+<strong>Explanation:</strong> Initially, player 1 can choose between 1 and 2. &lt;br/&gt;If he chooses 2 (or 1), then player 2 can choose from 1 (or 2) and 5. If player 2 chooses 5, then player 1 will be left with 1 (or 2). &lt;br/&gt;So, final score of player 1 is 1 + 2 = 3, and player 2 is 5. &lt;br/&gt;Hence, player 1 will never be the winner and you need to return False.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [1, 5, 233, 7]
+<strong>Output:</strong> True
+<strong>Explanation:</strong> Player 1 first chooses 1. Then player 2 have to choose between 5 and 7. No matter which number player 2 choose, player 1 can choose 233.
+
+Finally, player 1 has more score (234) than player 2 (12), so you need to return True representing player1 can win.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>1 &#8656; length of the array &#8656; 20.</p>
+</li>
+<li>
+<p>Any scores in the given array are non-negative integers and will not exceed 10,000,000.</p>
+</li>
+<li>
+<p>If the scores of both players are equal, then player 1 is still the winner.</p>
+</li>
+</ol>
+</div>
+<div id="src-0486" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0486-predict-the-winner.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0486_PredictTheWinner.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

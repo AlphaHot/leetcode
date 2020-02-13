@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>204. Count Primes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_204_count_primes">204. Count Primes</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_204_count_primes"><a class="anchor" href="#_204_count_primes"></a>204. Count Primes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/count-primes/">LeetCode - Count Primes</a></p>
+</div>
+<div class="paragraph">
+<p>如何实现一个高效的筛选法？</p>
+</div>
+<div class="paragraph">
+<p>Count the number of prime numbers less than a non-negative number, <strong><em>n</em></strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 10
+<strong>Output:</strong> 4
+<strong>Explanation:</strong> There are 4 prime numbers less than 10, they are 2, 3, 5, 7.</pre>
+</div>
+</div>
+<div id="src-0204" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * = 204. Count Primes
+ *
+ * https://leetcode.com/problems/count-primes/[Count Primes - LeetCode]
+ *
+ * ount the number of prime numbers less than a non-negative number, **n**.
+ *
+ * .Example:
+ * [source]
+ * ----
+ * Input: 10
+ * Output: 4
+ * Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-10 23:04
+ */
+public class _0204_CountPrimes {
+    /**
+     * Runtime: 163 ms, faster than 25.96% of Java online submissions for Count Primes.
+     *
+     * Memory Usage: 93.7 MB, less than 5.66% of Java online submissions for Count Primes.
+     */
+    public int countPrimes(int n) {
+        if (n &lt; 3) {
+            return 0;
+        }
+        Set&lt;Integer&gt; numbers = new HashSet&lt;&gt;();
+        numbers.add(2);
+        for (int i = 3; i &lt; n; ) {
+            numbers.add(i);
+            i += 2;
+        }
+        for (int i = 3; i &lt; Math.sqrt(n); ) {
+            for (int j = 3; i * j &lt; n; ) {
+                numbers.remove(i * j);
+                j += 2;
+            }
+            i += 2;
+        }
+        return numbers.size();
+    }
+
+    public static void main(String[] args) {
+        _0204_CountPrimes solution = new _0204_CountPrimes();
+        int r1 = solution.countPrimes(100);
+        System.out.println((r1 == 4) + " : " + r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

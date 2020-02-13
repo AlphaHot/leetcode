@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>764. Largest Plus Sign</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_764_largest_plus_sign">764. Largest Plus Sign</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_764_largest_plus_sign"><a class="anchor" href="#_764_largest_plus_sign"></a>764. Largest Plus Sign</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/largest-plus-sign/">LeetCode - Largest Plus Sign</a></p>
+</div>
+<div class="paragraph">
+<p>In a 2D <code>grid</code> from (0, 0) to (N-1, N-1), every cell contains a <code>1</code>, except those cells in the given list <code>mines</code> which are <code>0</code>.  What is the largest axis-aligned plus sign of `1`s contained in the grid?  Return the order of the plus sign.  If there is none, return 0.</p>
+</div>
+<div class="paragraph">
+<p>An "<em>axis-aligned plus sign of <code>1`s</em> of order <strong>k</strong>" has some center `grid[x][y] = 1</code> along with 4 arms of length <code>k-1</code> going up, down, left, and right, and made of `1`s.  This is demonstrated in the diagrams below.  Note that there could be `0`s or `1`s beyond the arms of the plus sign, only the relevant area of the plus sign is checked for 1s.</p>
+</div>
+<div class="paragraph">
+<p><strong>Examples of Axis-Aligned Plus Signs of Order k:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Order 1:
+000
+0*1*0
+000
+
+Order 2:
+00000
+00*1*00
+0*111*0
+00*1*00
+00000
+
+Order 3:
+0000000
+000*1*000
+000*1*000
+0*11111*0
+000*1*000
+000*1*000
+0000000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> N = 5, mines = [[4, 2]]
+<strong>Output:</strong> 2
+<strong>Explanation:</strong>
+11111
+11111
+1*1*111
+*111*11
+1*1*011
+In the above grid, the largest plus sign can only be order 2.  One of them is marked in bold.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> N = 2, mines = []
+<strong>Output:</strong> 1
+<strong>Explanation:</strong>
+There is no plus sign of order 2, but there is of order 1.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> N = 1, mines = [[0, 0]]
+<strong>Output:</strong> 0
+<strong>Explanation:</strong>
+There is no plus sign, so return 0.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong>
+. <code>N</code> will be an integer in the range <code>[1, 500]</code>.
+. <code>mines</code> will have length at most <code>5000</code>.
+. <code>mines[i]</code> will be length 2 and consist of integers in the range <code>[0, N-1]</code>.
+. <em>(Additionally, programs submitted in C, C++, or C# will be judged with a slightly smaller time limit.)</em></p>
+</div>
+<div id="src-0764" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0764-largest-plus-sign.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0764_LargestPlusSign.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>14. Longest Common Prefix</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_14_longest_common_prefix">14. Longest Common Prefix</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_14_longest_common_prefix"><a class="anchor" href="#_14_longest_common_prefix"></a>14. Longest Common Prefix</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/longest-common-prefix/">LeetCode - Longest Common Prefix</a></p>
+</div>
+<div class="paragraph">
+<p>Write a function to find the longest common prefix string amongst an array of strings.</p>
+</div>
+<div class="paragraph">
+<p>If there is no common prefix, return an empty string <code>""</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ["flower","flow","flight"]
+<strong>Output:</strong> "fl"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ["dog","racecar","car"]
+<strong>Output:</strong> ""
+<strong>Explanation:</strong> There is no common prefix among the input strings.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="paragraph">
+<p>All given inputs are in lowercase letters <code>a-z</code>.</p>
+</div>
+<div id="src-0014" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+/**
+ * = 14. Longest Common Prefix
+ *
+ * https://leetcode.com/problems/longest-common-prefix/[Longest Common Prefix - LeetCode]
+ *
+ * Write a function to find the longest common prefix string amongst an array of strings.
+ *
+ * If there is no common prefix, return an empty string "".
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: ["flower","flow","flight"]
+ * Output: "fl"
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: ["dog","racecar","car"]
+ * Output: ""
+ * Explanation: There is no common prefix among the input strings.
+ * ----
+ *
+ * *Note:*
+ *
+ * All given inputs are in lowercase letters `a-z`.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2019-07-11 17:50
+ */
+public class _0014_LongestCommonPrefix {
+
+    public String longestCommonPrefix(String[] strs) {
+        if (Objects.isNull(strs) || strs.length == 0) {
+            return "";
+        }
+        if (strs.length == 1) {
+            return strs[0];
+        }
+        int maxLength = Integer.MAX_VALUE;
+        for (String str : strs) {
+            int strLength = str.length();
+            if (strLength &lt; maxLength) {
+                maxLength = strLength;
+            }
+        }
+
+        int length = 0;
+
+        loop:
+        while (length &lt; maxLength) {
+            char aChar = strs[0].charAt(length);
+            for (int i = 1; i &lt; strs.length; i++) {
+                char bChar = strs[i].charAt(length);
+                if (aChar != bChar) {
+                    break loop;
+                }
+            }
+            length += 1;
+        }
+        if (length &gt; 0) {
+            return strs[0].substring(0, length);
+        } else {
+            return "";
+        }
+    }
+
+    public static void main(String[] args) {
+        _0014_LongestCommonPrefix prefix = new _0014_LongestCommonPrefix();
+        String prefix1 = prefix.longestCommonPrefix(new String[]{"flower", "flow", "flight"});
+        System.out.println("fl".equals(prefix1) + " " + prefix1);
+        System.out.println("".equals(prefix.longestCommonPrefix(new String[]{"dog", "racecar", "car"})));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

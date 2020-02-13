@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>2. Add Two Numbers</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_2_add_two_numbers">2. Add Two Numbers</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_2_add_two_numbers"><a class="anchor" href="#_2_add_two_numbers"></a>2. Add Two Numbers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/add-two-numbers/">LeetCode - Add Two Numbers</a></p>
+</div>
+<div class="paragraph">
+<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong> and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+</div>
+<div class="paragraph">
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre><strong>Input:</strong> (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
+<strong>Output:</strong> 7 -&gt; 0 -&gt; 8
+<strong>Explanation:</strong> 342 + 465 = 807.</pre>
+</div>
+</div>
+<div id="src-0002" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.ListNode;
+
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.ListNodeUtils.printListNode;
+
+/**
+ * = 2. Add Two Numbers
+ *
+ * https://leetcode.com/problems/add-two-numbers/description/[Add Two Numbers - LeetCode]
+ *
+ * You are given two non-empty linked lists representing two non-negative
+ * integers. The digits are stored in reverse order and each of their nodes
+ * contain a single digit. Add the two numbers and return it as a linked list.
+ *
+ * You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+ *
+ * .Example:
+ * [source]
+ * ----
+ * Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
+ * Output: 7 -&gt; 0 -&gt; 8
+ * Explanation: 342 + 465 = 807.
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2018-09-17 11:42
+ */
+public class _0002_AddTwoNumbers {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode h1 = l1;
+        ListNode h2 = l2;
+        ListNode mergeList = null;
+        int carryOver = 0;
+        while (Objects.nonNull(h1) &amp;&amp; Objects.nonNull(h2)) {
+            int v1 = h1.val;
+            int v2 = h2.val;
+            int newVal = v1 + v2 + carryOver;
+            if (newVal &gt;= 10) {
+                carryOver = 1;
+                newVal -= 10;
+            } else {
+                carryOver = 0;
+            }
+            ListNode listNode = new ListNode(newVal);
+            listNode.next = mergeList;
+            mergeList = listNode;
+            h1 = h1.next;
+            h2 = h2.next;
+        }
+
+        ListNode rest = null;
+        if (Objects.nonNull(h1)) {
+            rest = h1;
+        }
+        if (Objects.nonNull(h2)) {
+            rest = h2;
+        }
+
+        ListNode restHead = rest;
+        while (Objects.nonNull(rest) &amp;&amp; carryOver &gt; 0) {
+            int newVal = rest.val + carryOver;
+            if (newVal &gt;= 10) {
+                carryOver = 1;
+                newVal -= 10;
+            } else {
+                carryOver = 0;
+            }
+            rest.val = newVal;
+            if (Objects.isNull(rest.next) &amp;&amp; carryOver &gt; 0) {
+                ListNode carryNode = new ListNode(carryOver);
+                rest.next = carryNode;
+                carryOver = 0;
+            }
+            rest = rest.next;
+        }
+        if (Objects.isNull(restHead) &amp;&amp; carryOver &gt; 0) {
+            restHead = new ListNode(carryOver);
+        }
+
+        while (Objects.nonNull(mergeList)) {
+            ListNode next = mergeList.next;
+            mergeList.next = restHead;
+            restHead = mergeList;
+            mergeList = next;
+        }
+
+        return restHead;
+    }
+
+
+    public static void main(String[] args) {
+        _0002_AddTwoNumbers result = new _0002_AddTwoNumbers();
+        ListNode list1 = result.convertNumberToList(1);
+        ListNode list2 = result.convertNumberToList(99);
+        ListNode sum = result.addTwoNumbers(list1, list2);
+        printListNode(sum);
+    }
+
+
+    public ListNode convertNumberToList(int number) {
+        ListNode result = null;
+        for (int i = number; i &gt; 0; i /= 10) {
+            int vaule = i % 10;
+            ListNode listNode = new ListNode(vaule);
+            if (Objects.isNull(result)) {
+                result = listNode;
+            } else {
+                ListNode last = result;
+                while (Objects.nonNull(last.next)) {
+                    last = last.next;
+                }
+                last.next = listNode;
+            }
+        }
+        return result;
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

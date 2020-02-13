@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>395. Longest Substring with At Least K Repeating Characters</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_395_longest_substring_with_at_least_k_repeating_characters">395. Longest Substring with At Least K Repeating Characters</a>
+<ul class="sectlevel2">
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_395_longest_substring_with_at_least_k_repeating_characters"><a class="anchor" href="#_395_longest_substring_with_at_least_k_repeating_characters"></a>395. Longest Substring with At Least K Repeating Characters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/">LeetCode - Longest Substring with At Least K Repeating Characters</a></p>
+</div>
+<div class="paragraph">
+<p>Find the length of the longest substring <strong><em>T</em></strong> of a given string (consists of lowercase letters only) such that every character in <strong><em>T</em></strong> appears no less than <em>k</em> times.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre class="highlight"><code>Input:
+s = "aaabb", k = 3
+
+Output:
+3
+
+The longest substring is "aaa", as 'a' is repeated 3 times.</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre class="highlight"><code>Input:
+s = "ababbc", k = 2
+
+Output:
+5
+
+The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is repeated 3 times.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>解题思路：递归拆分子串，分治。先统计出每个字符出现的频次，维护一对双指针，从首尾开始统计，从首尾往中间排除，如果出现次数小于k则不可能出现在最终子串中，排除并挪动指针，然后得到临时子串，依次从头遍历，一旦发现出现频次小于k的字符，以该字符为分割线，分别递归求其最大值返回。</p>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/longest-substring-with-at-least-k-repeating-characters/solution/javadi-gui-by-tzfun/">Java递归 - 至少有K个重复字符的最长子串 - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Find the length of the longest substring <strong><em>T</em></strong> of a given string (consists of lowercase letters only) such that every character in <strong><em>T</em></strong> appears no less than <em>k</em> times.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Input:
+s = "aaabb", k = 3
+
+Output:
+3
+
+The longest substring is "aaa", as 'a' is repeated 3 times.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Input:
+s = "ababbc", k = 2
+
+Output:
+5
+
+The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is repeated 3 times.</pre>
+</div>
+</div>
+<div id="src-0395" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+/**
+ * = 395. Longest Substring with At Least K Repeating Characters
+ *
+ * https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/[Longest Substring with At Least K Repeating Characters - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-27 16:28
+ */
+public class _0395_LongestSubstringWithAtLeastKRepeatingCharacters {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Longest Substring with At Least K Repeating Characters.
+     *
+     * Memory Usage: 38.7 MB, less than 10.00% of Java online submissions for Longest Substring with At Least K Repeating Characters.
+     *
+     * Copy from: https://leetcode-cn.com/problems/longest-substring-with-at-least-k-repeating-characters/solution/javadi-gui-by-tzfun/[Java递归 - 至少有K个重复字符的最长子串 - 力扣（LeetCode）]
+     */
+    public int longestSubstring(String s, int k) {
+        if (Objects.isNull(s) || s.length() == 0 || k &gt; s.length()) {
+            return 0;
+        }
+        if (k &lt; 2) {
+            return s.length();
+        }
+
+        return count(s.toCharArray(), k, 0, s.length() - 1);
+    }
+
+    private int count(char[] chars, int k, int start, int end) {
+        if (end - start + 1 &lt; k) {
+            return 0;
+        }
+        int[] times = new int[26];
+        for (int i = start; i &lt;= end; i++) {
+            ++times[chars[i] - 'a'];
+        }
+        while (end - start + 1 &gt; k &amp;&amp; times[chars[start] - 'a'] &lt; k) {
+            ++start;
+        }
+        while (end - start + 1 &gt; k &amp;&amp; times[chars[end] - 'a'] &lt; k) {
+            --end;
+        }
+        if (end - start + 1 &lt; k) {
+            return 0;
+        }
+        for (int i = start; i &lt;= end; i++) {
+            if (times[chars[i] - 'a'] &lt; k) {
+                return Math.max(count(chars, k, start, i - 1), count(chars, k, i + 1, end));
+            }
+        }
+        return end - start + 1;
+    }
+
+    public static void main(String[] args) {
+        _0395_LongestSubstringWithAtLeastKRepeatingCharacters solution = new _0395_LongestSubstringWithAtLeastKRepeatingCharacters();
+        int r1 = solution.longestSubstring("aaabb", 3);
+        System.out.println((r1 == 3) + " : " + r1);
+
+        int r2 = solution.longestSubstring("ababbc", 2);
+        System.out.println((r2 == 5) + " : " + r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1157. Online Majority Element In Subarray</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1157_online_majority_element_in_subarray">1157. Online Majority Element In Subarray</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1157_online_majority_element_in_subarray"><a class="anchor" href="#_1157_online_majority_element_in_subarray"></a>1157. Online Majority Element In Subarray</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/online-majority-element-in-subarray/">LeetCode - Online Majority Element In Subarray</a></p>
+</div>
+<div class="paragraph">
+<p>Implementing the class <code>MajorityChecker</code>, which has the following API:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>MajorityChecker(int[] arr)</code> constructs an instance of MajorityChecker with the given array <code>arr</code>;</p>
+</li>
+<li>
+<p><code>int query(int left, int right, int threshold)</code> has arguments such that:</p>
+</li>
+<li>
+<p><code>0 &#8656; left &#8656; right &lt; arr.length</code> representing a subarray of <code>arr</code>;</p>
+</li>
+<li>
+<p><code>2 * threshold &gt; right - left + 1</code>, ie. the threshold is always a strict majority of the length of the subarray</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each <code>query(&#8230;&#8203;)</code> returns the element in <code>arr[left], arr[left+1], &#8230;&#8203;, arr[right]</code> that occurs at least <code>threshold</code> times, or <code>-1</code> if no such element exists.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>MajorityChecker majorityChecker = new MajorityChecker([1,1,2,2,1,1]);
+majorityChecker.query(0,5,4); // returns 1
+majorityChecker.query(0,3,3); // returns -1
+majorityChecker.query(2,3,2); // returns 2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; arr.length &#8656; 20000</code></p>
+</li>
+<li>
+<p><code>1 &#8656; arr[i] &#8656; 20000</code></p>
+</li>
+<li>
+<p>For each query, <code>0 &#8656; left &#8656; right &lt; len(arr)</code></p>
+</li>
+<li>
+<p>For each query, <code>2 * threshold &gt; right - left + 1</code></p>
+</li>
+<li>
+<p>The number of queries is at most <code>10000</code></p>
+</li>
+</ul>
+</div>
+<div id="src-1157" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1157-online-majority-element-in-subarray.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1157_OnlineMajorityElementInSubarray.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:09 +0800
+</div>
+</div>
+</body>
+</html>

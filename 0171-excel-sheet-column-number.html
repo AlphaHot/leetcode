@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>171. Excel Sheet Column Number</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_171_excel_sheet_column_number">171. Excel Sheet Column Number</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_171_excel_sheet_column_number"><a class="anchor" href="#_171_excel_sheet_column_number"></a>171. Excel Sheet Column Number</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/excel-sheet-column-number/">LeetCode - Excel Sheet Column Number</a></p>
+</div>
+<div class="paragraph">
+<p>目前的想法是从右向左计算，可以考虑一下，能否从左向右计算。可以参考： <a href="https://leetcode.com/problems/excel-sheet-column-number/discuss/52091/Here-is-my-java-solution">Here is my java solution - LeetCode Discuss</a>。</p>
+</div>
+<div class="paragraph">
+<p>Given a column title as appear in an Excel sheet, return its corresponding column number.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    A -&gt; 1
+    B -&gt; 2
+    C -&gt; 3
+    ...
+    Z -&gt; 26
+    AA -&gt; 27
+    AB -&gt; 28
+    ...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "A"
+<strong>Output:</strong> 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "AB"
+<strong>Output:</strong> 28</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "ZY"
+<strong>Output:</strong> 701</pre>
+</div>
+</div>
+<div id="src-0171" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+/**
+ * = 171. Excel Sheet Column Number
+ *
+ * https://leetcode.com/problems/excel-sheet-column-number/[Excel Sheet Column Number - LeetCode]
+ *
+ * Given a column title as appear in an Excel sheet, return its corresponding column number.
+ *
+ * For example:
+ *
+ * ----
+ *     A -&gt; 1
+ *     B -&gt; 2
+ *     C -&gt; 3
+ *     ...
+ *     Z -&gt; 26
+ *     AA -&gt; 27
+ *     AB -&gt; 28
+ *     ...
+ * ----
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: "A"
+ * Output: 1
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: "AB"
+ * Output: 28
+ * ----
+ *
+ * .Example 3:
+ * [source]
+ * ----
+ * Input: "ZY"
+ * Output: 701
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-14 00:12
+ */
+public class _0171_ExcelSheetColumnNumber {
+    /**
+     * Runtime: 1 ms, faster than 100.00% of Java online submissions for Excel Sheet Column Number.
+     *
+     * Memory Usage: 36.1 MB, less than 100.00% of Java online submissions for Excel Sheet Column Number.
+     */
+    public int titleToNumber(String s) {
+        if (Objects.isNull(s) || s.length() == 0) {
+            return 0;
+        }
+        char[] chars = s.toCharArray();
+        int base = 1;
+        int result = 0;
+        for (int i = chars.length - 1; i &gt;= 0; i--) {
+            result += (chars[i] - 'A' + 1) * base;
+            base *= 26;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0171_ExcelSheetColumnNumber solution = new _0171_ExcelSheetColumnNumber();
+        int r1 = solution.titleToNumber("AA");
+        System.out.println((r1 == 27) + " : " + r1);
+
+        int r2 = solution.titleToNumber("ZY");
+        System.out.println((r2 == 701) + " : " + r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

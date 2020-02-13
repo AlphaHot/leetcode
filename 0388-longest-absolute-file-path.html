@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>388. Longest Absolute File Path</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_388_longest_absolute_file_path">388. Longest Absolute File Path</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_388_longest_absolute_file_path"><a class="anchor" href="#_388_longest_absolute_file_path"></a>388. Longest Absolute File Path</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/longest-absolute-file-path/">LeetCode - Longest Absolute File Path</a></p>
+</div>
+<div class="paragraph">
+<p>Suppose we abstract our file system by a string in the following manner:</p>
+</div>
+<div class="paragraph">
+<p>The string <code>"dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext"</code> represents:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>dir
+    subdir1
+    subdir2
+        file.ext</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The directory <code>dir</code> contains an empty sub-directory <code>subdir1</code> and a sub-directory <code>subdir2</code> containing a file <code>file.ext</code>.</p>
+</div>
+<div class="paragraph">
+<p>The string <code>"dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext"</code> represents:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>dir
+    subdir1
+        file1.ext
+        subsubdir1
+    subdir2
+        subsubdir2
+            file2.ext</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The directory <code>dir</code> contains two sub-directories <code>subdir1</code> and <code>subdir2</code>. <code>subdir1</code> contains a file <code>file1.ext</code> and an empty second-level sub-directory <code>subsubdir1</code>. <code>subdir2</code> contains a second-level sub-directory <code>subsubdir2</code> containing a file <code>file2.ext</code>.</p>
+</div>
+<div class="paragraph">
+<p>We are interested in finding the longest (number of characters) absolute path to a file within our file system. For example, in the second example above, the longest absolute path is <code>"dir/subdir2/subsubdir2/file2.ext"</code>, and its length is <code>32</code> (not including the double quotes).</p>
+</div>
+<div class="paragraph">
+<p>Given a string representing the file system in the above format, return the length of the longest absolute path to file in the abstracted file system. If there is no file in the system, return <code>0</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The name of a file contains at least a <code>.</code> and an extension.</p>
+</li>
+<li>
+<p>The name of a directory or sub-directory will not contain a <code>.</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Time complexity required: <code>O(n)</code> where <code>n</code> is the size of the input string.</p>
+</div>
+<div class="paragraph">
+<p>Notice that <code>a/aa/aaa/file1.txt</code> is not the longest file path, if there is another path <code>aaaaaaaaaaaaaaaaaaaaa/sth.png</code>.</p>
+</div>
+<div id="src-0388" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0388-longest-absolute-file-path.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0388_LongestAbsoluteFilePath.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>387. First Unique Character in a String</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_387_first_unique_character_in_a_string">387. First Unique Character in a String</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_387_first_unique_character_in_a_string"><a class="anchor" href="#_387_first_unique_character_in_a_string"></a>387. First Unique Character in a String</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/first-unique-character-in-a-string/">LeetCode - First Unique Character in a String</a></p>
+</div>
+<div class="paragraph">
+<p>还是要善用 <code>Map</code> 来统计字符数量！</p>
+</div>
+<div class="paragraph">
+<p>Given a string, find the first non-repeating character in it and return it&#8217;s index. If it doesn&#8217;t exist, return -1.</p>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>s = "leetcode"
+return 0.
+
+s = "loveleetcode",
+return 2.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> You may assume the string contain only lowercase letters.</p>
+</div>
+<div id="src-0387" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+/**
+ * = 387. First Unique Character in a String
+ *
+ * https://leetcode.com/problems/first-unique-character-in-a-string/[First Unique Character in a String - LeetCode]
+ *
+ * Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.
+ *
+ * .Examples:
+ * [source]
+ * ----
+ * s = "leetcode"
+ * return 0.
+ *
+ * s = "loveleetcode",
+ * return 2.
+ * ----
+ *
+ * *Note:* You may assume the string contain only lowercase letters.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-11 10:48
+ */
+public class _0387_FirstUniqueCharacterInAString {
+    /**
+     * Runtime: 34 ms, faster than 54.19% of Java online submissions for First Unique Character in a String.
+     *
+     * Memory Usage: 37.4 MB, less than 100.00% of Java online submissions for First Unique Character in a String.
+     *
+     * Copy from: https://leetcode.com/problems/first-unique-character-in-a-string/solution/[First Unique Character in a String solution - LeetCode]
+     */
+    public int firstUniqChar(String s) {
+        if (Objects.isNull(s) || s.length() == 0) {
+            return -1;
+        }
+        char[] chars = s.toCharArray();
+        Map&lt;Character, Integer&gt; charToCountMap = new HashMap&lt;&gt;();
+        for (char aChar : chars) {
+            Integer count = charToCountMap.getOrDefault(aChar, 0);
+            charToCountMap.put(aChar, ++count);
+        }
+        for (int i = 0; i &lt; chars.length; i++) {
+            if (charToCountMap.get(chars[i]) == 1) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    /**
+     * Runtime: 53 ms, faster than 10.48% of Java online submissions for First Unique Character in a String.
+     *
+     * Memory Usage: 38.4 MB, less than 96.43% of Java online submissions for First Unique Character in a String.
+     */
+    public int firstUniqCharArray(String s) {
+        if (Objects.isNull(s) || s.length() == 0) {
+            return -1;
+        }
+        char[] chars = s.toCharArray();
+        boolean[] unique = new boolean[chars.length];
+        Arrays.fill(unique, true);
+        for (int i = 0; i &lt; chars.length; i++) {
+            if (!unique[i]) {
+                continue;
+            }
+            for (int j = i + 1; j &lt; chars.length; j++) {
+                if (!unique[j]) {
+                    continue;
+                }
+                if (chars[i] == chars[j]) {
+                    unique[i] = false;
+                    unique[j] = false;
+                }
+            }
+        }
+        for (int i = 0; i &lt; unique.length; i++) {
+            if (unique[i]) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        _0387_FirstUniqueCharacterInAString solution = new _0387_FirstUniqueCharacterInAString();
+        int r1 = solution.firstUniqChar("leetcode");
+        System.out.println((r1 == 0) + " : " + r1);
+
+        int r2 = solution.firstUniqChar("cc");
+        System.out.println((r2 == -1) + " : " + r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

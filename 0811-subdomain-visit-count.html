@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>811. Subdomain Visit Count</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_811_subdomain_visit_count">811. Subdomain Visit Count</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_811_subdomain_visit_count"><a class="anchor" href="#_811_subdomain_visit_count"></a>811. Subdomain Visit Count</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/subdomain-visit-count/">LeetCode - Subdomain Visit Count</a></p>
+</div>
+<div class="paragraph">
+<p>A website domain like "discuss.leetcode.com" consists of various subdomains. At the top level, we have "com", at the next level, we have "leetcode.com", and at the lowest level, "discuss.leetcode.com". When we visit a domain like "discuss.leetcode.com", we will also visit the parent domains "leetcode.com" and "com" implicitly.</p>
+</div>
+<div class="paragraph">
+<p>Now, call a "count-paired domain" to be a count (representing the number of visits this domain received), followed by a space, followed by the address. An example of a count-paired domain might be "9001 discuss.leetcode.com".</p>
+</div>
+<div class="paragraph">
+<p>We are given a list <code>cpdomains</code> of count-paired domains. We would like a list of count-paired domains, (in the same format as the input, and in any order), that explicitly counts the number of visits to each subdomain.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Example 1:</strong>
+<strong>Input:</strong>
+["9001 discuss.leetcode.com"]
+<strong>Output:</strong>
+["9001 discuss.leetcode.com", "9001 leetcode.com", "9001 com"]
+<strong>Explanation:</strong>
+We only have one website domain: "discuss.leetcode.com". As discussed above, the subdomain "leetcode.com" and "com" will also be visited. So they will all be visited 9001 times.</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Example 2:</strong>
+<strong>Input:</strong>
+["900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"]
+<strong>Output:</strong>
+["901 mail.com","50 yahoo.com","900 google.mail.com","5 wiki.org","5 org","1 intel.mail.com","951 com"]
+<strong>Explanation:</strong>
+We will visit "google.mail.com" 900 times, "yahoo.com" 50 times, "intel.mail.com" once and "wiki.org" 5 times. For the subdomains, we will visit "mail.com" 900 + 1 = 901 times, "com" 900 + 50 + 1 = 951 times, and "org" 5 times.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>*Notes: *</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The length of <code>cpdomains</code> will not exceed <code>100</code>.</p>
+</li>
+<li>
+<p>The length of each domain name will not exceed <code>100</code>.</p>
+</li>
+<li>
+<p>Each address will have either 1 or 2 "." characters.</p>
+</li>
+<li>
+<p>The input count in any count-paired domain will not exceed <code>10000</code>.</p>
+</li>
+<li>
+<p>The answer output can be returned in any order.</p>
+</li>
+</ul>
+</div>
+<div id="src-0811" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0811-subdomain-visit-count.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0811_SubdomainVisitCount.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

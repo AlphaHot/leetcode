@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>125. Valid Palindrome</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_125_valid_palindrome">125. Valid Palindrome</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_125_valid_palindrome"><a class="anchor" href="#_125_valid_palindrome"></a>125. Valid Palindrome</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/valid-palindrome/">LeetCode - Valid Palindrome</a></p>
+</div>
+<div class="paragraph">
+<p>基本思路就是从两边想中间挤压。记得前不久有一道题使用了相似的处理手段，容我有时间找找看！</p>
+</div>
+<div class="paragraph">
+<p>Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> For the purpose of this problem, we define empty string as valid palindrome.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "A man, a plan, a canal: Panama"
+<strong>Output:</strong> true</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "race a car"
+<strong>Output:</strong> false</pre>
+</div>
+</div>
+<div id="src-0125" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+/**
+ * = 125. Valid Palindrome
+ *
+ * https://leetcode.com/problems/valid-palindrome/[Valid Palindrome - LeetCode]
+ *
+ * Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+ *
+ * *Note:* For the purpose of this problem, we define empty string as valid palindrome.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: "A man, a plan, a canal: Panama"
+ * Output: true
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: "race a car"
+ * Output: false
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-14 23:34
+ */
+public class _0125_ValidPalindrome {
+    /**
+     * Runtime: 3 ms, faster than 96.33% of Java online submissions for Valid Palindrome.
+     *
+     * Memory Usage: 38.3 MB, less than 76.78% of Java online submissions for Valid Palindrome.
+     */
+    public boolean isPalindrome(String s) {
+        if (Objects.isNull(s) || s.length() == 0) {
+            return true;
+        }
+        int left = 0;
+        int right = s.length() - 1;
+        while (left &lt;= right) {
+            char lc = s.charAt(left);
+            char rc = s.charAt(right);
+            if (!isAlphanumberic(lc)) {
+                left++;
+            } else if (!isAlphanumberic(rc)) {
+                right--;
+            } else {
+                if (Character.toLowerCase(lc) != Character.toLowerCase(rc)) {
+                    return false;
+                }
+                left++;
+                right--;
+            }
+        }
+        return true;
+    }
+
+    private boolean isAlphanumberic(char aChar) {
+        return ('a' &lt;= aChar &amp;&amp; aChar &lt;= 'z') || ('A' &lt;= aChar &amp;&amp; aChar &lt;= 'Z')
+                || ('0' &lt;= aChar &amp;&amp; aChar &lt;= '9');
+    }
+
+
+    public static void main(String[] args) {
+        _0125_ValidPalindrome solution = new _0125_ValidPalindrome();
+        System.out.println(solution.isPalindrome("A man, a plan, a canal: Panama"));
+        System.out.println(solution.isPalindrome("race a car"));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

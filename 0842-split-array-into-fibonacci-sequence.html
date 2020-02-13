@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>842. Split Array into Fibonacci Sequence</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_842_split_array_into_fibonacci_sequence">842. Split Array into Fibonacci Sequence</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_842_split_array_into_fibonacci_sequence"><a class="anchor" href="#_842_split_array_into_fibonacci_sequence"></a>842. Split Array into Fibonacci Sequence</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/split-array-into-fibonacci-sequence/">LeetCode - Split Array into Fibonacci Sequence</a></p>
+</div>
+<div class="paragraph">
+<p>Given a string <code>S</code> of digits, such as <code>S = "123456579"</code>, we can split it into a <em>Fibonacci-like sequence</em> <code>[123, 456, 579].</code></p>
+</div>
+<div class="paragraph">
+<p>Formally, a Fibonacci-like sequence is a list <code>F</code> of non-negative integers such that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>0 &#8656; F[i] &#8656; 2^31 - 1</code>, (that is, each integer fits a 32-bit signed integer type);</p>
+</li>
+<li>
+<p><code>F.length &gt;= 3</code>;</p>
+</li>
+<li>
+<p>and` F[i] + F[i+1] = F[i+2] <code>for all `0 &#8656; i &lt; F.length - 2</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Also, note that when splitting the string into pieces, each piece must not have extra leading zeroes, except if the piece is the number 0 itself.</p>
+</div>
+<div class="paragraph">
+<p>Return any Fibonacci-like sequence split from <code>S</code>, or return <code>[]</code> if it cannot be done.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "123456579"
+<strong>Output:</strong> [123,456,579]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "11235813"
+<strong>Output:</strong> [1,1,2,3,5,8,13]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "112358130"
+<strong>Output:</strong> []
+<strong>Explanation:</strong> The task is impossible.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 4:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "0123"
+<strong>Output:</strong> []
+<strong>Explanation:</strong> Leading zeroes are not allowed, so "01", "2", "3" is not valid.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 5:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "1101111"
+<strong>Output:</strong> [110, 1, 111]
+<strong>Explanation:</strong> The output [11, 0, 11, 11] would also be accepted.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>*Note: *</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; S.length &#8656; 200</code></p>
+</li>
+<li>
+<p><code>S</code> contains only digits.</p>
+</li>
+</ul>
+</div>
+<div id="src-0842" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0842-split-array-into-fibonacci-sequence.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0842_SplitArrayIntoFibonacciSequence.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

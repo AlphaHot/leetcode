@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>152. Maximum Product Subarray</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_152_maximum_product_subarray">152. Maximum Product Subarray</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_152_maximum_product_subarray"><a class="anchor" href="#_152_maximum_product_subarray"></a>152. Maximum Product Subarray</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/maximum-product-subarray/">LeetCode - Maximum Product Subarray</a></p>
+</div>
+<div class="paragraph">
+<p>这道题的阶梯思路跟另外某个题的解题思路很类似！</p>
+</div>
+<div class="paragraph">
+<p>Given an integer array <code>nums</code>, find the contiguous subarray within an array (containing at least one number) which has the largest product.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [2,3,-2,4]
+<strong>Output:</strong> <code>6</code>
+<strong>Explanation:</strong> [2,3] has the largest product 6.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [-2,0,-1]
+<strong>Output:</strong> 0
+<strong>Explanation:</strong> The result cannot be 2, because [-2,-1] is not a subarray.</pre>
+</div>
+</div>
+<div id="src-0152" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+/**
+ * = 152. Maximum Product Subarray
+ *
+ * https://leetcode.com/problems/maximum-product-subarray/[Maximum Product Subarray - LeetCode]
+ *
+ * Given an integer array nums, find the contiguous subarray within an array (containing at least one number) which has the largest product.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: [2,3,-2,4]
+ * Output: 6
+ * Explanation: [2,3] has the largest product 6.
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: [-2,0,-1]
+ * Output: 0
+ * Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-05 07:59
+ */
+public class _0152_MaximumProductSubarray {
+    /**
+     * Runtime: 1 ms, faster than 97.91% of Java online submissions for Maximum Product Subarray.
+     *
+     * Memory Usage: 36.4 MB, less than 100.00% of Java online submissions for Maximum Product Subarray.
+     *
+     * Copy form: https://leetcode.com/problems/maximum-product-subarray/discuss/48230/Possibly-simplest-solution-with-O(n)-time-complexity[Possibly simplest solution with O(n) time complexity - LeetCode Discuss]
+     */
+    public int maxProduct(int[] nums) {
+        // store the result that is the max we have found so far
+        int result = nums[0];
+        // max/min stores the max/min product of
+        // subarray that ends with the current number nums[i]
+        for (int i = 1, max = result, min = result; i &lt; nums.length; i++) {
+            // multiplied by a negative makes big number smaller, small number bigger
+            // so we redefine the extremums by swapping them
+            if (nums[i] &lt; 0) {
+                int temp = max;
+                max = min;
+                min = temp;
+            }
+            // max/min product for the current number is either the current number itself
+            // or the max/min by the previous number times the current one
+            min = Math.min(nums[i], min * nums[i]);
+            max = Math.max(nums[i], max * nums[i]);
+
+            // the newly computed max value is a candidate for our global result
+            result = Math.max(result, max);
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0152_MaximumProductSubarray solution = new _0152_MaximumProductSubarray();
+        int[] n1 = {2, 3, -2, 4};
+        int r1 = solution.maxProduct(n1);
+        System.out.println((r1 == 6) + " : " + r1);
+
+        int[] n2 = {-2, 0, -1};
+        int r2 = solution.maxProduct(n2);
+        System.out.println((r2 == 0) + " : " + r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

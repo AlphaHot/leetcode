@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>104. Maximum Depth of Binary Tree</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_104_maximum_depth_of_binary_tree">104. Maximum Depth of Binary Tree</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_104_maximum_depth_of_binary_tree"><a class="anchor" href="#_104_maximum_depth_of_binary_tree"></a>104. Maximum Depth of Binary Tree</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/">LeetCode - Maximum Depth of Binary Tree</a></p>
+</div>
+<div class="paragraph">
+<p>思考题：尝试使用迭代方式来解决一下。</p>
+</div>
+<div class="paragraph">
+<p>Given a binary tree, find its maximum depth.</p>
+</div>
+<div class="paragraph">
+<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> A leaf is a node with no children.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph">
+<p>Given binary tree <code>[3,9,20,null,null,15,7]</code>,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    3
+   / \
+  9  20
+    /  \
+   15   7</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>return its depth = 3.</p>
+</div>
+<div id="src-0104" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.TreeNode;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.TreeNodeUtils.buildTree;
+
+/**
+ * = 104. Maximum Depth of Binary Tree
+ *
+ * https://leetcode.com/problems/maximum-depth-of-binary-tree/[Maximum Depth of Binary Tree - LeetCode]
+ *
+ * Given a binary tree, find its maximum depth.
+ *
+ * The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+ *
+ * *Note:* A leaf is a node with no children.
+ *
+ * *Example:*
+ *
+ * Given binary tree `[3,9,20,null,null,15,7]`,
+ *
+ * ----
+ *     3
+ *    / \
+ *   9  20
+ *     /  \
+ *    15   7
+ * ----
+ *
+ * return its depth = 3.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-24 22:17
+ */
+public class _0104_MaximumDepthOfBinaryTree {
+
+    /**
+     * Runtime: 1 ms, faster than 14.28% of Java online submissions for Maximum Depth of Binary Tree.
+     *
+     * Memory Usage: 40.7 MB, less than 5.38% of Java online submissions for Maximum Depth of Binary Tree.
+     */
+    public int maxDepth(TreeNode root) {
+        if (Objects.isNull(root)) {
+            return 0;
+        }
+        int left = 0;
+        if (Objects.nonNull(root.left)) {
+            left = maxDepth(root.left);
+        }
+        int right = 0;
+        if (Objects.nonNull(root.right)) {
+            right = maxDepth(root.right);
+        }
+        return Math.max(left, right) + 1;
+    }
+
+    public static void main(String[] args) {
+        _0104_MaximumDepthOfBinaryTree solution = new _0104_MaximumDepthOfBinaryTree();
+        int r1 = solution.maxDepth(buildTree(Arrays.asList(3, 9, 20, null, null, 15, 7)));
+        System.out.println((r1 == 3) + " : " + r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

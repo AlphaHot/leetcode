@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>437. Path Sum III</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_437_path_sum_iii">437. Path Sum III</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_437_path_sum_iii"><a class="anchor" href="#_437_path_sum_iii"></a>437. Path Sum III</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/path-sum-iii/">LeetCode - Path Sum III</a></p>
+</div>
+<div class="paragraph">
+<p>You are given a binary tree in which each node contains an integer value.</p>
+</div>
+<div class="paragraph">
+<p>Find the number of paths that sum to a given value.</p>
+</div>
+<div class="paragraph">
+<p>The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).</p>
+</div>
+<div class="paragraph">
+<p>The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8
+
+      10
+     /  \
+    <strong>5</strong>   <strong>-3</strong>
+   <strong>/</strong> <strong>\</strong>    <strong>\</strong>
+  <strong>3</strong>   <strong>2</strong>   <strong>11</strong>
+ / \   <strong>\</strong>
+3  -2   <strong>1</strong>
+
+Return 3. The paths that sum to 8 are:
+
+1.  5 -&gt; 3
+2.  5 -&gt; 2 -&gt; 1
+3. -3 -&gt; 11</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>思考题：感觉目前的解法还是有些繁琐。效仿 <a href="https://leetcode-cn.com/problems/path-sum-iii/solution/javajie-fa-shi-jian-100-kong-jian-93-by-xiao-chao-/">java解法 时间100% 空间93% - 路径总和 III - 力扣（LeetCode）</a>，设计一个更加高效的实现。</p>
+</div>
+<div class="paragraph">
+<p>You are given a binary tree in which each node contains an integer value.</p>
+</div>
+<div class="paragraph">
+<p>Find the number of paths that sum to a given value.</p>
+</div>
+<div class="paragraph">
+<p>The path does not need to start or end at the root or a leaf, but it must go downwards
+(traveling only from parent nodes to child nodes).</p>
+</div>
+<div class="paragraph">
+<p>The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8
+
+      10
+     /  \
+    <strong>5</strong>   <strong>-3</strong>
+   <strong>/</strong> <strong>\</strong>    <strong>\</strong>
+  <strong>3</strong>   <strong>2</strong>   <strong>11</strong>
+ / \   <strong>\</strong>
+3  -2   <strong>1</strong>
+
+Return 3. The paths that sum to 8 are:
+
+1.  5 -&gt; 3
+2.  5 -&gt; 2 -&gt; 1
+3. -3 -&gt; 11</pre>
+</div>
+</div>
+<div id="src-0437" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.TreeNode;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.TreeNodeUtils.buildTree;
+
+/**
+ * = 437. Path Sum III
+ *
+ * https://leetcode.com/problems/path-sum-iii/[Path Sum III - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-28 23:06
+ */
+public class _0437_PathSumIII {
+    /**
+     * Runtime: 23 ms, faster than 10.40% of Java online submissions for Path Sum III.
+     * Memory Usage: 39.1 MB, less than 90.91% of Java online submissions for Path Sum III.
+     *
+     * Copy from: https://leetcode-cn.com/problems/path-sum-iii/solution/leetcode-437-path-sum-iii-by-li-xin-lei/[LeetCode 437 Path Sum III - 路径总和 III - 力扣（LeetCode）]
+     */
+    public int pathSum(TreeNode root, int sum) {
+        if (Objects.isNull(root)) {
+            return 0;
+        }
+        return pathSum(root.left, sum) + pathSum(root.right, sum) + childPathSum(root, sum);
+    }
+
+    private int childPathSum(TreeNode root, int sum) {
+        if (Objects.isNull(root)) {
+            return 0;
+        }
+        int result = 0;
+        if (root.val == sum) {
+            result++;
+        }
+        result += childPathSum(root.left, sum - root.val);
+        result += childPathSum(root.right, sum - root.val);
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0437_PathSumIII solution = new _0437_PathSumIII();
+        int r1 = solution.pathSum(buildTree(Arrays.asList(10, 5, -3, 3, 2, null, 11, 3, -2, null, 1)), 8);
+        System.out.println((r1 == 3) + " : " + r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

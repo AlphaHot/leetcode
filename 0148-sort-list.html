@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>148. Sort List</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_148_sort_list">148. Sort List</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_148_sort_list"><a class="anchor" href="#_148_sort_list"></a>148. Sort List</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/sort-list/">LeetCode - Sort List</a></p>
+</div>
+<div class="paragraph">
+<p>Sort a linked list in <em>O</em>(<em>n</em> log <em>n</em>) time using constant space complexity.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 4-&gt;2-&gt;1-&gt;3
+<strong>Output:</strong> 1-&gt;2-&gt;3-&gt;4</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> -1-&gt;5-&gt;3-&gt;4-&gt;0
+<strong>Output:</strong> -1-&gt;0-&gt;3-&gt;4-&gt;5</pre>
+</div>
+</div>
+<div id="src-0148" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.ListNode;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.ListNodeUtils.build;
+import static com.diguage.algorithm.util.ListNodeUtils.printListNode;
+
+/**
+ * = 148. Sort List
+ *
+ * https://leetcode.com/problems/sort-list/[Sort List - LeetCode]
+ *
+ * Sort a linked list in O(n log n) time using constant space complexity.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: 4-&gt;2-&gt;1-&gt;3
+ * Output: 1-&gt;2-&gt;3-&gt;4
+ * ----
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: -1-&gt;5-&gt;3-&gt;4-&gt;0
+ * Output: -1-&gt;0-&gt;3-&gt;4-&gt;5
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2019-10-29 21:05
+ */
+public class _0148_SortList {
+
+    /**
+     * Runtime: 4 ms, faster than 62.99% of Java online submissions for Sort List.
+     *
+     * Memory Usage: 40.2 MB, less than 89.47% of Java online submissions for Sort List.
+     */
+    public ListNode sortList(ListNode head) {
+        if (Objects.isNull(head) || Objects.isNull(head.next)) {
+            return head;
+        }
+        ListNode prev = null;
+        ListNode slow = head;
+        ListNode fast = head;
+        while (Objects.nonNull(fast) &amp;&amp; Objects.nonNull(fast.next)) {
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        prev.next = null;
+
+        ListNode firstResult = sortList(head);
+        ListNode secondResult = sortList(slow);
+
+        return merge(firstResult, secondResult);
+    }
+
+    private ListNode merge(ListNode first, ListNode second) {
+        ListNode result = new ListNode(0);
+        ListNode tail = result;
+        while (Objects.nonNull(first) &amp;&amp; Objects.nonNull(second)) {
+            if (first.val &lt; second.val) {
+                tail.next = first;
+                first = first.next;
+            } else {
+                tail.next = second;
+                second = second.next;
+            }
+            tail = tail.next;
+        }
+        if (Objects.isNull(first)) {
+            tail.next = second;
+        }
+        if (Objects.isNull(second)) {
+            tail.next = first;
+        }
+        return result.next;
+    }
+
+
+    public static void main(String[] args) {
+        _0148_SortList solution = new _0148_SortList();
+
+        ListNode list1 = build(Arrays.asList(4, 2, 1, 3));
+        printListNode(list1);
+        ListNode re1 = solution.sortList(list1);
+        printListNode(re1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

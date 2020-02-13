@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>950. Reveal Cards In Increasing Order</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_950_reveal_cards_in_increasing_order">950. Reveal Cards In Increasing Order</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_950_reveal_cards_in_increasing_order"><a class="anchor" href="#_950_reveal_cards_in_increasing_order"></a>950. Reveal Cards In Increasing Order</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/reveal-cards-in-increasing-order/">LeetCode - Reveal Cards In Increasing Order</a></p>
+</div>
+<div class="paragraph">
+<p>In a deck of cards, every card has a unique integer.  You can order the deck in any order you want.</p>
+</div>
+<div class="paragraph">
+<p>Initially, all the cards start face down (unrevealed) in one deck.</p>
+</div>
+<div class="paragraph">
+<p>Now, you do the following steps repeatedly, until all cards are revealed:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Take the top card of the deck, reveal it, and take it out of the deck.</p>
+</li>
+<li>
+<p>If there are still cards in the deck, put the next top card of the deck at the bottom of the deck.</p>
+</li>
+<li>
+<p>If there are still unrevealed cards, go back to step 1.  Otherwise, stop.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Return an ordering of the deck that would reveal the cards in <strong>increasing order.</strong></p>
+</div>
+<div class="paragraph">
+<p>The first entry in the answer is considered to be the top of the deck.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [17,13,11,2,3,5,7]
+<strong>Output:</strong> [2,13,3,11,5,17,7]
+<strong>Explanation:</strong>
+We get the deck in the order [17,13,11,2,3,5,7] (this order doesn't matter), and reorder it.
+After reordering, the deck starts as [2,13,3,11,5,17,7], where 2 is the top of the deck.
+We reveal 2, and move 13 to the bottom.  The deck is now [3,11,5,17,7,13].
+We reveal 3, and move 11 to the bottom.  The deck is now [5,17,7,13,11].
+We reveal 5, and move 17 to the bottom.  The deck is now [7,13,11,17].
+We reveal 7, and move 13 to the bottom.  The deck is now [11,17,13].
+We reveal 11, and move 17 to the bottom.  The deck is now [13,17].
+We reveal 13, and move 17 to the bottom.  The deck is now [17].
+We reveal 17.
+Since all the cards revealed are in increasing order, the answer is correct.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>1 &#8656; A.length &#8656; 1000</code></p>
+</li>
+<li>
+<p><code>1 &#8656; A[i] &#8656; 10^6</code></p>
+</li>
+<li>
+<p><code>A[i] != A[j]</code> for all <code>i != j</code></p>
+</li>
+</ol>
+</div>
+<div id="src-0950" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0950-reveal-cards-in-increasing-order.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0950_RevealCardsInIncreasingOrder.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

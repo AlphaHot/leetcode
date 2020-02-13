@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>52. N-Queens II</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_52_n_queens_ii">52. N-Queens II</a>
+<ul class="sectlevel2">
+<li><a href="#_解题分析">解题分析</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_52_n_queens_ii"><a class="anchor" href="#_52_n_queens_ii"></a>52. N-Queens II</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/n-queens-ii/">LeetCode - N-Queens II</a></p>
+</div>
+<div class="paragraph">
+<p>The <strong><em>n</em>-queens</strong> puzzle is the problem of placing <strong>n</strong> queens on an <strong>n×n</strong> chessboard such that no two queens attack each other.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0052-8-queens.png" alt="0052 8 queens">
+</div>
+</div>
+<div class="paragraph">
+<p>Given an integer <strong>n</strong>, return the number of distinct solutions to the <strong><em>n</em>-queens</strong> puzzle.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>Input: 4
+Output: 2
+Explanation: There are two distinct solutions to the 4-queens puzzle as shown below.
+[
+ [".Q..",  // Solution 1
+  "...Q",
+  "Q...",
+  "..Q."],
+
+ ["..Q.",  // Solution 2
+  "Q...",
+  "...Q",
+  ".Q.."]
+]</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_解题分析"><a class="anchor" href="#_解题分析"></a>解题分析</h3>
+<div class="paragraph">
+<p>解题分析参考 <a href="0051-n-queens.html">N-Queens</a>。</p>
+</div>
+<div class="paragraph">
+<p>The <em>n</em>-queens puzzle is the problem of placing <em>n</em> queens on an <em>n</em>&times;_n_ chessboard such that no two queens attack each other.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2018/10/12/8-queens.png" alt="8 queens">
+</div>
+</div>
+<div class="paragraph">
+<p>Given an integer <em>n</em>, return the number of distinct solutions to the <em>n</em>-queens puzzle.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 4
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> There are two distinct solutions to the 4-queens puzzle as shown below.
+[
+ [".Q..",  // Solution 1
+  "...Q",
+  "Q...",
+  "..Q."],
+
+ ["..Q.",  // Solution 2
+  "Q...",
+  "...Q",
+  ".Q.."]
+]</pre>
+</div>
+</div>
+<div id="src-0052" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+/**
+ * = 52. N-Queens II
+ *
+ * https://leetcode.com/problems/n-queens-ii/[N-Queens II - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-02-05 16:25
+ */
+public class _0052_NQueensII {
+    /**
+     * Runtime: 1 ms, faster than 95.68% of Java online submissions for N-Queens II.
+     * Memory Usage: 36 MB, less than 8.70% of Java online submissions for N-Queens II.
+     */
+    private int result = 0;
+    public int totalNQueens(int n) {
+        int[][] matrix = new int[n][n];
+        backtrack(matrix, 0, 0);
+        return result;
+    }
+
+    private void backtrack(int[][] matrix, int y, int step) {
+        if (step == matrix.length) {
+            result++;
+            return;
+        }
+        for (int xi = 0; xi &lt; matrix[0].length; xi++) {
+            if (isValid(matrix, y, xi)) {
+                matrix[y][xi] = 1;
+                backtrack(matrix, y + 1, step + 1);
+                matrix[y][xi] = 0;
+            }
+        }
+    }
+
+    private boolean isValid(int[][] matrix, int y, int x) {
+        int len = matrix.length;
+        // 同列
+        for (int i = 0; i &lt; y; i++) {
+            if (matrix[i][x] == 1) {
+                return false;
+            }
+        }
+        // 左上角
+        for (int i = 1; i &lt; len &amp;&amp; y - i &gt;= 0 &amp;&amp; x - i &gt;= 0; i++) {
+            if (matrix[y - i][x - i] == 1) {
+                return false;
+            }
+        }
+        // 右上角：从右上角到最下角的对角线，他们 "行号 + 列号 = 常数"
+        int sum = x + y;
+        for (int yi = y - 1; yi &gt;= 0 &amp;&amp; 0 &lt;= sum - yi &amp;&amp; sum - yi &lt; len; yi--) {
+            if (matrix[yi][sum - yi] == 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        _0052_NQueensII solution = new _0052_NQueensII();
+        int r1 = solution.totalNQueens(4);
+        System.out.println((r1 == 2) + " : " + r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

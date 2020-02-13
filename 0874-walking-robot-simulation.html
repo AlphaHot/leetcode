@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>874. Walking Robot Simulation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_874_walking_robot_simulation">874. Walking Robot Simulation</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_874_walking_robot_simulation"><a class="anchor" href="#_874_walking_robot_simulation"></a>874. Walking Robot Simulation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/walking-robot-simulation/">LeetCode - Walking Robot Simulation</a></p>
+</div>
+<div class="paragraph">
+<p>A robot on an infinite grid starts at point (0, 0) and faces north.  The robot can receive one of three possible types of commands:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>-2</code>: turn left 90 degrees</p>
+</li>
+<li>
+<p><code>-1</code>: turn right 90 degrees</p>
+</li>
+<li>
+<p><code>1 &#8656; x &#8656; 9</code>: move forward <code>x</code> units</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Some of the grid squares are obstacles.</p>
+</div>
+<div class="paragraph">
+<p>The <code>i</code>-th obstacle is at grid point <code>(obstacles[i][0], obstacles[i][1])</code></p>
+</div>
+<div class="paragraph">
+<p>If the robot would try to move onto them, the robot stays on the previous grid square instead (but still continues following the rest of the route.)</p>
+</div>
+<div class="paragraph">
+<p>Return the <strong>square</strong> of the maximum Euclidean distance that the robot will be from the origin.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> commands = [4,-1,3], obstacles = []
+<strong>Output:</strong> 25
+Explanation: robot will go to (3, 4)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> commands = [4,-1,4,-2,4], obstacles = [[2,4]]
+<strong>Output:</strong> 65
+<strong>Explanation</strong>: robot will be stuck at (1, 4) before turning left and going to (1, 8)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>0 &#8656; commands.length &#8656; 10000</code></p>
+</li>
+<li>
+<p><code>0 &#8656; obstacles.length &#8656; 10000</code></p>
+</li>
+<li>
+<p><code>-30000 &#8656; obstacle[i][0] &#8656; 30000</code></p>
+</li>
+<li>
+<p><code>-30000 &#8656; obstacle[i][1] &#8656; 30000</code></p>
+</li>
+<li>
+<p>The answer is guaranteed to be less than <code>2 ^ 31</code>.</p>
+</li>
+</ul>
+</div>
+<div id="src-0874" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0874-walking-robot-simulation.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0874_WalkingRobotSimulation.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

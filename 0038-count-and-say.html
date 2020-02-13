@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>38. Count and Say</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_38_count_and_say">38. Count and Say</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_38_count_and_say"><a class="anchor" href="#_38_count_and_say"></a>38. Count and Say</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/count-and-say/">LeetCode - Count and Say</a></p>
+</div>
+<div class="paragraph">
+<p>看懂了这道题，相声就已经入门了……</p>
+</div>
+<div class="paragraph">
+<p>Matrix67 的解释 <a href="http://www.matrix67.com/blog/archives/3870">Conway常数是怎么得来的？ | Matrix67: The Aha Moments</a> 还是非常浅显易懂的！</p>
+</div>
+<div class="paragraph">
+<p>The count-and-say sequence is the sequence of integers with the first five terms as following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>1.     1
+2.     11
+3.     21
+4.     1211
+5.     111221</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>1</code> is read off as <code>"one 1"</code> or <code>11</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>11</code> is read off as <code>"two 1s"</code> or <code>21</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>21</code> is read off as <code>"one 2</code>, then <code>one 1"</code> or <code>1211</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given an integer <em>n</em> where 1 ≤ <em>n</em> ≤ 30, generate the <em>n</em><sup>th</sup> term of the count-and-say sequence. You can do so recursively, in other words from the previous member read off the digits, counting the number of digits in groups of the same digit.</p>
+</div>
+<div class="paragraph">
+<p>Note: Each term of the sequence of integers will be represented as a string.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 1
+<strong>Output:</strong> "1"
+<strong>Explanation:</strong> This is the base case.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 4
+<strong>Output:</strong> "1211"
+<strong>Explanation:</strong> For n = 3 the term was "21" in which we have two groups "2" and "1", "2" can be read as "12" which means frequency = 1 and value = 2, the same way "1" is read as "11", so the answer is the concatenation of "12" and "11" which is "1211".</pre>
+</div>
+</div>
+<div id="src-0038" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+/**
+ * = 38. Count and Say
+ *
+ * The count-and-say sequence is the sequence of integers with the first five terms as following:
+ *
+ * ----
+ * 1.     1
+ * 2.     11
+ * 3.     21
+ * 4.     1211
+ * 5.     111221
+ * ----
+ *
+ * `1` is read off as "`one 1`" or `11`.+
+ * `11` is read off as "`two 1s`" or `21`.+
+ * `21` is read off as "`one 2`, then `one 1`" or `1211`.+
+ *
+ * Given an integer n where 1 ≤ n ≤ 30, generate the nth term of the count-and-say sequence. You can do so recursively, in other words from the previous member read off the digits, counting the number of digits in groups of the same digit.
+ *
+ * Note: Each term of the sequence of integers will be represented as a string.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: 1
+ * Output: "1"
+ * Explanation: This is the base case.
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: 4
+ * Output: "1211"
+ * Explanation: For n = 3 the term was "21" in which we have two groups "2" and "1", "2" can be read as "12" which means frequency = 1 and value = 2, the same way "1" is read as "11", so the answer is the concatenation of "12" and "11" which is "1211".
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-17 23:16
+ */
+public class _0038_CountAndSay {
+    /**
+     * Runtime: 3 ms, faster than 40.24% of Java online submissions for Count and Say.
+     *
+     * Memory Usage: 40.9 MB, less than 5.26% of Java online submissions for Count and Say.
+     */
+    public String countAndSay(int n) {
+        String result = "1";
+        if (n == 1) {
+            return result;
+        }
+        StringBuilder builder;
+        for (int i = 1; i &lt; n; i++) {
+            builder = new StringBuilder();
+            char[] chars = result.toCharArray();
+            Character prefix = null;
+            int count = 0;
+            for (int j = 0; j &lt; chars.length; j++) {
+                char current = chars[j];
+                if (Objects.isNull(prefix)) {
+                    prefix = current;
+                    ++count;
+                } else {
+                    if (Objects.equals(prefix, current)) {
+                        ++count;
+                    } else {
+                        builder.append(count).append(prefix);
+                        prefix = current;
+                        count = 1;
+                    }
+                }
+                if (j == chars.length - 1) {
+                    builder.append(count).append(prefix);
+                }
+            }
+            result = builder.toString();
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0038_CountAndSay solution = new _0038_CountAndSay();
+        String r1 = solution.countAndSay(5);
+        System.out.println(r1.equals("111221") + " : " + r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>240. Search a 2D Matrix II</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_240_search_a_2d_matrix_ii">240. Search a 2D Matrix II</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_240_search_a_2d_matrix_ii"><a class="anchor" href="#_240_search_a_2d_matrix_ii"></a>240. Search a 2D Matrix II</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/search-a-2d-matrix-ii/">LeetCode - Search a 2D Matrix II</a></p>
+</div>
+<div class="paragraph">
+<p>从右上角开始搜索，小则下移，大则左移，这个方案真是精妙！</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/0240-1.jpg" alt="0240 1"></span></p>
+</div>
+<div class="paragraph">
+<p>Write an efficient algorithm that searches for a value in an <em>m</em> x <em>n</em> matrix. This matrix has the following properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Integers in each row are sorted in ascending from left to right.</p>
+</li>
+<li>
+<p>Integers in each column are sorted in ascending from top to bottom.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph">
+<p>Consider the following matrix:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[
+  [1,   4,  7, 11, 15],
+  [2,   5,  8, 12, 19],
+  [3,   6,  9, 16, 22],
+  [10, 13, 14, 17, 24],
+  [18, 21, 23, 26, 30]
+]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Given target = <code>5</code>, return <code>true</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given target = <code>20</code>, return <code>false</code>.</p>
+</div>
+<div id="src-0240" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+/**
+ * = 240. Search a 2D Matrix II
+ *
+ * https://leetcode.com/problems/search-a-2d-matrix-ii/[(1) Search a 2D Matrix II - LeetCode]
+ *
+ * Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+ *
+ * * Integers in each row are sorted in ascending from left to right.
+ * * Integers in each column are sorted in ascending from top to bottom.
+ *
+ * *Example:*
+ *
+ * Consider the following matrix:
+ *
+ * ----
+ * [
+ *   [1,   4,  7, 11, 15],
+ *   [2,   5,  8, 12, 19],
+ *   [3,   6,  9, 16, 22],
+ *   [10, 13, 14, 17, 24],
+ *   [18, 21, 23, 26, 30]
+ * ]
+ * ----
+ *
+ * Given target = `5`, return `true`.
+ *
+ * Given target = `20`, return `false`.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-23 10:04
+ */
+public class _0240_SearchA2DMatrixII {
+    /**
+     * Runtime: 5 ms, faster than 99.96% of Java online submissions for Search a 2D Matrix II.
+     *
+     * Memory Usage: 50.3 MB, less than 5.66% of Java online submissions for Search a 2D Matrix II.
+     *
+     * Copy from: https://leetcode.com/problems/search-a-2d-matrix-ii/discuss/66140/My-concise-O(m%2Bn)-Java-solution[(1) My concise O(m+n) Java solution - LeetCode Discuss]
+     */
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if (Objects.isNull(matrix) || matrix.length == 0) {
+            return false;
+        }
+        int column = 0;
+        int row = matrix[0].length - 1;
+        while (column &lt; matrix.length &amp;&amp; 0 &lt;= row) {
+            int value = matrix[column][row];
+            if (value == target) {
+                return true;
+            } else if (value &lt; target) {
+                column++;
+            } else if (value &gt; target) {
+                row--;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        _0240_SearchA2DMatrixII solution = new _0240_SearchA2DMatrixII();
+        int[][] m1 = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+        boolean r1 = solution.searchMatrix(m1, 5);
+        System.out.println(r1);
+
+        boolean r2 = solution.searchMatrix(m1, 20);
+        System.out.println(!r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

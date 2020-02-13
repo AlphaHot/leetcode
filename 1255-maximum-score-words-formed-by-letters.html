@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1255. Maximum Score Words Formed by Letters</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1255_maximum_score_words_formed_by_letters">1255. Maximum Score Words Formed by Letters</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1255_maximum_score_words_formed_by_letters"><a class="anchor" href="#_1255_maximum_score_words_formed_by_letters"></a>1255. Maximum Score Words Formed by Letters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/maximum-score-words-formed-by-letters/">LeetCode - Maximum Score Words Formed by Letters</a></p>
+</div>
+<div class="paragraph">
+<p>Given a list of <code>words</code>, list of  single <code>letters</code> (might be repeating) and <code>score</code> of every character.</p>
+</div>
+<div class="paragraph">
+<p>Return the maximum score of <strong>any</strong> valid set of words formed by using the given letters (<code>words[i]</code> cannot be used two or more times).</p>
+</div>
+<div class="paragraph">
+<p>It is not necessary to use all characters in <code>letters</code> and each letter can only be used once. Score of letters <code>'a'</code>, <code>'b'</code>, <code>'c'</code>, &#8230;&#8203; ,<code>'z'</code> is given by <code>score[0]</code>, <code>score[1]</code>, &#8230;&#8203; , <code>score[25]</code> respectively.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> words = ["dog","cat","dad","good"], letters = ["a","a","c","d","d","d","g","o","o"], score = [1,0,9,5,0,0,3,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0]
+<strong>Output:</strong> 23
+<strong>Explanation:</strong>
+Score  a=1, c=9, d=5, g=3, o=2
+Given letters, we can form the words "dad" (5+1+5) and "good" (3+2+2+5) with a score of 23.
+Words "dad" and "dog" only get a score of 21.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> words = ["xxxz","ax","bx","cx"], letters = ["z","a","b","c","x","x","x"], score = [4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,10]
+<strong>Output:</strong> 27
+<strong>Explanation:</strong>
+Score  a=4, b=4, c=4, x=5, z=10
+Given letters, we can form the words "ax" (4+5), "bx" (4+5) and "cx" (4+5) with a score of 27.
+Word "xxxz" only get a score of 25.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> words = ["leetcode"], letters = ["l","e","t","c","o","d"], score = [0,0,1,1,1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0]
+<strong>Output:</strong> 0
+<strong>Explanation:</strong>
+Letter "e" can only be used once.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; words.length &#8656; 14</code></p>
+</li>
+<li>
+<p><code>1 &#8656; words[i].length &#8656; 15</code></p>
+</li>
+<li>
+<p><code>1 &#8656; letters.length &#8656; 100</code></p>
+</li>
+<li>
+<p><code>letters[i].length == 1</code></p>
+</li>
+<li>
+<p><code>score.length == 26</code></p>
+</li>
+<li>
+<p><code>0 &#8656; score[i] &#8656; 10</code></p>
+</li>
+<li>
+<p><code>words[i]</code>, <code>letters[i]</code> contains only lower case English letters.</p>
+</li>
+</ul>
+</div>
+<div id="src-1255" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1255-maximum-score-words-formed-by-letters.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1255_MaximumScoreWordsFormedByLetters.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:09 +0800
+</div>
+</div>
+</body>
+</html>

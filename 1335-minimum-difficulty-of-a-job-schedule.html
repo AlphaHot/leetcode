@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1335. Minimum Difficulty of a Job Schedule</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1335_minimum_difficulty_of_a_job_schedule">1335. Minimum Difficulty of a Job Schedule</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1335_minimum_difficulty_of_a_job_schedule"><a class="anchor" href="#_1335_minimum_difficulty_of_a_job_schedule"></a>1335. Minimum Difficulty of a Job Schedule</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/">LeetCode - Minimum Difficulty of a Job Schedule</a></p>
+</div>
+<div class="paragraph">
+<p>You want to schedule a list of jobs in <code>d</code> days. Jobs are dependent (i.e To work on the <code>i-th</code> job, you have to finish all the jobs <code>j</code> where <code>0 &#8656; j &lt; i</code>).</p>
+</div>
+<div class="paragraph">
+<p>You have to finish <strong>at least</strong> one task every day. The difficulty of a job schedule is the sum of difficulties of each day of the <code>d</code> days. The difficulty of a day is the maximum difficulty of a job done in that day.</p>
+</div>
+<div class="paragraph">
+<p>Given an array of integers <code>jobDifficulty</code> and an integer <code>d</code>. The difficulty of the <code>i-th</code> job is <code>jobDifficulty[i]</code>.</p>
+</div>
+<div class="paragraph">
+<p>Return <em>the minimum difficulty</em> of a job schedule. If you cannot find a schedule for the jobs return <strong>-1</strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2020/01/16/untitled.png" alt="untitled">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> jobDifficulty = [6,5,4,3,2,1], d = 2
+<strong>Output:</strong> 7
+<strong>Explanation:</strong> First day you can finish the first 5 jobs, total difficulty = 6.
+Second day you can finish the last job, total difficulty = 1.
+The difficulty of the schedule = 6 + 1 = 7</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> jobDifficulty = [9,9,9], d = 4
+<strong>Output:</strong> -1
+<strong>Explanation:</strong> If you finish a job per day you will still have a free day. you cannot find a schedule for the given jobs.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> jobDifficulty = [1,1,1], d = 3
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> The schedule is one job per day. total difficulty will be 3.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 4:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> jobDifficulty = [7,1,7,1,7,1], d = 3
+<strong>Output:</strong> 15</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 5:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> jobDifficulty = [11,111,22,222,33,333,44,444], d = 6
+<strong>Output:</strong> 843</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; jobDifficulty.length &#8656; 300</code></p>
+</li>
+<li>
+<p><code>0 &#8656; jobDifficulty[i] &#8656; 1000</code></p>
+</li>
+<li>
+<p><code>1 &#8656; d &#8656; 10</code></p>
+</li>
+</ul>
+</div>
+<div id="src-1335" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1335-minimum-difficulty-of-a-job-schedule.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1335_MinimumDifficultyOfAJobSchedule.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:09 +0800
+</div>
+</div>
+</body>
+</html>

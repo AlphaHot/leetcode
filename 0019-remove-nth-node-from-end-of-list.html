@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>19. Remove Nth Node From End of List</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_19_remove_nth_node_from_end_of_list">19. Remove Nth Node From End of List</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_19_remove_nth_node_from_end_of_list"><a class="anchor" href="#_19_remove_nth_node_from_end_of_list"></a>19. Remove Nth Node From End of List</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/">LeetCode - Remove Nth Node From End of List</a></p>
+</div>
+<div class="paragraph">
+<p>Given a linked list, remove the <em>n</em>-th node from the end of list and return its head.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Given linked list: <strong>1-&gt;2-&gt;3-&gt;4-&gt;5</strong>, and <strong><em>n</em> = 2</strong>.
+
+After removing the second node from the end, the linked list becomes <strong>1-&gt;2-&gt;3-&gt;5</strong>.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="paragraph">
+<p>Given <em>n</em> will always be valid.</p>
+</div>
+<div class="paragraph">
+<p><strong>Follow up:</strong></p>
+</div>
+<div class="paragraph">
+<p>Could you do this in one pass?</p>
+</div>
+<div id="src-0019" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.ListNode;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.ListNodeUtils.build;
+import static com.diguage.algorithm.util.ListNodeUtils.printListNode;
+
+/**
+ * = 19. Remove Nth Node From End of List
+ *
+ * https://leetcode.com/problems/remove-nth-node-from-end-of-list/[Remove Nth Node From End of List - LeetCode]
+ *
+ * Given a linked list, remove the n-th node from the end of list and return its head.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Given linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5, and n = 2.
+ *
+ * After removing the second node from the end, the linked list becomes 1-&gt;2-&gt;3-&gt;5.
+ * ----
+ *
+ * *Note:*
+ *
+ * Given n will always be valid.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2019-07-26 20:17
+ */
+public class _0019_RemoveNthNodeFromEndOfList {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Nth Node From End of List.
+     *
+     * Memory Usage: 34.6 MB, less than 100.00% of Java online submissions for Remove Nth Node From End of List.
+     */
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        if (Objects.isNull(head) || n == 0) {
+            return head;
+        }
+        ListNode p1 = head;
+        int length = 1;
+        while (Objects.nonNull(p1.next) &amp;&amp; length &lt;= n) {
+            p1 = p1.next;
+            length++;
+        }
+        if (Objects.isNull(p1.next) &amp;&amp; length == n) {
+            return head.next;
+        }
+        if (Objects.isNull(p1.next) &amp;&amp; length &lt; n) {
+            return head;
+        }
+
+        ListNode p2 = head;
+        while (Objects.nonNull(p1.next)) {
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+        if (Objects.nonNull(p2.next)) {
+            p2.next = p2.next.next;
+        }
+        return head;
+    }
+
+    public static void main(String[] args) {
+        _0019_RemoveNthNodeFromEndOfList solution = new _0019_RemoveNthNodeFromEndOfList();
+
+        ListNode r5 = solution.removeNthFromEnd(build(Arrays.asList(1, 2)), 1);
+        printListNode(r5);
+
+        ListNode r4 = solution.removeNthFromEnd(build(Arrays.asList(1)), 1);
+        printListNode(r4);
+
+        ListNode r1 = solution.removeNthFromEnd(build(Arrays.asList(1, 2, 3, 4, 5)), 2);
+        printListNode(r1);
+
+        ListNode r2 = solution.removeNthFromEnd(build(Arrays.asList(1, 2, 3, 4, 5)), 6);
+        printListNode(r2);
+
+        ListNode r3 = solution.removeNthFromEnd(build(Arrays.asList()), 2);
+        printListNode(r3);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

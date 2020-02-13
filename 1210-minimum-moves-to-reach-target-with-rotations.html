@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1210. Minimum Moves to Reach Target with Rotations</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1210_minimum_moves_to_reach_target_with_rotations">1210. Minimum Moves to Reach Target with Rotations</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1210_minimum_moves_to_reach_target_with_rotations"><a class="anchor" href="#_1210_minimum_moves_to_reach_target_with_rotations"></a>1210. Minimum Moves to Reach Target with Rotations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/minimum-moves-to-reach-target-with-rotations/">LeetCode - Minimum Moves to Reach Target with Rotations</a></p>
+</div>
+<div class="paragraph">
+<p>In an <code>n*n</code> grid, there is a snake that spans 2 cells and starts moving from the top left corner at <code>(0, 0)</code> and <code>(0, 1)</code>. The grid has empty cells represented by zeros and blocked cells represented by ones. The snake wants to reach the lower right corner at <code>(n-1, n-2)</code> and <code>(n-1, n-1)</code>.</p>
+</div>
+<div class="paragraph">
+<p>In one move the snake can:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Move one cell to the right if there are no blocked cells there. This move keeps the horizontal/vertical position of the snake as it is.</p>
+</li>
+<li>
+<p>Move down one cell if there are no blocked cells there. This move keeps the horizontal/vertical position of the snake as it is.</p>
+</li>
+<li>
+<p>Rotate clockwise if it&#8217;s in a horizontal position and the two cells under it are both empty. In that case the snake moves from <code>(r, c)</code> and <code>(r, c+1)</code> to <code>(r, c)</code> and <code>(r+1, c)</code>.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2019/09/24/image-2.png" alt="image 2">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rotate counterclockwise if it&#8217;s in a vertical position and the two cells to its right are both empty. In that case the snake moves from <code>(r, c)</code> and <code>(r+1, c)</code> to <code>(r, c)</code> and <code>(r, c+1)</code>.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2019/09/24/image-1.png" alt="image 1">
+</div>
+</div>
+<div class="paragraph">
+<p>Return the minimum number of moves to reach the target.</p>
+</div>
+<div class="paragraph">
+<p>If there is no way to reach the target, return <code>-1</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2019/09/24/image.png" alt="image">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> grid = [[0,0,0,0,0,1],
+               [1,1,0,0,1,0],
+               [0,0,0,0,1,1],
+               [0,0,1,0,1,0],
+               [0,1,1,0,0,0],
+               [0,1,1,0,0,0]]
+<strong>Output:</strong> 11
+<strong>Explanation:</strong>
+One possible solution is [right, right, rotate clockwise, right, down, down, down, down, rotate counterclockwise, right, down].</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> grid = [[0,0,1,1,1,1],
+               [0,0,0,0,1,1],
+               [1,1,0,0,0,1],
+               [1,1,1,0,0,1],
+               [1,1,1,0,0,1],
+               [1,1,1,0,0,0]]
+<strong>Output:</strong> 9</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>2 &#8656; n &#8656; 100</code></p>
+</li>
+<li>
+<p><code>0 &#8656; grid[i][j] &#8656; 1</code></p>
+</li>
+<li>
+<p>It is guaranteed that the snake starts at empty cells.</p>
+</li>
+</ul>
+</div>
+<div id="src-1210" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1210-minimum-moves-to-reach-target-with-rotations.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1210_MinimumMovesToReachTargetWithRotations.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:09 +0800
+</div>
+</div>
+</body>
+</html>

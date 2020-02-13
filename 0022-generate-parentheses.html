@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>22. Generate Parentheses</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_22_generate_parentheses">22. Generate Parentheses</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_22_generate_parentheses"><a class="anchor" href="#_22_generate_parentheses"></a>22. Generate Parentheses</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/generate-parentheses/">LeetCode - Generate Parentheses</a></p>
+</div>
+<div class="paragraph">
+<p>使用回溯法解题时，需要关注的一个点是，<strong>在递归调用时，为了保证结果是有效的括号对，则添加的闭区间符号不能多于开区间符号。</strong>并不是所有的排列组合都符合我们的需求。</p>
+</div>
+<div class="paragraph">
+<p>Given <em>n</em> pairs of parentheses, write a function to generate all combinations of well-formed parentheses.</p>
+</div>
+<div class="paragraph">
+<p>For example, given <em>n</em> = 3, a solution set is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[
+  "",
+  ")(",
+  "))()",   "()((",
+  "()()()"
+]</pre>
+</div>
+</div>
+<div id="src-0022" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+
+/**
+ * = 22. Generate Parentheses
+ *
+ * Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+ *
+ * For example, given n = 3, a solution set is:
+ *
+ * ----
+ * [
+ *   "((()))",
+ *   "(()())",
+ *   "(())()",
+ *   "()(())",
+ *   "()()()"
+ * ]
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2019-07-27 08:11
+ */
+public class _0022_GenerateParentheses {
+    /**
+     * Runtime: 2 ms, faster than 21.88% of Java online submissions for Generate Parentheses.
+     *
+     * Memory Usage: 45.3 MB, less than 5.16% of Java online submissions for Generate Parentheses.
+     *
+     * Copy from: https://leetcode.com/problems/generate-parentheses/solution/[Generate Parentheses solution - LeetCode]
+     */
+    public List&lt;String&gt; generateParenthesis(int n) {
+        List&lt;String&gt; ans = new LinkedList&lt;&gt;();
+        backtrack(ans, "", 0, 0, n);
+        return ans;
+    }
+
+    public void backtrack(List&lt;String&gt; result, String current, int open, int close, int max) {
+        if (current.length() == 2 * max) {
+            result.add(current);
+            return;
+        }
+        if (open &lt; max) {
+            backtrack(result, current + "(", open + 1, close, max);
+        }
+        if (close &lt; open) {
+            backtrack(result, current + ")", open, close + 1, max);
+        }
+    }
+
+
+    public static void main(String[] args) {
+        _0022_GenerateParentheses solution = new _0022_GenerateParentheses();
+
+        List&lt;String&gt; r3 = solution.generateParenthesis(3);
+        r3.sort(Comparator.naturalOrder());
+        List&lt;String&gt; p3 = Arrays.asList("((()))", "(()())", "(())()", "()(())", "()()()");
+        p3.sort(Comparator.naturalOrder());
+        System.out.println("▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽");
+        System.out.println((p3.equals(r3)) + " : \n"
+                + Arrays.toString(r3.toArray(new String[0])) + "\n"
+                + Arrays.toString(p3.toArray(new String[0])));
+        System.out.println("△△△△△△△△△△△△△△△△△△△△");
+
+        List&lt;String&gt; r4 = solution.generateParenthesis(4);
+        r4.sort(Comparator.naturalOrder());
+        List&lt;String&gt; p4 = Arrays.asList("(((())))", "((()()))", "((())())", "((()))()", "(()(()))", "(()()())", "(()())()", "(())(())", "(())()()", "()((()))", "()(()())", "()(())()", "()()(())", "()()()()");
+        p4.sort(Comparator.naturalOrder());
+        System.out.println("▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽");
+        System.out.println((p4.equals(r4)) + " : \n"
+                + Arrays.toString(r4.toArray(new String[0])) + "\n"
+                + Arrays.toString(p4.toArray(new String[0])));
+        System.out.println("△△△△△△△△△△△△△△△△△△△△");
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

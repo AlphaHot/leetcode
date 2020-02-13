@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>93. Restore IP Addresses</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_93_restore_ip_addresses">93. Restore IP Addresses</a>
+<ul class="sectlevel2">
+<li><a href="#_解题分析">解题分析</a></li>
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_93_restore_ip_addresses"><a class="anchor" href="#_93_restore_ip_addresses"></a>93. Restore IP Addresses</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/restore-ip-addresses/">LeetCode - Restore IP Addresses</a></p>
+</div>
+<div class="paragraph">
+<p>Given a string containing only digits, restore it by returning all possible valid IP address combinations.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>Input: "25525511135"
+Output: ["255.255.11.135", "255.255.111.35"]</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_解题分析"><a class="anchor" href="#_解题分析"></a>解题分析</h3>
+<div class="paragraph">
+<p>使用回溯，每次做一次字符串切割，如果切割的字符串符合 IP 的大小值，则前进一步，直到把字符串切割完毕并且正好切割四份。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0093-1.png" alt="0093 1">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/restore-ip-addresses/solution/fu-yuan-ipdi-zhi-by-leetcode/">复原IP地址 - 复原IP地址 - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given a string containing only digits, restore it by returning all possible valid IP address combinations.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "25525511135"
+<strong>Output:</strong> <code>["255.255.11.135", "255.255.111.35"]</code></pre>
+</div>
+</div>
+<div id="src-0093" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.List;
+
+/**
+ * = 93. Restore IP Addresses
+ *
+ * https://leetcode.com/problems/restore-ip-addresses/[Restore IP Addresses - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-02-06 10:00
+ */
+public class _0093_RestoreIPAddresses {
+    /**
+     * Runtime: 2 ms, faster than 88.51% of Java online submissions for Restore IP Addresses.
+     * Memory Usage: 38.4 MB, less than 30.23% of Java online submissions for Restore IP Addresses.
+     */
+    public List&lt;String&gt; restoreIpAddresses(String s) {
+        List&lt;String&gt; result = new ArrayList&lt;&gt;();
+        backtrack(s, 0, new ArrayDeque&lt;&gt;(), result);
+        return result;
+    }
+
+    private void backtrack(String s, int start, Deque&lt;String&gt; current, List&lt;String&gt; result) {
+        if (start == s.length() &amp;&amp; current.size() == 4) {
+            result.add(String.join(".", current));
+            return;
+        }
+        for (int i = start + 1; i &lt;= s.length() &amp;&amp; i &lt;= start + 3 &amp;&amp; current.size() &lt; 4; i++) {
+            String substring = s.substring(start, i);
+            if (substring.length() &gt; 1 &amp;&amp; substring.charAt(0) == '0') {
+                continue;
+            }
+            int num = Integer.parseInt(substring);
+            if (0 &lt;= num &amp;&amp; num &lt;= 255) {
+                current.addLast(substring);
+                backtrack(s, i, current, result);
+                current.removeLast();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        _0093_RestoreIPAddresses solution = new _0093_RestoreIPAddresses();
+        System.out.println(solution.restoreIpAddresses("010010"));
+        System.out.println(solution.restoreIpAddresses("0000"));
+        System.out.println(solution.restoreIpAddresses("25525511135"));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

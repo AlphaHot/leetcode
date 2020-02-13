@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>622. Design Circular Queue</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_622_design_circular_queue">622. Design Circular Queue</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_622_design_circular_queue"><a class="anchor" href="#_622_design_circular_queue"></a>622. Design Circular Queue</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/design-circular-queue/">LeetCode - Design Circular Queue</a></p>
+</div>
+<div class="paragraph">
+<p>Design your implementation of the circular queue. The circular queue is a linear data structure in which the operations are performed based on FIFO (First In First Out) principle and the last position is connected back to the first position to make a circle. It is also called "Ring Buffer".</p>
+</div>
+<div class="paragraph">
+<p>One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.</p>
+</div>
+<div class="paragraph">
+<p>Your implementation should support following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>MyCircularQueue(k)</code>: Constructor, set the size of the queue to be k.</p>
+</li>
+<li>
+<p><code>Front</code>: Get the front item from the queue. If the queue is empty, return -1.</p>
+</li>
+<li>
+<p><code>Rear</code>: Get the last item from the queue. If the queue is empty, return -1.</p>
+</li>
+<li>
+<p><code>enQueue(value)</code>: Insert an element into the circular queue. Return true if the operation is successful.</p>
+</li>
+<li>
+<p><code>deQueue()</code>: Delete an element from the circular queue. Return true if the operation is successful.</p>
+</li>
+<li>
+<p><code>isEmpty()</code>: Checks whether the circular queue is empty or not.</p>
+</li>
+<li>
+<p><code>isFull()</code>: Checks whether the circular queue is full or not.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>MyCircularQueue circularQueue = new MyCircularQueue(3); // set the size to be 3
+circularQueue.enQueue(1);  // return true
+circularQueue.enQueue(2);  // return true
+circularQueue.enQueue(3);  // return true
+circularQueue.enQueue(4);  // return false, the queue is full
+circularQueue.Rear();  // return 3
+circularQueue.isFull();  // return true
+circularQueue.deQueue();  // return true
+circularQueue.enQueue(4);  // return true
+circularQueue.Rear();  // return 4</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All values will be in the range of [0, 1000].</p>
+</li>
+<li>
+<p>The number of operations will be in the range of [1, 1000].</p>
+</li>
+<li>
+<p>Please do not use the built-in Queue library.</p>
+</li>
+</ul>
+</div>
+<div id="src-0622" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0622-design-circular-queue.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0622_DesignCircularQueue.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

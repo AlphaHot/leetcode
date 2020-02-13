@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>130. Surrounded Regions</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_130_surrounded_regions">130. Surrounded Regions</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_130_surrounded_regions"><a class="anchor" href="#_130_surrounded_regions"></a>130. Surrounded Regions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/surrounded-regions/">LeetCode - Surrounded Regions</a></p>
+</div>
+<div class="paragraph">
+<p>这道题的关键点在于找到入口。对我们来说，入口就是边界的的 <code>O</code>，然后与之相连的 <code>O</code>，其他的 <code>O</code> 都会被替换为 <code>X</code>。为了区别对待，可以把识别出来的 <code>O</code> 替换为其他的字符，比如 <code>#</code>。这样后期再遍历处理即可。</p>
+</div>
+<div class="paragraph">
+<p>思考题：看题解可以使用 UnionFind 来解决这个问题。可以思考一下，如何实现？</p>
+</div>
+<div class="paragraph">
+<p>这道题与 <a href="0200-number-of-islands.adoc" class="bare">0200-number-of-islands.adoc</a> 类似。</p>
+</div>
+<div class="paragraph">
+<p>Given a 2D board containing <code>'X'</code> and <code>'O'</code> (<strong>the letter O</strong>), capture all regions surrounded by <code>'X'</code>.</p>
+</div>
+<div class="paragraph">
+<p>A region is captured by flipping all &#8217;O'`s into &#8217;X'`s in that surrounded region.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>X X X X
+X O O X
+X X O X
+X O X X</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After running your function, the board should be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>X X X X
+X X X X
+X X X X
+X O X X</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Explanation:</strong></p>
+</div>
+<div class="paragraph">
+<p>Surrounded regions shouldn&rsquo;t be on the border, which means that any <code>'O'</code> on the border of the board are not flipped to <code>'X'</code>. Any <code>'O'</code> that is not on the border and it is not connected to an <code>'O'</code> on the border will be flipped to <code>'X'</code>. Two cells are connected if they are adjacent cells connected horizontally or vertically.</p>
+</div>
+<div id="src-0130" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Objects;
+
+/**
+ * = 130. Surrounded Regions
+ *
+ * https://leetcode.com/problems/surrounded-regions/[Surrounded Regions - LeetCode]
+ *
+ * Given a 2D board containing `'X'` and `'O'` (the letter O), capture all regions surrounded by `'X'`.
+ *
+ * A region is captured by flipping all `'O'`s into `'X'`s in that surrounded region.
+ *
+ * *Example:*
+ *
+ * ----
+ * X X X X
+ * X O O X
+ * X X O X
+ * X O X X
+ * ----
+ *
+ * After running your function, the board should be:
+ *
+ * ----
+ * X X X X
+ * X X X X
+ * X X X X
+ * X O X X
+ * ----
+ *
+ * *Explanation:*
+ *
+ * Surrounded regions shouldn’t be on the border, which means that any `'O'` on the border of the board are not flipped to `'X'`. Any `'O'` that is not on the border and it is not connected to an `'O'` on the border will be flipped to `'X'`. Two cells are connected if they are adjacent cells connected horizontally or vertically.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-25 19:57
+ */
+public class _0130_SurroundedRegions {
+    /**
+     * Runtime: 4 ms, faster than 22.25% of Java online submissions for Surrounded Regions.
+     *
+     * Memory Usage: 49.1 MB, less than 7.14% of Java online submissions for Surrounded Regions.
+     *
+     * Copy from: https://leetcode-cn.com/problems/surrounded-regions/solution/bfsdi-gui-dfsfei-di-gui-dfsbing-cha-ji-by-ac_pipe/[bfs+递归dfs+非递归dfs+并查集 - 被围绕的区域 - 力扣（LeetCode）]
+     */
+    public void solve(char[][] board) {
+        if (Objects.isNull(board) || board.length == 0) {
+            return;
+        }
+
+        int yLength = board.length;
+        int xLength = board[0].length;
+        for (int y = 0; y &lt; yLength; y++) {
+            for (int x = 0; x &lt; xLength; x++) {
+                boolean isEdge = y == 0 || y == yLength - 1
+                        || x == 0 || x == xLength - 1;
+                if (isEdge &amp;&amp; board[y][x] == 'O') {
+                    dfs(board, y, x);
+                }
+            }
+        }
+
+        for (int y = 0; y &lt; yLength; y++) {
+            for (int x = 0; x &lt; xLength; x++) {
+                if (board[y][x] == 'O') {
+                    board[y][x] = 'X';
+                }
+                if (board[y][x] == '#') {
+                    board[y][x] = 'O';
+                }
+            }
+        }
+    }
+
+    private void dfs(char[][] board, int y, int x) {
+        if (y &lt; 0 || y &gt;= board.length || x &lt; 0 || x &gt;= board[0].length
+                || board[y][x] == 'X'
+                || board[y][x] == '#') {
+            return;
+        }
+        board[y][x] = '#';
+        dfs(board, y - 1, x);
+        dfs(board, y + 1, x);
+        dfs(board, y, x - 1);
+        dfs(board, y, x + 1);
+    }
+
+
+    public static void main(String[] args) {
+        _0130_SurroundedRegions solution = new _0130_SurroundedRegions();
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

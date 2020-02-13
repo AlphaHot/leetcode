@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>371. Sum of Two Integers</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_371_sum_of_two_integers">371. Sum of Two Integers</a>
+<ul class="sectlevel2">
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_371_sum_of_two_integers"><a class="anchor" href="#_371_sum_of_two_integers"></a>371. Sum of Two Integers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/sum-of-two-integers/">LeetCode - Sum of Two Integers</a></p>
+</div>
+<div class="paragraph">
+<p>这道题的关键有几点：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>通过异或操作获取在不进位的情况下，各位的值；</p>
+</li>
+<li>
+<p>通过相与加移位来来获取各个进位项；</p>
+</li>
+<li>
+<p>重复上面的操作，直到进位项为 0 为止。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>思考题：思考如何通过位运算来实现加减乘除？</p>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode.com/problems/sum-of-two-integers/discuss/84278/A-summary%3A-how-to-use-bit-manipulation-to-solve-problems-easily-and-efficiently">A summary: how to use bit manipulation to solve problems easily and efficiently - LeetCode Discuss</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Calculate the sum of two integers <em>a</em> and <em>b</em>, but you are <strong>not allowed</strong> to use the operator <code>+</code> and <code>-</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> a = 1, b = 2
+<strong>Output:</strong> 3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> a = -2, b = 3
+<strong>Output:</strong> 1</pre>
+</div>
+</div>
+<div id="src-0371" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+/**
+ * = 371. Sum of Two Integers
+ *
+ * https://leetcode.com/problems/sum-of-two-integers/[Sum of Two Integers - LeetCode]
+ *
+ * Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: a = 1, b = 2
+ * Output: 3
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: a = -2, b = 3
+ * Output: 1
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-25 17:03
+ */
+public class _0371_SumOfTwoIntegers {
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Sum of Two Integers.
+     *
+     * Memory Usage: 37.9 MB, less than 6.67% of Java online submissions for Sum of Two Integers.
+     */
+    public int getSumLoop(int a, int b) {
+        while (b != 0) {
+            int temp = a ^ b;
+            b = (a &amp; b) &lt;&lt; 1;
+            a = temp;
+        }
+        return a;
+    }
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Sum of Two Integers.
+     *
+     * Memory Usage: 37.7 MB, less than 6.67% of Java online submissions for Sum of Two Integers.
+     */
+    public int getSum(int a, int b) {
+        return b == 0 ? a : getSum(a ^ b, (a &amp; b) &lt;&lt; 1);
+    }
+
+    public static void main(String[] args) {
+        _0371_SumOfTwoIntegers solution = new _0371_SumOfTwoIntegers();
+        int r1 = solution.getSum(1, 2);
+        System.out.println((r1 == 3) + " : " + r1);
+
+        int r2 = solution.getSum(29, 23);
+        System.out.println((r2 == 52) + " : " + r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

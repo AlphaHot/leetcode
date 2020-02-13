@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1275. Find Winner on a Tic Tac Toe Game</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1275_find_winner_on_a_tic_tac_toe_game">1275. Find Winner on a Tic Tac Toe Game</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1275_find_winner_on_a_tic_tac_toe_game"><a class="anchor" href="#_1275_find_winner_on_a_tic_tac_toe_game"></a>1275. Find Winner on a Tic Tac Toe Game</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/">LeetCode - Find Winner on a Tic Tac Toe Game</a></p>
+</div>
+<div class="paragraph">
+<p>Tic-tac-toe is played by two players <em>A</em> and <em>B</em> on a <em>3</em> x <em>3</em> grid.</p>
+</div>
+<div class="paragraph">
+<p>Here are the rules of Tic-Tac-Toe:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Players take turns placing characters into empty squares (" ").</p>
+</li>
+<li>
+<p>The first player <em>A</em> always places "X" characters, while the second player <em>B</em> always places "O" characters.</p>
+</li>
+<li>
+<p>"X" and "O" characters are always placed into empty squares, never on filled ones.</p>
+</li>
+<li>
+<p>The game ends when there are 3 of the same (non-empty) character filling any row, column, or diagonal.</p>
+</li>
+<li>
+<p>The game also ends if all squares are non-empty.</p>
+</li>
+<li>
+<p>No more moves can be played if the game is over.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given an array <code>moves</code> where each element is another array of size 2 corresponding to the row and column of the grid where they mark their respective character in the order in which <em>A</em> and <em>B</em> play.</p>
+</div>
+<div class="paragraph">
+<p>Return the winner of the game if it exists (<em>A</em> or <em>B</em>), in case the game ends in a draw return "Draw", if there are still movements to play return "Pending".</p>
+</div>
+<div class="paragraph">
+<p>You can assume that <code>moves</code> is <strong>valid</strong> (It follows the rules of Tic-Tac-Toe), the grid is initially empty and <em>A</em> will play <strong>first</strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> moves = [[0,0],[2,0],[1,1],[2,1],[2,2]]
+<strong>Output:</strong> "A"
+<strong>Explanation:</strong> "A" wins, he always plays first.
+"X  "    "X  "    "X  "    "X  "    "<strong>X</strong>  "
+"   " -&gt; "   " -&gt; " X " -&gt; " X " -&gt; " <strong>X</strong> "
+"   "    "O  "    "O  "    "OO "    "OO*X*"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> moves = [[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]]
+<strong>Output:</strong> "B"
+<strong>Explanation:</strong> "B" wins.
+"X  "    "X  "    "XX "    "XXO"    "XXO"    "XX*O*"
+"   " -&gt; " O " -&gt; " O " -&gt; " O " -&gt; "XO " -&gt; "X*O* "
+"   "    "   "    "   "    "   "    "   "    "<strong>O</strong>  "</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> moves = [[0,0],[1,1],[2,0],[1,0],[1,2],[2,1],[0,1],[0,2],[2,2]]
+<strong>Output:</strong> "Draw"
+<strong>Explanation:</strong> The game ends in a draw since there are no moves to make.
+"XXO"
+"OOX"
+"XOX"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 4:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> moves = [[0,0],[1,1]]
+<strong>Output:</strong> "Pending"
+<strong>Explanation:</strong> The game has not finished yet.
+"X  "
+" O "
+"   "</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1 &#8656; moves.length &#8656; 9</code></p>
+</li>
+<li>
+<p><code>moves[i].length == 2</code></p>
+</li>
+<li>
+<p><code>0 &#8656; moves[i][j] &#8656; 2</code></p>
+</li>
+<li>
+<p>There are no repeated elements on <code>moves</code>.</p>
+</li>
+<li>
+<p><code>moves</code> follow the rules of tic tac toe.</p>
+</li>
+</ul>
+</div>
+<div id="src-1275" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1275-find-winner-on-a-tic-tac-toe-game.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1275_FindWinnerOnATicTacToeGame.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:09 +0800
+</div>
+</div>
+</body>
+</html>

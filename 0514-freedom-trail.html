@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>514. Freedom Trail</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_514_freedom_trail">514. Freedom Trail</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_514_freedom_trail"><a class="anchor" href="#_514_freedom_trail"></a>514. Freedom Trail</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/freedom-trail/">LeetCode - Freedom Trail</a></p>
+</div>
+<div class="paragraph">
+<p>In the video game Fallout 4, the quest "Road to Freedom" requires players to reach a metal dial called the "Freedom Trail Ring", and use the dial to spell a specific keyword in order to open the door.</p>
+</div>
+<div class="paragraph">
+<p>Given a string <strong>ring</strong>, which represents the code engraved on the outer ring and another string <strong>key</strong>, which represents the keyword needs to be spelled. You need to find the <strong>minimum</strong> number of steps in order to spell all the characters in the keyword.</p>
+</div>
+<div class="paragraph">
+<p>Initially, the first character of the <strong>ring</strong> is aligned at 12:00 direction. You need to spell all the characters in the string <strong>key</strong> one by one by rotating the ring clockwise or anticlockwise to make each character of the string <strong>key</strong> aligned at 12:00 direction and then by pressing the center button.</p>
+</div>
+<div class="paragraph">
+<p>At the stage of rotating the ring to spell the key character <strong>key[i]</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You can rotate the <strong>ring</strong> clockwise or anticlockwise <strong>one place</strong>, which counts as 1 step. The final purpose of the rotation is to align one of the string <strong>ring&#8217;s</strong> characters at the 12:00 direction, where this character must equal to the character <strong>key[i]</strong>.</p>
+</li>
+<li>
+<p>If the character <strong>key[i]</strong> has been aligned at the 12:00 direction, you need to press the center button to spell, which also counts as 1 step. After the pressing, you could begin to spell the next character in the key (next stage), otherwise, you&#8217;ve finished all the spelling.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2018/10/22/ring.jpg" alt="ring">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ring = "godding", key = "gd"
+<strong>Output:</strong> 4
+<strong>Explanation:</strong>
+For the first key character 'g', since it is already in place, we just need 1 step to spell this character.
+For the second key character 'd', we need to rotate the ring "godding" anticlockwise by two steps to make it become "ddinggo".
+Also, we need 1 more step for spelling.
+So the final output is 4.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Length of both ring and <strong>key</strong> will be in range 1 to 100.</p>
+</li>
+<li>
+<p>There are only lowercase letters in both strings and might be some duplcate characters in both strings.</p>
+</li>
+<li>
+<p>It&#8217;s guaranteed that string <strong>key</strong> could always be spelled by rotating the string <strong>ring</strong>.</p>
+</li>
+</ol>
+</div>
+<div id="src-0514" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0514-freedom-trail.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0514_FreedomTrail.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

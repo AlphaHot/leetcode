@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>61. Rotate List</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_61_rotate_list">61. Rotate List</a>
+<ul class="sectlevel2">
+<li><a href="#_解题分析">解题分析</a></li>
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_61_rotate_list"><a class="anchor" href="#_61_rotate_list"></a>61. Rotate List</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/rotate-list/">LeetCode - Rotate List</a></p>
+</div>
+<div class="paragraph">
+<p>Given a linked list, rotate the list to the right by <code>k</code> places, where k is non-negative.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre>Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, k = 2
+Output: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL
+Explanation:
+rotate 1 steps to the right: 5-&gt;1-&gt;2-&gt;3-&gt;4-&gt;NULL
+rotate 2 steps to the right: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 2:</div>
+<div class="content">
+<pre>Input: 0-&gt;1-&gt;2-&gt;NULL, k = 4
+Output: 2-&gt;0-&gt;1-&gt;NULL
+Explanation:
+rotate 1 steps to the right: 2-&gt;0-&gt;1-&gt;NULL
+rotate 2 steps to the right: 1-&gt;2-&gt;0-&gt;NULL
+rotate 3 steps to the right: 0-&gt;1-&gt;2-&gt;NULL
+rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_解题分析"><a class="anchor" href="#_解题分析"></a>解题分析</h3>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0061-1.png" alt="0061 1">
+</div>
+</div>
+<div class="paragraph">
+<p>这个环形解题法很赞！</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/rotate-list/solution/xuan-zhuan-lian-biao-by-leetcode/">旋转链表 - 旋转链表 - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given a linked list, rotate the list to the right by <em>k</em> places, where <em>k</em> is non-negative.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, k = 2
+<strong>Output:</strong> 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL
+<strong>Explanation:</strong>
+rotate 1 steps to the right: 5-&gt;1-&gt;2-&gt;3-&gt;4-&gt;NULL
+rotate 2 steps to the right: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 0-&gt;1-&gt;2-&gt;NULL, k = 4
+<strong>Output:</strong> <code>2-&gt;0-&gt;1-&gt;NULL</code>
+<strong>Explanation:</strong>
+rotate 1 steps to the right: 2-&gt;0-&gt;1-&gt;NULL
+rotate 2 steps to the right: 1-&gt;2-&gt;0-&gt;NULL
+rotate 3 steps to the right: <code>0-&gt;1-&gt;2-&gt;NULL</code>
+rotate 4 steps to the right: <code>2-&gt;0-&gt;1-&gt;NULL</code></pre>
+</div>
+</div>
+<div id="src-0061" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.ListNode;
+
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.ListNodeUtils.build;
+import static com.diguage.algorithm.util.ListNodeUtils.printListNode;
+import static java.util.Arrays.asList;
+
+/**
+ * = 61. Rotate List
+ *
+ * https://leetcode.com/problems/rotate-list/[Rotate List - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-02-01 23:11
+ */
+public class _0061_RotateList {
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Rotate List.
+     * Memory Usage: 38.8 MB, less than 46.55% of Java online submissions for Rotate List.
+     *
+     * Copy from: https://leetcode-cn.com/problems/rotate-list/solution/xuan-zhuan-lian-biao-by-leetcode/[旋转链表 - 旋转链表 - 力扣（LeetCode）]
+     */
+    public ListNode rotateRight(ListNode head, int k) {
+        if (Objects.isNull(head) || Objects.isNull(head.next) || k == 0) {
+            return head;
+        }
+
+        ListNode current = head;
+        int length;
+        for (length = 1; Objects.nonNull(current.next); length++) {
+            current = current.next;
+        }
+
+        int pass = length - k % length;
+        if (pass == length || pass == 0) {
+            return head;
+        }
+        current.next = head;
+
+        current = head;
+        for (int i = 0; i &lt; pass - 1; i++) {
+            current = current.next;
+        }
+        ListNode result = current.next;
+        current.next = null;
+
+        return result;
+    }
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Rotate List.
+     * Memory Usage: 38.7 MB, less than 55.17% of Java online submissions for Rotate List.
+     */
+    public ListNode rotateRightLoop(ListNode head, int k) {
+        if (Objects.isNull(head)) {
+            return null;
+        }
+        if (k == 0) {
+            return head;
+        }
+        ListNode current = head;
+        int length = 0;
+        while (Objects.nonNull(current)) {
+            length++;
+            current = current.next;
+        }
+        int pass = length - k % length;
+        if (pass == length || pass == 0) {
+            return head;
+        }
+        current = head;
+        for (int i = 0; i &lt; pass - 1; i++) {
+            current = current.next;
+        }
+        ListNode result = current.next;
+        current.next = null;
+        current = result;
+        while (Objects.nonNull(current)) {
+            if (Objects.isNull(current.next)) {
+                break;
+            }
+            current = current.next;
+        }
+        current.next = head;
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0061_RotateList solution = new _0061_RotateList();
+        printListNode(solution.rotateRight(build(asList(1, 2, 3, 4, 5)), 2));
+        printListNode(solution.rotateRight(build(asList(0, 1, 2)), 4));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

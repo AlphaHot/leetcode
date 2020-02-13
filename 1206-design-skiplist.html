@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>1206. Design Skiplist</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_1206_design_skiplist">1206. Design Skiplist</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_1206_design_skiplist"><a class="anchor" href="#_1206_design_skiplist"></a>1206. Design Skiplist</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/design-skiplist/">LeetCode - Design Skiplist</a></p>
+</div>
+<div class="paragraph">
+<p>Design a Skiplist without using any built-in libraries.</p>
+</div>
+<div class="paragraph">
+<p><em>A Skiplist is a data structure that takes O(log(n)) time to <code>add</code>, <code>erase</code> and <code>search</code>. Comparing with treap and red-black tree which has the same function and performance, the code length of Skiplist can be comparatively short and the idea behind Skiplists are just simple linked lists.</em></p>
+</div>
+<div class="paragraph">
+<p><em>For example: we have a Skiplist containing <code>[30,40,50,60,70,90]</code> and we want to add <code>80</code> and <code>45</code> into it. The Skiplist works this way:</em></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2019/09/27/1506_skiplist.gif" alt="1506 skiplist">
+</div>
+</div>
+<div class="paragraph">
+<p><span class="small">Artyom Kalinin [CC BY-SA 3.0], via &lt;a href="https://commons.wikimedia.org/wiki/File:Skip_list_add_element-en.gif" target="_blank" title="Artyom Kalinin [CC BY-SA 3.0 (<a href="https://creativecommons.org/licenses/by-sa/3.0" class="bare">https://creativecommons.org/licenses/by-sa/3.0</a>)], via Wikimedia Commons"&gt;Wikimedia Commons&lt;/a&gt;</span></p>
+</div>
+<div class="paragraph">
+<p><em>You can see there are many layers in the Skiplist. Each layer is a sorted linked list. With the help of the top layers, <code>add</code> , <code>erase</code> and `search `can be faster than O(n). It can be proven that the average time complexity for each operation is O(log(n)) and space complexity is O(n).</em></p>
+</div>
+<div class="paragraph">
+<p>To be specific, your design should include these functions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>bool search(int target)</code> : Return whether the <code>target</code> exists in the Skiplist or not.</p>
+</li>
+<li>
+<p><code>void add(int num)</code>: Insert a value into the SkipList.</p>
+</li>
+<li>
+<p><code>bool erase(int num)</code>: Remove a value in the Skiplist. If <code>num</code> does not exist in the Skiplist, do nothing and return false. If there exists multiple <code>num</code> values, removing any one of them is fine.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See more about Skiplist : <a href="https://en.wikipedia.org/wiki/Skip_list">https://en.wikipedia.org/wiki/Skip_list</a></p>
+</div>
+<div class="paragraph">
+<p>Note that duplicates may exist in the Skiplist, your code needs to handle this situation.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Skiplist skiplist = new Skiplist();
+
+skiplist.add(1);
+skiplist.add(2);
+skiplist.add(3);
+skiplist.search(0);   // return false.
+skiplist.add(4);
+skiplist.search(1);   // return true.
+skiplist.erase(0);    // return false, 0 is not in skiplist.
+skiplist.erase(1);    // return true.
+skiplist.search(1);   // return false, 1 has already been erased.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>0 &#8656; num, target &#8656; 20000</code></p>
+</li>
+<li>
+<p>At most <code>50000</code> calls will be made to <code>search</code>, <code>add</code>, and <code>erase</code>.</p>
+</li>
+</ul>
+</div>
+<div id="src-1206" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 1206-design-skiplist.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_1206_DesignSkiplist.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:09 +0800
+</div>
+</div>
+</body>
+</html>

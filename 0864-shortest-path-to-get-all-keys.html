@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>864. Shortest Path to Get All Keys</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_864_shortest_path_to_get_all_keys">864. Shortest Path to Get All Keys</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_864_shortest_path_to_get_all_keys"><a class="anchor" href="#_864_shortest_path_to_get_all_keys"></a>864. Shortest Path to Get All Keys</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/shortest-path-to-get-all-keys/">LeetCode - Shortest Path to Get All Keys</a></p>
+</div>
+<div class="paragraph">
+<p>We are given a 2-dimensional <code>grid</code>. <code>"."</code> is an empty cell, <code>"#"</code> is a wall, <code>"@"</code> is the starting point, (<code>"a"</code>, <code>"b"</code>, &#8230;&#8203;) are keys, and (<code>"A"</code>, <code>"B"</code>, &#8230;&#8203;) are locks.</p>
+</div>
+<div class="paragraph">
+<p>We start at the starting point, and one move consists of walking one space in one of the 4 cardinal directions.  We cannot walk outside the grid, or walk into a wall.  If we walk over a key, we pick it up.  We can&#8217;t walk over a lock unless we have the corresponding key.</p>
+</div>
+<div class="paragraph">
+<p>For some &lt;font face="monospace"&gt;1 &#8656; K &#8656; 6, there is exactly one lowercase and one uppercase letter of the first <code>K</code> letters of the English alphabet in the grid.  This means that there is exactly one key for each lock, and one lock for each key; and also that the letters used to represent the keys and locks were chosen in the same order as the English alphabet.</p>
+</div>
+<div class="paragraph">
+<p>Return the lowest number of moves to acquire all keys.  If it&#8217;s impossible, return <code>-1</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ["@.a.<mark>","</mark>#<mark>.</mark>","b.A.B"]
+<strong>Output:</strong> 8</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> ["@..aA","..B#.","....b"]
+<strong>Output:</strong> 6</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>1 &#8656; grid.length &#8656; 30</code></p>
+</li>
+<li>
+<p><code>1 &#8656; grid[0].length &#8656; 30</code></p>
+</li>
+<li>
+<p><code>grid[i][j]</code> contains only` '.&#8216;, <code>'#'</code>, <code>'@'</code>, <code>'a'-`&#8217;f</code>&#8217;` and <code>'A'-'F'</code></p>
+</li>
+<li>
+<p>The number of keys is in <code>[1, 6]</code>.  Each key has a different letter and opens exactly one lock.</p>
+</li>
+</ol>
+</div>
+<div id="src-0864" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0864-shortest-path-to-get-all-keys.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0864_ShortestPathToGetAllKeys.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

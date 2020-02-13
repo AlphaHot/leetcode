@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>581. Shortest Unsorted Continuous Subarray</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_581_shortest_unsorted_continuous_subarray">581. Shortest Unsorted Continuous Subarray</a>
+<ul class="sectlevel2">
+<li><a href="#_解题分析">解题分析</a></li>
+<li><a href="#_思考题">思考题</a></li>
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_581_shortest_unsorted_continuous_subarray"><a class="anchor" href="#_581_shortest_unsorted_continuous_subarray"></a>581. Shortest Unsorted Continuous Subarray</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/shortest-unsorted-continuous-subarray/">LeetCode - Shortest Unsorted Continuous Subarray</a></p>
+</div>
+<div class="paragraph">
+<p>Given an integer array, you need to find one <strong>continuous subarray</strong> that if you only sort this subarray in ascending order, then the whole array will be sorted in ascending order, too.</p>
+</div>
+<div class="paragraph">
+<p>You need to find the <strong>shortest</strong> such subarray and output its length.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre>Input: [2, 6, 4, 8, 10, 9, 15]
+Output: 5
+Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Then length of the input array is in range [1, 10,000].</p>
+</li>
+<li>
+<p>The input array may contain duplicates, so ascending order here means <strong>&#8656;</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_解题分析"><a class="anchor" href="#_解题分析"></a>解题分析</h3>
+<div class="paragraph">
+<p>第一种办法就是对数组进行排序，然后跟原数组进行对比，看看那个元素变化了。</p>
+</div>
+<div class="paragraph">
+<p>第二种办法就是从两边找逆序的小和大，然后再从两段寻找需要调整的元素。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_思考题"><a class="anchor" href="#_思考题"></a>思考题</h3>
+<div class="paragraph">
+<p>再推敲一下从两段两段夹逼的阶梯方法。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray/solution/zui-duan-wu-xu-lian-xu-zi-shu-zu-by-leetcode/">最短无序连续子数组 - 最短无序连续子数组 - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given an integer array, you need to find one <strong>continuous subarray</strong> that if you only sort this subarray in ascending order, then the whole array will be sorted in ascending order, too.</p>
+</div>
+<div class="paragraph">
+<p>You need to find the <strong>shortest</strong> such subarray and output its length.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> [2, 6, 4, 8, 10, 9, 15]
+<strong>Output:</strong> 5
+<strong>Explanation:</strong> You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Then length of the input array is in range [1, 10,000].</p>
+</li>
+<li>
+<p>The input array may contain duplicates, so ascending order here means <strong>&#8656;</strong>.</p>
+</li>
+</ol>
+</div>
+<div id="src-0581" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+/**
+ * = 581. Shortest Unsorted Continuous Subarray
+ *
+ * https://leetcode.com/problems/shortest-unsorted-continuous-subarray/[Shortest Unsorted Continuous Subarray - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-30 21:44
+ */
+public class _0581_ShortestUnsortedContinuousSubarray {
+
+    /**
+     * Runtime: 4 ms, faster than 60.88% of Java online submissions for Shortest Unsorted Continuous Subarray.
+     * Memory Usage: 51.8 MB, less than 7.69% of Java online submissions for Shortest Unsorted Continuous Subarray.
+     */
+    public int findUnsortedSubarray(int[] nums) {
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        boolean flag = false;
+        for (int i = 1; i &lt; nums.length; i++) {
+            if (nums[i - 1] &gt; nums[i]) {
+                flag = true;
+            }
+            if (flag) {
+                min = Math.min(min, nums[i]);
+            }
+        }
+        flag = false;
+        for (int i = nums.length - 2; i &gt;= 0; i--) {
+            if (nums[i] &gt; nums[i + 1]) {
+                flag = true;
+            }
+            if (flag) {
+                max = Math.max(max, nums[i]);
+            }
+        }
+        int left, right;
+        for (left = 0; left &lt; nums.length; left++) {
+            if (min &lt; nums[left]) {
+                break;
+            }
+        }
+        for (right = nums.length - 1; right &gt;= 0; right--) {
+            if (max &gt; nums[right]) {
+                break;
+            }
+        }
+        return right - left &lt; 0 ? 0 : right - left + 1;
+    }
+
+    public static void main(String[] args) {
+        _0581_ShortestUnsortedContinuousSubarray solution = new _0581_ShortestUnsortedContinuousSubarray();
+        int[] n1 = {2, 6, 4, 8, 10, 9, 15};
+        int r1 = solution.findUnsortedSubarray(n1);
+        System.out.println((r1 == 5) + " : " + r1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>162. Find Peak Element</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_162_find_peak_element">162. Find Peak Element</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_162_find_peak_element"><a class="anchor" href="#_162_find_peak_element"></a>162. Find Peak Element</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/find-peak-element/">LeetCode - Find Peak Element</a></p>
+</div>
+<div class="paragraph">
+<p>A peak element is an element that is greater than its neighbors.</p>
+</div>
+<div class="paragraph">
+<p>Given an input array <code>nums</code>, where <code>nums[i] &ne; nums[i+1]</code>, find a peak element and return its index.</p>
+</div>
+<div class="paragraph">
+<p>The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.</p>
+</div>
+<div class="paragraph">
+<p>You may imagine that <code>nums[-1] = nums[n] = -&infin;</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> <strong>nums</strong> = <code>[1,2,3,1]</code>
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> 3 is a peak element and your function should return the index number 2.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> <strong>nums</strong> = `[`1,2,1,3,5,6,4]
+<strong>Output:</strong> 1 or 5
+<strong>Explanation:</strong> Your function can return either index number 1 where the peak element is 2,
+             or index number 5 where the peak element is 6.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="paragraph">
+<p>Your solution should be in logarithmic complexity.</p>
+</div>
+<div id="src-0162" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+/**
+ * = 162. Find Peak Element
+ *
+ * https://leetcode.com/problems/find-peak-element/[Find Peak Element - LeetCode]
+ *
+ * A peak element is an element that is greater than its neighbors.
+ *
+ * Given an input array nums, where nums[i] ≠ nums[i+1], find a peak element and return its index.
+ *
+ * The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.
+ *
+ * You may imagine that nums[-1] = nums[n] = -∞.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: nums = [1,2,3,1]
+ * Output: 2
+ * Explanation: 3 is a peak element and your function should return the index number 2.
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: nums = [1,2,1,3,5,6,4]
+ * Output: 1 or 5
+ * Explanation: Your function can return either index number 1 where the peak element is 2,
+ *              or index number 5 where the peak element is 6.
+ * ----
+ *
+ * *Note:*
+ *
+ * Your solution should be in logarithmic complexity.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-05 11:03
+ */
+public class _0162_FindPeakElement {
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Find Peak Element.
+     *
+     * Memory Usage: 38.4 MB, less than 100.00% of Java online submissions for Find Peak Element.
+     *
+     * Copy form: https://leetcode.com/problems/find-peak-element/solution/[Find Peak Element solution - LeetCode]
+     */
+    public int findPeakElement(int[] nums) {
+        return search(nums, 0, nums.length - 1);
+    }
+
+    private int search(int[] nums, int low, int high) {
+        if (low == high) {
+            return low;
+        }
+        int mid = (low + high) / 2;
+        if (nums[mid] &lt; nums[mid + 1]) {
+            return search(nums, mid + 1, high);
+        }
+        return search(nums, low, mid);
+    }
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Find Peak Element.
+     *
+     * Memory Usage: 38.8 MB, less than 100.00% of Java online submissions for Find Peak Element.
+     */
+    public int findPeakElementLinearScan(int[] nums) {
+        if (Objects.isNull(nums) || nums.length == 0) {
+            return -1;
+        }
+        for (int i = 0; i &lt; nums.length; i++) {
+            if (isPeak(nums, i)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private boolean isPeak(int[] nums, int index) {
+        if (0 &lt; index - 1 &amp;&amp; nums[index - 1] &gt; nums[index]) {
+            return false;
+        }
+        if (index + 1 &lt; nums.length &amp;&amp; nums[index] &lt; nums[index + 1]) {
+            return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        _0162_FindPeakElement solution = new _0162_FindPeakElement();
+        int[] a1 = {1, 2, 3, 1};
+        int r1 = solution.findPeakElement(a1);
+        System.out.println((r1 == 2) + " : " + r1);
+
+        int[] a2 = {1, 2, 1, 3, 5, 6, 4};
+        int r2 = solution.findPeakElement(a2);
+        System.out.println((Arrays.asList(1, 5).contains(r2)) + " : " + r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

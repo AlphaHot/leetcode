@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>236. Lowest Common Ancestor of a Binary Tree</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_236_lowest_common_ancestor_of_a_binary_tree">236. Lowest Common Ancestor of a Binary Tree</a>
+<ul class="sectlevel2">
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_236_lowest_common_ancestor_of_a_binary_tree"><a class="anchor" href="#_236_lowest_common_ancestor_of_a_binary_tree"></a>236. Lowest Common Ancestor of a Binary Tree</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/">LeetCode - Lowest Common Ancestor of a Binary Tree</a></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/0236-1.png" alt="0236 1">
+</div>
+</div>
+<div class="paragraph">
+<p>D瓜哥的思路：先找出一条从根节点到某个节点的路径；然后从这条路径上以此去寻找另外一个节点。找到这返回此节点。</p>
+</div>
+<div class="paragraph">
+<p>思考题：如何按照"路径"的思路实现一遍？</p>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Lowest_common_ancestor">Lowest common ancestor - Wikipedia</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.</p>
+</div>
+<div class="paragraph">
+<p>According to the <a href="https://en.wikipedia.org/wiki/Lowest_common_ancestor">definition of LCA on Wikipedia</a>: &ldquo;The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow <strong>a node to be a descendant of itself</strong>).&rdquo;</p>
+</div>
+<div class="paragraph">
+<p>Given the following binary tree:  root = [3,5,1,6,2,0,8,null,null,7,4]</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://assets.leetcode.com/uploads/2018/12/14/binarytree.png" alt="binarytree">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> The LCA of nodes <code>5</code> and <code>1</code> is <code>3.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+<strong>Output:</strong> 5
+<strong>Explanation:</strong> The LCA of nodes <code>5</code> and <code>4</code> is <code>5</code>, since a node can be a descendant of itself according to the LCA definition.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All of the nodes' values will be unique.</p>
+</li>
+<li>
+<p>p and q are different and both values will exist in the binary tree.</p>
+</li>
+</ul>
+</div>
+<div id="src-0236" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.TreeNode;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.TreeNodeUtils.buildTree;
+
+/**
+ * = 236. Lowest Common Ancestor of a Binary Tree
+ *
+ * https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/[Lowest Common Ancestor of a Binary Tree - LeetCode]
+ *
+ * Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+ *
+ * According to https://en.wikipedia.org/wiki/Lowest_common_ancestor[the definition of LCA on Wikipedia]: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow **a node to be a descendant of itself**).”
+ *
+ * Given the following binary tree:  root = [3,5,1,6,2,0,8,null,null,7,4]
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+ * Output: 3
+ * Explanation: The LCA of nodes 5 and 1 is 3.
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+ * Output: 5
+ * Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.
+ * ----
+ *
+ *
+ * Note:
+ *
+ * All of the nodes' values will be unique.
+ * p and q are different and both values will exist in the binary tree.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-26 21:14
+ */
+public class _0236_LowestCommonAncestorOfABinaryTree {
+
+    private TreeNode result;
+
+    /**
+     * Runtime: 9 ms, faster than 23.17% of Java online submissions for Lowest Common Ancestor of a Binary Tree.
+     *
+     * Memory Usage: 45.5 MB, less than 5.55% of Java online submissions for Lowest Common Ancestor of a Binary Tree.
+     *
+     * Copy from: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/solution/[Lowest Common Ancestor of a Binary Tree solution - LeetCode]
+     */
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        recurseTree(root, p, q);
+        return this.result;
+    }
+
+    private boolean recurseTree(TreeNode currentNode, TreeNode p, TreeNode q) {
+        if (Objects.isNull(currentNode)) {
+            return false;
+        }
+
+        int left = recurseTree(currentNode.left, p, q) ? 1 : 0;
+
+        int right = recurseTree(currentNode.right, p, q) ? 1 : 0;
+
+        int mid = (currentNode.equals(p) || currentNode.equals(q)) ? 1 : 0;
+
+        if (left + mid + right &gt;= 2) {
+            this.result = currentNode;
+        }
+        return (left + mid + right) &gt; 0;
+    }
+
+    public static void main(String[] args) {
+        _0236_LowestCommonAncestorOfABinaryTree solution = new _0236_LowestCommonAncestorOfABinaryTree();
+        TreeNode r1 = solution.lowestCommonAncestor(buildTree(Arrays.asList(3, 5, 1, 6, 2, 0, 8, null, null, 7, 4)), new TreeNode(5), new TreeNode(1));
+        System.out.println((r1.val == 3) + " : " + r1);
+
+        TreeNode r2 = solution.lowestCommonAncestor(buildTree(Arrays.asList(3, 5, 1, 6, 2, 0, 8, null, null, 7, 4)), new TreeNode(5), new TreeNode(4));
+        System.out.println((r2.val == 3) + " : " + r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

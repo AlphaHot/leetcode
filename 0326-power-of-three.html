@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>326. Power of Three</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_326_power_of_three">326. Power of Three</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_326_power_of_three"><a class="anchor" href="#_326_power_of_three"></a>326. Power of Three</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/power-of-three/">LeetCode - Power of Three</a></p>
+</div>
+<div class="paragraph">
+<p>发现一个很奇怪的问题：如果通过计算相乘来判断，则会超时；如果通过相除来判断，则能顺利通过。感觉计算量是一样的啊？为什会有这么大的差距啊？</p>
+</div>
+<div class="paragraph">
+<p>利用对数计算也不失为一个很好的办法！</p>
+</div>
+<div class="paragraph">
+<p>Given an integer, write a function to determine if it is a power of three.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 27
+<strong>Output:</strong> true</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 0
+<strong>Output:</strong> false</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 3:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 9
+<strong>Output:</strong> true</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 4:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 45
+<strong>Output:</strong> false</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Follow up:</strong></p>
+</div>
+<div class="paragraph">
+<p>Could you do it without using any loop / recursion?</p>
+</div>
+<div id="src-0326" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+/**
+ * = 326. Power of Three
+ *
+ * https://leetcode.com/problems/power-of-three/[Power of Three - LeetCode]
+ *
+ * Given an integer, write a function to determine if it is a power of three.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: 27
+ * Output: true
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: 0
+ * Output: false
+ * ----
+ *
+ * .Example 3:
+ * [source]
+ * ----
+ * Input: 9
+ * Output: true
+ * ----
+ *
+ * .Example 4:
+ * [source]
+ * ----
+ * Input: 45
+ * Output: false
+ * ----
+ *
+ * Follow up:
+ * Could you do it without using any loop / recursion?
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-14 22:54
+ */
+public class _0326_PowerOfThree {
+    /**
+     * Runtime: 11 ms, faster than 89.24% of Java online submissions for Power of Three.
+     *
+     * Memory Usage: 36.4 MB, less than 6.25% of Java online submissions for Power of Three.
+     *
+     * Copy from: https://leetcode.com/problems/power-of-three/solution/[Power of Three solution - LeetCode]
+     */
+    public boolean isPowerOfThree(int n) {
+        return (Math.log10(n) / Math.log10(3)) % 1 == 0;
+    }
+    /**
+     * Runtime: 11 ms, faster than 89.24% of Java online submissions for Power of Three.
+     *
+     * Memory Usage: 36.6 MB, less than 6.25% of Java online submissions for Power of Three.
+     *
+     * Copy from: https://leetcode.com/problems/power-of-three/solution/[Power of Three solution - LeetCode]
+     */
+    public boolean isPowerOfThreeDiv(int n) {
+        if (n &lt; 1) {
+            return false;
+        }
+        while (n % 3 == 0) {
+            n /= 3;
+        }
+        return n == 1;
+    }
+
+    /**
+     * Time Limit Exceeded
+     */
+    public boolean isPowerOfThreeMult(int n) {
+        if (n &lt; 1) {
+            return false;
+        }
+        int temp = 1;
+        for (int i = 0; temp &lt;= n &amp;&amp; i &lt; n; i++) {
+            if (temp == n) {
+                return true;
+            }
+            temp *= 3;
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        _0326_PowerOfThree solution = new _0326_PowerOfThree();
+        System.out.println(solution.isPowerOfThree(2147483647));
+        System.out.println(solution.isPowerOfThree(45));
+        System.out.println(solution.isPowerOfThree(81));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

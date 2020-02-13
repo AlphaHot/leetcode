@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>647. Palindromic Substrings</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_647_palindromic_substrings">647. Palindromic Substrings</a>
+<ul class="sectlevel2">
+<li><a href="#_解题思路">解题思路</a></li>
+<li><a href="#_思考题">思考题</a></li>
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_647_palindromic_substrings"><a class="anchor" href="#_647_palindromic_substrings"></a>647. Palindromic Substrings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/palindromic-substrings/">LeetCode - Palindromic Substrings</a></p>
+</div>
+<div class="paragraph">
+<p>Given a string, your task is to count how many palindromic substrings in this string.</p>
+</div>
+<div class="paragraph">
+<p>The substrings with different start indexes or end indexes are counted as different substrings even they consist of same characters.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre>Input: "abc"
+Output: 3
+Explanation: Three palindromic strings: "a", "b", "c".</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 2:</div>
+<div class="content">
+<pre>Input: "aaa"
+Output: 6
+Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The input string length won&#8217;t exceed 1000.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_解题思路"><a class="anchor" href="#_解题思路"></a>解题思路</h3>
+<div class="paragraph">
+<p>马拉车算法</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_思考题"><a class="anchor" href="#_思考题"></a>思考题</h3>
+<div class="paragraph">
+<p>学习马拉车算法。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/palindromic-substrings/solution/hui-wen-zi-chuan-by-leetcode/">回文子串 - 回文子串 - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given a string, your task is to count how many palindromic substrings in this string.</p>
+</div>
+<div class="paragraph">
+<p>The substrings with different start indexes or end indexes are counted as different substrings even they consist of same characters.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "abc"
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> Three palindromic strings: "a", "b", "c".</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> "aaa"
+<strong>Output:</strong> 6
+<strong>Explanation:</strong> Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The input string length won&#8217;t exceed 1000.</p>
+</li>
+</ol>
+</div>
+<div id="src-0647" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+/**
+ * = 647. Palindromic Substrings
+ *
+ * https://leetcode.com/problems/palindromic-substrings/[Palindromic Substrings - LeetCode]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-31 23:17
+ */
+public class _0647_PalindromicSubstrings {
+    /**
+     * Runtime: 1 ms, faster than 100.00% of Java online submissions for Palindromic Substrings.
+     * Memory Usage: 37.8 MB, less than 11.39% of Java online submissions for Palindromic Substrings.
+     *
+     * Copy from: https://leetcode-cn.com/problems/palindromic-substrings/solution/hui-wen-zi-chuan-by-leetcode/[回文子串 - 回文子串 - 力扣（LeetCode）]
+     */
+    public int countSubstrings(String s) {
+        char[] A = new char[2 * s.length() + 3];
+        A[0] = '@';
+        A[1] = '#';
+        A[A.length - 1] = '$';
+        int j = 2;
+        for (char c : s.toCharArray()) {
+            A[j++] = c;
+            A[j++] = '#';
+        }
+
+        int[] Z = new int[A.length];
+        int center = 0, right = 0;
+        for (int i = 1; i &lt; Z.length - 1; i++) {
+            if (i &lt; right) {
+                Z[i] = Math.min(right - i, Z[2 * center - i]);
+            }
+            while (A[i + Z[i] + 1] == A[i - Z[i] - 1]) {
+                Z[i]++;
+            }
+            if (i + Z[i] &gt; right) {
+                center = i;
+                right = i + Z[i];
+            }
+        }
+        int result = 0;
+        for (int i : Z) {
+            result += (i + 1) / 2;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        _0647_PalindromicSubstrings solution = new _0647_PalindromicSubstrings();
+        int r1 = solution.countSubstrings("abc");
+        System.out.println((r1 == 3) + " : " + r1);
+
+        int r2 = solution.countSubstrings("aaa");
+        System.out.println((r2 == 6) + " : " + r2);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

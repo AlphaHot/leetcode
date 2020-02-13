@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>34. Find First and Last Position of Element in Sorted Array</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_34_find_first_and_last_position_of_element_in_sorted_array">34. Find First and Last Position of Element in Sorted Array</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_34_find_first_and_last_position_of_element_in_sorted_array"><a class="anchor" href="#_34_find_first_and_last_position_of_element_in_sorted_array"></a>34. Find First and Last Position of Element in Sorted Array</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/">LeetCode - Find First and Last Position of Element in Sorted Array</a></p>
+</div>
+<div class="paragraph">
+<p>Given an array of integers <code>nums</code> sorted in ascending order, find the starting and ending position of a given <code>target</code> value.</p>
+</div>
+<div class="paragraph">
+<p>Your algorithm&#8217;s runtime complexity must be in the order of <em>O</em>(log <em>n</em>).</p>
+</div>
+<div class="paragraph">
+<p>If the target is not found in the array, return <code>[-1, -1]</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> nums = [<code>5,7,7,8,8,10]</code>, target = 8
+<strong>Output:</strong> [3,4]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> nums = [<code>5,7,7,8,8,10]</code>, target = 6
+<strong>Output:</strong> [-1,-1]</pre>
+</div>
+</div>
+<div id="src-0034" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+
+/**
+ * == 34. Find First and Last Position of Element in Sorted Array
+ *
+ * https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/[Find First and Last Position of Element in Sorted Array - LeetCode]
+ *
+ * Given an array of integers `nums` sorted in ascending order, find the
+ * starting and ending position of a given `target` value.
+ *
+ * Your algorithm's runtime complexity must be in the order of O(log n).
+ *
+ * If the target is not found in the array, return `[-1, -1]`.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: nums = [5,7,7,8,8,10], target = 8
+ * Output: [3,4]
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: nums = [5,7,7,8,8,10], target = 6
+ * Output: [-1,-1]
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2018-09-16 20:50
+ */
+public class _0034_FindFirstAndLastPositionOfElementInSortedArray {
+    public static int[] searchRange(int[] nums, int target) {
+        int[] result = new int[]{-1, -1};
+        if (null == nums || nums.length == 0) {
+            return result;
+        }
+        int low = 0;
+        int high = nums.length - 1;
+        int index = -1;
+        while (low &lt;= high) {
+            int mid = low + (high - low) / 2;
+            int midNum = nums[mid];
+            if (midNum == target) {
+                index = mid;
+                break;
+            }
+            if (target &lt;= midNum) {
+                high = mid - 1;
+            }
+            if (midNum &lt; target) {
+                low = mid + 1;
+            }
+        }
+        if (index &lt; 0) {
+            return result;
+        }
+        int startIndex = index;
+        while (startIndex &gt;= 0 &amp;&amp; nums[startIndex] == target) {
+            startIndex--;
+        }
+        result[0] = startIndex + 1;
+
+        int endIndex = index;
+        while (endIndex &lt; nums.length &amp;&amp; nums[endIndex] == target) {
+            endIndex++;
+        }
+        result[1] = endIndex - 1;
+        return result;
+    }
+
+    public static void main(String[] args) {
+//        int[] nums = new int[]{5, 7, 7, 8, 8, 10};
+//        int target = 8;
+
+        int[] nums = new int[]{1};
+        int target = 1;
+
+        System.out.println(Arrays.toString(searchRange(nums, target)));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>110. Balanced Binary Tree</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_110_balanced_binary_tree">110. Balanced Binary Tree</a>
+<ul class="sectlevel2">
+<li><a href="#_解题分析">解题分析</a></li>
+<li><a href="#_参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_110_balanced_binary_tree"><a class="anchor" href="#_110_balanced_binary_tree"></a>110. Balanced Binary Tree</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/balanced-binary-tree/">LeetCode - Balanced Binary Tree</a></p>
+</div>
+<div class="paragraph">
+<p>Given a binary tree, determine if it is height-balanced.</p>
+</div>
+<div class="paragraph">
+<p>For this problem, a height-balanced binary tree is defined as:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>a binary tree in which the left and right subtrees of <em>every</em> node differ in height by no more than 1.</p>
+</div>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 1:</div>
+<div class="content">
+<pre>Given the following tree <code>[3,9,20,null,null,15,7]</code>:
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+
+Return true.</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 2:</div>
+<div class="content">
+<pre>Given the following tree <code>[1,2,2,3,3,null,null,4,4]</code>:
+
+       1
+      / \
+     2   2
+    / \
+   3   3
+  / \
+ 4   4
+
+Return false.</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_解题分析"><a class="anchor" href="#_解题分析"></a>解题分析</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>对二叉树做深度优先遍历DFS，递归过程中：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>终止条件：当DFS越过叶子节点时，返回高度0；</p>
+</li>
+<li>
+<p>返回值：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>从底至顶，返回以每个节点 <code>root</code> 为根节点的子树最大高度(左右子树中最大的高度值加1 <code>max(left,right) + 1)</code>；</p>
+</li>
+<li>
+<p>当我们发现有一例 <code>左/右子树高度差 ＞ 1</code> 的情况时，代表此树不是平衡树，返回 <code>-1</code>；</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>当发现不是平衡树时，后面的高度计算都没有意义了，因此一路返回-1，避免后续多余计算。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>最差情况是对树做一遍完整DFS，时间复杂度为 O(N)。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>这里有个思维误区：并不是最顶层的左右树相差不超过 1 就是平衡树；而是递归定义的，是每棵树的左右子树的高度差都不能超过 1 才可以。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_参考资料"><a class="anchor" href="#_参考资料"></a>参考资料</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://leetcode-cn.com/problems/balanced-binary-tree/solution/balanced-binary-tree-di-gui-fang-fa-by-jin40789108/">Balanced Binary Tree （Top-down和Bottom-up递归方法） - 平衡二叉树 - 力扣（LeetCode）</a></p>
+</li>
+</ol>
+</div>
+<div id="src-0110" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+import com.diguage.algorithm.util.TreeNode;
+
+import java.util.Objects;
+
+import static com.diguage.algorithm.util.TreeNodeUtils.buildTree;
+import static java.util.Arrays.asList;
+
+/**
+ * = 110. Balanced Binary Tree
+ *
+ * https://leetcode.com/problems/balanced-binary-tree/[LeetCode - Balanced Binary Tree]
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-02-06 23:10
+ */
+public class _0110_BalancedBinaryTree {
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Balanced Binary Tree.
+     * Memory Usage: 41.4 MB, less than 11.11% of Java online submissions for Balanced Binary Tree.
+     */
+    public boolean isBalanced(TreeNode root) {
+        return depth(root) != -1;
+    }
+
+    private int depth(TreeNode root) {
+        if (Objects.isNull(root)) {
+            return 0;
+        }
+        int left = depth(root.left);
+        if (left == -1) {
+            return -1;
+        }
+        int right = depth(root.right);
+        if (right == -1) {
+            return -1;
+        }
+        return Math.abs(left - right) &lt; 2 ? Math.max(left, right) + 1 : -1;
+    }
+
+    public static void main(String[] args) {
+        _0110_BalancedBinaryTree solution = new _0110_BalancedBinaryTree();
+        System.out.println(!solution.isBalanced(buildTree(asList(1, 2, 2, 3, null, null, 3, 4, null, null, 4))));
+        System.out.println(solution.isBalanced(buildTree(asList(3, 9, 20, null, null, 15, 7))));
+        System.out.println(!solution.isBalanced(buildTree(asList(1, 2, 2, 3, 3, null, null, 4, 4))));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

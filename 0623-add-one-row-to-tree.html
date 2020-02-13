@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>623. Add One Row to Tree</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_623_add_one_row_to_tree">623. Add One Row to Tree</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_623_add_one_row_to_tree"><a class="anchor" href="#_623_add_one_row_to_tree"></a>623. Add One Row to Tree</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/add-one-row-to-tree/">LeetCode - Add One Row to Tree</a></p>
+</div>
+<div class="paragraph">
+<p>Given the root of a binary tree, then value <code>v</code> and depth <code>d</code>, you need to add a row of nodes with value <code>v</code> at the given depth <code>d</code>. The root node is at depth 1.</p>
+</div>
+<div class="paragraph">
+<p>The adding rule is: given a positive integer depth <code>d</code>, for each NOT null tree nodes <code>N</code> in depth <code>d-1</code>, create two tree nodes with value <code>v</code> as <code>N&#8217;s</code> left subtree root and right subtree root. And <code>N&#8217;s</code> <strong>original left subtree</strong> should be the left subtree of the new left subtree root, its <strong>original right subtree</strong> should be the right subtree of the new right subtree root. If depth <code>d</code> is 1 that means there is no depth d-1 at all, then create a tree node with value <strong>v</strong> as the new root of the whole original tree, and the original tree is the new root&#8217;s left subtree.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+A binary tree as following:
+       4
+     /   \
+    2     6
+   / \   /
+  3   1 5
+
+<strong>v = 1</strong>
+
+<strong>d = 2</strong>
+
+<strong>Output:</strong>
+       4
+      / \
+     1   1
+    /     \
+   2       6
+  / \     /
+ 3   1   5</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong>
+A binary tree as following:
+      4
+     /
+    2
+   / \
+  3   1
+
+<strong>v = 1</strong>
+
+<strong>d = 3</strong>
+
+<strong>Output:</strong>
+      4
+     /
+    2
+   / \
+  1   1
+ /     \
+3       1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The given d is in range [1, maximum depth of the given tree + 1].</p>
+</li>
+<li>
+<p>The given binary tree has at least one tree node.</p>
+</li>
+</ol>
+</div>
+<div id="src-0623" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">Unresolved directive in 0623-add-one-row-to-tree.adoc - include::/Users/diguage/develop/algorithms/leetcode/src/main/java/com/diguage/algorithm/leetcode/_0623_AddOneRowToTree.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>

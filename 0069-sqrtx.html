@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>69. Sqrt(x)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="assets/css/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_69_sqrtx">69. Sqrt(x)</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_69_sqrtx"><a class="anchor" href="#_69_sqrtx"></a>69. Sqrt(x)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://leetcode.com/problems/sqrtx/">LeetCode - Sqrt(x)</a></p>
+</div>
+<div class="paragraph">
+<p>明知使用的是二分查找，竟然没有写出来！！</p>
+</div>
+<div class="paragraph">
+<p>Implement <code>int sqrt(int x)</code>.</p>
+</div>
+<div class="paragraph">
+<p>Compute and return the square root of <em>x</em>, where <em>x</em> is guaranteed to be a non-negative integer.</p>
+</div>
+<div class="paragraph">
+<p>Since the return type is an integer, the decimal digits are truncated and only the integer part of the result is returned.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 4
+<strong>Output:</strong> 2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example 2:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><strong>Input:</strong> 8
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> The square root of 8 is 2.82842..., and since
+             the decimal part is truncated, 2 is returned.</pre>
+</div>
+</div>
+<div id="src-0069" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-{java_source_attr}" data-lang="{java_source_attr}">package com.diguage.algorithm.leetcode;
+
+/**
+ * = 69. Sqrt(x)
+ *
+ * https://leetcode.com/problems/sqrtx/[Sqrt(x) - LeetCode]
+ *
+ * Implement int `sqrt(int x)`.
+ *
+ * Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
+ *
+ * Since the return type is an integer, the decimal digits are truncated and only the integer part of the result is returned.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: 4
+ * Output: 2
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: 8
+ * Output: 2
+ * Explanation: The square root of 8 is 2.82842..., and since
+ *              the decimal part is truncated, 2 is returned.
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2020-01-13 22:30
+ */
+public class _0069_SqrtX {
+    /**
+     * Runtime: 2 ms, faster than 14.88% of Java online submissions for Sqrt(x).
+     *
+     * Memory Usage: 34.1 MB, less than 5.00% of Java online submissions for Sqrt(x).
+     *
+     * Copy from: https://leetcode.com/problems/sqrtx/discuss/25047/A-Binary-Search-Solution[A Binary Search Solution - LeetCode Discuss]
+     */
+    public int mySqrt(int x) {
+        if (x == 0) {
+            return 0;
+        }
+        int left = 1;
+        int right = x;
+        while (true) {
+            int mid = left + (right - left) / 2;
+
+            if (mid &gt; x / mid) {
+                right = mid - 1;
+            } else {
+                if (mid + 1 &gt; x / (mid + 1)) {
+                    return mid;
+                }
+                left = mid + 1;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        _0069_SqrtX solution = new _0069_SqrtX();
+
+        int r5 = solution.mySqrt(9);
+        System.out.println((r5 == 3) + " : " + r5);
+
+        int r4 = solution.mySqrt(1024);
+        System.out.println((r4 == 32) + " : " + r4);
+
+        int r1 = solution.mySqrt(2);
+        System.out.println((r1 == 1) + " : " + r1);
+
+        int r2 = solution.mySqrt(8);
+        System.out.println((r2 == 2) + " : " + r2);
+
+        int r3 = solution.mySqrt(1);
+        System.out.println((r3 == 1) + " : " + r3);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-02-13 11:39:08 +0800
+</div>
+</div>
+</body>
+</html>
